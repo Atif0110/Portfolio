@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Mohd Atif | Data Scientist & Data Analyst</title>
+<title>Mohd Atif | Data Scientist & ML Engineer</title>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
@@ -48,6 +48,11 @@ a {
   color:#020617;
   border-radius:6px;
   font-weight:600;
+  transition:0.3s;
+}
+
+.btn:hover {
+  opacity:0.9;
 }
 
 .btn.secondary {
@@ -93,15 +98,18 @@ nav a { margin-left:20px; font-weight:500; }
   font-size:2rem;
 }
 
-/* Cards */
 .card {
   background: var(--card);
   border:1px solid var(--border);
   border-radius:10px;
   padding:24px;
+  transition:0.3s;
 }
 
-/* Grid */
+.card:hover {
+  transform:translateY(-5px);
+}
+
 .grid {
   display:grid;
   gap:24px;
@@ -110,7 +118,6 @@ nav a { margin-left:20px; font-weight:500; }
 .grid-2 { grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); }
 .grid-3 { grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); }
 
-/* Skills */
 .skill-group h4 {
   margin-bottom:10px;
   color: var(--accent);
@@ -120,7 +127,6 @@ nav a { margin-left:20px; font-weight:500; }
   color: var(--muted);
 }
 
-/* Footer */
 footer {
   padding:40px 0;
   border-top:1px solid var(--border);
@@ -153,10 +159,10 @@ footer {
 <!-- HERO -->
 <section class="hero">
   <div class="container">
-    <h1>Data Scientist | Data Analyst</h1>
+    <h1>Data Scientist | ML Engineer | GenAI Enthusiast</h1>
     <p>
-      I build data pipelines, dashboards, and machine learning models that turn
-      large datasets into clear business decisions.
+      I build ML systems, analytics dashboards, and GenAI-powered tools 
+      that turn data into real business decisions.
     </p>
     <a href="#projects" class="btn">View Projects</a>
     <a href="assets/Mohd_Atif_Resume.pdf" class="btn secondary" target="_blank">Download Resume</a>
@@ -169,11 +175,10 @@ footer {
     <h2 class="section-title">About</h2>
     <div class="card">
       <p>
-        Data Scientist / Analyst with hands-on experience in Python, SQL, machine
-        learning, and dashboarding. Proven record converting 100K+ records into
-        actionable insights, building production-ready models, and automating
-        reporting pipelines. Strong in feature engineering, model evaluation,
-        ETL automation, and visual analytics.
+        Aspiring Data Scientist with hands-on experience in machine learning, analytics, 
+        and GenAI applications. Built end-to-end churn prediction systems, RAG-based assistants, 
+        and decision intelligence dashboards. Passionate about solving real-world problems using 
+        data and modern AI to drive business impact.
       </p>
     </div>
   </div>
@@ -186,15 +191,15 @@ footer {
     <div class="grid grid-3">
       <div class="card skill-group">
         <h4>Languages & ML</h4>
-        <p>Python, SQL, R, scikit-learn, TensorFlow, XGBoost</p>
+        <p>Python, SQL, R, scikit-learn, TensorFlow, XGBoost, NLP, RAG</p>
       </div>
       <div class="card skill-group">
         <h4>Data & BI</h4>
-        <p>Power BI, Tableau, Looker Studio, BigQuery, Snowflake</p>
+        <p>Pandas, NumPy, Power BI, Tableau, BigQuery, Snowflake</p>
       </div>
       <div class="card skill-group">
         <h4>Engineering</h4>
-        <p>ETL pipelines, APIs, Streamlit, Flask, Git, Docker (familiar)</p>
+        <p>FastAPI, Flask, APIs, Streamlit, Docker, Git</p>
       </div>
     </div>
   </div>
@@ -206,12 +211,11 @@ footer {
     <h2 class="section-title">Experience</h2>
     <div class="card">
       <h3>Data Analyst Intern – Arabania Indo-Arabic Restaurant</h3>
-      <p class="muted">Jun 2024 – May 2025 | Lucknow</p>
+      <p>Jun 2024 – May 2025 | Lucknow</p>
       <ul>
-        <li>Analyzed 100K+ sales and customer records using Python and SQL</li>
-        <li>Improved gross margins by 15% using ABC and margin analysis</li>
-        <li>Reduced reporting time by 30% via automated Power BI dashboards</li>
-        <li>Reduced food waste by 20% through demand forecasting</li>
+        <li>Analyzed 100K+ records using Python, SQL, and Excel to uncover revenue trends and customer behavior</li>
+        <li>Improved margins by 15% via ABC analysis and SKU segmentation</li>
+        <li>Reduced food waste by 20% using demand analysis and forecasting</li>
       </ul>
     </div>
   </div>
@@ -223,29 +227,36 @@ footer {
     <h2 class="section-title">Projects</h2>
     <div class="grid grid-2">
 
+      <!-- NEW CHURN PROJECT -->
       <div class="card">
-        <h3>Smart City Analytics Dashboard</h3>
-        <p>Real-time dashboard combining traffic, weather, and pollution APIs with automated ETL pipelines.</p>
-        <p><strong>Tech:</strong> Python, Streamlit, APIs</p>
-        <a href="https://github.com/Atif0110" target="_blank">GitHub →</a>
+        <h3>AI Customer Churn Decision Intelligence Platform</h3>
+        <p>End-to-end churn prediction system with ML + LLM-powered retention insights and what-if simulations.</p>
+        <p><strong>Tech:</strong> FastAPI, Streamlit, scikit-learn, LLM APIs</p>
+        <a href="https://ai-customer-churn-intelligence.streamlit.app/" target="_blank">Live Demo →</a>
       </div>
 
       <div class="card">
-        <h3>System Threat Forecaster (IIT Madras)</h3>
-        <p>Classification model with 82% accuracy using feature engineering and imbalance handling.</p>
-        <p><strong>Tech:</strong> scikit-learn, ML</p>
+        <h3>Smart City Analytics Dashboard</h3>
+        <p>Real-time dashboard combining traffic, weather, and pollution APIs.</p>
+        <p><strong>Tech:</strong> Python, Streamlit, APIs</p>
+      </div>
+
+      <div class="card">
+        <h3>System Threat Forecaster</h3>
+        <p>Classification model achieving 82% accuracy with imbalance handling.</p>
+        <p><strong>Tech:</strong> scikit-learn</p>
       </div>
 
       <div class="card">
         <h3>Shravan – Digital Health Solution</h3>
-        <p>Flask-based platform with RAG chatbot, scheduling APIs, and automated notifications.</p>
+        <p>Healthcare assistant with RAG chatbot and scheduling APIs.</p>
         <p><strong>Tech:</strong> Flask, APIs</p>
       </div>
 
       <div class="card">
-        <h3>Influencer Engagement Platform (v2)</h3>
-        <p>Analytics-driven platform supporting 50+ brand–influencer collaborations.</p>
-        <p><strong>Tech:</strong> Vue 3, Flask</p>
+        <h3>Influencer Engagement Platform</h3>
+        <p>Analytics platform supporting 50+ influencer campaigns.</p>
+        <p><strong>Tech:</strong> Vue, Flask</p>
       </div>
 
     </div>
@@ -259,7 +270,6 @@ footer {
     <div class="card">
       <p>Email: data.atif001@gmail.com</p>
       <p>Phone: +91 9517216181</p>
-      <p>Location: India</p>
       <p>
         <a href="https://linkedin.com/in/mohd-atif01" target="_blank">LinkedIn</a> |
         <a href="https://github.com/Atif0110" target="_blank">GitHub</a>
