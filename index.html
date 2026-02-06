@@ -1,286 +1,301 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Mohd Atif | Data Scientist & ML Engineer</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<title>Mohd Atif | Data Scientist & GenAI Engineer</title>
+
+<meta name="description" content="Mohd Atif – Data Scientist specializing in Machine Learning, Analytics, and Generative AI. Portfolio showcasing DS, ML and GenAI projects.">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-:root {
-  --bg: #0f172a;
-  --card: #111827;
-  --text: #e5e7eb;
-  --muted: #9ca3af;
-  --accent: #38bdf8;
-  --border: #1f2933;
+
+body{
+margin:0;
+font-family:Inter,sans-serif;
+background:#0b0f19;
+color:#e5e7eb;
+scroll-behavior:smooth;
 }
 
-* { margin:0; padding:0; box-sizing:border-box; }
-
-body {
-  font-family: Inter, system-ui, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.6;
+header{
+position:fixed;
+width:100%;
+top:0;
+background:#020617;
+padding:18px 0;
+z-index:1000;
+border-bottom:1px solid #1f2933;
 }
 
-.container {
-  max-width: 1100px;
-  margin: auto;
-  padding: 0 20px;
+nav{
+width:90%;
+max-width:1100px;
+margin:auto;
+display:flex;
+justify-content:space-between;
+align-items:center;
 }
 
-section { padding: 80px 0; }
-
-h1,h2,h3 { color: white; }
-
-a {
-  color: var(--accent);
-  text-decoration: none;
+nav a{
+color:#e5e7eb;
+text-decoration:none;
+margin-left:22px;
+font-weight:500;
 }
 
-.btn {
-  display:inline-block;
-  padding:12px 22px;
-  background: var(--accent);
-  color:#020617;
-  border-radius:6px;
-  font-weight:600;
-  transition:0.3s;
+section{
+padding:100px 20px;
+max-width:1100px;
+margin:auto;
 }
 
-.btn:hover {
-  opacity:0.9;
+h1,h2{
+color:white;
 }
 
-.btn.secondary {
-  background: transparent;
-  border:1px solid var(--accent);
-  color: var(--accent);
+.hero{
+text-align:center;
+padding-top:160px;
 }
 
-header {
-  position: fixed;
-  top:0; width:100%;
-  background:#020617;
-  border-bottom:1px solid var(--border);
-  z-index:100;
+.hero h1{
+font-size:3rem;
 }
 
-nav {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:18px 0;
+.hero p{
+color:#9ca3af;
+max-width:700px;
+margin:20px auto;
 }
 
-nav a { margin-left:20px; font-weight:500; }
-
-.hero {
-  padding-top:140px;
-  text-align:center;
+.btn{
+display:inline-block;
+padding:12px 22px;
+background:#38bdf8;
+color:black;
+border-radius:6px;
+text-decoration:none;
+font-weight:600;
+margin:8px;
 }
 
-.hero h1 {
-  font-size:3rem;
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:24px;
 }
 
-.hero p {
-  max-width:700px;
-  margin:20px auto 40px;
-  color: var(--muted);
+.card{
+background:#111827;
+border:1px solid #1f2933;
+border-radius:10px;
+overflow:hidden;
+transition:0.3s;
+opacity:0;
+transform:translateY(40px);
 }
 
-.section-title {
-  margin-bottom:40px;
-  font-size:2rem;
+.card.visible{
+opacity:1;
+transform:translateY(0);
 }
 
-.card {
-  background: var(--card);
-  border:1px solid var(--border);
-  border-radius:10px;
-  padding:24px;
-  transition:0.3s;
+.card img{
+width:100%;
+height:180px;
+object-fit:cover;
 }
 
-.card:hover {
-  transform:translateY(-5px);
+.card-content{
+padding:18px;
 }
 
-.grid {
-  display:grid;
-  gap:24px;
+.card h3{
+margin-top:0;
 }
 
-.grid-2 { grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); }
-.grid-3 { grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); }
-
-.skill-group h4 {
-  margin-bottom:10px;
-  color: var(--accent);
+.card p{
+color:#9ca3af;
+font-size:14px;
 }
 
-.skill-group p {
-  color: var(--muted);
+.skills span{
+display:inline-block;
+background:#1f2933;
+padding:8px 12px;
+margin:6px;
+border-radius:6px;
+font-size:14px;
 }
 
-footer {
-  padding:40px 0;
-  border-top:1px solid var(--border);
-  text-align:center;
-  color: var(--muted);
+footer{
+text-align:center;
+padding:40px;
+color:#9ca3af;
+border-top:1px solid #1f2933;
 }
 
-@media(max-width:768px){
-  .hero h1 { font-size:2.3rem; }
+.blog{
+background:#111827;
+padding:20px;
+border-radius:10px;
+margin-bottom:20px;
 }
+
 </style>
 </head>
 
 <body>
 
 <header>
-  <div class="container">
-    <nav>
-      <strong>Mohd Atif</strong>
-      <div>
-        <a href="#about">About</a>
-        <a href="#experience">Experience</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-      </div>
-    </nav>
-  </div>
+<nav>
+<strong>Mohd Atif</strong>
+<div>
+<a href="#about">About</a>
+<a href="#projects">Projects</a>
+<a href="#blog">Blog</a>
+<a href="#contact">Contact</a>
+</div>
+</nav>
 </header>
 
-<!-- HERO -->
 <section class="hero">
-  <div class="container">
-    <h1>Data Scientist | ML Engineer | GenAI Enthusiast</h1>
-    <p>
-      I build ML systems, analytics dashboards, and GenAI-powered tools 
-      that turn data into real business decisions.
-    </p>
-    <a href="#projects" class="btn">View Projects</a>
-    <a href="assets/Mohd_Atif_Resume.pdf" class="btn secondary" target="_blank">Download Resume</a>
-  </div>
+<h1>Data Scientist • GenAI Engineer • Analyst</h1>
+<p>I build machine learning systems, analytics platforms and GenAI solutions that turn data into decisions.</p>
+<a href="#projects" class="btn">View Projects</a>
+<a href="https://github.com/Atif0110" class="btn">GitHub</a>
 </section>
 
-<!-- ABOUT -->
 <section id="about">
-  <div class="container">
-    <h2 class="section-title">About</h2>
-    <div class="card">
-      <p>
-        Aspiring Data Scientist with hands-on experience in machine learning, analytics, 
-        and GenAI applications. Built end-to-end churn prediction systems, RAG-based assistants, 
-        and decision intelligence dashboards. Passionate about solving real-world problems using 
-        data and modern AI to drive business impact.
-      </p>
-    </div>
-  </div>
+<h2>About Me</h2>
+<p>Data Science student at IIT Madras passionate about ML, analytics and generative AI. I enjoy turning messy real-world data into clean pipelines, predictive models and intelligent applications. I focus on business impact, not just accuracy metrics.</p>
+
+<div class="skills">
+<span>Python</span>
+<span>SQL</span>
+<span>Machine Learning</span>
+<span>GenAI</span>
+<span>FastAPI</span>
+<span>Streamlit</span>
+<span>RAG</span>
+<span>Analytics</span>
+<span>Docker</span>
+<span>Cloud</span>
+</div>
 </section>
 
-<!-- SKILLS -->
-<section>
-  <div class="container">
-    <h2 class="section-title">Skills</h2>
-    <div class="grid grid-3">
-      <div class="card skill-group">
-        <h4>Languages & ML</h4>
-        <p>Python, SQL, R, scikit-learn, TensorFlow, XGBoost, NLP, RAG</p>
-      </div>
-      <div class="card skill-group">
-        <h4>Data & BI</h4>
-        <p>Pandas, NumPy, Power BI, Tableau, BigQuery, Snowflake</p>
-      </div>
-      <div class="card skill-group">
-        <h4>Engineering</h4>
-        <p>FastAPI, Flask, APIs, Streamlit, Docker, Git</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- EXPERIENCE -->
-<section id="experience">
-  <div class="container">
-    <h2 class="section-title">Experience</h2>
-    <div class="card">
-      <h3>Data Analyst Intern – Arabania Indo-Arabic Restaurant</h3>
-      <p>Jun 2024 – May 2025 | Lucknow</p>
-      <ul>
-        <li>Analyzed 100K+ records using Python, SQL, and Excel to uncover revenue trends and customer behavior</li>
-        <li>Improved margins by 15% via ABC analysis and SKU segmentation</li>
-        <li>Reduced food waste by 20% using demand analysis and forecasting</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- PROJECTS -->
 <section id="projects">
-  <div class="container">
-    <h2 class="section-title">Projects</h2>
-    <div class="grid grid-2">
+<h2>Projects</h2>
 
-      <!-- NEW CHURN PROJECT -->
-      <div class="card">
-        <h3>AI Customer Churn Decision Intelligence Platform</h3>
-        <p>End-to-end churn prediction system with ML + LLM-powered retention insights and what-if simulations.</p>
-        <p><strong>Tech:</strong> FastAPI, Streamlit, scikit-learn, LLM APIs</p>
-        <a href="https://ai-customer-churn-intelligence.streamlit.app/" target="_blank">Live Demo →</a>
-      </div>
+<div class="grid">
 
-      <div class="card">
-        <h3>Smart City Analytics Dashboard</h3>
-        <p>Real-time dashboard combining traffic, weather, and pollution APIs.</p>
-        <p><strong>Tech:</strong> Python, Streamlit, APIs</p>
-      </div>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71">
+<div class="card-content">
+<h3>AI Customer Churn Intelligence</h3>
+<p>Decision intelligence platform combining ML + LLMs to predict churn and recommend retention strategies.</p>
+<a href="https://ai-customer-churn-intelligence.streamlit.app/" class="btn">Live</a>
+</div>
+</div>
 
-      <div class="card">
-        <h3>System Threat Forecaster</h3>
-        <p>Classification model achieving 82% accuracy with imbalance handling.</p>
-        <p><strong>Tech:</strong> scikit-learn</p>
-      </div>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d">
+<div class="card-content">
+<h3>Smart City Analytics</h3>
+<p>Real-time dashboard integrating traffic, pollution and weather data for city insights.</p>
+<a href="https://smart-city-analytics.streamlit.app/" class="btn">Live</a>
+</div>
+</div>
 
-      <div class="card">
-        <h3>Shravan – Digital Health Solution</h3>
-        <p>Healthcare assistant with RAG chatbot and scheduling APIs.</p>
-        <p><strong>Tech:</strong> Flask, APIs</p>
-      </div>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc">
+<div class="card-content">
+<h3>Shravan Health App</h3>
+<p>Digital health platform with RAG chatbot and appointment automation.</p>
+<a href="https://shravan-application.onrender.com/" class="btn">Live</a>
+</div>
+</div>
 
-      <div class="card">
-        <h3>Influencer Engagement Platform</h3>
-        <p>Analytics platform supporting 50+ influencer campaigns.</p>
-        <p><strong>Tech:</strong> Vue, Flask</p>
-      </div>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1526378722370-2c2b58c8b84b">
+<div class="card-content">
+<h3>System Threat Forecaster</h3>
+<p>ML system predicting cybersecurity threats with strong feature engineering.</p>
+<a href="https://www.kaggle.com/code/mohdatif01/22f3001664-notebook-t12025" class="btn">Kaggle</a>
+</div>
+</div>
 
-    </div>
-  </div>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c">
+<div class="card-content">
+<h3>Influencer Engagement Platform</h3>
+<p>Platform managing brand-influencer campaigns with analytics dashboards.</p>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836">
+<div class="card-content">
+<h3>Restaurant Analytics</h3>
+<p>Business analytics project improving margins and reducing waste.</p>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da">
+<div class="card-content">
+<h3>IPL Analytics Dashboard</h3>
+<p>Sports analytics dashboard exploring IPL player and team performance.</p>
+</div>
+</div>
+
+</div>
 </section>
 
-<!-- CONTACT -->
+<section id="blog">
+<h2>Blog</h2>
+
+<div class="blog">
+<h3>How I Combine ML + LLMs for Decision Intelligence</h3>
+<p>Explaining how predictive models and LLMs can work together for business decisions.</p>
+</div>
+
+<div class="blog">
+<h3>What Recruiters Look for in Data Science Projects</h3>
+<p>Lessons from building real-world DS projects recruiters actually like.</p>
+</div>
+
+</section>
+
 <section id="contact">
-  <div class="container">
-    <h2 class="section-title">Contact</h2>
-    <div class="card">
-      <p>Email: data.atif001@gmail.com</p>
-      <p>Phone: +91 9517216181</p>
-      <p>
-        <a href="https://linkedin.com/in/mohd-atif01" target="_blank">LinkedIn</a> |
-        <a href="https://github.com/Atif0110" target="_blank">GitHub</a>
-      </p>
-    </div>
-  </div>
+<h2>Contact</h2>
+<p>Email: data.atif001@gmail.com</p>
+<p>LinkedIn: linkedin.com/in/mohd-atif01</p>
+<p>GitHub: github.com/Atif0110</p>
 </section>
 
 <footer>
-  <p>© 2026 Mohd Atif</p>
+© 2026 Mohd Atif
 </footer>
+
+<script>
+
+const cards=document.querySelectorAll(".card");
+
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("visible");
+}
+});
+});
+
+cards.forEach(card=>observer.observe(card));
+
+</script>
 
 </body>
 </html>
