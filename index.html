@@ -6,8 +6,6 @@
 
 <title>Mohd Atif | Data Scientist & GenAI Engineer</title>
 
-<meta name="description" content="Portfolio of Mohd Atif — Data Scientist specializing in ML, Analytics and Generative AI.">
-
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
@@ -52,7 +50,6 @@ max-width:1100px;
 margin:auto;
 display:flex;
 justify-content:space-between;
-align-items:center;
 padding:16px;
 }
 
@@ -63,12 +60,11 @@ color:var(--text);
 }
 
 .toggle{
-cursor:pointer;
 background:var(--accent);
 border:none;
 padding:8px 12px;
 border-radius:6px;
-font-weight:600;
+cursor:pointer;
 }
 
 section{
@@ -82,30 +78,15 @@ text-align:center;
 padding-top:150px;
 }
 
-.hero h1{
-font-size:3rem;
-}
-
-.hero p{
-color:var(--muted);
-max-width:650px;
-margin:auto;
-}
-
 .btn{
 display:inline-block;
-margin:10px;
+margin:8px;
 padding:12px 20px;
 background:var(--accent);
 color:black;
 border-radius:6px;
-font-weight:600;
 text-decoration:none;
-transition:.3s;
-}
-
-.btn:hover{
-transform:scale(1.05);
+font-weight:600;
 }
 
 .grid{
@@ -131,7 +112,6 @@ transform:translateY(0);
 
 .card:hover{
 transform:translateY(-8px) scale(1.02);
-box-shadow:0 20px 40px rgba(0,0,0,0.3);
 }
 
 .card img{
@@ -146,26 +126,9 @@ padding:18px;
 
 .skills span{
 display:inline-block;
-background:var(--card);
-border:1px solid var(--border);
 padding:8px 12px;
 margin:6px;
 border-radius:6px;
-}
-
-.blog{
-background:var(--card);
-padding:20px;
-border-radius:10px;
-margin-bottom:20px;
-border:1px solid var(--border);
-}
-
-.cta{
-text-align:center;
-background:var(--card);
-padding:60px 20px;
-border-radius:14px;
 border:1px solid var(--border);
 }
 
@@ -173,7 +136,6 @@ footer{
 text-align:center;
 padding:40px;
 color:var(--muted);
-border-top:1px solid var(--border);
 }
 
 </style>
@@ -187,7 +149,6 @@ border-top:1px solid var(--border);
 <div>
 <a href="#about">About</a>
 <a href="#projects">Projects</a>
-<a href="#blog">Blog</a>
 <a href="#contact">Contact</a>
 <button class="toggle" onclick="toggleMode()">🌗</button>
 </div>
@@ -196,18 +157,15 @@ border-top:1px solid var(--border);
 
 <section class="hero">
 <h1>Data Scientist • GenAI & AI Automation Engineer</h1>
-<p>I build ML systems, analytics platforms and GenAI solutions that turn data into real business decisions.</p>
+<p>I build ML systems and GenAI solutions that drive real-world impact.</p>
 
 <a href="#projects" class="btn">View Projects</a>
-
-<!-- ✅ Resume button fixed -->
 <a href="assets/Resume.pdf" target="_blank" class="btn">View Resume</a>
-
 </section>
 
 <section id="about">
 <h2>About Me</h2>
-<p>I’m a Data Science student at IIT Madras passionate about ML, analytics and GenAI. I enjoy turning messy real-world data into predictive models and intelligent applications that solve business problems.</p>
+<p>Data Science student at IIT Madras focused on ML, analytics and Generative AI.</p>
 
 <div class="skills">
 <span>Python</span>
@@ -217,11 +175,10 @@ border-top:1px solid var(--border);
 <span>LLMs</span>
 <span>RAG</span>
 <span>Node.js</span>
-<span>Playwright Automation</span>
+<span>Playwright</span>
 <span>FastAPI</span>
 <span>Streamlit</span>
 <span>Docker</span>
-<span>Analytics</span>
 </div>
 </section>
 
@@ -230,53 +187,88 @@ border-top:1px solid var(--border);
 
 <div class="grid">
 
-<!-- ⭐ FEATURED PROJECT -->
+<!-- AI Desktop Assistant -->
 <div class="card">
-<img src="https://images.unsplash.com/photo-1677442135136-760c813028c0?q=80&w=1200&auto=format&fit=crop">
+<img src="https://images.unsplash.com/photo-1677442135136-760c813028c0">
 <div class="card-content">
 <h3>AI Desktop Automation Assistant</h3>
-<p>LLM-powered desktop assistant that lets non-technical users create automations via chat. Includes scheduling, sandbox mode and LinkedIn automation.</p>
-<a href="https://github.com/Atif0110/openclaw-desktop-assistant" class="btn" target="_blank">GitHub</a>
+<p>LLM-powered assistant for non-technical users to automate workflows.</p>
+<a href="https://github.com/Atif0110/openclaw-desktop-assistant" class="btn">GitHub</a>
 </div>
 </div>
 
-<!-- OTHER PROJECTS -->
+<!-- Churn -->
 <div class="card">
 <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71">
 <div class="card-content">
 <h3>AI Customer Churn Intelligence</h3>
-<p>ML + LLM decision intelligence platform for churn prediction.</p>
 <a href="https://ai-customer-churn-intelligence.streamlit.app/" class="btn">Live</a>
 <a href="https://github.com/Atif0110/ai-customer-churn-intelligence" class="btn">GitHub</a>
 </div>
 </div>
 
+<!-- Health -->
 <div class="card">
 <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d">
 <div class="card-content">
 <h3>Shravan Health App</h3>
-<p>Digital health solution with RAG chatbot.</p>
 <a href="https://github.com/Atif0110/Shravan-Application" class="btn">GitHub</a>
 </div>
 </div>
 
+<!-- Smart City -->
 <div class="card">
 <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d">
 <div class="card-content">
 <h3>Smart City Analytics</h3>
-<p>Real-time dashboard for traffic and pollution insights.</p>
 <a href="https://smart-city-analytics.streamlit.app/" class="btn">Live</a>
+</div>
+</div>
+
+<!-- Cyber -->
+<div class="card">
+<img src="https://images.unsplash.com/photo-1518770660439-4636190af475">
+<div class="card-content">
+<h3>System Threat Forecaster</h3>
+<a href="https://github.com/Atif0110/System-Threat-Forecaster" class="btn">GitHub</a>
+</div>
+</div>
+
+<!-- Influencer -->
+<div class="card">
+<img src="https://images.unsplash.com/photo-1556157382-97eda2d62296">
+<div class="card-content">
+<h3>Influencer Engagement Platform</h3>
+<a href="https://sponsor-connect-version1.onrender.com/" class="btn">Live</a>
+</div>
+</div>
+
+<!-- Restaurant -->
+<div class="card">
+<img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836">
+<div class="card-content">
+<h3>Restaurant Analytics</h3>
+<a href="https://github.com/Atif0110/Restaurant-Analytics-Business-Optimization-Project" class="btn">GitHub</a>
+</div>
+</div>
+
+<!-- IPL -->
+<div class="card">
+<img src="https://images.unsplash.com/photo-1593341646782-e0b495cff86d">
+<div class="card-content">
+<h3>IPL Analytics Dashboard</h3>
+<a href="https://github.com/Atif0110/IPL_Dashboard2024" class="btn">GitHub</a>
 </div>
 </div>
 
 </div>
 </section>
 
-<section class="cta">
-<h2>🚀 Open to Data Science & GenAI Roles</h2>
-<p>If you're hiring or collaborating on ML/GenAI projects, let's talk.</p>
-<a href="mailto:data.atif001@gmail.com" class="btn">Hire Me</a>
-<a href="https://linkedin.com/in/mohd-atif01" class="btn">LinkedIn</a>
+<section id="contact">
+<h2>Contact</h2>
+<p>Email: data.atif001@gmail.com</p>
+<p>GitHub: github.com/Atif0110</p>
+<p>LinkedIn: linkedin.com/in/mohd-atif01</p>
 </section>
 
 <footer>
