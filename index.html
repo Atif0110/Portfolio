@@ -27,7 +27,6 @@ color:var(--text);
 scroll-behavior:smooth;
 }
 
-/* SCROLL BAR */
 #progress{
 position:fixed;
 top:0;
@@ -72,13 +71,13 @@ padding-top:150px;
 }
 
 .btn{
-display:inline-block;
 padding:12px 20px;
 background:var(--accent);
 color:black;
 border-radius:6px;
 text-decoration:none;
 margin:8px;
+display:inline-block;
 font-weight:600;
 }
 
@@ -182,20 +181,22 @@ color:var(--muted);
 
 <h2>⭐ Featured Project</h2>
 
+<!-- FEATURED = CHURN -->
 <div class="card">
-<img src="https://images.unsplash.com/photo-1677442135136-760c813028c0">
+<img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71">
 <div class="card-content">
-<h3>AI Desktop Automation Assistant</h3>
+<h3>AI Customer Churn Intelligence</h3>
 
 <p>
+<span class="tag">ML</span>
 <span class="tag">LLM</span>
-<span class="tag">Automation</span>
-<span class="tag">GenAI</span>
+<span class="tag">Analytics</span>
 </p>
 
-<p>LLM-powered assistant enabling non-technical users to automate workflows via chat.</p>
+<p>ML + LLM decision intelligence platform for churn prediction and retention strategy.</p>
 
-<a href="https://github.com/Atif0110/openclaw-desktop-assistant" class="btn">GitHub</a>
+<a href="https://ai-customer-churn-intelligence.streamlit.app/" class="btn">Live</a>
+<a href="https://github.com/Atif0110/ai-customer-churn-intelligence" class="btn">GitHub</a>
 </div>
 </div>
 
@@ -203,52 +204,52 @@ color:var(--muted);
 
 <div class="grid">
 
+<!-- AI Assistant -->
 <div class="card">
-<img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71">
+<img src="https://images.unsplash.com/photo-1677442135136-760c813028c0">
 <div class="card-content">
-<h3>AI Customer Churn Intelligence</h3>
-<p><span class="tag">ML</span><span class="tag">Analytics</span></p>
-<a href="https://ai-customer-churn-intelligence.streamlit.app/" class="btn">Live</a>
-<a href="https://github.com/Atif0110/ai-customer-churn-intelligence" class="btn">GitHub</a>
+<h3>AI Desktop Automation Assistant</h3>
+<a href="https://github.com/Atif0110/openclaw-desktop-assistant" class="btn">GitHub</a>
 </div>
 </div>
 
+<!-- Shravan -->
 <div class="card">
 <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d">
 <div class="card-content">
 <h3>Shravan Health App</h3>
-<p><span class="tag">RAG</span><span class="tag">Healthcare</span></p>
 <a href="https://github.com/Atif0110/Shravan-Application" class="btn">GitHub</a>
 </div>
 </div>
 
+<!-- Smart City -->
 <div class="card">
 <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d">
 <div class="card-content">
 <h3>Smart City Analytics</h3>
-<p><span class="tag">Dashboard</span></p>
 <a href="https://smart-city-analytics.streamlit.app/" class="btn">Live</a>
 </div>
 </div>
 
+<!-- Threat -->
 <div class="card">
 <img src="https://images.unsplash.com/photo-1518770660439-4636190af475">
 <div class="card-content">
 <h3>System Threat Forecaster</h3>
-<p><span class="tag">Cybersecurity</span></p>
 <a href="https://github.com/Atif0110/System-Threat-Forecaster" class="btn">GitHub</a>
 </div>
 </div>
 
+<!-- Influencer -->
 <div class="card">
 <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296">
 <div class="card-content">
 <h3>Influencer Engagement Platform</h3>
-<p><span class="tag">Analytics</span></p>
 <a href="https://sponsor-connect-version1.onrender.com/" class="btn">Live</a>
 </div>
 </div>
 
+<!-- Restaurant -->
 <div class="card">
 <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836">
 <div class="card-content">
@@ -257,6 +258,7 @@ color:var(--muted);
 </div>
 </div>
 
+<!-- IPL -->
 <div class="card">
 <img src="https://images.unsplash.com/photo-1593341646782-e0b495cff86d">
 <div class="card-content">
@@ -280,14 +282,11 @@ color:var(--muted);
 </footer>
 
 <script>
-
-/* SCROLL PROGRESS */
 window.onscroll=()=>{
 let h=document.documentElement;
 let sc=(h.scrollTop/(h.scrollHeight-h.clientHeight))*100;
 document.getElementById("progress").style.width=sc+"%";
 };
-
 </script>
 
 </body>
