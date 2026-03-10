@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-<title>Mohd Atif | Data Scientist & GenAI Engineer</title>
+<title>Mohd Atif | Data Scientist • Data Engineer • AI Builder</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
@@ -40,7 +40,8 @@ z-index:2000;
 header{
 position:fixed;
 width:100%;
-background:var(--card);
+background:rgba(17,24,39,0.9);
+backdrop-filter:blur(10px);
 border-bottom:1px solid var(--border);
 z-index:1000;
 }
@@ -54,9 +55,10 @@ padding:16px;
 }
 
 nav a{
-margin-left:18px;
+margin-left:20px;
 color:var(--text);
 text-decoration:none;
+font-weight:500;
 }
 
 section{
@@ -67,24 +69,41 @@ padding:100px 20px;
 
 .hero{
 text-align:center;
-padding-top:150px;
+padding-top:160px;
+}
+
+.hero h1{
+font-size:40px;
+margin-bottom:10px;
+}
+
+.hero p{
+color:var(--muted);
+max-width:650px;
+margin:auto;
 }
 
 .btn{
-padding:12px 20px;
+padding:12px 22px;
 background:var(--accent);
 color:black;
 border-radius:6px;
 text-decoration:none;
-margin:8px;
+margin:10px;
 display:inline-block;
 font-weight:600;
+transition:.3s;
+}
+
+.btn:hover{
+transform:translateY(-2px);
+box-shadow:0 10px 20px rgba(56,189,248,.4);
 }
 
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:24px;
+gap:26px;
 }
 
 .card{
@@ -96,7 +115,7 @@ transition:.4s;
 }
 
 .card:hover{
-transform:translateY(-10px) scale(1.02);
+transform:translateY(-10px);
 box-shadow:0 20px 50px rgba(56,189,248,0.25);
 }
 
@@ -107,7 +126,16 @@ object-fit:cover;
 }
 
 .card-content{
-padding:18px;
+padding:20px;
+}
+
+.card-content h3{
+margin-top:0;
+}
+
+.card-content p{
+color:var(--muted);
+font-size:14px;
 }
 
 .tag{
@@ -122,6 +150,11 @@ padding:8px 12px;
 margin:6px;
 border:1px solid var(--border);
 border-radius:6px;
+font-size:14px;
+}
+
+.skills span:hover{
+border-color:#38bdf8;
 }
 
 footer{
@@ -149,54 +182,77 @@ color:var(--muted);
 </header>
 
 <section class="hero">
-<h1>Data Scientist • GenAI & AI Automation Engineer</h1>
-<p>I build ML and GenAI systems that drive real-world impact.</p>
+
+<h1>Data Scientist • Data Engineer • AI Builder</h1>
+
+<p>
+I build machine learning systems, data pipelines, and AI automation tools that turn complex datasets into real-world impact.
+</p>
 
 <a href="#projects" class="btn">View Projects</a>
 <a href="assets/Mohd_Atif___Resume.pdf" target="_blank" class="btn">View Resume</a>
+
 </section>
 
 <section id="about">
-<h2>About Me</h2>
-<p>Data Science student at IIT Madras focused on ML and Generative AI.</p>
 
-<p><b>Currently Building:</b> LLM-powered automation tools and decision intelligence systems.</p>
+<h2>About Me</h2>
+
+<p>
+I'm a Data Science student at IIT Madras focused on machine learning, data engineering, and generative AI systems.
+</p>
+
+<p>
+I enjoy building end-to-end AI products — from data pipelines and ML models to deployed applications.
+</p>
 
 <div class="skills">
+
 <span>Python</span>
 <span>SQL</span>
 <span>Machine Learning</span>
+<span>Data Engineering</span>
 <span>Generative AI</span>
 <span>LLMs</span>
 <span>RAG</span>
-<span>Node.js</span>
-<span>Playwright</span>
 <span>FastAPI</span>
-<span>Streamlit</span>
+<span>Node.js</span>
 <span>Docker</span>
+<span>Streamlit</span>
+<span>Data Visualization</span>
+
 </div>
+
 </section>
 
 <section id="projects">
 
 <h2>⭐ Featured Project</h2>
 
-<!-- FEATURED = CHURN -->
 <div class="card">
+
 <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71">
+
 <div class="card-content">
+
 <h3>AI Customer Churn Intelligence</h3>
 
 <p>
-<span class="tag">ML</span>
-<span class="tag">LLM</span>
+
+<span class="tag">Machine Learning</span>
 <span class="tag">Analytics</span>
+<span class="tag">Decision Intelligence</span>
+
 </p>
 
-<p>ML + LLM decision intelligence platform for churn prediction and retention strategy.</p>
+<p>
+ML-powered platform that predicts customer churn and provides retention insights through an interactive analytics dashboard.
+</p>
 
 <a href="https://ai-customer-churn-intelligence.streamlit.app/" class="btn">Live</a>
+
 <a href="https://github.com/Atif0110/ai-customer-churn-intelligence" class="btn">GitHub</a>
+
 </div>
 </div>
 
@@ -204,89 +260,88 @@ color:var(--muted);
 
 <div class="grid">
 
-<!-- AI Assistant -->
 <div class="card">
 <img src="https://images.unsplash.com/photo-1677442135136-760c813028c0">
 <div class="card-content">
 <h3>AI Desktop Automation Assistant</h3>
+<p>LLM automation system built with RAG architecture for task automation.</p>
 <a href="https://github.com/Atif0110/openclaw-desktop-assistant" class="btn">GitHub</a>
 </div>
 </div>
 
-<!-- Shravan -->
 <div class="card">
 <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d">
 <div class="card-content">
-<h3>Shravan Health App</h3>
+<h3>Shravan Health Application</h3>
+<p>Healthcare application designed to improve patient engagement.</p>
 <a href="https://github.com/Atif0110/Shravan-Application" class="btn">GitHub</a>
 </div>
 </div>
 
-<!-- Smart City -->
 <div class="card">
 <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d">
 <div class="card-content">
 <h3>Smart City Analytics</h3>
+<p>Real-time analytics dashboard monitoring urban data streams.</p>
 <a href="https://smart-city-analytics.streamlit.app/" class="btn">Live</a>
 </div>
 </div>
 
-<!-- Threat -->
 <div class="card">
 <img src="https://images.unsplash.com/photo-1518770660439-4636190af475">
 <div class="card-content">
 <h3>System Threat Forecaster</h3>
+<p>ML system designed to predict cybersecurity threats.</p>
 <a href="https://github.com/Atif0110/System-Threat-Forecaster" class="btn">GitHub</a>
 </div>
 </div>
 
-<!-- Influencer -->
 <div class="card">
 <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296">
 <div class="card-content">
 <h3>Influencer Engagement Platform</h3>
+<p>Data-driven platform connecting brands with influencers.</p>
 <a href="https://sponsor-connect-version1.onrender.com/" class="btn">Live</a>
 </div>
 </div>
 
-<!-- Restaurant -->
 <div class="card">
 <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836">
 <div class="card-content">
 <h3>Restaurant Analytics</h3>
+<p>Business analytics project for pricing optimization and revenue insights.</p>
 <a href="https://github.com/Atif0110/Restaurant-Analytics-Business-Optimization-Project" class="btn">GitHub</a>
 </div>
 </div>
 
-<!-- IPL -->
-<div class="card">
-<img src="https://images.unsplash.com/photo-1593341646782-e0b495cff86d">
-<div class="card-content">
-<h3>IPL Analytics Dashboard</h3>
-<a href="https://github.com/Atif0110/IPL_Dashboard2024" class="btn">GitHub</a>
-</div>
 </div>
 
-</div>
 </section>
 
 <section id="contact">
+
 <h2>Contact</h2>
+
 <p>Email: data.atif001@gmail.com</p>
 <p>GitHub: github.com/Atif0110</p>
 <p>LinkedIn: linkedin.com/in/mohd-atif01</p>
+
 </section>
 
 <footer>
+
 © 2026 Mohd Atif
+
 </footer>
 
 <script>
+
 window.onscroll=()=>{
 let h=document.documentElement;
 let sc=(h.scrollTop/(h.scrollHeight-h.clientHeight))*100;
 document.getElementById("progress").style.width=sc+"%";
 };
+
 </script>
 
 </body>
