@@ -1,348 +1,1019 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohd Atif | Data Scientist & ML Engineer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<title>Mohd Atif | Data Scientist • Data Engineer • AI Builder</title>
+        :root {
+            --bg-dark: #0a0e1a;
+            --bg-darker: #050609;
+            --bg-card: #0f1220;
+            --bg-card-hover: #131829;
+            --text-primary: #e8ebf0;
+            --text-secondary: #a3aec7;
+            --text-muted: #7a8597;
+            --accent-cyan: #00d9ff;
+            --accent-blue: #3b82f6;
+            --accent-sky: #0ea5e9;
+            --border-subtle: #16202e;
+            --border-accent: #00d9ff30;
+            --surface: #0f1420;
+        }
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+        html {
+            scroll-behavior: smooth;
+        }
 
-<style>
+        body {
+            font-family: 'Sora', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #050609 0%, #0a0e1a 50%, #0f1220 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
 
-:root{
---bg:#0b0f19;
---card:#111827;
---text:#e5e7eb;
---muted:#9ca3af;
---accent:#38bdf8;
---border:#1f2933;
-}
+        /* Animated background - minimal, professional */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(0, 217, 255, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.03) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 1;
+        }
 
-body{
-margin:0;
-font-family:Inter,sans-serif;
-background:linear-gradient(135deg,#0b0f19,#111827);
-color:var(--text);
-scroll-behavior:smooth;
-}
+        body > * {
+            position: relative;
+            z-index: 2;
+        }
 
-#progress{
-position:fixed;
-top:0;
-left:0;
-height:4px;
-background:#38bdf8;
-width:0%;
-z-index:2000;
-}
+        /* Scroll Progress Bar */
+        #scrollProgress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-cyan) 0%, var(--accent-blue) 100%);
+            width: 0%;
+            z-index: 2000;
+            transition: width 0.1s ease;
+            box-shadow: 0 0 15px rgba(0, 217, 255, 0.3);
+        }
 
-header{
-position:fixed;
-width:100%;
-background:rgba(17,24,39,0.9);
-backdrop-filter:blur(10px);
-border-bottom:1px solid var(--border);
-z-index:1000;
-}
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            backdrop-filter: blur(20px);
+            background: rgba(10, 14, 26, 0.8);
+            border-bottom: 1px solid var(--border-accent);
+            z-index: 1999;
+        }
 
-nav{
-max-width:1100px;
-margin:auto;
-display:flex;
-justify-content:space-between;
-padding:16px;
-}
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+        }
 
-nav a{
-margin-left:20px;
-color:var(--text);
-text-decoration:none;
-font-weight:500;
-}
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-family: 'Merriweather', serif;
+            letter-spacing: -1px;
+        }
 
-section{
-max-width:1100px;
-margin:auto;
-padding:100px 20px;
-}
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
 
-.hero{
-text-align:center;
-padding-top:160px;
-}
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s ease;
+        }
 
-.hero h1{
-font-size:40px;
-margin-bottom:10px;
-}
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-blue));
+            transition: width 0.3s ease;
+        }
 
-.hero p{
-color:var(--muted);
-max-width:650px;
-margin:auto;
-}
+        .nav-links a:hover {
+            color: var(--accent-cyan);
+        }
 
-.btn{
-padding:12px 22px;
-background:var(--accent);
-color:black;
-border-radius:6px;
-text-decoration:none;
-margin:10px;
-display:inline-block;
-font-weight:600;
-transition:.3s;
-}
+        .nav-links a:hover::after {
+            width: 100%;
+        }
 
-.btn:hover{
-transform:translateY(-2px);
-box-shadow:0 10px 20px rgba(56,189,248,.4);
-}
+        /* Hero Section */
+        .hero {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 140px 2rem 100px;
+        }
 
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:26px;
-}
+        .hero-content {
+            max-width: 950px;
+        }
 
-.card{
-background:var(--card);
-border:1px solid var(--border);
-border-radius:12px;
-overflow:hidden;
-transition:.4s;
-}
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-family: 'Merriweather', serif;
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -1.5px;
+        }
 
-.card:hover{
-transform:translateY(-10px);
-box-shadow:0 20px 50px rgba(56,189,248,0.25);
-}
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            line-height: 1.8;
+        }
 
-.card img{
-width:100%;
-height:180px;
-object-fit:cover;
-}
+        .cta-group {
+            display: flex;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+            margin-bottom: 4rem;
+        }
 
-.card-content{
-padding:20px;
-}
+        .btn {
+            padding: 0.95rem 2.2rem;
+            border: none;
+            border-radius: 0.6rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
 
-.card-content h3{
-margin-top:0;
-}
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-blue) 100%);
+            color: var(--bg-dark);
+            box-shadow: 0 0 30px rgba(0, 217, 255, 0.25);
+            font-weight: 700;
+        }
 
-.card-content p{
-color:var(--muted);
-font-size:14px;
-}
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 217, 255, 0.4);
+        }
 
-.tag{
-font-size:12px;
-color:#38bdf8;
-margin-right:6px;
-}
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent-cyan);
+            border: 1.5px solid var(--accent-cyan);
+            box-shadow: inset 0 0 20px rgba(0, 217, 255, 0.08);
+        }
 
-.skills span{
-display:inline-block;
-padding:8px 12px;
-margin:6px;
-border:1px solid var(--border);
-border-radius:6px;
-font-size:14px;
-}
+        .btn-secondary:hover {
+            background: rgba(0, 217, 255, 0.1);
+            box-shadow: inset 0 0 20px rgba(0, 217, 255, 0.2), 0 0 30px rgba(0, 217, 255, 0.25);
+            transform: translateY(-3px);
+        }
 
-.skills span:hover{
-border-color:#38bdf8;
-}
+        /* Stats */
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1.5rem;
+        }
 
-footer{
-text-align:center;
-padding:40px;
-color:var(--muted);
-}
+        .stat {
+            padding: 1.5rem;
+            background: rgba(0, 217, 255, 0.04);
+            border: 1px solid var(--border-accent);
+            border-radius: 0.6rem;
+            backdrop-filter: blur(10px);
+        }
 
-</style>
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Section Styling */
+        section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        section h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 3.5rem;
+            font-family: 'Merriweather', serif;
+            background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -1px;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .about-text {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.9;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text strong {
+            color: var(--accent-cyan);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .skill-category {
+            background: rgba(0, 217, 255, 0.03);
+            border: 1px solid var(--border-accent);
+            border-radius: 0.6rem;
+            padding: 1.5rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            background: rgba(0, 217, 255, 0.06);
+            border-color: var(--accent-cyan);
+            transform: translateY(-3px);
+        }
+
+        .skill-category h4 {
+            color: var(--accent-cyan);
+            margin-bottom: 1rem;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+
+        .skill-tag {
+            background: rgba(59, 130, 246, 0.12);
+            color: var(--accent-sky);
+            padding: 0.4rem 0.9rem;
+            border-radius: 0.35rem;
+            font-size: 0.8rem;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: rgba(59, 130, 246, 0.2);
+            border-color: var(--accent-sky);
+        }
+
+        /* Featured Project */
+        .featured-project {
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.08) 0%, rgba(59, 130, 246, 0.05) 100%);
+            border: 2px solid var(--border-accent);
+            border-radius: 1rem;
+            padding: 3rem;
+            margin-bottom: 4rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .featured-project:hover {
+            border-color: var(--accent-cyan);
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.12) 0%, rgba(59, 130, 246, 0.08) 100%);
+        }
+
+        .featured-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+            color: var(--bg-dark);
+            padding: 0.6rem 1.2rem;
+            border-radius: 0.5rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 1.5rem;
+        }
+
+        .featured-project h3 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            font-family: 'Merriweather', serif;
+            color: var(--text-primary);
+        }
+
+        .featured-project-desc {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.9;
+            font-size: 1.05rem;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.2rem;
+            margin: 2rem 0;
+        }
+
+        .metric {
+            background: rgba(0, 217, 255, 0.05);
+            border: 1px solid var(--border-accent);
+            padding: 1.2rem;
+            border-radius: 0.6rem;
+            border-left: 3px solid var(--accent-blue);
+        }
+
+        .metric-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+        }
+
+        .metric-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-top: 0.3rem;
+        }
+
+        .featured-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.12), rgba(59, 130, 246, 0.1));
+            border-radius: 0.8rem;
+            border: 1px solid var(--border-accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: rgba(0, 217, 255, 0.12);
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 0.8rem;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            border-color: var(--accent-cyan);
+            transform: translateY(-8px);
+            background: var(--bg-card-hover);
+            box-shadow: 0 20px 60px rgba(0, 217, 255, 0.12);
+        }
+
+        .project-image-wrapper {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.08), rgba(59, 130, 246, 0.08));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            overflow: hidden;
+        }
+
+        .project-image-wrapper::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, transparent, rgba(0, 217, 255, 0.08));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .project-card:hover .project-image-wrapper::before {
+            opacity: 1;
+        }
+
+        .project-content {
+            padding: 2rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-tags-list {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.2rem;
+            flex-wrap: wrap;
+        }
+
+        .project-tag {
+            font-size: 0.7rem;
+            padding: 0.3rem 0.7rem;
+            background: rgba(0, 217, 255, 0.12);
+            color: var(--accent-cyan);
+            border-radius: 0.3rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border: 1px solid rgba(0, 217, 255, 0.3);
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            color: var(--text-primary);
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.8rem;
+            flex: 1;
+            font-size: 0.95rem;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        .project-link {
+            font-size: 0.85rem;
+            padding: 0.5rem 1rem;
+            background: rgba(0, 217, 255, 0.1);
+            color: var(--accent-cyan);
+            border: 1px solid var(--accent-cyan);
+            border-radius: 0.4rem;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .project-link:hover {
+            background: var(--accent-cyan);
+            color: var(--bg-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 217, 255, 0.25);
+        }
+
+        /* Experience Section */
+        .experience-timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .experience-item {
+            position: relative;
+            padding-left: 3.5rem;
+            padding-bottom: 3rem;
+            border-left: 2px solid var(--border-subtle);
+            transition: all 0.3s ease;
+        }
+
+        .experience-item:last-child {
+            border-left: none;
+            padding-bottom: 0;
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: -9px;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            background: var(--accent-cyan);
+            border-radius: 50%;
+            border: 3px solid var(--bg-dark);
+            box-shadow: 0 0 20px var(--accent-cyan);
+        }
+
+        .experience-role {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+        }
+
+        .experience-company {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin: 0.3rem 0 0.8rem 0;
+        }
+
+        .experience-description {
+            color: var(--text-secondary);
+            margin: 0.6rem 0;
+            line-height: 1.7;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+        }
+
+        .contact-card {
+            background: rgba(0, 217, 255, 0.03);
+            border: 1px solid var(--border-accent);
+            padding: 2.5rem;
+            border-radius: 0.8rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            cursor: pointer;
+        }
+
+        .contact-card:hover {
+            border-color: var(--accent-cyan);
+            background: rgba(0, 217, 255, 0.08);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 217, 255, 0.15);
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-card h3 {
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+            color: var(--accent-cyan);
+        }
+
+        .contact-card a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            word-break: break-all;
+            transition: color 0.3s ease;
+        }
+
+        .contact-card a:hover {
+            color: var(--accent-cyan);
+        }
+
+        .contact-text {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin: 0.5rem 0;
+            word-break: break-all;
+        }
+
+        .contact-hint {
+            color: var(--accent-cyan);
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+            font-weight: 500;
+            opacity: 0.8;
+        }
+
+        .contact-card:hover .contact-hint {
+            opacity: 1;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--border-subtle);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .about-grid,
+            .featured-project {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.85rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-group {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            section {
+                padding: 3rem 1.5rem;
+            }
+        }
+    </style>
 </head>
-
 <body>
+    <div id="scrollProgress"></div>
 
-<div id="progress"></div>
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="#home" class="logo">Atif</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<header>
-<nav>
-<strong>Mohd Atif</strong>
-<div>
-<a href="#about">About</a>
-<a href="#projects">Projects</a>
-<a href="#contact">Contact</a>
-</div>
-</nav>
-</header>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Data Scientist &<br>ML Engineer</h1>
+            <p class="hero-subtitle">Building intelligent systems that turn complex data into real-world impact. Specializing in ML pipelines, predictive analytics, and generative AI solutions.</p>
+            <div class="cta-group">
+                <a href="#contact" class="btn btn-primary">Get In Touch</a>
+                <a href="#projects" class="btn btn-secondary">View My Work</a>
+            </div>
 
-<section class="hero">
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-value">6+</div>
+                    <div class="stat-label">Projects</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">2025</div>
+                    <div class="stat-label">IIT Madras</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">12+</div>
+                    <div class="stat-label">Tech Stack</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<h1>Data Scientist • Data Engineer • AI Builder</h1>
+    <!-- About Section -->
+    <section id="about">
+        <h2>About Me</h2>
+        <div class="about-grid">
+            <div class="about-text">
+                <p>I'm a Data Science graduate from <strong>IIT Madras</strong> with a passion for building end-to-end machine learning solutions. My expertise spans predictive modeling, data engineering, and generative AI systems.</p>
+                <p>Currently exploring opportunities in <strong>Data Science, Analytics Engineering, and ML Engineering</strong> roles where I can contribute to impactful product development.</p>
+                <p>When I'm not building models, I'm automating workflows, experimenting with LLMs, and contributing to open-source projects. I believe in writing clean, documented code and creating solutions that scale.</p>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h4>Data & Analytics</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">Pandas</span>
+                        <span class="skill-tag">NumPy</span>
+                        <span class="skill-tag">Power BI</span>
+                        <span class="skill-tag">Tableau</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h4>Machine Learning</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Scikit-learn</span>
+                        <span class="skill-tag">TensorFlow</span>
+                        <span class="skill-tag">SHAP</span>
+                        <span class="skill-tag">LIME</span>
+                        <span class="skill-tag">MLflow</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h4>Generative AI</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">LLMs</span>
+                        <span class="skill-tag">LangChain</span>
+                        <span class="skill-tag">RAG</span>
+                        <span class="skill-tag">Ollama</span>
+                        <span class="skill-tag">Hugging Face</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h4>Deployment & DevOps</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">FastAPI</span>
+                        <span class="skill-tag">Streamlit</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">AWS</span>
+                        <span class="skill-tag">GitHub</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<p>
-I build machine learning systems, data pipelines, and AI automation tools that turn complex datasets into real-world impact.
-</p>
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2>Featured Work</h2>
 
-<a href="#projects" class="btn">View Projects</a>
-<a href="assets/Mohd_Atif___Resume.pdf" target="_blank" class="btn">View Resume</a>
+        <!-- Featured Project -->
+        <div class="featured-project">
+            <div>
+                <div class="featured-badge">⭐ Featured</div>
+                <h3>AI Customer Churn Intelligence</h3>
+                <p class="featured-project-desc">An end-to-end machine learning platform that predicts customer churn and surfaces retention insights through an interactive analytics dashboard. Built with interpretability at its core.</p>
+                <div class="metrics-grid">
+                    <div class="metric">
+                        <div class="metric-value">92%</div>
+                        <div class="metric-label">Model Accuracy</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">15%</div>
+                        <div class="metric-label">Actionable Insights</div>
+                    </div>
+                </div>
+                <div class="project-links">
+                    <a href="https://ai-customer-churn-intelligence.streamlit.app/" class="project-link" target="_blank">→ Live Demo</a>
+                    <a href="https://github.com/Atif0110/ai-customer-churn-intelligence" class="project-link" target="_blank">→ GitHub</a>
+                </div>
+            </div>
+            <div class="featured-image">📊</div>
+        </div>
 
-</section>
+        <!-- Projects Grid -->
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-image-wrapper">🤖</div>
+                <div class="project-content">
+                    <div class="project-tags-list">
+                        <span class="project-tag">LLM</span>
+                        <span class="project-tag">RAG</span>
+                        <span class="project-tag">Automation</span>
+                    </div>
+                    <h3 class="project-title">OpenClaw Desktop Assistant</h3>
+                    <p class="project-description">Intelligent desktop automation tool powered by LLMs and RAG architecture. Automates complex workflows and executes system tasks through natural language commands.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/Atif0110/openclaw-desktop-assistant" class="project-link" target="_blank">→ GitHub</a>
+                    </div>
+                </div>
+            </div>
 
-<section id="about">
+            <div class="project-card">
+                <div class="project-image-wrapper">🏙️</div>
+                <div class="project-content">
+                    <div class="project-tags-list">
+                        <span class="project-tag">Analytics</span>
+                        <span class="project-tag">Real-time</span>
+                        <span class="project-tag">Dashboard</span>
+                    </div>
+                    <h3 class="project-title">Smart City Analytics</h3>
+                    <p class="project-description">Real-time analytics dashboard monitoring urban data streams. Provides actionable insights with interactive visualizations and trend analysis.</p>
+                    <div class="project-links">
+                        <a href="https://smart-city-analytics.streamlit.app/" class="project-link" target="_blank">→ Live Demo</a>
+                    </div>
+                </div>
+            </div>
 
-<h2>About Me</h2>
+            <div class="project-card">
+                <div class="project-image-wrapper">🔒</div>
+                <div class="project-content">
+                    <div class="project-tags-list">
+                        <span class="project-tag">ML</span>
+                        <span class="project-tag">Security</span>
+                        <span class="project-tag">Prediction</span>
+                    </div>
+                    <h3 class="project-title">System Threat Forecaster</h3>
+                    <p class="project-description">Machine learning system designed to predict cybersecurity threats. Uses anomaly detection and classification to identify potential security risks.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/Atif0110/System-Threat-Forecaster" class="project-link" target="_blank">→ GitHub</a>
+                    </div>
+                </div>
+            </div>
 
-<p>
-I'm a Data Science student at IIT Madras focused on machine learning, data engineering, and generative AI systems.
-</p>
+            <div class="project-card">
+                <div class="project-image-wrapper">💼</div>
+                <div class="project-content">
+                    <div class="project-tags-list">
+                        <span class="project-tag">Data</span>
+                        <span class="project-tag">Matching</span>
+                        <span class="project-tag">Analytics</span>
+                    </div>
+                    <h3 class="project-title">Influencer Engagement Platform</h3>
+                    <p class="project-description">Data-driven platform connecting brands with influencers. Features intelligent matching algorithms and comprehensive engagement analytics.</p>
+                    <div class="project-links">
+                        <a href="https://sponsor-connect-version1.onrender.com/" class="project-link" target="_blank">→ Live Demo</a>
+                    </div>
+                </div>
+            </div>
 
-<p>
-I enjoy building end-to-end AI products — from data pipelines and ML models to deployed applications.
-</p>
+            <div class="project-card">
+                <div class="project-image-wrapper">🏥</div>
+                <div class="project-content">
+                    <div class="project-tags-list">
+                        <span class="project-tag">Healthcare</span>
+                        <span class="project-tag">Application</span>
+                        <span class="project-tag">Engagement</span>
+                    </div>
+                    <h3 class="project-title">Shravan Health Application</h3>
+                    <p class="project-description">Healthcare application designed to improve patient engagement and health outcomes through personalized recommendations and tracking.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/Atif0110/Shravan-Application" class="project-link" target="_blank">→ GitHub</a>
+                    </div>
+                </div>
+            </div>
 
-<div class="skills">
+            <div class="project-card">
+                <div class="project-image-wrapper">🍽️</div>
+                <div class="project-content">
+                    <div class="project-tags-list">
+                        <span class="project-tag">Analytics</span>
+                        <span class="project-tag">Optimization</span>
+                        <span class="project-tag">Business</span>
+                    </div>
+                    <h3 class="project-title">Restaurant Analytics</h3>
+                    <p class="project-description">Comprehensive business analytics project focused on pricing optimization and revenue insights. Provides data-driven recommendations for profitability.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/Atif0110/Restaurant-Analytics-Business-Optimization-Project" class="project-link" target="_blank">→ GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<span>Python</span>
-<span>SQL</span>
-<span>Machine Learning</span>
-<span>Data Engineering</span>
-<span>Generative AI</span>
-<span>LLMs</span>
-<span>RAG</span>
-<span>FastAPI</span>
-<span>Node.js</span>
-<span>Docker</span>
-<span>Streamlit</span>
-<span>Data Visualization</span>
+    <!-- Experience Section -->
+    <section id="experience">
+        <h2>Experience</h2>
+        <div class="experience-timeline">
+            <div class="experience-item">
+                <div class="experience-role">Data Analyst Intern</div>
+                <div class="experience-company">Arabania Indo-Arabic Restaurant</div>
+                <div class="experience-description">Designed and implemented demand forecasting models using historical sales data, leading to 15% improvement in inventory planning.</div>
+                <div class="experience-description">Built automated ETL pipelines for data ingestion and created inventory analytics dashboard for real-time tracking and decision making.</div>
+            </div>
+            <div class="experience-item">
+                <div class="experience-role">B.S. Data Science & Applications</div>
+                <div class="experience-company">Indian Institute of Technology Madras</div>
+                <div class="experience-description">Graduated in 2025. Specialized in machine learning, data engineering, and generative AI systems.</div>
+                <div class="experience-description">Completed capstone projects in customer churn prediction, threat forecasting, and LLM-based automation systems.</div>
+            </div>
+        </div>
+    </section>
 
-</div>
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Get In Touch</h2>
+        <p style="text-align: center; color: var(--text-secondary); margin-bottom: 3rem; font-size: 1rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+            I'm actively exploring opportunities in Data Science, Analytics Engineering, and ML roles. Let's connect and discuss how I can contribute to your team.
+        </p>
+        <div class="contact-grid">
+            <div class="contact-card" onclick="openEmail()" style="cursor: pointer;">
+                <div class="contact-icon">✉️</div>
+                <h3>Email</h3>
+                <p class="contact-text">data.atif001@gmail.com</p>
+                <p class="contact-hint">Click to send an email</p>
+            </div>
+            <div class="contact-card" onclick="openLinkedIn()" style="cursor: pointer;">
+                <div class="contact-icon">💼</div>
+                <h3>LinkedIn</h3>
+                <p class="contact-text">mohd-atif01</p>
+                <p class="contact-hint">Click to view my profile</p>
+            </div>
+            <div class="contact-card" onclick="openGitHub()" style="cursor: pointer;">
+                <div class="contact-icon">🔗</div>
+                <h3>GitHub</h3>
+                <p class="contact-text">Atif0110</p>
+                <p class="contact-hint">Click to view my projects</p>
+            </div>
+        </div>
+    </section>
 
-</section>
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Mohd Atif | Data Scientist & ML Engineer | Lucknow, India</p>
+    </footer>
 
-<section id="projects">
+    <!-- Scroll Progress Script -->
+    <script>
+        window.addEventListener('scroll', () => {
+            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrolled = (window.scrollY / scrollHeight) * 100;
+            document.getElementById('scrollProgress').style.width = scrolled + '%';
+        });
 
-<h2>⭐ Featured Project</h2>
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
 
-<div class="card">
+        // Contact Functions
+        function openEmail() {
+            window.location.href = 'mailto:data.atif001@gmail.com?subject=Hello%20Atif&body=Hi%20Atif,%0A%0AI%20would%20like%20to%20connect%20with%20you.';
+        }
 
-<img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71">
+        function openLinkedIn() {
+            window.open('https://linkedin.com/in/mohd-atif01', '_blank');
+        }
 
-<div class="card-content">
-
-<h3>AI Customer Churn Intelligence</h3>
-
-<p>
-
-<span class="tag">Machine Learning</span>
-<span class="tag">Analytics</span>
-<span class="tag">Decision Intelligence</span>
-
-</p>
-
-<p>
-ML-powered platform that predicts customer churn and provides retention insights through an interactive analytics dashboard.
-</p>
-
-<a href="https://ai-customer-churn-intelligence.streamlit.app/" class="btn">Live</a>
-
-<a href="https://github.com/Atif0110/ai-customer-churn-intelligence" class="btn">GitHub</a>
-
-</div>
-</div>
-
-<h2>All Projects</h2>
-
-<div class="grid">
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1677442135136-760c813028c0">
-<div class="card-content">
-<h3>AI Desktop Automation Assistant</h3>
-<p>LLM automation system built with RAG architecture for task automation.</p>
-<a href="https://github.com/Atif0110/openclaw-desktop-assistant" class="btn">GitHub</a>
-</div>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d">
-<div class="card-content">
-<h3>Shravan Health Application</h3>
-<p>Healthcare application designed to improve patient engagement.</p>
-<a href="https://github.com/Atif0110/Shravan-Application" class="btn">GitHub</a>
-</div>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d">
-<div class="card-content">
-<h3>Smart City Analytics</h3>
-<p>Real-time analytics dashboard monitoring urban data streams.</p>
-<a href="https://smart-city-analytics.streamlit.app/" class="btn">Live</a>
-</div>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1518770660439-4636190af475">
-<div class="card-content">
-<h3>System Threat Forecaster</h3>
-<p>ML system designed to predict cybersecurity threats.</p>
-<a href="https://github.com/Atif0110/System-Threat-Forecaster" class="btn">GitHub</a>
-</div>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1556157382-97eda2d62296">
-<div class="card-content">
-<h3>Influencer Engagement Platform</h3>
-<p>Data-driven platform connecting brands with influencers.</p>
-<a href="https://sponsor-connect-version1.onrender.com/" class="btn">Live</a>
-</div>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836">
-<div class="card-content">
-<h3>Restaurant Analytics</h3>
-<p>Business analytics project for pricing optimization and revenue insights.</p>
-<a href="https://github.com/Atif0110/Restaurant-Analytics-Business-Optimization-Project" class="btn">GitHub</a>
-</div>
-</div>
-
-</div>
-
-</section>
-
-<section id="contact">
-
-<h2>Contact</h2>
-
-<p>Email: data.atif001@gmail.com</p>
-<p>GitHub: github.com/Atif0110</p>
-<p>LinkedIn: linkedin.com/in/mohd-atif01</p>
-
-</section>
-
-<footer>
-
-© 2026 Mohd Atif
-
-</footer>
-
-<script>
-
-window.onscroll=()=>{
-let h=document.documentElement;
-let sc=(h.scrollTop/(h.scrollHeight-h.clientHeight))*100;
-document.getElementById("progress").style.width=sc+"%";
-};
-
-</script>
-
+        function openGitHub() {
+            window.open('https://github.com/Atif0110', '_blank');
+        }
+    </script>
 </body>
 </html>
