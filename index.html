@@ -42,7 +42,6 @@
             position: relative;
         }
 
-        /* Animated gradient background */
         body::before {
             content: '';
             position: fixed;
@@ -66,7 +65,6 @@
 
         body > * { position: relative; z-index: 2; }
 
-        /* Scroll Progress */
         #scrollProgress {
             position: fixed;
             top: 0;
@@ -78,7 +76,6 @@
             box-shadow: 0 0 30px rgba(0, 217, 255, 0.5);
         }
 
-        /* Header */
         header {
             position: fixed;
             top: 0;
@@ -110,11 +107,10 @@
             letter-spacing: -2px;
             cursor: pointer;
             transition: transform 0.3s ease;
+            text-decoration: none;
         }
 
-        .logo:hover {
-            transform: scale(1.05);
-        }
+        .logo:hover { transform: scale(1.05); }
 
         .nav-menu {
             display: flex;
@@ -142,15 +138,10 @@
             transition: width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
-        .nav-menu a:hover {
-            color: var(--cyan);
-        }
+        .nav-menu a:hover { color: var(--cyan); }
+        .nav-menu a:hover::before { width: 100%; }
 
-        .nav-menu a:hover::before {
-            width: 100%;
-        }
-
-        /* Hero Section */
+        /* Hero */
         .hero {
             max-width: 1500px;
             margin: 0 auto;
@@ -166,14 +157,8 @@
         }
 
         @keyframes slideInUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .hero h1 {
@@ -190,14 +175,13 @@
         }
 
         @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .hero-subtitle {
@@ -248,9 +232,7 @@
             z-index: -1;
         }
 
-        .btn:hover::before {
-            left: 100%;
-        }
+        .btn:hover::before { left: 100%; }
 
         .btn-primary {
             background: linear-gradient(135deg, var(--cyan) 0%, var(--blue) 100%);
@@ -277,7 +259,6 @@
             transform: translateY(-4px);
         }
 
-        /* Hero Stats */
         .hero-stats {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -307,9 +288,7 @@
             transition: left 0.5s ease;
         }
 
-        .stat-box:hover::before {
-            left: 100%;
-        }
+        .stat-box:hover::before { left: 100%; }
 
         .stat-box:hover {
             border-color: var(--cyan);
@@ -334,7 +313,7 @@
             letter-spacing: 1.5px;
         }
 
-        /* Section */
+        /* Sections */
         section {
             max-width: 1500px;
             margin: 0 auto;
@@ -366,7 +345,7 @@
             border-radius: 2px;
         }
 
-        /* About Section */
+        /* About */
         .about-container {
             display: grid;
             grid-template-columns: 1fr 1.2fr;
@@ -380,9 +359,7 @@
             line-height: 1.9;
         }
 
-        .about-text p {
-            margin-bottom: 2rem;
-        }
+        .about-text p { margin-bottom: 2rem; }
 
         .about-text strong {
             color: var(--cyan);
@@ -469,10 +446,7 @@
             pointer-events: none;
         }
 
-        .featured-content {
-            position: relative;
-            z-index: 2;
-        }
+        .featured-content { position: relative; z-index: 2; }
 
         .featured-badge {
             display: inline-block;
@@ -576,9 +550,7 @@
             pointer-events: none;
         }
 
-        .project:hover::before {
-            opacity: 1;
-        }
+        .project:hover::before { opacity: 1; }
 
         .project:hover {
             border-color: var(--cyan);
@@ -597,7 +569,17 @@
             font-size: 4rem;
             border-bottom: 1px solid var(--border-light);
             transition: all 0.4s ease;
+            overflow: hidden;
         }
+
+        .project-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .project:hover .project-img img { transform: scale(1.05); }
 
         .project:hover .project-img {
             background: linear-gradient(135deg, rgba(0, 217, 255, 0.25), rgba(59, 130, 246, 0.25));
@@ -800,9 +782,7 @@
             font-weight: 600;
         }
 
-        .contact-item:hover .contact-hint {
-            opacity: 1;
-        }
+        .contact-item:hover .contact-hint { opacity: 1; }
 
         /* Footer */
         footer {
@@ -822,13 +802,13 @@
 
             .hero { padding: 120px 1.5rem 80px; }
             section { padding: 4rem 1.5rem; }
-            
+
             .hero h1 { font-size: 2.5rem; }
             .nav-menu { gap: 1.5rem; font-size: 0.85rem; }
-            
+
             .featured { padding: 2.5rem; }
             .contact-item { padding: 2rem; }
-            
+
             .hero-cta { flex-direction: column; }
             .btn { width: 100%; justify-content: center; }
         }
@@ -965,10 +945,33 @@
         </div>
     </section>
 
-    <!-- Projects -->
+    <!-- All Projects -->
     <section id="projects">
         <h2>All Projects</h2>
         <div class="projects-grid">
+
+            <!-- NEW: European Power Price Forecasting -->
+            <div class="project">
+                <div class="project-img">
+                    <img src="https://images.unsplash.com/photo-1549924231-f129b911e442?q=80&w=1200&auto=format&fit=crop"
+                         alt="European Power Trading Pipeline">
+                </div>
+                <div class="project-content">
+                    <div class="project-tags">
+                        <span class="project-tag">Quant</span>
+                        <span class="project-tag">Energy</span>
+                        <span class="project-tag">Time Series</span>
+                        <span class="project-tag">Trading</span>
+                    </div>
+                    <h4 class="project-title">European Power Price Forecasting & Trading Pipeline</h4>
+                    <p class="project-desc">End-to-end pipeline for forecasting day-ahead electricity prices using XGBoost and fundamental drivers. Includes data QA, feature engineering, trading signal generation (LONG/SHORT), and PnL simulation.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/Atif0110/power-forecast-pipeline" target="_blank" class="project-btn">GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OpenClaw Assistant -->
             <div class="project">
                 <div class="project-img">🤖</div>
                 <div class="project-content">
@@ -985,6 +988,7 @@
                 </div>
             </div>
 
+            <!-- Smart City Analytics -->
             <div class="project">
                 <div class="project-img">🏙️</div>
                 <div class="project-content">
@@ -1001,6 +1005,7 @@
                 </div>
             </div>
 
+            <!-- Threat Forecaster -->
             <div class="project">
                 <div class="project-img">🔒</div>
                 <div class="project-content">
@@ -1017,6 +1022,7 @@
                 </div>
             </div>
 
+            <!-- Influencer Platform -->
             <div class="project">
                 <div class="project-img">💼</div>
                 <div class="project-content">
@@ -1032,6 +1038,7 @@
                 </div>
             </div>
 
+            <!-- Shravan Health -->
             <div class="project">
                 <div class="project-img">🏥</div>
                 <div class="project-content">
@@ -1047,6 +1054,7 @@
                 </div>
             </div>
 
+            <!-- Restaurant Analytics -->
             <div class="project">
                 <div class="project-img">🍽️</div>
                 <div class="project-content">
@@ -1061,6 +1069,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </section>
 
