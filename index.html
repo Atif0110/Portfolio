@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Mohd Atif | AI Engineer & Applied ML Engineer</title>
 
     <style>
@@ -13,15 +15,20 @@
         }
 
         :root {
+            --bg: #ffffff;
+            --bg-secondary: #f8fafc;
+            --card: #ffffff;
+            --border: #e5e7eb;
+
             --text-primary: #111827;
             --text-secondary: #4b5563;
             --text-muted: #6b7280;
-            --bg-primary: #ffffff;
-            --bg-secondary: #f9fafb;
-            --bg-card: #ffffff;
-            --border: #e5e7eb;
+
             --accent: #2563eb;
             --accent-light: #eff6ff;
+
+            --success-bg: #ecfeff;
+            --success-text: #0369a1;
         }
 
         html {
@@ -30,13 +37,14 @@
 
         body {
             font-family: Inter, -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--bg-primary);
+            background: var(--bg);
             color: var(--text-primary);
             line-height: 1.7;
         }
 
         .container {
-            max-width: 1100px;
+            width: 100%;
+            max-width: 1150px;
             margin: auto;
             padding: 0 24px;
         }
@@ -44,10 +52,10 @@
         header {
             position: sticky;
             top: 0;
-            background: rgba(255,255,255,0.95);
+            z-index: 1000;
+            background: rgba(255,255,255,0.9);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border);
-            z-index: 1000;
         }
 
         header .container {
@@ -81,46 +89,61 @@
             color: var(--accent);
         }
 
+        section {
+            padding: 90px 0;
+        }
+
+        h1 {
+            font-size: 68px;
+            line-height: 1.05;
+            letter-spacing: -2px;
+            margin-bottom: 28px;
+            max-width: 900px;
+        }
+
+        h2 {
+            font-size: 36px;
+            margin-bottom: 38px;
+            letter-spacing: -1px;
+        }
+
+        h3 {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
         .hero {
-            padding: 110px 0 80px;
+            padding-top: 120px;
         }
 
         .hero-badge {
             display: inline-block;
             padding: 8px 14px;
+            border-radius: 999px;
             background: var(--accent-light);
             color: var(--accent);
-            border-radius: 999px;
             font-size: 13px;
             font-weight: 600;
             margin-bottom: 28px;
         }
 
-        h1 {
-            font-size: 64px;
-            line-height: 1.1;
-            letter-spacing: -2px;
-            margin-bottom: 28px;
-            max-width: 850px;
-        }
-
         .subtitle {
             font-size: 20px;
+            max-width: 850px;
             color: var(--text-secondary);
-            max-width: 820px;
             margin-bottom: 42px;
         }
 
         .hero-actions {
             display: flex;
-            gap: 16px;
             flex-wrap: wrap;
+            gap: 16px;
             margin-bottom: 60px;
         }
 
         .btn {
-            padding: 12px 22px;
-            border-radius: 8px;
+            padding: 13px 22px;
+            border-radius: 10px;
             text-decoration: none;
             font-size: 14px;
             font-weight: 600;
@@ -152,10 +175,10 @@
         }
 
         .stat-box {
-            padding: 28px;
             border: 1px solid var(--border);
-            border-radius: 14px;
-            background: var(--bg-card);
+            background: var(--card);
+            border-radius: 18px;
+            padding: 30px;
         }
 
         .stat-number {
@@ -170,16 +193,6 @@
             font-size: 14px;
         }
 
-        section {
-            padding: 80px 0;
-        }
-
-        h2 {
-            font-size: 34px;
-            margin-bottom: 36px;
-            letter-spacing: -1px;
-        }
-
         .stack-items {
             display: flex;
             flex-wrap: wrap;
@@ -189,7 +202,7 @@
         .stack-item {
             background: var(--accent-light);
             color: var(--accent);
-            padding: 8px 14px;
+            padding: 9px 14px;
             border-radius: 999px;
             font-size: 13px;
             font-weight: 600;
@@ -197,20 +210,25 @@
 
         .projects-grid {
             display: grid;
-            gap: 32px;
+            gap: 34px;
         }
 
         .project-card {
             border: 1px solid var(--border);
-            border-radius: 18px;
-            padding: 34px;
-            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 36px;
+            background: var(--card);
             transition: 0.3s;
         }
 
         .project-card:hover {
             transform: translateY(-6px);
             box-shadow: 0 12px 28px rgba(0,0,0,0.06);
+        }
+
+        .featured-project {
+            border: 1px solid #dbeafe;
+            background: linear-gradient(to bottom right, #ffffff, #f8fbff);
         }
 
         .project-header {
@@ -229,7 +247,7 @@
 
         .project-links {
             display: flex;
-            gap: 12px;
+            gap: 14px;
         }
 
         .project-link {
@@ -241,7 +259,7 @@
 
         .project-description {
             color: var(--text-secondary);
-            margin-bottom: 20px;
+            margin-bottom: 22px;
         }
 
         .project-metrics {
@@ -260,14 +278,14 @@
         }
 
         details {
-            margin-bottom: 20px;
+            margin-bottom: 22px;
         }
 
         details summary {
             cursor: pointer;
-            font-weight: 600;
             color: var(--accent);
-            margin-bottom: 12px;
+            font-weight: 600;
+            margin-bottom: 14px;
         }
 
         details ul {
@@ -286,17 +304,37 @@
         }
 
         .tag {
-            background: #ecfeff;
-            color: #0369a1;
-            padding: 6px 12px;
+            background: var(--success-bg);
+            color: var(--success-text);
+            padding: 7px 12px;
             border-radius: 999px;
             font-size: 12px;
             font-weight: 600;
         }
 
+        .small-projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
+            gap: 24px;
+            margin-top: 24px;
+        }
+
+        .small-project-card {
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 26px;
+            background: var(--card);
+            transition: 0.3s;
+        }
+
+        .small-project-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 24px rgba(0,0,0,0.05);
+        }
+
         footer {
-            padding: 50px 0;
             border-top: 1px solid var(--border);
+            padding: 50px 0;
             text-align: center;
             color: var(--text-muted);
             font-size: 14px;
@@ -304,40 +342,48 @@
 
         @media(max-width:768px){
 
-            h1{
-                font-size:42px;
+            nav {
+                display: none;
             }
 
-            .subtitle{
-                font-size:17px;
+            h1 {
+                font-size: 42px;
             }
 
-            .project-header{
-                flex-direction:column;
+            .subtitle {
+                font-size: 17px;
             }
 
-            nav{
-                display:none;
+            .hero-actions {
+                flex-direction: column;
             }
 
-            .hero-actions{
-                flex-direction:column;
+            .btn {
+                width: 100%;
+                text-align: center;
             }
 
-            .btn{
-                width:100%;
-                text-align:center;
+            .project-header {
+                flex-direction: column;
+            }
+
+            section {
+                padding: 70px 0;
             }
         }
+
     </style>
 </head>
 
 <body>
 
 <header>
+
     <div class="container">
 
-        <a href="#" class="logo">Mohd Atif</a>
+        <a href="#" class="logo">
+            Mohd Atif
+        </a>
 
         <nav>
             <a href="#projects">Projects</a>
@@ -347,11 +393,13 @@
         </nav>
 
     </div>
+
 </header>
 
 <main class="container">
 
     <!-- HERO -->
+
     <section class="hero">
 
         <div class="hero-badge">
@@ -363,11 +411,14 @@
         </h1>
 
         <p class="subtitle">
-            AI Engineer focused on production ML systems, LLM-powered applications,
-            forecasting pipelines, and real-time analytics infrastructure.
+            AI Engineer focused on production ML systems,
+            LLM-powered applications,
+            forecasting pipelines,
+            and real-time analytics infrastructure.
             IIT Madras graduate experienced in FastAPI services,
             retrieval-augmented generation (RAG),
-            time-series modeling, and scalable API-driven workflows.
+            time-series modeling,
+            and scalable API-driven workflows.
         </p>
 
         <div class="hero-actions">
@@ -415,6 +466,7 @@
     </section>
 
     <!-- AI ENGINEERING -->
+
     <section id="focus">
 
         <h2>Production AI Engineering</h2>
@@ -431,12 +483,15 @@
             <span class="stack-item">Schema Validation</span>
             <span class="stack-item">REST APIs</span>
             <span class="stack-item">ETL Pipelines</span>
+            <span class="stack-item">Batch Inference</span>
+            <span class="stack-item">Statistical Modeling</span>
 
         </div>
 
     </section>
 
-    <!-- PROJECTS -->
+    <!-- FEATURED PROJECTS -->
+
     <section id="projects">
 
         <h2>Featured Projects</h2>
@@ -444,16 +499,21 @@
         <div class="projects-grid">
 
             <!-- PROJECT 1 -->
-            <div class="project-card">
+
+            <div class="project-card featured-project">
 
                 <div class="project-header">
 
                     <div>
-                        <h3>AI Customer Churn Intelligence Platform</h3>
+
+                        <h3>
+                            AI Customer Churn Intelligence Platform
+                        </h3>
 
                         <div class="project-subtitle">
                             Production ML & Retention Analytics
                         </div>
+
                     </div>
 
                     <div class="project-links">
@@ -473,17 +533,23 @@
                 </div>
 
                 <p class="project-description">
-                    Built production-ready churn prediction system using
-                    Logistic Regression, behavioral feature engineering,
-                    FastAPI inference services, explainability workflows,
+
+                    Built production-ready churn prediction system using Logistic
+                    Regression,
+                    behavioral feature engineering,
+                    FastAPI inference services,
+                    explainability workflows,
                     and LLM-assisted retention recommendation pipelines.
+
                 </p>
 
                 <div class="project-metrics">
+
                     <span>95% Accuracy</span>
                     <span>FastAPI Backend</span>
                     <span>Batch Inference</span>
                     <span>LLM Recommendations</span>
+
                 </div>
 
                 <details>
@@ -492,40 +558,53 @@
 
                     <ul>
 
-                        <li>Real-time inference workflows using FastAPI</li>
+                        <li>
+                            Built FastAPI backend with real-time inference workflows
+                        </li>
 
-                        <li>Behavioral feature engineering pipelines</li>
+                        <li>
+                            Implemented explainability and What-If simulation
+                        </li>
 
-                        <li>What-if simulation framework for ROI analysis</li>
+                        <li>
+                            Added contextual LLM-generated retention recommendations
+                        </li>
 
-                        <li>LLM-generated retention recommendation engine</li>
-
-                        <li>Batch CSV processing for customer analytics</li>
+                        <li>
+                            Developed batch CSV processing pipeline
+                        </li>
 
                     </ul>
 
                 </details>
 
                 <div class="project-tags">
+
                     <span class="tag">FastAPI</span>
                     <span class="tag">Machine Learning</span>
                     <span class="tag">Explainability</span>
                     <span class="tag">LLM Integration</span>
+
                 </div>
 
             </div>
 
             <!-- PROJECT 2 -->
-            <div class="project-card">
+
+            <div class="project-card featured-project">
 
                 <div class="project-header">
 
                     <div>
-                        <h3>Energy Market Forecasting & LLM Insights</h3>
+
+                        <h3>
+                            Energy Market Forecasting & LLM Insights System
+                        </h3>
 
                         <div class="project-subtitle">
                             Forecasting • Quantitative Analytics • RAG
                         </div>
+
                     </div>
 
                     <div class="project-links">
@@ -540,18 +619,24 @@
                 </div>
 
                 <p class="project-description">
+
                     Built an end-to-end electricity price forecasting pipeline
-                    using XGBoost, engineered temporal features,
-                    ENTSO-E API ingestion, anomaly detection,
-                    uncertainty quantification, and backtesting
-                    with LLM-generated trader insights.
+                    using XGBoost,
+                    engineered temporal features,
+                    ENTSO-E API ingestion,
+                    anomaly detection,
+                    uncertainty quantification,
+                    and backtesting with LLM-generated trader insights.
+
                 </p>
 
                 <div class="project-metrics">
+
                     <span>20-35% Better Forecasting</span>
                     <span>Real-Time ETL</span>
                     <span>Backtesting</span>
                     <span>LLM Insights</span>
+
                 </div>
 
                 <details>
@@ -560,47 +645,60 @@
 
                     <ul>
 
-                        <li>Automated ETL pipeline integrating ENTSO-E APIs</li>
+                        <li>
+                            Automated ETL workflows integrating ENTSO-E APIs
+                        </li>
 
-                        <li>Lag-based temporal feature engineering</li>
+                        <li>
+                            Lag-based feature engineering and rolling statistics
+                        </li>
 
-                        <li>Anomaly detection & validation framework</li>
+                        <li>
+                            Anomaly detection and validation framework
+                        </li>
 
-                        <li>Confidence interval forecasting workflows</li>
-
-                        <li>LLM-powered trader briefing generation</li>
+                        <li>
+                            Confidence interval forecasting workflows
+                        </li>
 
                     </ul>
 
                 </details>
 
                 <div class="project-tags">
+
                     <span class="tag">XGBoost</span>
-                    <span class="tag">Time Series</span>
-                    <span class="tag">RAG</span>
                     <span class="tag">Forecasting</span>
+                    <span class="tag">RAG</span>
+                    <span class="tag">Time Series</span>
+
                 </div>
 
             </div>
 
             <!-- PROJECT 3 -->
-            <div class="project-card">
+
+            <div class="project-card featured-project">
 
                 <div class="project-header">
 
                     <div>
-                        <h3>OpenClaw AI Assistant</h3>
+
+                        <h3>
+                            Urban Analytics Real-Time Intelligence Dashboard
+                        </h3>
 
                         <div class="project-subtitle">
-                            LLM Automation & Workflow Orchestration
+                            Real-Time Analytics Infrastructure
                         </div>
+
                     </div>
 
                     <div class="project-links">
 
-                        <a href="https://github.com/Atif0110/openclaw-desktop-assistant"
+                        <a href="https://smart-city-analytics.streamlit.app/"
                            class="project-link">
-                            GitHub
+                            Demo
                         </a>
 
                     </div>
@@ -608,17 +706,24 @@
                 </div>
 
                 <p class="project-description">
-                    Built an LLM-powered desktop automation assistant integrating
-                    natural language workflows,
-                    retrieval-augmented generation,
-                    context-aware task execution,
-                    and adaptive workflow orchestration.
+
+                    Developed real-time urban intelligence platform integrating
+                    traffic,
+                    weather,
+                    and environmental APIs with automated validation,
+                    anomaly detection,
+                    geospatial analytics,
+                    and statistical forecasting pipelines.
+
                 </p>
 
                 <div class="project-metrics">
-                    <span>LLM Workflows</span>
-                    <span>Automation Layer</span>
-                    <span>RAG Pipelines</span>
+
+                    <span>3-Minute Refresh Pipeline</span>
+                    <span>Multi-Source APIs</span>
+                    <span>Geospatial Analytics</span>
+                    <span>Anomaly Detection</span>
+
                 </div>
 
                 <details>
@@ -627,23 +732,133 @@
 
                     <ul>
 
-                        <li>Natural language task execution workflows</li>
+                        <li>
+                            Real-time data integration across multiple APIs
+                        </li>
 
-                        <li>Context-aware retrieval pipelines</li>
+                        <li>
+                            Automated caching and schema validation
+                        </li>
 
-                        <li>Modular orchestration architecture</li>
+                        <li>
+                            Statistical forecasting and live monitoring workflows
+                        </li>
 
-                        <li>Adaptive automation system design</li>
+                        <li>
+                            Interactive multi-city geospatial visualizations
+                        </li>
 
                     </ul>
 
                 </details>
 
                 <div class="project-tags">
+
+                    <span class="tag">Real-Time Analytics</span>
+                    <span class="tag">REST APIs</span>
+                    <span class="tag">Forecasting</span>
+                    <span class="tag">Geospatial</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- OTHER PROJECTS -->
+
+    <section>
+
+        <h2>Other Projects</h2>
+
+        <div class="small-projects-grid">
+
+            <div class="small-project-card">
+
+                <h3>OpenClaw Assistant</h3>
+
+                <p class="project-description">
+                    LLM-powered desktop automation assistant integrating
+                    retrieval workflows,
+                    task orchestration,
+                    and natural language execution pipelines.
+                </p>
+
+                <div class="project-tags">
                     <span class="tag">LLM</span>
                     <span class="tag">Automation</span>
                     <span class="tag">RAG</span>
-                    <span class="tag">AI Engineering</span>
+                </div>
+
+            </div>
+
+            <div class="small-project-card">
+
+                <h3>Threat Forecaster</h3>
+
+                <p class="project-description">
+                    Machine learning system for anomaly detection and
+                    cybersecurity threat prediction with monitoring workflows.
+                </p>
+
+                <div class="project-tags">
+                    <span class="tag">Security</span>
+                    <span class="tag">Classification</span>
+                    <span class="tag">ML</span>
+                </div>
+
+            </div>
+
+            <div class="small-project-card">
+
+                <h3>Influencer Matching Platform</h3>
+
+                <p class="project-description">
+                    Intelligent recommendation platform connecting brands
+                    and influencers using collaborative filtering and similarity metrics.
+                </p>
+
+                <div class="project-tags">
+                    <span class="tag">Recommendation</span>
+                    <span class="tag">Analytics</span>
+                    <span class="tag">Matching</span>
+                </div>
+
+            </div>
+
+            <div class="small-project-card">
+
+                <h3>Shravan Health</h3>
+
+                <p class="project-description">
+                    Personalized healthcare engagement platform with behavioral
+                    analytics and recommendation workflows.
+                </p>
+
+                <div class="project-tags">
+                    <span class="tag">Healthcare</span>
+                    <span class="tag">Analytics</span>
+                    <span class="tag">Personalization</span>
+                </div>
+
+            </div>
+
+            <div class="small-project-card">
+
+                <h3>Restaurant Analytics</h3>
+
+                <p class="project-description">
+                    Business analytics system for pricing optimization,
+                    demand forecasting,
+                    and operational insights.
+                </p>
+
+                <div class="project-tags">
+                    <span class="tag">Forecasting</span>
+                    <span class="tag">Optimization</span>
+                    <span class="tag">Analytics</span>
                 </div>
 
             </div>
@@ -653,6 +868,7 @@
     </section>
 
     <!-- CURRENTLY EXPLORING -->
+
     <section id="exploring">
 
         <h2>Currently Exploring</h2>
@@ -671,15 +887,20 @@
     </section>
 
     <!-- CONTACT -->
+
     <section id="contact">
 
         <h2>Get In Touch</h2>
 
         <p class="subtitle">
-            Open to AI Engineer, Applied ML, and Data Science opportunities.
+
+            Open to AI Engineer,
+            Applied ML,
+            and Data Science opportunities.
             Interested in production ML systems,
-            LLM applications,
-            and scalable analytics infrastructure.
+            forecasting infrastructure,
+            and LLM-powered applications.
+
         </p>
 
         <div class="hero-actions">
