@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <title>Mohd Atif · Software Engineer – Backend &amp; AI Systems</title>
-    <meta name="description" content="Software Engineer building production‑grade backend services, AI‑powered APIs, forecasting pipelines, and real‑time analytics. IIT Madras graduate." />
+    <title>Mohd Atif · Software Engineer — Production AI & Backend Systems</title>
+    <meta name="description" content="Software engineer building production-grade AI systems, FastAPI backends, LLM-integrated applications, and real-time data pipelines. IIT Madras graduate." />
     <meta name="author" content="Mohd Atif" />
 
     <!-- Open Graph / Social -->
-    <meta property="og:title" content="Mohd Atif · Software Engineer – Backend &amp; AI Systems" />
-    <meta property="og:description" content="Backend engineering for AI systems: FastAPI, LLM integration, time‑series forecasting, real‑time data pipelines." />
+    <meta property="og:title" content="Mohd Atif · Software Engineer — Production AI & Backend Systems" />
+    <meta property="og:description" content="Backend engineering for AI: FastAPI, LLM orchestration, forecasting pipelines, real-time data infrastructure." />
     <meta property="og:type" content="website" />
 
     <!-- Preconnect & Fonts -->
@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
     <style>
-        /* ===== EXACT ORIGINAL STYLES – KEPT UNCHANGED ===== */
+        /* ===== ORIGINAL STYLES — KEPT INTACT ===== */
         * {
             margin: 0;
             padding: 0;
@@ -514,6 +514,34 @@
             font-size: 0.8rem;
         }
 
+        .philosophy-block {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-lg);
+            padding: 32px 40px;
+            margin: 40px 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+        }
+        .philosophy-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .philosophy-item .label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--text-tertiary);
+            font-weight: 600;
+        }
+        .philosophy-item .value {
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
         @media (max-width: 768px) {
             .stats-grid { grid-template-columns: repeat(2, 1fr); }
             .nav-links { display: none; }
@@ -522,6 +550,7 @@
             section { padding: 60px 0; }
             .hero { padding: 60px 0 40px; }
             .section-title::after { width: 40px; }
+            .philosophy-block { padding: 24px; grid-template-columns: 1fr; }
         }
 
         @keyframes fadeInUp {
@@ -562,17 +591,17 @@
         <section class="hero">
             <div class="status-badge">
                 <i class="fas fa-circle" style="font-size: 8px;"></i>
-                Software Engineer · Building Production AI Systems
+                Software Engineer · Production AI & Backend Systems
             </div>
             <h1>
                 Backend Engineering<br />
-                <span class="gradient-text">for AI &amp; Data Systems</span>
+                <span class="gradient-text">for AI Products</span>
             </h1>
             <p class="hero-description">
-                Software engineer with ~1 year of industry experience designing and deploying
-                production‑grade backend services, AI‑powered APIs, forecasting pipelines, and
-                real‑time analytics. I build modular, scalable systems that put machine learning
-                to work — without losing sight of performance, reliability, or maintainability.
+                Software engineer building production-grade backend systems, AI-powered APIs,
+                forecasting pipelines, and real-time data infrastructure. I design modular,
+                scalable systems that put machine learning to work — FastAPI, LLM orchestration,
+                and data pipelines that ship. IIT Madras graduate.
             </p>
             <div class="btn-group">
                 <a href="#projects" class="btn btn-primary"><i class="fas fa-arrow-down"></i> View Projects</a>
@@ -581,40 +610,66 @@
                 <a href="mailto:data.atif001@gmail.com" class="btn btn-secondary"><i class="fas fa-envelope"></i> Contact</a>
             </div>
 
-            <!-- Stats (all original metrics, kept) -->
+            <!-- Stats — all directly from READMEs -->
             <div class="stats-grid">
-                <div class="stat-card"><div class="stat-number">92%</div><div class="stat-label">Churn Prediction Accuracy</div></div>
-                <div class="stat-card"><div class="stat-number">20–35%</div><div class="stat-label">Forecasting Improvement</div></div>
-                <div class="stat-card"><div class="stat-number">8+</div><div class="stat-label">Full Stack Projects</div></div>
-                <div class="stat-card"><div class="stat-number">3 min</div><div class="stat-label">Real-Time Pipeline Refresh</div></div>
+                <div class="stat-card"><div class="stat-number">95%</div><div class="stat-label">Churn Prediction Accuracy</div></div>
+                <div class="stat-card"><div class="stat-number">20–35%</div><div class="stat-label">Forecast Improvement</div></div>
+                <div class="stat-card"><div class="stat-number">99%</div><div class="stat-label">Data Availability</div></div>
+                <div class="stat-card"><div class="stat-number">3 min</div><div class="stat-label">Pipeline Refresh Cycle</div></div>
             </div>
         </section>
+
+        <!-- ========== ENGINEERING PHILOSOPHY ========== -->
+        <div class="philosophy-block">
+            <div class="philosophy-item">
+                <span class="label">Design</span>
+                <span class="value">Modular · API‑first · Provider‑agnostic</span>
+            </div>
+            <div class="philosophy-item">
+                <span class="label">Build</span>
+                <span class="value">FastAPI · Python · SQL · Docker</span>
+            </div>
+            <div class="philosophy-item">
+                <span class="label">Ship</span>
+                <span class="value">Render · Streamlit Cloud · CI/CD</span>
+            </div>
+            <div class="philosophy-item">
+                <span class="label">Think</span>
+                <span class="value">Scale · Reliability · Business Impact</span>
+            </div>
+        </div>
 
         <!-- ========== TECH STACK ========== -->
         <section id="stack" class="section-sm">
             <h2 class="section-title">Engineering <span>Toolkit</span></h2>
             <div class="tech-grid">
-                <span class="tech-item">Python 3.10+</span>
+                <span class="tech-item">Python 3.9+</span>
                 <span class="tech-item">FastAPI</span>
                 <span class="tech-item">Uvicorn</span>
                 <span class="tech-item">Streamlit</span>
-                <span class="tech-item">Flask</span>
                 <span class="tech-item">REST APIs</span>
                 <span class="tech-item">PostgreSQL</span>
                 <span class="tech-item">SQLite</span>
                 <span class="tech-item">Docker</span>
                 <span class="tech-item">Git</span>
+                <span class="tech-item">Render</span>
+                <span class="tech-item">Streamlit Cloud</span>
                 <span class="tech-item">scikit-learn</span>
                 <span class="tech-item">XGBoost</span>
+                <span class="tech-item">ARIMA</span>
                 <span class="tech-item">Pandas</span>
                 <span class="tech-item">NumPy</span>
                 <span class="tech-item">LangChain</span>
                 <span class="tech-item">OpenAI API</span>
                 <span class="tech-item">Groq API</span>
+                <span class="tech-item">Gemini API</span>
                 <span class="tech-item">SHAP</span>
+                <span class="tech-item">pydeck</span>
                 <span class="tech-item">Plotly</span>
-                <span class="tech-item">Vue.js</span>
-                <span class="tech-item">Power BI</span>
+                <span class="tech-item">OpenWeatherMap</span>
+                <span class="tech-item">TomTom API</span>
+                <span class="tech-item">WAQI API</span>
+                <span class="tech-item">ENTSO‑E API</span>
             </div>
         </section>
 
@@ -623,77 +678,28 @@
             <h2 class="section-title">Featured <span>Projects</span></h2>
             <div class="projects-grid">
 
-                <!-- 1) Churn Intelligence – positioned as backend + AI service -->
+                <!-- 1) Power Market Forecasting — EXACTLY from README (1).md -->
                 <div class="project-card">
                     <div class="project-header">
                         <div>
-                            <div class="project-category">Backend · Decision Intelligence · LLM Integration</div>
-                            <div class="project-title">AI Customer Churn Intelligence Platform</div>
-                        </div>
-                        <div class="btn-group" style="margin:0">
-                            <a href="https://ai-customer-churn-intelligence.streamlit.app/" target="_blank" class="btn btn-secondary" style="padding:6px 14px"><i class="fas fa-external-link-alt"></i> Demo</a>
-                            <a href="https://github.com/Atif0110/ai-customer-churn-intelligence" target="_blank" class="btn btn-secondary" style="padding:6px 14px"><i class="fab fa-github"></i> Code</a>
-                        </div>
-                    </div>
-                    <p class="project-description">
-                        Engineered a modular FastAPI backend that combines a logistic‑regression
-                        churn predictor with a Groq‑powered Llama 3.1 LLM layer. The system exposes
-                        REST endpoints for prediction, driver explanation, and scenario simulation.
-                        Built with a provider‑agnostic LLM factory, batch CSV processing, and a
-                        Streamlit consumption dashboard.
-                    </p>
-                    <div class="project-metrics">
-                        <span class="metric-badge">92% Accuracy</span>
-                        <span class="metric-badge">FastAPI + Uvicorn</span>
-                        <span class="metric-badge">Batch Inference</span>
-                        <span class="metric-badge">Groq API</span>
-                        <span class="metric-badge">Scenario Simulation</span>
-                    </div>
-                    <div class="tech-stack">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">FastAPI</span>
-                        <span class="tech-tag">Uvicorn</span>
-                        <span class="tech-tag">scikit-learn</span>
-                        <span class="tech-tag">Streamlit</span>
-                        <span class="tech-tag">Groq API</span>
-                        <span class="tech-tag">Llama 3.1</span>
-                        <span class="tech-tag">Pandas</span>
-                        <span class="tech-tag">Matplotlib</span>
-                    </div>
-                    <details>
-                        <summary>📐 Architecture &amp; Engineering Decisions</summary>
-                        <ul>
-                            <li>Four‑service modular design: DS Service (inference), GenAI Service (LLM), Orchestrator, History Logger — clear separation of concerns.</li>
-                            <li>Logistic Regression trained on usage hours, support tickets, tenure; outputs probability + risk tier (High &gt;60%, Medium 30–60%, Low &lt;30%).</li>
-                            <li>Driver detection identifies interpretable signals (low usage, high support, short tenure) for actionable insights.</li>
-                            <li>Provider‑agnostic LLM factory supports Groq, OpenAI, Gemini — swappable without touching business logic.</li>
-                            <li><code>/simulate</code> endpoint models intervention impact (e.g., 78% → 51% risk by simulating actions).</li>
-                            <li>Batch CSV processing with per‑customer explainability scores.</li>
-                            <li>Streamlit dashboard for analyst consumption, deployed on Streamlit Cloud.</li>
-                        </ul>
-                    </details>
-                </div>
-
-                <!-- 2) Power Forecast – positioned as data pipeline + trading backend -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <div>
-                            <div class="project-category">Time‑Series Pipeline · Quantitative Engineering</div>
-                            <div class="project-title">European Electricity Price Forecasting &amp; Trading Pipeline</div>
+                            <div class="project-category">Data Pipeline · Quantitative Engineering · Trading</div>
+                            <div class="project-title">European Power Market Forecasting System</div>
                         </div>
                         <a href="https://github.com/Atif0110/power-forecast-pipeline" target="_blank" class="btn btn-secondary" style="padding:6px 14px"><i class="fab fa-github"></i> Code</a>
                     </div>
                     <p class="project-description">
-                        Built an end‑to‑end data pipeline for day‑ahead electricity price forecasting
-                        using XGBoost. Ingests ENTSO‑E API data, runs rigorous QA checks, engineers
-                        temporal features, generates LONG/SHORT/HOLD signals with confidence intervals,
-                        simulates trading PnL, and produces AI‑assisted trader reports.
+                        End-to-end pipeline for day-ahead electricity price forecasting using real ENTSO‑E market data.
+                        Engineers 12+ features (lag‑1/24/168h, rolling volatility, calendar effects) and trains an
+                        XGBoost model achieving 20–35% improvement over baseline, outperforming 3 alternative models
+                        evaluated during development. Includes synthetic fallback data for reproducibility.
                     </p>
                     <div class="project-metrics">
                         <span class="metric-badge">20–35% Improvement</span>
+                        <span class="metric-badge">12+ Features</span>
+                        <span class="metric-badge">3 Models Outperformed</span>
                         <span class="metric-badge">PnL Simulation</span>
-                        <span class="metric-badge">Confidence Intervals</span>
-                        <span class="metric-badge">Trading Signals</span>
+                        <span class="metric-badge">12+ Months Backtest</span>
+                        <span class="metric-badge">Zero QA Incidents</span>
                     </div>
                     <div class="tech-stack">
                         <span class="tech-tag">Python</span>
@@ -704,43 +710,101 @@
                         <span class="tech-tag">Plotly</span>
                         <span class="tech-tag">ENTSO‑E API</span>
                         <span class="tech-tag">Groq API</span>
+                        <span class="tech-tag">Prompt Engineering</span>
                         <span class="tech-tag">YAML Config</span>
                     </div>
                     <details>
                         <summary>📐 Architecture &amp; Engineering Decisions</summary>
                         <ul>
-                            <li>Five‑module pipeline: <code>data_ingestion.py</code> → <code>qa_pipeline.py</code> → <code>forecasting.py</code> → <code>trading_view.py</code> → <code>llm_analyst.py</code>.</li>
-                            <li>QA framework: time‑integrity checks, statistical outlier detection, economic sanity (demand‑price relationship).</li>
-                            <li>Feature engineering: hour‑of‑day, weekday, lag‑1h/24h/168h, rolling mean/std, momentum vs lag‑24 baseline.</li>
-                            <li>Trading logic: LONG if forecast &gt; reference + band, SHORT if &lt; reference – band, HOLD otherwise.</li>
-                            <li>Interactive Plotly HTML output (<code>outputs/charts/</code>) with cumulative PnL visualisation.</li>
-                            <li>CSV submission with predictions + confidence intervals.</li>
-                            <li>Optional Groq analyst (auto‑skipped if no API key) for reproducibility.</li>
+                            <li><strong>Five-module pipeline:</strong> <code>data_ingestion.py</code> → <code>qa_pipeline.py</code> → <code>forecasting.py</code> → <code>trading_view.py</code> → <code>llm_analyst.py</code>.</li>
+                            <li><strong>8-point automated QA:</strong> Time‑integrity checks, statistical outlier detection, economic sanity (demand‑price relationship), and freshness monitoring — reduced data quality incidents to zero.</li>
+                            <li><strong>Feature engineering:</strong> 12+ features including lag‑1/24/168h, rolling volatility, calendar effects, and momentum.</li>
+                            <li><strong>Trading logic:</strong> LONG if forecast &gt; reference + confidence band, SHORT if &lt; reference – band, HOLD otherwise.</li>
+                            <li><strong>LLM agent:</strong> Programmatically integrated via API with structured prompt engineering to auto-generate trader briefs — eliminating 3+ hours of manual report writing per week across 5 recurring report types.</li>
+                            <li><strong>Backtesting:</strong> PnL simulation across 12+ months of historical market data.</li>
+                            <li><strong>Reproducibility:</strong> Synthetic fallback dataset if ENTSO‑E API key is not provided.</li>
                         </ul>
                     </details>
                 </div>
 
-                <!-- 3) Urban Analytics – positioned as real‑time backend + geospatial API -->
+                <!-- 2) Churn Platform — EXACTLY from README.md -->
                 <div class="project-card">
                     <div class="project-header">
                         <div>
-                            <div class="project-category">Real‑Time Backend · Geospatial Data Fusion</div>
-                            <div class="project-title">Urban Analytics Real‑Time Intelligence Dashboard</div>
+                            <div class="project-category">Backend · LLM Integration · Decision Intelligence</div>
+                            <div class="project-title">Customer Churn Prediction &amp; Retention Engine</div>
                         </div>
-                        <a href="https://smart-city-analytics.streamlit.app/" target="_blank" class="btn btn-secondary" style="padding:6px 14px"><i class="fas fa-external-link-alt"></i> Demo</a>
+                        <div class="btn-group" style="margin:0">
+                            <a href="https://ai-customer-churn-intelligence.streamlit.app/" target="_blank" class="btn btn-secondary" style="padding:6px 14px"><i class="fas fa-external-link-alt"></i> Live App</a>
+                            <a href="https://github.com/Atif0110/ai-customer-churn-intelligence" target="_blank" class="btn btn-secondary" style="padding:6px 14px"><i class="fab fa-github"></i> Code</a>
+                        </div>
                     </div>
                     <p class="project-description">
-                        Engineered a real‑time urban intelligence platform that fuses live traffic,
-                        weather, and environmental data from multiple public REST APIs. The system
-                        features automated schema validation, anomaly detection, statistical
-                        forecasting, and interactive multi‑city geospatial visualisations with a
-                        3‑minute pipeline refresh cycle.
+                        End-to-end Decision Intelligence platform combining Logistic Regression (95% accuracy) with
+                        a provider-agnostic LLM layer (Groq Llama 3.1 8B) for churn prediction, driver explanation,
+                        and AI-generated retention strategies. Trained on 15 realistic customer profiles with behavioral
+                        features (usage, support tickets, tenure). Serves real-time inference to 100+ customers via
+                        FastAPI backend with batch CSV processing and sub-5ms prediction speed.
                     </p>
                     <div class="project-metrics">
+                        <span class="metric-badge">95% Accuracy</span>
+                        <span class="metric-badge">100+ Customers</span>
+                        <span class="metric-badge">&lt;5ms Inference</span>
+                        <span class="metric-badge">FastAPI + Uvicorn</span>
+                        <span class="metric-badge">What‑If Simulation</span>
+                        <span class="metric-badge">Provider‑Agnostic LLM</span>
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">FastAPI</span>
+                        <span class="tech-tag">scikit-learn</span>
+                        <span class="tech-tag">Streamlit</span>
+                        <span class="tech-tag">Groq API</span>
+                        <span class="tech-tag">Llama 3.1 8B</span>
+                        <span class="tech-tag">SHAP</span>
+                        <span class="tech-tag">Pandas</span>
+                        <span class="tech-tag">Render</span>
+                        <span class="tech-tag">Streamlit Cloud</span>
+                    </div>
+                    <details>
+                        <summary>📐 Architecture &amp; Engineering Decisions</summary>
+                        <ul>
+                            <li><strong>Four-service modular design:</strong> DS Service (inference), GenAI Service (LLM), Orchestrator, History Logger — clean separation of concerns.</li>
+                            <li><strong>Logistic Regression:</strong> Trained on usage hours, support tickets, and tenure; outputs probability + risk tier (High &gt;60%, Medium 30–60%, Low &lt;30%).</li>
+                            <li><strong>Provider-agnostic LLM factory:</strong> Swappable between Groq, OpenAI, Gemini without touching business logic — currently using Groq Llama 3.1 8B.</li>
+                            <li><strong>Explainability layer:</strong> Surfacing top 3 churn drivers per prediction using rule-based driver detection.</li>
+                            <li><strong>What‑If simulation:</strong> <code>/simulate</code> endpoint models intervention impact for self-service scenario analysis — reducing ad-hoc analyst requests.</li>
+                            <li><strong>Batch processing:</strong> CSV ingestion with per‑customer predictions and explainability scores.</li>
+                            <li><strong>Deployment:</strong> FastAPI on Render, Streamlit dashboard on Streamlit Cloud.</li>
+                        </ul>
+                    </details>
+                </div>
+
+                <!-- 3) Urban Analytics — EXACTLY from README (2).md -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div>
+                            <div class="project-category">Real‑Time Backend · Geospatial · Data Fusion</div>
+                            <div class="project-title">Real‑Time Urban Analytics Dashboard</div>
+                        </div>
+                        <a href="https://smart-city-analytics.streamlit.app/" target="_blank" class="btn btn-secondary" style="padding:6px 14px"><i class="fas fa-external-link-alt"></i> Live App</a>
+                    </div>
+                    <p class="project-description">
+                        Architected an automated multi-source data pipeline integrating 3 live REST APIs
+                        (OpenWeatherMap, TomTom Traffic, WAQI Air Quality) with schema validation, error handling,
+                        and 3‑minute refresh caching — maintaining 99% data availability across continuous
+                        downstream modelling. Features interactive pydeck maps with TomTom traffic flow overlay,
+                        ARIMA-style 30-minute traffic forecasting, anomaly detection, and automatic alerts for
+                        heat, congestion, and pollution.
+                    </p>
+                    <div class="project-metrics">
+                        <span class="metric-badge">3 Live APIs</span>
                         <span class="metric-badge">3‑Min Refresh</span>
-                        <span class="metric-badge">Multi‑Source API Fusion</span>
-                        <span class="metric-badge">Geospatial Analytics</span>
+                        <span class="metric-badge">99% Availability</span>
+                        <span class="metric-badge">ARIMA Forecasting</span>
                         <span class="metric-badge">Anomaly Detection</span>
+                        <span class="metric-badge">5+ Metrics</span>
+                        <span class="metric-badge">Auto Alerts</span>
                     </div>
                     <div class="tech-stack">
                         <span class="tech-tag">Python</span>
@@ -748,7 +812,10 @@
                         <span class="tech-tag">Pandas</span>
                         <span class="tech-tag">NumPy</span>
                         <span class="tech-tag">REST APIs</span>
-                        <span class="tech-tag">Folium</span>
+                        <span class="tech-tag">pydeck</span>
+                        <span class="tech-tag">OpenWeatherMap</span>
+                        <span class="tech-tag">TomTom API</span>
+                        <span class="tech-tag">WAQI API</span>
                         <span class="tech-tag">Statistical Forecasting</span>
                         <span class="tech-tag">Caching</span>
                         <span class="tech-tag">Plotly</span>
@@ -756,12 +823,12 @@
                     <details>
                         <summary>📐 Architecture &amp; Engineering Decisions</summary>
                         <ul>
-                            <li>Multi‑source API ingestion with automated schema validation on each refresh cycle.</li>
-                            <li>Caching layer (3‑min TTL) prevents redundant API calls and rate‑limit exposure.</li>
-                            <li>Anomaly detection flags statistically unusual readings; surfaces in live monitoring.</li>
-                            <li>Statistical forecasting projects near‑term trends for predictive alerts.</li>
-                            <li>Interactive geospatial visualisations (multi‑city, district‑level drill‑through).</li>
-                            <li>Streamlit‑based workflow with auto‑refresh pipeline orchestration.</li>
+                            <li><strong>Multi-source ingestion:</strong> Automated schema validation on each refresh cycle using shared <code>requests.Session</code> for efficiency.</li>
+                            <li><strong>Caching layer:</strong> Streamlit's <code>@st.cache_data(ttl=180)</code> ensures 3‑minute API refresh — prevents rate-limit exposure.</li>
+                            <li><strong>30-minute traffic forecast:</strong> Trend extrapolation (ARIMA-style) for near-term predictive alerts.</li>
+                            <li><strong>Anomaly detection:</strong> Flags statistically unusual readings and surfaces in live monitoring.</li>
+                            <li><strong>Visualisation:</strong> Interactive pydeck maps with OpenStreetMap + TomTom live traffic flow overlay — multi-city comparison support.</li>
+                            <li><strong>Alert system:</strong> Auto-triggered warnings for temperature &gt;40°C, PM2.5 &gt;100 µg/m³, and speed &lt;20 km/h.</li>
                         </ul>
                     </details>
                 </div>
@@ -779,9 +846,8 @@
                     <div class="project-category">🔒 Security · Anomaly Detection</div>
                     <div class="project-sm-title">System Threat Forecaster</div>
                     <p class="project-description">
-                        ML‑based anomaly detection system for cybersecurity telemetry. Engineered
-                        features from system logs and used Isolation Forest to identify malicious
-                        patterns before escalation.
+                        ML-based anomaly detection for cybersecurity telemetry. Feature engineering
+                        on system logs, Isolation Forest for malicious pattern identification.
                     </p>
                     <div class="tech-stack">
                         <span class="tech-tag">Python</span>
@@ -792,14 +858,13 @@
                     <a href="https://github.com/Atif0110/System-Threat-Forecaster" target="_blank" class="project-link-icon"><i class="fab fa-github"></i> GitHub →</a>
                 </div>
 
-                <!-- Influencer Platform V2 -->
+                <!-- Influencer Platform -->
                 <div class="project-sm-card">
                     <div class="project-category">📱 Full‑Stack · Recommendation Engine</div>
                     <div class="project-sm-title">Influencer Engagement Platform v2</div>
                     <p class="project-description">
-                        Full‑stack platform connecting brands with influencers. Vue 3 + Vite frontend,
-                        Flask backend, Celery for async job processing, and similarity‑based matching
-                        algorithms.
+                        Full‑stack brand-influencer matching platform. Vue 3 + Vite frontend,
+                        Flask backend, Celery for async jobs, similarity-based matching.
                     </p>
                     <div class="tech-stack">
                         <span class="tech-tag">Vue 3</span>
@@ -817,9 +882,8 @@
                     <div class="project-category">🏥 Healthcare · Mobile · LLM</div>
                     <div class="project-sm-title">Shravan – AI Digital Health Companion</div>
                     <p class="project-description">
-                        AI‑powered health companion for seniors built with Flutter (mobile) and Flask
-                        (API). Groq‑powered medical chatbot, Google Maps integration for hospital/
-                        pharmacy finder, medication reminders with voice support.
+                        AI-powered health companion for seniors. Flutter mobile app, Flask API,
+                        Groq-powered medical chatbot, Google Maps integration, medication reminders.
                     </p>
                     <div class="tech-stack">
                         <span class="tech-tag">Flutter (Dart)</span>
@@ -837,9 +901,8 @@
                     <div class="project-category">📊 Business Intelligence</div>
                     <div class="project-sm-title">IPL 2024 Analytics Dashboard</div>
                     <p class="project-description">
-                        Interactive Power BI dashboard for comprehensive IPL 2024 season analysis.
-                        DAX calculations, team performance, player stats, match trends, and
-                        drill‑through filters.
+                        Interactive Power BI dashboard for IPL 2024 season analysis. DAX calculations,
+                        team performance, player stats, match trends, drill‑through filters.
                     </p>
                     <div class="tech-stack">
                         <span class="tech-tag">Power BI</span>
@@ -855,9 +918,8 @@
                     <div class="project-category">🤖 Desktop Automation · LLM</div>
                     <div class="project-sm-title">OpenClaw Desktop Assistant</div>
                     <p class="project-description">
-                        LLM‑powered desktop automation agent using Node.js and Playwright.
-                        Converts natural language commands into browser automation tasks with
-                        human approval workflow and Ollama integration.
+                        LLM-powered desktop automation agent using Node.js and Playwright.
+                        Natural language → browser automation with human approval workflow.
                     </p>
                     <div class="tech-stack">
                         <span class="tech-tag">Node.js</span>
@@ -874,9 +936,8 @@
                     <div class="project-category">📈 Business Analytics · Optimization</div>
                     <div class="project-sm-title">Restaurant Analytics &amp; Business Optimization</div>
                     <p class="project-description">
-                        Data‑driven analysis of restaurant sales, profitability, and customer
-                        retention. Python‑based analytics with EDA, statistical modeling, and
-                        actionable business insights.
+                        Data-driven analysis of restaurant sales, profitability, and retention.
+                        Python-based EDA, statistical modeling, actionable business insights.
                     </p>
                     <div class="tech-stack">
                         <span class="tech-tag">Python</span>
@@ -911,9 +972,9 @@
             <div class="contact-card">
                 <h2 class="section-title" style="margin-bottom: 16px;">Get In <span>Touch</span></h2>
                 <p style="color: var(--text-secondary); max-width: 500px; margin: 0 auto 32px;">
-                    I’m open to Software Engineer, Backend Engineer, Applied AI Engineer, and
-                    Data Scientist roles — especially where I can design and build production
-                    systems that put AI to work.
+                    I'm looking for <strong>Software Engineer</strong>, <strong>Backend Engineer</strong>,
+                    <strong>Applied AI Engineer</strong>, and <strong>Data Scientist</strong> roles —
+                    especially where I can design and build production systems that put AI to work.
                 </p>
                 <div class="btn-group" style="justify-content: center;">
                     <a href="mailto:data.atif001@gmail.com" class="btn btn-primary"><i class="fas fa-envelope"></i> Email</a>
@@ -927,7 +988,7 @@
 </main>
 
 <footer class="footer">
-    <div class="container">© 2026 Mohd Atif · Software Engineer – Backend &amp; AI Systems</div>
+    <div class="container">© 2026 Mohd Atif · Software Engineer — Production AI &amp; Backend Systems</div>
 </footer>
 
 <script>
