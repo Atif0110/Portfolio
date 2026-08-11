@@ -1,1067 +1,378 @@
 <!DOCTYPE html>
 <html lang="en">
-<head> 
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <title>Mohd Atif · Data Scientist & Backend Engineer</title>
-    <meta name="description" content="Data scientist and backend engineer building forecasting models, ML pipelines, and FastAPI systems. Statistics, XGBoost, and production data infrastructure. IIT Madras graduate." />
-    <meta name="author" content="Mohd Atif" />
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mohd Atif — Data Scientist & Backend Engineer</title>
+<meta name="description" content="Mohd Atif — Data Scientist and Backend Engineer building forecasting systems, ML pipelines and production APIs.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-    <!-- Open Graph / Social -->
-    <meta property="og:title" content="Mohd Atif · Data Scientist & Backend Engineer" />
-    <meta property="og:description" content="Forecasting models, ML pipelines, and FastAPI backends, data science grounded in statistics and shipped as production systems." />
-    <meta property="og:type" content="website" />
-
-    <!-- Preconnect & Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
-
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-
-    <style>
-        /* ===== ORIGINAL STYLES — KEPT INTACT ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --bg-primary: #0a0a0c;
-            --bg-secondary: #0e0e11;
-            --bg-tertiary: #141416;
-            --bg-elevated: #1a1a1e;
-            --bg-hover: #212125;
-
-            --text-primary: #f3f1ec;
-            --text-secondary: #aca89f;
-            --text-tertiary: #6b6862;
-
-            --accent-primary: #ff8a3d;
-            --accent-secondary: #2dd4bf;
-            --accent-success: #baff5c;
-            --accent-warning: #f5c542;
-            --accent-error: #f76c6c;
-
-            --accent-glow: rgba(255, 138, 61, 0.14);
-            --border-light: rgba(255, 255, 255, 0.06);
-            --border-med: rgba(255, 255, 255, 0.09);
-
-            --radius-sm: 8px;
-            --radius-md: 12px;
-            --radius-lg: 20px;
-            --radius-xl: 28px;
-
-            --transition-fast: 0.15s ease;
-            --transition-base: 0.25s ease;
-            --transition-slow: 0.4s ease;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.6;
-            scroll-behavior: smooth;
-        }
-
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--bg-secondary); }
-        ::-webkit-scrollbar-thumb { background: var(--accent-primary); border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: var(--accent-secondary); }
-
-        .grid-pattern {
-            position: fixed;
-            inset: 0;
-            background-image: 
-                linear-gradient(var(--border-light) 1px, transparent 1px),
-                linear-gradient(90deg, var(--border-light) 1px, transparent 1px);
-            background-size: 50px 50px;
-            pointer-events: none;
-            z-index: 0;
-            opacity: 0.3;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .navbar {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            backdrop-filter: blur(16px);
-            background: rgba(10, 12, 16, 0.8);
-            border-bottom: 1px solid var(--border-light);
-            transition: all var(--transition-base);
-        }
-        .navbar:hover {
-            background: rgba(10, 12, 16, 0.95);
-        }
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 18px 24px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        .logo {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 1.1rem;
-            font-weight: 600;
-            text-decoration: none;
-            background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-primary) 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            transition: opacity var(--transition-fast);
-        }
-        .logo:hover { opacity: 0.85; }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-        }
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-            font-weight: 500;
-            letter-spacing: 0.03em;
-            transition: all var(--transition-fast);
-            position: relative;
-        }
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent-primary);
-            transition: width var(--transition-fast);
-        }
-        .nav-links a:hover::after { width: 100%; }
-        .nav-links a:hover { color: var(--accent-primary); }
-
-        section { padding: 80px 0; }
-        .section-sm { padding: 48px 0; }
-
-        .section-title {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 3rem;
-            letter-spacing: -0.02em;
-            position: relative;
-            display: inline-block;
-        }
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 60px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
-            border-radius: 3px;
-        }
-        .section-title::before {
-            content: '// ';
-            font-family: 'JetBrains Mono', monospace;
-            font-weight: 500;
-            font-size: 0.55em;
-            color: var(--accent-secondary);
-            opacity: 0.75;
-            vertical-align: middle;
-            margin-right: 2px;
-        }
-        .section-title span {
-            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .hero {
-            padding: 100px 0 60px;
-            position: relative;
-        }
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100%;
-            max-width: 900px;
-            height: 420px;
-            background:
-                radial-gradient(ellipse 55% 100% at 30% 0%, rgba(255, 138, 61, 0.10), transparent 70%),
-                radial-gradient(ellipse 55% 100% at 75% 20%, rgba(45, 212, 191, 0.09), transparent 70%);
-            pointer-events: none;
-        }
-        .hero::after {
-            content: '';
-            position: absolute;
-            top: 20px;
-            right: 0;
-            width: 220px;
-            height: 220px;
-            background-image: radial-gradient(circle, rgba(186, 255, 92, 0.5) 1.5px, transparent 1.5px);
-            background-size: 22px 22px;
-            opacity: 0.12;
-            pointer-events: none;
-            mask-image: linear-gradient(135deg, black, transparent 70%);
-        }
-
-        .status-badge {
-            display: inline-flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 8px;
-            background: rgba(255, 138, 61, 0.1);
-            border: 1px solid rgba(255, 138, 61, 0.25);
-            padding: 6px 14px;
-            border-radius: 40px;
-            font-size: 0.75rem;
-            font-weight: 500;
-            color: var(--accent-primary);
-            margin-bottom: 28px;
-            font-family: 'JetBrains Mono', monospace;
-            backdrop-filter: blur(4px);
-        }
-        .status-badge i {
-            font-size: 0.65rem;
-            animation: pulse 2s ease-in-out infinite;
-        }
-        .terminal-cursor {
-            display: inline-block;
-            width: 7px;
-            height: 13px;
-            background: var(--accent-primary);
-            margin-left: 2px;
-            animation: pulse 1s steps(2) infinite;
-            vertical-align: middle;
-        }
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.4; }
-        }
-
-        .hero h1 {
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            font-weight: 800;
-            line-height: 1.2;
-            letter-spacing: -0.03em;
-            margin-bottom: 24px;
-        }
-        .gradient-text {
-            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary), var(--accent-success));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        .hero-description {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            max-width: 700px;
-            margin-bottom: 32px;
-        }
-
-        .btn-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 14px;
-            margin-bottom: 60px;
-        }
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 24px;
-            border-radius: var(--radius-md);
-            font-weight: 600;
-            font-size: 0.875rem;
-            text-decoration: none;
-            transition: all var(--transition-base);
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-        .btn-primary {
-            background: var(--accent-primary);
-            color: #0a0c10;
-        }
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(255, 138, 61, 0.3);
-        }
-        .btn-secondary {
-            border: 1px solid var(--border-med);
-            background: var(--bg-tertiary);
-            color: var(--text-secondary);
-        }
-        .btn-secondary:hover {
-            border-color: var(--accent-primary);
-            color: var(--accent-primary);
-            transform: translateY(-2px);
-            background: var(--bg-hover);
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1px;
-            background: var(--border-med);
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-        }
-        .stat-card {
-            background: var(--bg-tertiary);
-            padding: 28px 20px;
-            text-align: center;
-            transition: all var(--transition-base);
-        }
-        .stat-card:hover {
-            background: var(--bg-hover);
-            transform: translateY(-2px);
-        }
-        .stat-number {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--accent-primary);
-            font-family: 'JetBrains Mono', monospace;
-            margin-bottom: 6px;
-        }
-        .stat-card:nth-child(1) .stat-number { color: var(--accent-primary); }
-        .stat-card:nth-child(2) .stat-number { color: var(--accent-secondary); }
-        .stat-card:nth-child(3) .stat-number { color: var(--accent-success); }
-        .stat-card:nth-child(4) .stat-number { color: var(--accent-warning); }
-        .stat-label {
-            font-size: 0.8rem;
-            color: var(--text-tertiary);
-        }
-
-        .tech-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        .tech-item {
-            background: var(--bg-tertiary);
-            border: 1px solid var(--border-light);
-            padding: 8px 16px;
-            border-radius: 40px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            color: var(--text-secondary);
-            transition: all var(--transition-fast);
-        }
-        .tech-item:hover {
-            border-color: var(--accent-primary);
-            color: var(--accent-primary);
-            transform: translateY(-2px);
-            background: var(--bg-hover);
-        }
-        .tech-item:nth-child(even):hover {
-            border-color: var(--accent-secondary);
-            color: var(--accent-secondary);
-        }
-
-        .projects-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 32px;
-        }
-        .project-card {
-            background: var(--bg-tertiary);
-            border: 1px solid var(--border-light);
-            border-left: 3px solid var(--accent-primary);
-            border-radius: var(--radius-lg);
-            padding: 32px;
-            transition: all var(--transition-base);
-            position: relative;
-        }
-        .project-card:nth-child(2) { border-left-color: var(--accent-secondary); }
-        .project-card:nth-child(3) { border-left-color: var(--accent-success); }
-        .project-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: var(--radius-lg);
-            padding: 1px;
-            background: linear-gradient(135deg, transparent, var(--accent-primary), transparent);
-            opacity: 0;
-            transition: opacity var(--transition-base);
-            pointer-events: none;
-        }
-        .project-card:hover::before { opacity: 0.3; }
-        .project-card:hover {
-            transform: translateY(-4px);
-            border-color: transparent;
-            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.5);
-        }
-
-        .project-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            flex-wrap: wrap;
-            gap: 16px;
-            margin-bottom: 16px;
-        }
-        .project-category {
-            font-size: 0.7rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: var(--accent-primary);
-            font-family: 'JetBrains Mono', monospace;
-        }
-        .project-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin: 8px 0 12px;
-        }
-        .project-description {
-            color: var(--text-secondary);
-            margin-bottom: 20px;
-            line-height: 1.7;
-        }
-        .project-metrics {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-        .metric-badge {
-            background: rgba(45, 212, 191, 0.12);
-            border: 1px solid rgba(45, 212, 191, 0.28);
-            padding: 4px 12px;
-            border-radius: 30px;
-            font-size: 0.7rem;
-            font-weight: 600;
-            color: var(--accent-secondary);
-            font-family: 'JetBrains Mono', monospace;
-            transition: all var(--transition-fast);
-        }
-        .metric-badge:hover {
-            background: rgba(45, 212, 191, 0.22);
-            transform: scale(1.02);
-        }
-
-        .tech-stack {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 20px;
-        }
-        .tech-tag {
-            background: var(--bg-elevated);
-            padding: 4px 12px;
-            border-radius: 6px;
-            font-size: 0.7rem;
-            font-family: 'JetBrains Mono', monospace;
-            color: var(--text-tertiary);
-            transition: all var(--transition-fast);
-        }
-        .tech-tag:hover {
-            color: var(--accent-primary);
-            background: var(--bg-hover);
-        }
-
-        details {
-            margin: 16px 0;
-        }
-        details summary {
-            cursor: pointer;
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-            font-weight: 600;
-            list-style: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: color var(--transition-fast);
-        }
-        details summary:hover { color: var(--accent-primary); }
-        details summary::-webkit-details-marker { display: none; }
-        details ul {
-            margin-top: 12px;
-            padding-left: 20px;
-            color: var(--text-tertiary);
-            font-size: 0.85rem;
-        }
-        details li { margin: 8px 0; }
-
-        .projects-sm-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 20px;
-        }
-        .project-sm-card {
-            background: var(--bg-tertiary);
-            border: 1px solid var(--border-light);
-            border-radius: var(--radius-md);
-            padding: 24px;
-            transition: all var(--transition-base);
-        }
-        .project-sm-card:hover {
-            transform: translateY(-2px);
-            border-color: var(--accent-primary);
-            background: var(--bg-hover);
-        }
-        .project-sm-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin: 10px 0 8px;
-        }
-        .project-link-icon {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            margin-top: 16px;
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 0.8rem;
-            font-weight: 500;
-            transition: all var(--transition-fast);
-        }
-        .project-link-icon:hover {
-            color: var(--accent-primary);
-            gap: 10px;
-        }
-
-        .contact-card {
-            background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-secondary) 100%);
-            border-radius: var(--radius-lg);
-            padding: 48px;
-            text-align: center;
-            border: 1px solid var(--border-light);
-            transition: all var(--transition-base);
-        }
-        .contact-card:hover {
-            border-color: var(--accent-primary);
-            box-shadow: 0 10px 30px -15px rgba(255, 138, 61, 0.22);
-        }
-
-        .footer {
-            border-top: 1px solid var(--border-light);
-            padding: 32px 0;
-            text-align: center;
-            color: var(--text-tertiary);
-            font-size: 0.8rem;
-        }
-
-        .philosophy-block {
-            background: var(--bg-tertiary);
-            border: 1px solid var(--border-light);
-            border-radius: var(--radius-lg);
-            padding: 32px 40px;
-            margin: 40px 0 20px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 24px;
-        }
-        .philosophy-item {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-        .philosophy-item .label {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            color: var(--text-tertiary);
-            font-weight: 600;
-        }
-        .philosophy-item .value {
-            font-size: 0.95rem;
-            color: var(--text-primary);
-            font-weight: 500;
-        }
-
-        @media (max-width: 768px) {
-            .stats-grid { grid-template-columns: repeat(2, 1fr); }
-            .nav-links { display: none; }
-            .project-header { flex-direction: column; }
-            .contact-card { padding: 32px 20px; }
-            section { padding: 60px 0; }
-            .hero { padding: 60px 0 40px; }
-            .section-title::after { width: 40px; }
-            .philosophy-block { padding: 24px; grid-template-columns: 1fr; }
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .animate {
-            animation: fadeInUp 0.6s ease forwards;
-        }
-        .project-card, .project-sm-card, .stat-card, .tech-item {
-            animation: fadeInUp 0.5s ease forwards;
-            opacity: 0;
-        }
-        .project-card:nth-child(1) { animation-delay: 0.1s; }
-        .project-card:nth-child(2) { animation-delay: 0.2s; }
-        .project-card:nth-child(3) { animation-delay: 0.3s; }
-    </style>
+<style>
+:root{
+  --paper:#11110f;
+  --ink:#eeeae2;
+  --muted:#a8a39a;
+  --line:#2a2926;
+  --card:#171714;
+  --accent:#d8895b;
+  --dark:#0c0c0b;
+  --max:1120px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"DM Sans",sans-serif;
+  line-height:1.6;
+}
+a{color:inherit}\n:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+.container{width:min(var(--max),calc(100% - 40px));margin:auto}
+.mono{font-family:"IBM Plex Mono",monospace}
+header{
+  border-bottom:1px solid var(--line);
+  background:rgba(17,17,15,.94);
+  position:sticky;top:0;z-index:20;
+  backdrop-filter:blur(12px);
+}
+.nav{
+  height:72px;display:flex;align-items:center;justify-content:space-between;
+}
+.logo{
+  text-decoration:none;font-weight:700;font-size:1rem;letter-spacing:-.03em;
+}
+.logo span{color:var(--accent)}
+.nav-links{display:flex;gap:28px}
+.nav-links a{
+  text-decoration:none;color:var(--muted);font-size:.86rem;
+}
+.nav-links a:hover{color:var(--ink)}
+.hero{padding:108px 0 78px;border-bottom:1px solid var(--line)}
+.eyebrow{
+  display:flex;align-items:center;gap:10px;
+  color:var(--accent);font-size:.75rem;text-transform:uppercase;
+  letter-spacing:.11em;font-weight:600;margin-bottom:28px;
+}
+.eyebrow:before{content:"";width:34px;height:1px;background:var(--accent)}
+.hero-grid{
+  display:grid;grid-template-columns:1.55fr .75fr;gap:70px;align-items:end;
+}
+h1{
+  font-size:clamp(3.3rem,7vw,6.5rem);
+  line-height:.92;letter-spacing:-.075em;font-weight:700;
+  max-width:850px;
+}
+h1 em{font-style:normal;color:var(--accent)}
+.intro{
+  font-size:1.05rem;color:var(--muted);max-width:410px;
+  margin-bottom:7px;
+}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:34px}
+.btn{
+  display:inline-flex;align-items:center;gap:9px;
+  padding:11px 16px;border:1px solid var(--ink);
+  text-decoration:none;font-size:.82rem;font-weight:600;
+  transition:.2s ease;
+}
+.btn.primary{background:#e7e1d7;color:#11110f}
+.btn:hover{transform:translateY(-2px)}
+.contact .btn:not(.primary):hover{border-color:#d8895b;color:#e7e1d7;background:#171714}
+.stats{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  border-bottom:1px solid var(--line);
+}
+.stat{padding:26px 20px;border-right:1px solid var(--line)}
+.stat:last-child{border-right:0}
+.stat strong{display:block;font-size:1.55rem;letter-spacing:-.04em}
+.stat span{color:var(--muted);font-size:.72rem}
+.section{padding:90px 0;border-bottom:1px solid var(--line)}
+.section-head{
+  display:grid;grid-template-columns:220px 1fr;gap:40px;margin-bottom:45px;
+}
+.section-num{color:var(--accent);font-size:.75rem}
+.section-title{font-size:2.3rem;letter-spacing:-.055em;line-height:1.05}
+.section-copy{color:var(--muted);max-width:600px;margin-top:12px}
+.principles{
+  display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);
+}
+.principle{padding:22px 18px 0 0;border-right:1px solid var(--line);margin-right:18px}
+.principle:last-child{border:0}
+.principle b{font-size:.78rem;text-transform:uppercase;letter-spacing:.08em}
+.principle p{color:var(--muted);font-size:.86rem;margin-top:7px}
+.stack{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+  background:var(--line);border:1px solid var(--line);
+}
+.stack-card{background:var(--card);padding:25px}
+.stack-card h3{font-size:.9rem;margin-bottom:18px}
+.tags{display:flex;gap:8px;flex-wrap:wrap}
+.tag{
+  border:1px solid var(--line);padding:6px 9px;
+  font-family:"IBM Plex Mono",monospace;font-size:.7rem;color:var(--muted);
+  background:#1b1b18;
+}
+.project{
+  display:grid;grid-template-columns:180px 1fr;gap:42px;
+  padding:44px 0;border-top:1px solid var(--line);
+}
+.project:first-of-type{border-top:0;padding-top:0}
+.project-meta{color:var(--muted);font-size:.74rem}
+.project-meta .number{color:var(--accent);font-size:1rem;margin-bottom:8px}
+.project h3{font-size:1.65rem;letter-spacing:-.045em;line-height:1.1}
+.project-desc{color:var(--muted);max-width:760px;margin:14px 0 22px}
+.metrics{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.metric{font-size:.7rem;padding:5px 9px;background:#24231f;color:#c0bbb1}
+.project-links{display:flex;gap:18px;font-size:.8rem;font-weight:600}
+.project-links a{text-decoration:none;border-bottom:1px solid var(--ink)}
+.project-links a:hover{color:var(--accent);border-color:var(--accent)}
+.other-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.other{
+  background:var(--card);padding:28px;min-height:210px;
+}
+.other small{color:var(--accent);font-size:.68rem;text-transform:uppercase;letter-spacing:.09em}
+.other h3{font-size:1.1rem;margin:10px 0 8px}
+.other p{color:var(--muted);font-size:.85rem}
+.other .tags{margin-top:18px}
+.exploring{display:flex;gap:10px;flex-wrap:wrap}
+.exploring .tag{background:transparent}
+.contact{
+  background:var(--dark);color:#eeeae2;padding:70px;
+  display:grid;grid-template-columns:1fr auto;gap:50px;align-items:end;
+}
+.contact h2{font-size:clamp(2.4rem,5vw,4.6rem);letter-spacing:-.07em;line-height:.95}
+.contact h2 em{color:#d8895b;font-style:normal}
+.contact p{color:#aaa69e;max-width:550px;margin-top:18px}
+.contact .btn{border-color:#5b5851;color:#d8d3ca;background:transparent}
+.contact .btn.primary{background:#e7e1d7;color:#11110f;border-color:#e7e1d7}
+footer{padding:28px 0;color:var(--muted);font-size:.75rem}
+.footer-inner{display:flex;justify-content:space-between;gap:20px}
+@media(max-width:800px){
+  .nav-links{display:none}
+  .hero{padding:75px 0 55px}
+  .hero-grid,.section-head,.project,.contact{grid-template-columns:1fr}
+  .hero-grid{gap:35px}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .stat:nth-child(2){border-right:0}
+  .stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .principles,.stack{grid-template-columns:1fr 1fr}
+  .principle:nth-child(2){border-right:0}
+  .principle{padding-bottom:22px}
+  .project{gap:12px}
+  .contact{padding:45px 28px}
+}
+@media(max-width:520px){
+  .container{width:min(var(--max),calc(100% - 28px))}
+  h1{font-size:3.25rem}
+  .section{padding:65px 0}
+  .stats,.principles,.stack,.other-grid{grid-template-columns:1fr}
+  .stat{border-right:0;border-bottom:1px solid var(--line)}
+  .stat:last-child{border-bottom:0}
+  .principle{border-right:0;border-bottom:1px solid var(--line);margin-right:0}
+  .stack{gap:1px}
+  .footer-inner{display:block}
+  .footer-inner span{display:block}
+  .footer-inner .mono{margin-top:8px}
+  footer span{display:block;margin-top:8px}
+}
+</style>
 </head>
-<body>
-<div class="grid-pattern"></div>
 
-<nav class="navbar">
-    <div class="nav-container">
-        <a href="#" class="logo">atif<span style="color:var(--accent-primary);">.</span>dev</a>
-        <div class="nav-links">
-            <a href="#projects">Projects</a>
-            <a href="#stack">Stack</a>
-            <a href="#exploring">Exploring</a>
-            <a href="#contact">Contact</a>
-        </div>
-    </div>
-</nav>
+<body>
+<header>
+  <div class="container nav">
+    <a class="logo" href="#">atif<span>.</span>dev</a>
+    <nav class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#stack">Stack</a>
+      <a href="#other">Other</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
 
 <main>
-    <div class="container">
-
-        <!-- ========== HERO ========== -->
-        <section class="hero">
-            <div class="status-badge">
-                <span style="color: var(--accent-secondary);">$</span> whoami
-                <span class="terminal-cursor"></span>
-                <span style="opacity:0.6; margin-left: 6px;">→ data-scientist / backend-engineer</span>
-            </div>
-            <h1>
-                <span style="display:block; font-family:'JetBrains Mono', monospace; font-size: 0.9rem; font-weight: 500; color: var(--text-tertiary); letter-spacing: 0; margin-bottom: 14px;">model.fit(data) <span style="color: var(--accent-secondary);">→</span> api.serve(model)</span>
-                Data Science,<br />
-                <span class="gradient-text">Shipped as Backend Systems</span>
-            </h1>
-            <p class="hero-description">
-                Data scientist and backend engineer with a B.Sc. in Data Science and Applications from
-                IIT Madras. I build forecasting models, statistical pipelines, and ML systems, then
-                ship them as real APIs FastAPI services, SQL-backed data layers, and inference
-                endpoints that hold up in production, not just in a notebook.
-            </p>
-            <div class="btn-group">
-                <a href="#projects" class="btn btn-primary"><i class="fas fa-arrow-down"></i> View Projects</a>
-                <a href="https://github.com/Atif0110" target="_blank" class="btn btn-secondary"><i class="fab fa-github"></i> GitHub</a>
-                <a href="assets/Mohd_Atif_Resume.pdf" class="btn btn-secondary"><i class="fas fa-file-alt"></i> Resume</a>
-                <a href="mailto:data.atif001@gmail.com" class="btn btn-secondary"><i class="fas fa-envelope"></i> Contact</a>
-            </div>
-
-            <!-- Stats — all directly from READMEs -->
-            <div class="stats-grid">
-                <div class="stat-card"><div class="stat-number">95%</div><div class="stat-label">Churn Prediction Accuracy</div></div>
-                <div class="stat-card"><div class="stat-number">20–35%</div><div class="stat-label">Forecast Improvement</div></div>
-                <div class="stat-card"><div class="stat-number">99%</div><div class="stat-label">Data Availability</div></div>
-                <div class="stat-card"><div class="stat-number">3 min</div><div class="stat-label">Pipeline Refresh Cycle</div></div>
-            </div>
-        </section>
-
-        <!-- ========== ENGINEERING PHILOSOPHY ========== -->
-        <div class="philosophy-block">
-            <div class="philosophy-item">
-                <span class="label">Model</span>
-                <span class="value">XGBoost · scikit-learn · Statistical Forecasting</span>
-            </div>
-            <div class="philosophy-item">
-                <span class="label">Engineer</span>
-                <span class="value">FastAPI · Python · SQL · Docker</span>
-            </div>
-            <div class="philosophy-item">
-                <span class="label">Ship</span>
-                <span class="value">Render · Streamlit Cloud · CI/CD</span>
-            </div>
-            <div class="philosophy-item">
-                <span class="label">Validate</span>
-                <span class="value">Backtesting · QA Checks · Business Impact</span>
-            </div>
+<section class="hero">
+  <div class="container">
+    <div class="eyebrow mono">Data Scientist · Backend Engineer</div>
+    <div class="hero-grid">
+      <div>
+        <h1>Models that<br><em>actually ship.</em></h1>
+        <div class="actions">
+          <a class="btn primary" href="#work">See selected work ↓</a>
+          <a class="btn" href="assets/Mohd_Atif_Resume.pdf">Resume ↗</a>
+          <a class="btn" href="https://github.com/Atif0110" target="_blank">GitHub ↗</a>
         </div>
-
-        <!-- ========== TECH STACK ========== -->
-        <section id="stack" class="section-sm">
-            <h2 class="section-title">Engineering <span>Toolkit</span></h2>
-
-            <p style="color: var(--text-tertiary); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; margin-bottom: 14px;">Data Science & Modeling</p>
-            <div class="tech-grid" style="margin-bottom: 32px;">
-                <span class="tech-item">Python 3.9+</span>
-                <span class="tech-item">scikit-learn</span>
-                <span class="tech-item">XGBoost</span>
-                <span class="tech-item">ARIMA</span>
-                <span class="tech-item">Pandas</span>
-                <span class="tech-item">NumPy</span>
-                <span class="tech-item">SHAP</span>
-                <span class="tech-item">Plotly</span>
-                <span class="tech-item">pydeck</span>
-            </div>
-
-            <p style="color: var(--text-tertiary); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; margin-bottom: 14px;">Backend & Infrastructure</p>
-            <div class="tech-grid" style="margin-bottom: 32px;">
-                <span class="tech-item">FastAPI</span>
-                <span class="tech-item">Uvicorn</span>
-                <span class="tech-item">Streamlit</span>
-                <span class="tech-item">REST APIs</span>
-                <span class="tech-item">PostgreSQL</span>
-                <span class="tech-item">SQLite</span>
-                <span class="tech-item">Docker</span>
-                <span class="tech-item">Git</span>
-                <span class="tech-item">Render</span>
-                <span class="tech-item">Streamlit Cloud</span>
-            </div>
-
-            <p style="color: var(--text-tertiary); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; margin-bottom: 14px;">LLM Integration & External APIs</p>
-            <div class="tech-grid">
-                <span class="tech-item">LangChain</span>
-                <span class="tech-item">OpenAI API</span>
-                <span class="tech-item">Groq API</span>
-                <span class="tech-item">Gemini API</span>
-                <span class="tech-item">OpenWeatherMap</span>
-                <span class="tech-item">TomTom API</span>
-                <span class="tech-item">WAQI API</span>
-                <span class="tech-item">ENTSO‑E API</span>
-            </div>
-        </section>
-
-        <!-- ========== FEATURED PROJECTS ========== -->
-        <section id="projects">
-            <h2 class="section-title">Featured <span>Projects</span></h2>
-            <div class="projects-grid">
-
-                <!-- 1) Power Market Forecasting — EXACTLY from README (1).md -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <div>
-                            <div class="project-category">Data Pipeline · Quantitative Engineering · Trading</div>
-                            <div class="project-title">European Power Market Forecasting System</div>
-                        </div>
-                        <a href="https://github.com/Atif0110/power-forecast-pipeline" target="_blank" class="btn btn-secondary" style="padding:6px 14px"><i class="fab fa-github"></i> Code</a>
-                    </div>
-                    <p class="project-description">
-                        End-to-end pipeline for day-ahead electricity price forecasting using real ENTSO‑E market data.
-                        Engineers 12+ features (lag‑1/24/168h, rolling volatility, calendar effects) and trains an
-                        XGBoost model achieving 20–35% improvement over baseline, outperforming 3 alternative models
-                        evaluated during development. Includes synthetic fallback data for reproducibility.
-                    </p>
-                    <div class="project-metrics">
-                        <span class="metric-badge">20–35% Improvement</span>
-                        <span class="metric-badge">12+ Features</span>
-                        <span class="metric-badge">3 Models Outperformed</span>
-                        <span class="metric-badge">PnL Simulation</span>
-                        <span class="metric-badge">12+ Months Backtest</span>
-                        <span class="metric-badge">Zero QA Incidents</span>
-                    </div>
-                    <div class="tech-stack">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">XGBoost</span>
-                        <span class="tech-tag">scikit-learn</span>
-                        <span class="tech-tag">Pandas</span>
-                        <span class="tech-tag">NumPy</span>
-                        <span class="tech-tag">Plotly</span>
-                        <span class="tech-tag">ENTSO‑E API</span>
-                        <span class="tech-tag">Groq API</span>
-                        <span class="tech-tag">Prompt Engineering</span>
-                        <span class="tech-tag">YAML Config</span>
-                    </div>
-                    <details>
-                        <summary>📐 Architecture &amp; Engineering Decisions</summary>
-                        <ul>
-                            <li><strong>Five-module pipeline:</strong> <code>data_ingestion.py</code> → <code>qa_pipeline.py</code> → <code>forecasting.py</code> → <code>trading_view.py</code> → <code>llm_analyst.py</code>.</li>
-                            <li><strong>8-point automated QA:</strong> Time‑integrity checks, statistical outlier detection, economic sanity (demand‑price relationship), and freshness monitoring — reduced data quality incidents to zero.</li>
-                            <li><strong>Feature engineering:</strong> 12+ features including lag‑1/24/168h, rolling volatility, calendar effects, and momentum.</li>
-                            <li><strong>Trading logic:</strong> LONG if forecast &gt; reference + confidence band, SHORT if &lt; reference – band, HOLD otherwise.</li>
-                            <li><strong>LLM agent:</strong> Programmatically integrated via API with structured prompt engineering to auto-generate trader briefs — eliminating 3+ hours of manual report writing per week across 5 recurring report types.</li>
-                            <li><strong>Backtesting:</strong> PnL simulation across 12+ months of historical market data.</li>
-                            <li><strong>Reproducibility:</strong> Synthetic fallback dataset if ENTSO‑E API key is not provided.</li>
-                        </ul>
-                    </details>
-                </div>
-
-                <!-- 2) Churn Platform — EXACTLY from README.md -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <div>
-                            <div class="project-category">Backend · LLM Integration · Decision Intelligence</div>
-                            <div class="project-title">Customer Churn Prediction &amp; Retention Engine</div>
-                        </div>
-                        <div class="btn-group" style="margin:0">
-                            <a href="https://ai-customer-churn-intelligence.streamlit.app/" target="_blank" class="btn btn-secondary" style="padding:6px 14px"><i class="fas fa-external-link-alt"></i> Live App</a>
-                            <a href="https://github.com/Atif0110/ai-customer-churn-intelligence" target="_blank" class="btn btn-secondary" style="padding:6px 14px"><i class="fab fa-github"></i> Code</a>
-                        </div>
-                    </div>
-                    <p class="project-description">
-                        End-to-end Decision Intelligence platform combining Logistic Regression (95% accuracy) with
-                        a provider-agnostic LLM layer (Groq Llama 3.1 8B) for churn prediction, driver explanation,
-                        and AI-generated retention strategies. Trained on 15 realistic customer profiles with behavioral
-                        features (usage, support tickets, tenure). Serves real-time inference to 100+ customers via
-                        FastAPI backend with batch CSV processing and sub-5ms prediction speed.
-                    </p>
-                    <div class="project-metrics">
-                        <span class="metric-badge">95% Accuracy</span>
-                        <span class="metric-badge">100+ Customers</span>
-                        <span class="metric-badge">&lt;5ms Inference</span>
-                        <span class="metric-badge">FastAPI + Uvicorn</span>
-                        <span class="metric-badge">What‑If Simulation</span>
-                        <span class="metric-badge">Provider‑Agnostic LLM</span>
-                    </div>
-                    <div class="tech-stack">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">FastAPI</span>
-                        <span class="tech-tag">scikit-learn</span>
-                        <span class="tech-tag">Streamlit</span>
-                        <span class="tech-tag">Groq API</span>
-                        <span class="tech-tag">Llama 3.1 8B</span>
-                        <span class="tech-tag">SHAP</span>
-                        <span class="tech-tag">Pandas</span>
-                        <span class="tech-tag">Render</span>
-                        <span class="tech-tag">Streamlit Cloud</span>
-                    </div>
-                    <details>
-                        <summary>📐 Architecture &amp; Engineering Decisions</summary>
-                        <ul>
-                            <li><strong>Four-service modular design:</strong> DS Service (inference), GenAI Service (LLM), Orchestrator, History Logger — clean separation of concerns.</li>
-                            <li><strong>Logistic Regression:</strong> Trained on usage hours, support tickets, and tenure; outputs probability + risk tier (High &gt;60%, Medium 30–60%, Low &lt;30%).</li>
-                            <li><strong>Provider-agnostic LLM factory:</strong> Swappable between Groq, OpenAI, Gemini without touching business logic — currently using Groq Llama 3.1 8B.</li>
-                            <li><strong>Explainability layer:</strong> Surfacing top 3 churn drivers per prediction using rule-based driver detection.</li>
-                            <li><strong>What‑If simulation:</strong> <code>/simulate</code> endpoint models intervention impact for self-service scenario analysis — reducing ad-hoc analyst requests.</li>
-                            <li><strong>Batch processing:</strong> CSV ingestion with per‑customer predictions and explainability scores.</li>
-                            <li><strong>Deployment:</strong> FastAPI on Render, Streamlit dashboard on Streamlit Cloud.</li>
-                        </ul>
-                    </details>
-                </div>
-
-                <!-- 3) Urban Analytics — EXACTLY from README (2).md -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <div>
-                            <div class="project-category">Real‑Time Backend · Geospatial · Data Fusion</div>
-                            <div class="project-title">Real‑Time Urban Analytics Dashboard</div>
-                        </div>
-                        <a href="https://smart-city-analytics.streamlit.app/" target="_blank" class="btn btn-secondary" style="padding:6px 14px"><i class="fas fa-external-link-alt"></i> Live App</a>
-                    </div>
-                    <p class="project-description">
-                        Architected an automated multi-source data pipeline integrating 3 live REST APIs
-                        (OpenWeatherMap, TomTom Traffic, WAQI Air Quality) with schema validation, error handling,
-                        and 3‑minute refresh caching — maintaining 99% data availability across continuous
-                        downstream modelling. Features interactive pydeck maps with TomTom traffic flow overlay,
-                        ARIMA-style 30-minute traffic forecasting, anomaly detection, and automatic alerts for
-                        heat, congestion, and pollution.
-                    </p>
-                    <div class="project-metrics">
-                        <span class="metric-badge">3 Live APIs</span>
-                        <span class="metric-badge">3‑Min Refresh</span>
-                        <span class="metric-badge">99% Availability</span>
-                        <span class="metric-badge">ARIMA Forecasting</span>
-                        <span class="metric-badge">Anomaly Detection</span>
-                        <span class="metric-badge">5+ Metrics</span>
-                        <span class="metric-badge">Auto Alerts</span>
-                    </div>
-                    <div class="tech-stack">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Streamlit</span>
-                        <span class="tech-tag">Pandas</span>
-                        <span class="tech-tag">NumPy</span>
-                        <span class="tech-tag">REST APIs</span>
-                        <span class="tech-tag">pydeck</span>
-                        <span class="tech-tag">OpenWeatherMap</span>
-                        <span class="tech-tag">TomTom API</span>
-                        <span class="tech-tag">WAQI API</span>
-                        <span class="tech-tag">Statistical Forecasting</span>
-                        <span class="tech-tag">Caching</span>
-                        <span class="tech-tag">Plotly</span>
-                    </div>
-                    <details>
-                        <summary>📐 Architecture &amp; Engineering Decisions</summary>
-                        <ul>
-                            <li><strong>Multi-source ingestion:</strong> Automated schema validation on each refresh cycle using shared <code>requests.Session</code> for efficiency.</li>
-                            <li><strong>Caching layer:</strong> Streamlit's <code>@st.cache_data(ttl=180)</code> ensures 3‑minute API refresh — prevents rate-limit exposure.</li>
-                            <li><strong>30-minute traffic forecast:</strong> Trend extrapolation (ARIMA-style) for near-term predictive alerts.</li>
-                            <li><strong>Anomaly detection:</strong> Flags statistically unusual readings and surfaces in live monitoring.</li>
-                            <li><strong>Visualisation:</strong> Interactive pydeck maps with OpenStreetMap + TomTom live traffic flow overlay — multi-city comparison support.</li>
-                            <li><strong>Alert system:</strong> Auto-triggered warnings for temperature &gt;40°C, PM2.5 &gt;100 µg/m³, and speed &lt;20 km/h.</li>
-                        </ul>
-                    </details>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- ========== OTHER PROJECTS ========== -->
-        <section>
-            <h2 class="section-title">Other <span>Projects</span></h2>
-            <div class="projects-sm-grid">
-
-                <!-- Threat Forecaster -->
-                <div class="project-sm-card">
-                    <div class="project-category">Security · Anomaly Detection</div>
-                    <div class="project-sm-title">System Threat Forecaster</div>
-                    <p class="project-description">
-                        ML-based anomaly detection for cybersecurity telemetry. Feature engineering
-                        on system logs, Isolation Forest for malicious pattern identification.
-                    </p>
-                    <div class="tech-stack">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">scikit-learn</span>
-                        <span class="tech-tag">Isolation Forest</span>
-                        <span class="tech-tag">Pandas</span>
-                    </div>
-                    <a href="https://github.com/Atif0110/System-Threat-Forecaster" target="_blank" class="project-link-icon"><i class="fab fa-github"></i> GitHub →</a>
-                </div>
-
-                <!-- Influencer Platform -->
-                <div class="project-sm-card">
-                    <div class="project-category">Full‑Stack · Recommendation Engine</div>
-                    <div class="project-sm-title">Influencer Engagement Platform v2</div>
-                    <p class="project-description">
-                        Full‑stack brand-influencer matching platform. Vue 3 + Vite frontend,
-                        Flask backend, Celery for async jobs, similarity-based matching.
-                    </p>
-                    <div class="tech-stack">
-                        <span class="tech-tag">Vue 3</span>
-                        <span class="tech-tag">Vite</span>
-                        <span class="tech-tag">Flask</span>
-                        <span class="tech-tag">Celery</span>
-                        <span class="tech-tag">SQLite</span>
-                        <span class="tech-tag">Python</span>
-                    </div>
-                    <a href="https://github.com/Atif0110/Influencer_Engagement_Sponsorship_Coordination_Platform_Version2" target="_blank" class="project-link-icon"><i class="fab fa-github"></i> GitHub →</a>
-                </div>
-
-                <!-- Shravan Health -->
-                <div class="project-sm-card">
-                    <div class="project-category">Healthcare · Mobile · LLM</div>
-                    <div class="project-sm-title">Shravan – AI Digital Health Companion</div>
-                    <p class="project-description">
-                        AI-powered health companion for seniors. Flutter mobile app, Flask API,
-                        Groq-powered medical chatbot, Google Maps integration, medication reminders.
-                    </p>
-                    <div class="tech-stack">
-                        <span class="tech-tag">Flutter (Dart)</span>
-                        <span class="tech-tag">Flask</span>
-                        <span class="tech-tag">Groq API</span>
-                        <span class="tech-tag">Google Gemini</span>
-                        <span class="tech-tag">Google Maps API</span>
-                        <span class="tech-tag">Selenium</span>
-                    </div>
-                    <a href="https://github.com/Atif0110/Shravan-Application" target="_blank" class="project-link-icon"><i class="fab fa-github"></i> GitHub →</a>
-                </div>
-
-                <!-- IPL Dashboard -->
-                <div class="project-sm-card">
-                    <div class="project-category">Business Intelligence · Data Modeling</div>
-                    <div class="project-sm-title">IPL 2024 Analytics Dashboard</div>
-                    <p class="project-description">
-                        Interactive Power BI dashboard for IPL 2024 season analysis. DAX calculations,
-                        team performance, player stats, match trends, drill‑through filters.
-                    </p>
-                    <div class="tech-stack">
-                        <span class="tech-tag">Power BI</span>
-                        <span class="tech-tag">DAX</span>
-                        <span class="tech-tag">Excel/CSV</span>
-                        <span class="tech-tag">Data Modeling</span>
-                    </div>
-                    <a href="https://github.com/Atif0110/IPL_Dashboard2024" target="_blank" class="project-link-icon"><i class="fab fa-github"></i> GitHub →</a>
-                </div>
-
-                <!-- OpenClaw Desktop Assistant -->
-                <div class="project-sm-card">
-                    <div class="project-category">Desktop Automation · LLM</div>
-                    <div class="project-sm-title">OpenClaw Desktop Assistant</div>
-                    <p class="project-description">
-                        LLM-powered desktop automation agent using Node.js and Playwright.
-                        Natural language → browser automation with human approval workflow.
-                    </p>
-                    <div class="tech-stack">
-                        <span class="tech-tag">Node.js</span>
-                        <span class="tech-tag">Playwright</span>
-                        <span class="tech-tag">Ollama</span>
-                        <span class="tech-tag">SQLite</span>
-                        <span class="tech-tag">LLM</span>
-                    </div>
-                    <a href="https://github.com/Atif0110/openclaw-desktop-assistant" target="_blank" class="project-link-icon"><i class="fab fa-github"></i> GitHub →</a>
-                </div>
-
-                <!-- Restaurant Analytics -->
-                <div class="project-sm-card">
-                    <div class="project-category">Statistical Analysis · Business Optimization</div>
-                    <div class="project-sm-title">Restaurant Analytics &amp; Business Optimization</div>
-                    <p class="project-description">
-                        Data-driven analysis of restaurant sales, profitability, and retention.
-                        Python-based EDA, statistical modeling, actionable business insights.
-                    </p>
-                    <div class="tech-stack">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Pandas</span>
-                        <span class="tech-tag">Jupyter</span>
-                        <span class="tech-tag">Matplotlib</span>
-                        <span class="tech-tag">Seaborn</span>
-                    </div>
-                    <a href="https://github.com/Atif0110/Restaurant-Analytics-Business-Optimization-Project" target="_blank" class="project-link-icon"><i class="fab fa-github"></i> GitHub →</a>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- ========== EXPLORING ========== -->
-        <section id="exploring" class="section-sm">
-            <h2 class="section-title">Currently <span>Exploring</span></h2>
-            <div class="tech-grid">
-                <span class="tech-item">Model Monitoring</span>
-                <span class="tech-item">Fine‑Tuning LLMs</span>
-                <span class="tech-item">Vector Search (FAISS, Qdrant)</span>
-                <span class="tech-item">Production RAG Systems</span>
-                <span class="tech-item">Inference Optimisation</span>
-                <span class="tech-item">LLM Observability</span>
-                <span class="tech-item">Multi‑Agent Systems</span>
-                <span class="tech-item">Agentic AI</span>
-            </div>
-        </section>
-
-        <!-- ========== CONTACT ========== -->
-        <section id="contact">
-            <div class="contact-card">
-                <h2 class="section-title" style="margin-bottom: 16px;">Get In <span>Touch</span></h2>
-                <p style="color: var(--text-secondary); max-width: 500px; margin: 0 auto 32px;">
-                    I'm looking for <strong>Data Scientist</strong>, <strong>Backend Engineer</strong>,
-                    and <strong>Applied ML Engineer</strong> roles — especially where I can build
-                    models grounded in statistics and ship them as real, production backend systems.
-                </p>
-                <div class="btn-group" style="justify-content: center;">
-                    <a href="mailto:data.atif001@gmail.com" class="btn btn-primary"><i class="fas fa-envelope"></i> Email</a>
-                    <a href="https://linkedin.com/in/mohd-atif01" target="_blank" class="btn btn-secondary"><i class="fab fa-linkedin"></i> LinkedIn</a>
-                    <a href="https://github.com/Atif0110" target="_blank" class="btn btn-secondary"><i class="fab fa-github"></i> GitHub</a>
-                </div>
-            </div>
-        </section>
-
+      </div>
+      <div>
+        <p class="intro">
+          I build forecasting models, statistical pipelines and ML systems, then turn them into usable APIs and production data services.
+        </p>
+        <p class="intro mono" style="font-size:.72rem;margin-top:18px">IIT Madras · B.S. Data Science</p>
+      </div>
     </div>
+  </div>
+</section>
+
+<div class="container stats">
+  <div class="stat"><strong>95%</strong><span>Churn prediction accuracy</span></div>
+  <div class="stat"><strong>20–35%</strong><span>Forecast improvement</span></div>
+  <div class="stat"><strong>99%</strong><span>Data availability</span></div>
+  <div class="stat"><strong>3 min</strong><span>Pipeline refresh cycle</span></div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-num mono">01 / APPROACH</div>
+      <div>
+        <h2 class="section-title">Build the model.<br>Then build around it.</h2>
+        <p class="section-copy">My projects sit between data science and backend engineering. The model matters, but so do validation, APIs, data quality, reproducibility and the path from prediction to action.</p>
+      </div>
+    </div>
+    <div class="principles">
+      <div class="principle"><b>Model</b><p>XGBoost, scikit-learn and statistical forecasting.</p></div>
+      <div class="principle"><b>Engineer</b><p>FastAPI, Python, SQL and Docker.</p></div>
+      <div class="principle"><b>Ship</b><p>Render, Streamlit Cloud and CI/CD workflows.</p></div>
+      <div class="principle"><b>Validate</b><p>Backtesting, QA checks and business impact.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="stack">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-num mono">02 / STACK</div>
+      <div>
+        <h2 class="section-title">Tools I use<br>to make things real.</h2>
+      </div>
+    </div>
+    <div class="stack">
+      <div class="stack-card">
+        <h3>Data Science & Modeling</h3>
+        <div class="tags">
+          <span class="tag">Python 3.9+</span><span class="tag">scikit-learn</span><span class="tag">XGBoost</span>
+          <span class="tag">ARIMA</span><span class="tag">Pandas</span><span class="tag">NumPy</span><span class="tag">SHAP</span><span class="tag">Plotly</span>
+        </div>
+      </div>
+      <div class="stack-card">
+        <h3>Backend & Infrastructure</h3>
+        <div class="tags">
+          <span class="tag">FastAPI</span><span class="tag">Uvicorn</span><span class="tag">REST APIs</span>
+          <span class="tag">PostgreSQL</span><span class="tag">SQLite</span><span class="tag">Docker</span><span class="tag">Git</span><span class="tag">Render</span>
+        </div>
+      </div>
+      <div class="stack-card">
+        <h3>LLM & External APIs</h3>
+        <div class="tags">
+          <span class="tag">LangChain</span><span class="tag">OpenAI</span><span class="tag">Groq</span><span class="tag">Gemini</span>
+          <span class="tag">TomTom</span><span class="tag">WAQI</span><span class="tag">ENTSO-E</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="work">
+<div class="container">
+  <div class="section-head">
+    <div class="section-num mono">03 / SELECTED WORK</div>
+    <div>
+      <h2 class="section-title">A few systems<br>worth looking at.</h2>
+    </div>
+  </div>
+
+  <article class="project">
+    <div class="project-meta mono"><div class="number">01</div>FORECASTING<br>QUANT ENGINEERING</div>
+    <div>
+      <h3>European Power Market Forecasting System</h3>
+      <p class="project-desc">End-to-end day-ahead electricity price forecasting using real ENTSO-E market data. The pipeline engineers 12+ features, compares multiple models and includes backtesting and trading simulation.</p>
+      <div class="metrics"><span class="metric">20–35% improvement</span><span class="metric">12+ features</span><span class="metric">12+ month backtest</span><span class="metric">PnL simulation</span></div>
+      <div class="project-links"><a href="https://github.com/Atif0110/power-forecast-pipeline" target="_blank">View code ↗</a></div>
+    </div>
+  </article>
+
+  <article class="project">
+    <div class="project-meta mono"><div class="number">02</div>BACKEND<br>DECISION INTELLIGENCE</div>
+    <div>
+      <h3>Customer Churn Prediction & Retention Engine</h3>
+      <p class="project-desc">A FastAPI-based decision intelligence platform combining Logistic Regression with a provider-agnostic LLM layer for prediction, explanation and retention strategies. Includes batch processing and what-if simulation.</p>
+      <div class="metrics"><span class="metric">95% accuracy</span><span class="metric">100+ customers</span><span class="metric">&lt;5ms inference</span><span class="metric">What-if simulation</span></div>
+      <div class="project-links">
+        <a href="https://ai-customer-churn-intelligence.streamlit.app/" target="_blank">Live app ↗</a>
+        <a href="https://github.com/Atif0110/ai-customer-churn-intelligence" target="_blank">View code ↗</a>
+      </div>
+    </div>
+  </article>
+
+  <article class="project">
+    <div class="project-meta mono"><div class="number">03</div>REAL-TIME<br>GEOSPATIAL DATA</div>
+    <div>
+      <h3>Real-Time Urban Analytics Dashboard</h3>
+      <p class="project-desc">A multi-source pipeline combining OpenWeatherMap, TomTom Traffic and WAQI Air Quality data with validation, caching, forecasting, anomaly detection and automated alerts.</p>
+      <div class="metrics"><span class="metric">3 live APIs</span><span class="metric">3-min refresh</span><span class="metric">99% availability</span><span class="metric">ARIMA-style forecasting</span></div>
+      <div class="project-links"><a href="https://smart-city-analytics.streamlit.app/" target="_blank">Live app ↗</a></div>
+    </div>
+  </article>
+</div>
+</section>
+
+<section class="section" id="other">
+<div class="container">
+  <div class="section-head">
+    <div class="section-num mono">04 / OTHER WORK</div>
+    <div><h2 class="section-title">More experiments,<br>products and systems.</h2></div>
+  </div>
+  <div class="other-grid">
+    <article class="other"><small>Security · ML</small><h3>System Threat Forecaster</h3><p>ML-based anomaly detection for cybersecurity telemetry using feature engineering and Isolation Forest.</p><div class="tags"><span class="tag">Python</span><span class="tag">scikit-learn</span><span class="tag">Isolation Forest</span></div></article>
+    <article class="other"><small>Full Stack</small><h3>Influencer Engagement Platform v2</h3><p>Brand-influencer matching platform with Vue 3, Flask, Celery and similarity-based matching.</p><div class="tags"><span class="tag">Vue 3</span><span class="tag">Flask</span><span class="tag">Celery</span></div></article>
+    <article class="other"><small>Healthcare · LLM</small><h3>Shravan — AI Digital Health Companion</h3><p>Flutter mobile app with Flask API, Groq-powered chatbot, Maps integration and medication reminders.</p><div class="tags"><span class="tag">Flutter</span><span class="tag">Flask</span><span class="tag">Groq</span></div></article>
+    <article class="other"><small>Business Intelligence</small><h3>IPL 2024 Analytics Dashboard</h3><p>Power BI dashboard covering team performance, player statistics, trends and drill-through analysis.</p><div class="tags"><span class="tag">Power BI</span><span class="tag">DAX</span><span class="tag">Data Modeling</span></div></article>
+    <article class="other"><small>Desktop Automation</small><h3>OpenClaw Desktop Assistant</h3><p>LLM-powered desktop automation agent using Node.js and Playwright with a human approval workflow.</p><div class="tags"><span class="tag">Node.js</span><span class="tag">Playwright</span><span class="tag">Ollama</span></div></article>
+    <article class="other"><small>Analytics</small><h3>Restaurant Analytics & Business Optimization</h3><p>Python-based analysis of sales, profitability and retention with statistical modeling and business insights.</p><div class="tags"><span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">Jupyter</span></div></article>
+  </div>
+</div>
+</section>
+
+<section class="section">
+<div class="container">
+  <div class="section-head">
+    <div class="section-num mono">05 / NOW</div>
+    <div>
+      <h2 class="section-title">Currently exploring.</h2>
+      <div class="exploring" style="margin-top:24px">
+        <span class="tag">Model Monitoring</span><span class="tag">Fine-Tuning LLMs</span><span class="tag">Vector Search</span>
+        <span class="tag">Production RAG</span><span class="tag">Inference Optimisation</span><span class="tag">LLM Observability</span>
+        <span class="tag">Multi-Agent Systems</span><span class="tag">Agentic AI</span>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section class="section" id="contact" style="border-bottom:0">
+<div class="container">
+  <div class="contact">
+    <div>
+      <h2>Have a hard<br><em>problem?</em></h2>
+      <p>I'm looking for Data Scientist, Backend Engineer and Applied ML Engineer opportunities where I can build models and ship them as real systems.</p>
+    </div>
+    <div class="actions">
+      <a class="btn primary" href="mailto:data.atif001@gmail.com">Email me ↗</a>
+      <a class="btn" href="https://linkedin.com/in/mohd-atif01" target="_blank">LinkedIn ↗</a>
+      <a class="btn" href="https://github.com/Atif0110" target="_blank">GitHub ↗</a>
+    </div>
+  </div>
+</div>
+</section>
 </main>
 
-<footer class="footer">
-    <div class="container">© 2026 Mohd Atif · Data Scientist &amp; Backend Engineer</div>
+<footer>
+  <div class="container footer-inner">
+    <span>© 2026 Mohd Atif</span>
+    <span class="mono">Data Science × Backend Engineering</span>
+  </div>
 </footer>
-
-<script>
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            const href = this.getAttribute('href');
-            if (href === "#" || href === "") return;
-            const target = document.querySelector(href);
-            if (target) {
-                e.preventDefault();
-                target.scrollIntoView({ behavior: 'smooth' });
-            }
-        });
-    });
-</script>
 </body>
 </html>
