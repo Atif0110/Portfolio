@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Mohd Atif | Data Scientist and Backend AI Engineer</title>
-<meta name="description" content="Mohd Atif builds forecasting models, LLM pipelines and the production backends that serve them. FastAPI, PostgreSQL, XGBoost, agent systems.">
+<meta name="description" content="Mohd Atif, Data Scientist and Backend AI Engineer. Forecasting models, experimentation, LLM pipelines and the production backends that serve them.">
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="Mohd Atif | Data Scientist and Backend AI Engineer">
-<meta property="og:description" content="Forecasting models, LLM pipelines and the production backends that serve them.">
+<meta property="og:description" content="Forecasting models, experimentation and the production backends that serve them.">
 <meta property="og:url" content="https://atif0110.github.io/Portfolio/">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#0a0c10">
@@ -149,6 +149,12 @@ section h2{ font-size:clamp(1.5rem,3.2vw,1.9rem); }
 .tl h3{ font-size:1.05rem; margin-top:5px; }
 .tl .what{ font-size:.83rem; color:var(--accent-2); margin-top:2px; }
 .tl p{ color:var(--body); font-size:.92rem; margin-top:9px; max-width:66ch; }
+.tl ul{ list-style:none; margin-top:11px; display:grid; gap:9px; }
+.tl li{ position:relative; padding-left:18px; font-size:.91rem; color:var(--body); max-width:70ch; }
+.tl li::before{
+  content:""; position:absolute; left:0; top:.62em;
+  width:5px; height:5px; border-radius:1px; background:var(--accent-2); opacity:.75;
+}
 
 /* PROJECTS */
 .proj{
@@ -208,6 +214,18 @@ section h2{ font-size:clamp(1.5rem,3.2vw,1.9rem); }
 }
 .chips span:hover{ border-color:var(--accent); transform:translateY(-2px); }
 
+/* EDUCATION */
+.edu{
+  margin-top:30px; display:grid; grid-template-columns:repeat(2,1fr); gap:14px;
+}
+.edu div{
+  background:var(--panel); border:1px solid var(--line);
+  border-radius:10px; padding:20px;
+}
+.edu h3{ font-size:.98rem; }
+.edu .date{ font-family:"JetBrains Mono",monospace; font-size:.74rem; color:var(--dim); }
+.edu p{ color:var(--body); font-size:.88rem; margin-top:6px; }
+
 /* CONTACT */
 .cta-box{
   margin-top:30px; border:1px solid var(--line);
@@ -228,6 +246,7 @@ footer .wrap{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8
 
 @media(max-width:720px){
   .caps{ grid-template-columns:1fr; }
+  .edu{ grid-template-columns:1fr; }
   .proj{ padding:22px 18px; }
   .cta-box{ padding:32px 22px; }
 }
@@ -260,14 +279,14 @@ footer .wrap{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8
     <p class="sub rv">I build forecasting and machine learning systems, LLM pipelines, and the FastAPI and PostgreSQL services that serve them. Most of my work sits in the layer people skip: validation gates, uncertainty, idempotent writes, audit trails, and the checks that decide whether a prediction is safe to act on.</p>
     <div class="facts rv">
       <span>B.S. Data Science, IIT Madras</span>
-      <span>Lucknow, India</span>
-      <span>Open to Dubai, UAE and Europe</span>
+      <span>One year commercial data science experience</span>
+      <span>Open to the United States, Europe, India and remote worldwide</span>
     </div>
     <div class="actions rv">
       <a class="btn solid" href="mailto:data.atif001@gmail.com">Get in touch <span class="ar">&rarr;</span></a>
       <a class="btn" href="https://github.com/Atif0110" target="_blank" rel="noopener noreferrer">GitHub <span class="ar">&rarr;</span></a>
       <a class="btn" href="https://www.linkedin.com/in/mohd-atif01/" target="_blank" rel="noopener noreferrer">LinkedIn <span class="ar">&rarr;</span></a>
-      <!-- VERIFY: confirm this file exists at assets/Mohd_Atif_Resume.pdf on the deployed site -->
+      <!-- VERIFY: confirm this filename matches the PDF you upload to /assets -->
       <a class="btn" href="assets/Mohd_Atif_Resume.pdf" download>Resume <span class="ar">&rarr;</span></a>
     </div>
   </div>
@@ -280,8 +299,8 @@ footer .wrap{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8
     <div class="caps">
       <div class="cap rv">
         <b>01</b>
-        <h3>Forecasting and modeling</h3>
-        <p>Gradient boosting and time series work with chronological validation, a named baseline to beat, and uncertainty carried through to the decision instead of dropped at the metric.</p>
+        <h3>Forecasting and experimentation</h3>
+        <p>Gradient boosting and time series work with chronological validation and a named baseline to beat, plus controlled pricing experiments and hypothesis testing on live commercial data.</p>
       </div>
       <div class="cap rv">
         <b>02</b>
@@ -301,7 +320,7 @@ footer .wrap{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8
   <div class="wrap">
     <div class="kicker rv">Experience</div>
     <h2 class="rv">Where I have worked</h2>
-    <p class="intro rv">About a year of paid AI and machine learning work across contract model evaluation, open source contribution, and direct delivery for clients in the United States and the Netherlands.</p>
+    <p class="intro rv">A year of commercial data science on live operational data, followed by contract model evaluation, open source contribution, and direct delivery for clients in the United States and the Netherlands.</p>
 
     <div class="tl">
       <div class="row rv">
@@ -330,6 +349,19 @@ footer .wrap{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8
         <h3>Mythos</h3>
         <div class="what">Growth and customer acquisition, short engagement</div>
         <p>Worked directly with the founder on growth and customer acquisition experiments during an early scaling push.</p>
+      </div>
+
+      <div class="row rv">
+        <div class="date">Jun 2024 to May 2025</div>
+        <h3>Arabania Indo Arabic Restaurant</h3>
+        <div class="what">Data Scientist, hybrid, Lucknow</div>
+        <p>My first commercial data role, owning forecasting and analytics for a single site operation where the output was a daily purchasing decision rather than a dashboard.</p>
+        <ul>
+          <li>Built demand forecasting models in Python with statsmodels and scikit learn across more than one hundred thousand inventory records, used for daily inventory planning. Over the engagement food waste fell by roughly twenty percent and procurement costs by twelve percent.</li>
+          <li>Ran end to end pricing experiments using hypothesis testing and statistical inference, identifying a pricing change associated with a fifteen percent gross margin improvement within two months, alongside SKU level performance models used to prioritise the menu.</li>
+          <li>Automated the recurring reporting pipeline in SQL using common table expressions and window functions to surface demand and seasonality patterns, cutting manual reporting effort by around forty percent.</li>
+          <li>The lasting lesson was that a forecast is only worth what the person acting on it trusts, which is why every model I have built since ships with a baseline comparison and an explicit statement of uncertainty.</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -376,7 +408,7 @@ footer .wrap{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8
         <li><b>The split respects time.</b> Training and test sets are cut chronologically rather than shuffled, so no future information leaks backward into training, which is the failure mode that quietly inflates most time series results.</li>
         <li><b>Features model the actual market.</b> Hour, weekday, month and weekend flags for seasonality, lags at one, twenty four, forty eight and one hundred sixty eight hours, a rolling daily mean and standard deviation, and a momentum term, all on top of load and renewable generation as demand and supply drivers. Feature engineering raises immediately if any missing value survives it.</li>
         <li><b>A quality gate that understands the domain.</b> Before modeling, data is scored out of one hundred with deductions for missing hours, duplicate timestamps, extreme spikes, and violated economic relationships, since price should move with load and against wind and solar. The result is a structured report, so bad data is caught rather than silently trained on.</li>
-        <li><b>Uncertainty drives the decision.</b> A ninety five percent interval is derived from training residuals and carried forward, and the signal layer takes a position only when the spread against the reference price exceeds that interval, otherwise it returns no trade. Output is an interactive chart of forecast against actual, the signal, and a cumulative simulation.</li>
+        <li><b>Uncertainty drives the decision.</b> A ninety five percent interval is derived from training residuals and carried forward, and the signal layer takes a position only when the spread against the reference price exceeds that interval, otherwise it returns no trade. An LLM layer turns the run into a written trader brief, and the output is an interactive chart of forecast against actual with the signal and a cumulative simulation.</li>
       </ul>
       <div class="go">
         <a href="https://github.com/Atif0110/power-forecast-pipeline" target="_blank" rel="noopener noreferrer">GitHub <span class="ar">&rarr;</span></a>
@@ -387,9 +419,7 @@ footer .wrap{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8
         Prepend a sentence to the caveat below, for example:
         "On a chronological holdout the model reached a mean absolute error of X.X
         against Y.Y for the seasonal naive baseline, an improvement of Z percent."
-        If that run used the synthetic fallback rather than live ENTSOE data,
-        say so in the same sentence. A labelled modest number beats an unlabelled
-        strong one every time.
+        State whether that run used live ENTSOE data or the synthetic fallback.
       -->
       <p class="caveat">Simulated performance comes from a historical backtest of the signal rules against a fixed reference price and is not a claim about live trading.</p>
     </article>
@@ -467,23 +497,30 @@ footer .wrap{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8
     <h2 class="rv">Tools I reach for</h2>
 
     <div class="grp rv">
-      <h3>Data science and modeling</h3>
+      <h3>Machine learning and statistics</h3>
       <div class="chips">
-        <span>Python</span><span>XGBoost</span><span>scikit learn</span><span>pandas</span><span>NumPy</span><span>ARIMA</span><span>SHAP</span><span>Plotly</span>
+        <span>Python</span><span>XGBoost</span><span>scikit learn</span><span>statsmodels</span><span>time series forecasting</span><span>A/B testing</span><span>hypothesis testing</span><span>anomaly detection</span><span>SHAP</span>
+      </div>
+    </div>
+
+    <div class="grp rv">
+      <h3>Data and analytics</h3>
+      <div class="chips">
+        <span>SQL</span><span>CTEs and window functions</span><span>pandas</span><span>NumPy</span><span>R</span><span>Power BI</span><span>Tableau</span><span>Matplotlib</span><span>Plotly</span>
       </div>
     </div>
 
     <div class="grp rv">
       <h3>Backend and infrastructure</h3>
       <div class="chips">
-        <span>FastAPI</span><span>Flask</span><span>PostgreSQL</span><span>SQLAlchemy</span><span>Alembic</span><span>Docker</span><span>pytest</span><span>GitHub Actions</span>
+        <span>FastAPI</span><span>Flask</span><span>PostgreSQL</span><span>SQLAlchemy</span><span>Alembic</span><span>Docker</span><span>pytest</span><span>GitHub Actions</span><span>Git</span>
       </div>
     </div>
 
     <div class="grp rv">
       <h3>AI and LLM systems</h3>
       <div class="chips">
-        <span>Groq</span><span>OpenAI</span><span>Anthropic</span><span>Ollama</span><span>RAG</span><span>structured extraction</span><span>Playwright</span><span>n8n</span>
+        <span>Groq</span><span>OpenAI</span><span>Anthropic</span><span>Ollama</span><span>LangChain</span><span>RAG</span><span>structured extraction</span><span>Playwright</span><span>n8n</span>
       </div>
     </div>
 
@@ -491,6 +528,19 @@ footer .wrap{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8
       <h3>Frontend and mobile</h3>
       <div class="chips">
         <span>React</span><span>Vue 3</span><span>Streamlit</span><span>Flutter</span>
+      </div>
+    </div>
+
+    <div class="edu">
+      <div class="rv">
+        <div class="date">2022 to 2025</div>
+        <h3>Indian Institute of Technology, Madras</h3>
+        <p>B.S. in Data Science and Applications.</p>
+      </div>
+      <div class="rv">
+        <div class="date">Certification</div>
+        <h3>Google Data Analytics Professional Certificate</h3>
+        <p>Foundations, data exploration, and data driven decision making.</p>
       </div>
     </div>
   </div>
@@ -501,7 +551,7 @@ footer .wrap{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8
     <div class="kicker rv">Contact</div>
     <div class="cta-box rv">
       <h2>Have a hard problem?</h2>
-      <p>I am looking for Data Scientist and Backend AI Engineer roles where the job is getting a model into production and keeping it trustworthy once it is there.</p>
+      <p>I am looking for Data Scientist and Backend AI Engineer roles where the job is getting a model into production and keeping it trustworthy once it is there. Open to the United States, Europe, India and fully remote teams anywhere.</p>
       <div class="actions">
         <a class="btn solid" href="mailto:data.atif001@gmail.com">Email me <span class="ar">&rarr;</span></a>
         <a class="btn" href="https://www.linkedin.com/in/mohd-atif01/" target="_blank" rel="noopener noreferrer">LinkedIn <span class="ar">&rarr;</span></a>
