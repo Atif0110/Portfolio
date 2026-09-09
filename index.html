@@ -1,2323 +1,550 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Mohd Atif — Data Scientist & Backend Engineer</title>
+<title>Mohd Atif | Data Scientist and Backend AI Engineer</title>
+<meta name="description" content="Mohd Atif builds forecasting models, LLM pipelines and the production backends that serve them. FastAPI, PostgreSQL, XGBoost, agent systems.">
 
-<meta
-  name="description"
-  content="Mohd Atif — Data Scientist and Backend Engineer building machine learning systems, AI applications, backend services and data-driven products."
->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Mohd Atif | Data Scientist and Backend AI Engineer">
+<meta property="og:description" content="Forecasting models, LLM pipelines and the production backends that serve them.">
+<meta property="og:url" content="https://atif0110.github.io/Portfolio/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0a0c10">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230a0c10'/><text x='50' y='69' font-size='56' font-family='monospace' fill='%2364d2b3' text-anchor='middle'>A</text></svg>">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link
-  href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
-  rel="stylesheet"
->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
-
 :root{
-  --paper:#11110f;
-  --ink:#eeeae2;
-  --muted:#a8a39a;
-  --line:#2a2926;
-  --card:#171714;
-  --accent:#d8895b;
-  --dark:#0c0c0b;
-  --max:1120px;
+  --bg:#0a0c10;
+  --panel:#0f1218;
+  --panel-2:#131721;
+  --line:#1c212c;
+  --line-2:#252b38;
+  --text:#e8ecf2;
+  --body:#aeb8c7;
+  --dim:#788293;
+  --accent:#64d2b3;
+  --accent-2:#7aa2f7;
+  --max:880px;
 }
 
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
-
-html{
-  scroll-behavior:smooth;
-}
+*{ box-sizing:border-box; margin:0; padding:0; }
+html{ scroll-behavior:smooth; scroll-padding-top:80px; }
 
 body{
-  background:var(--paper);
-  color:var(--ink);
-  font-family:"DM Sans",sans-serif;
-  line-height:1.6;
+  background:var(--bg);
+  color:var(--text);
+  font-family:"Inter",system-ui,-apple-system,sans-serif;
+  font-size:16px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
 }
 
-a{
-  color:inherit;
-}
+.wrap{ width:min(var(--max), calc(100% - 44px)); margin:0 auto; }
 
-:focus-visible{
+h1,h2,h3{ letter-spacing:-.02em; line-height:1.25; font-weight:600; }
+code,.mono{ font-family:"JetBrains Mono",ui-monospace,monospace; }
+code{ font-size:.88em; color:var(--accent); background:rgba(100,210,179,.07); padding:1px 5px; border-radius:4px; }
+a{ color:var(--accent); text-decoration:none; }
+
+a:focus-visible,.btn:focus-visible{
   outline:2px solid var(--accent);
-  outline-offset:4px;
+  outline-offset:3px;
+  border-radius:4px;
 }
 
-.container{
-  width:min(var(--max),calc(100% - 40px));
-  margin:auto;
-}
-
-.mono{
-  font-family:"IBM Plex Mono",monospace;
-}
-
-
-/* =========================
-   NAVIGATION
-========================= */
-
-header{
-  border-bottom:1px solid var(--line);
-  background:rgba(17,17,15,.94);
-  position:sticky;
-  top:0;
-  z-index:20;
+/* NAV */
+nav{
+  position:sticky; top:0; z-index:50;
+  background:rgba(10,12,16,.72);
   backdrop-filter:blur(12px);
+  border-bottom:1px solid transparent;
+  transition:border-color .3s ease;
 }
+nav.scrolled{ border-bottom-color:var(--line); }
+nav .wrap{ display:flex; align-items:center; justify-content:space-between; height:60px; }
+nav .brand{ font-family:"JetBrains Mono",monospace; font-size:.9rem; color:var(--text); }
+nav .brand span{ color:var(--accent); }
+nav .links{ display:flex; gap:24px; font-size:.87rem; }
+nav .links a{ color:var(--body); transition:color .2s ease; }
+nav .links a:hover{ color:var(--text); }
+@media(max-width:700px){ nav .links{ display:none; } }
 
-.nav{
-  height:72px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-}
-
-.logo{
-  text-decoration:none;
-  font-weight:700;
-  font-size:1rem;
-  letter-spacing:-.03em;
-}
-
-.logo span{
-  color:var(--accent);
-}
-
-.nav-links{
-  display:flex;
-  gap:28px;
-}
-
-.nav-links a{
-  text-decoration:none;
-  color:var(--muted);
-  font-size:.86rem;
-}
-
-.nav-links a:hover{
-  color:var(--ink);
-}
-
-
-/* =========================
-   HERO
-========================= */
-
-.hero{
-  padding:108px 0 78px;
-  border-bottom:1px solid var(--line);
-}
-
-.eyebrow{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  color:var(--accent);
-  font-size:.75rem;
-  text-transform:uppercase;
-  letter-spacing:.11em;
-  font-weight:600;
-  margin-bottom:28px;
-}
-
-.eyebrow:before{
-  content:"";
-  width:34px;
-  height:1px;
-  background:var(--accent);
-}
-
-.hero-grid{
-  display:grid;
-  grid-template-columns:1.55fr .75fr;
-  gap:70px;
-  align-items:end;
-}
-
-h1{
-  font-size:clamp(3.3rem,7vw,6.5rem);
-  line-height:.92;
-  letter-spacing:-.075em;
-  font-weight:700;
-  max-width:850px;
-}
-
-h1 em{
-  font-style:normal;
-  color:var(--accent);
-}
-
-.intro{
-  font-size:1.05rem;
-  color:var(--muted);
-  max-width:410px;
-  margin-bottom:7px;
-}
-
-.actions{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  margin-top:34px;
-}
-
-.btn{
-  display:inline-flex;
-  align-items:center;
-  gap:9px;
-  padding:11px 16px;
-  border:1px solid var(--ink);
-  text-decoration:none;
-  font-size:.82rem;
-  font-weight:600;
-  transition:.2s ease;
-}
-
-.btn.primary{
-  background:#e7e1d7;
-  color:#11110f;
-}
-
-.btn:hover{
-  transform:translateY(-2px);
-}
-
-
-/* =========================
-   STATS
-========================= */
-
-.stats{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  border-bottom:1px solid var(--line);
-}
-
-.stat{
-  padding:26px 20px;
-  border-right:1px solid var(--line);
-}
-
-.stat:last-child{
-  border-right:0;
-}
-
-.stat strong{
-  display:block;
-  font-size:1.55rem;
-  letter-spacing:-.04em;
-}
-
-.stat span{
-  color:var(--muted);
-  font-size:.72rem;
-}
-
-
-/* =========================
-   SECTIONS
-========================= */
-
-.section{
-  padding:90px 0;
-  border-bottom:1px solid var(--line);
-}
-
-.section-head{
-  display:grid;
-  grid-template-columns:220px 1fr;
-  gap:40px;
-  margin-bottom:45px;
-}
-
-.section-num{
-  color:var(--accent);
-  font-size:.75rem;
-}
-
-.section-title{
-  font-size:2.3rem;
-  letter-spacing:-.055em;
-  line-height:1.05;
-}
-
-.section-copy{
-  color:var(--muted);
-  max-width:600px;
-  margin-top:12px;
-}
-
-
-/* =========================
-   APPROACH
-========================= */
-
-.principles{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  border-top:1px solid var(--line);
-}
-
-.principle{
-  padding:22px 18px 0 0;
-  border-right:1px solid var(--line);
-  margin-right:18px;
-}
-
-.principle:last-child{
-  border:0;
-}
-
-.principle b{
-  font-size:.78rem;
-  text-transform:uppercase;
-  letter-spacing:.08em;
-}
-
-.principle p{
-  color:var(--muted);
-  font-size:.86rem;
-  margin-top:7px;
-}
-
-
-/* =========================
-   EXPERIENCE
-========================= */
-
-.experience-list{
-  border-top:1px solid var(--line);
-}
-
-.experience-item{
-  display:grid;
-  grid-template-columns:180px 1fr;
-  gap:42px;
-  padding:38px 0;
-  border-bottom:1px solid var(--line);
-}
-
-.experience-item:last-child{
-  border-bottom:0;
-}
-
-.experience-meta{
-  color:var(--muted);
-  font-size:.72rem;
-  line-height:1.6;
-}
-
-.experience-meta .number{
-  color:var(--accent);
-  font-size:1rem;
-  margin-bottom:8px;
-}
-
-.experience-content h3{
-  font-size:1.45rem;
-  letter-spacing:-.04em;
-  line-height:1.1;
-}
-
-.experience-role{
-  color:var(--accent);
-  font-family:"IBM Plex Mono",monospace;
-  font-size:.72rem;
-  margin-top:7px;
-}
-
-.experience-content p{
-  color:var(--muted);
-  max-width:760px;
-  margin-top:12px;
-  font-size:.9rem;
-}
-
-.experience-tags{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-  margin-top:16px;
-}
-
-
-/* =========================
-   STACK
-========================= */
-
-.stack{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:1px;
-  background:var(--line);
-  border:1px solid var(--line);
-}
-
-.stack-card{
-  background:var(--card);
-  padding:25px;
-}
-
-.stack-card h3{
-  font-size:.9rem;
-  margin-bottom:18px;
-}
-
-.tags{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-}
-
+/* HERO */
+.hero{ padding:88px 0 72px; }
 .tag{
-  border:1px solid var(--line);
-  padding:6px 9px;
-  font-family:"IBM Plex Mono",monospace;
-  font-size:.7rem;
-  color:var(--muted);
-  background:#1b1b18;
+  display:inline-flex; align-items:center; gap:8px;
+  font-family:"JetBrains Mono",monospace; font-size:.76rem;
+  color:var(--body); border:1px solid var(--line);
+  background:var(--panel); border-radius:99px; padding:6px 13px;
 }
+.tag .dot{ width:6px; height:6px; border-radius:50%; background:var(--accent); animation:blip 2.6s ease-in-out infinite; }
+@keyframes blip{ 0%,100%{opacity:1} 50%{opacity:.35} }
 
-
-/* =========================
-   PROJECTS
-========================= */
-
-.project{
-  display:grid;
-  grid-template-columns:180px 1fr;
-  gap:42px;
-  padding:44px 0;
-  border-top:1px solid var(--line);
+.hero h1{ font-size:clamp(2.1rem,5.2vw,3.2rem); margin-top:26px; max-width:19ch; }
+.hero h1 em{ font-style:normal; color:var(--accent); }
+.hero .sub{ margin-top:22px; color:var(--body); font-size:1.05rem; max-width:62ch; }
+.hero .facts{
+  margin-top:26px; display:flex; flex-wrap:wrap; gap:8px 20px;
+  font-family:"JetBrains Mono",monospace; font-size:.79rem; color:var(--dim);
 }
+.hero .facts span{ display:inline-flex; align-items:center; gap:8px; }
+.hero .facts span::before{ content:""; width:3px; height:3px; border-radius:50%; background:var(--accent-2); }
 
-.project:first-of-type{
-  border-top:0;
-  padding-top:0;
+.actions{ margin-top:34px; display:flex; flex-wrap:wrap; gap:11px; }
+.btn{
+  display:inline-flex; align-items:center; gap:8px;
+  font-size:.9rem; font-weight:500; padding:10px 18px;
+  border-radius:7px; border:1px solid var(--line-2);
+  background:var(--panel); color:var(--text);
+  transition:transform .2s ease, background .2s ease, border-color .2s ease;
 }
+.btn:hover{ transform:translateY(-2px); background:var(--panel-2); border-color:#32394a; }
+.btn.solid{ background:var(--accent); color:#062018; border-color:var(--accent); font-weight:600; }
+.btn.solid:hover{ background:#7ce0c3; border-color:#7ce0c3; }
+.btn .ar{ transition:transform .2s ease; }
+.btn:hover .ar{ transform:translateX(3px); }
 
-.project-meta{
-  color:var(--muted);
-  font-size:.74rem;
+/* SECTIONS */
+section{ padding:68px 0; border-top:1px solid var(--line); }
+.kicker{
+  font-family:"JetBrains Mono",monospace; font-size:.73rem;
+  letter-spacing:.18em; text-transform:uppercase; color:var(--accent);
+  margin-bottom:14px;
 }
+section h2{ font-size:clamp(1.5rem,3.2vw,1.9rem); }
+.intro{ color:var(--body); max-width:64ch; margin-top:14px; font-size:.97rem; }
 
-.project-meta .number{
-  color:var(--accent);
-  font-size:1rem;
-  margin-bottom:8px;
+/* CAPABILITY */
+.caps{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:34px; }
+.cap{
+  background:var(--panel); border:1px solid var(--line);
+  border-radius:10px; padding:22px 20px;
+  transition:transform .25s ease, border-color .25s ease;
 }
+.cap:hover{ transform:translateY(-3px); border-color:var(--line-2); }
+.cap b{ font-family:"JetBrains Mono",monospace; font-size:.74rem; color:var(--dim); font-weight:400; }
+.cap h3{ font-size:1rem; margin-top:10px; }
+.cap p{ color:var(--body); font-size:.88rem; margin-top:8px; }
 
-.project h3{
-  font-size:1.65rem;
-  letter-spacing:-.045em;
-  line-height:1.1;
+/* TIMELINE */
+.tl{ margin-top:36px; padding-left:24px; border-left:1px solid var(--line); }
+.tl .row{ position:relative; padding-bottom:32px; }
+.tl .row:last-child{ padding-bottom:0; }
+.tl .row::before{
+  content:""; position:absolute; left:-29px; top:9px;
+  width:9px; height:9px; border-radius:50%;
+  background:var(--bg); border:2px solid var(--line-2);
+  transition:border-color .25s ease;
 }
+.tl .row:hover::before{ border-color:var(--accent); }
+.tl .date{ font-family:"JetBrains Mono",monospace; font-size:.75rem; color:var(--dim); }
+.tl h3{ font-size:1.05rem; margin-top:5px; }
+.tl .what{ font-size:.83rem; color:var(--accent-2); margin-top:2px; }
+.tl p{ color:var(--body); font-size:.92rem; margin-top:9px; max-width:66ch; }
 
-.project-desc{
-  color:var(--muted);
-  max-width:760px;
-  margin:14px 0 22px;
+/* PROJECTS */
+.proj{
+  background:var(--panel); border:1px solid var(--line);
+  border-radius:12px; padding:26px 24px; margin-top:18px;
+  position:relative; overflow:hidden;
+  transition:transform .28s ease, border-color .28s ease;
 }
-
-.metrics{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-  margin-bottom:20px;
+.proj::before{
+  content:""; position:absolute; top:0; left:0; right:0; height:1px;
+  background:linear-gradient(90deg,transparent,var(--accent),transparent);
+  opacity:0; transition:opacity .3s ease;
 }
-
-.metric{
-  font-size:.7rem;
-  padding:5px 9px;
-  background:#24231f;
-  color:#c0bbb1;
+.proj:hover{ transform:translateY(-3px); border-color:var(--line-2); }
+.proj:hover::before{ opacity:.75; }
+.proj .head{ display:flex; align-items:baseline; justify-content:space-between; gap:14px; flex-wrap:wrap; }
+.proj h3{ font-size:1.22rem; }
+.proj .type{ font-family:"JetBrains Mono",monospace; font-size:.72rem; color:var(--dim); }
+.proj .pitch{ color:var(--body); font-size:.94rem; margin-top:9px; max-width:66ch; }
+.tech{ display:flex; flex-wrap:wrap; gap:6px; margin-top:16px; }
+.tech span{
+  font-family:"JetBrains Mono",monospace; font-size:.71rem;
+  color:var(--body); background:var(--bg);
+  border:1px solid var(--line); border-radius:5px; padding:3px 8px;
 }
-
-.project-links{
-  display:flex;
-  gap:18px;
-  flex-wrap:wrap;
-  font-size:.8rem;
-  font-weight:600;
+.proj ul{ list-style:none; margin-top:18px; display:grid; gap:10px; }
+.proj li{ position:relative; padding-left:19px; font-size:.91rem; color:#c4cddb; max-width:72ch; }
+.proj li::before{
+  content:""; position:absolute; left:0; top:.6em;
+  width:5px; height:5px; border-radius:1px; background:var(--accent); opacity:.8;
 }
-
-.project-links a{
-  text-decoration:none;
-  border-bottom:1px solid var(--ink);
+.proj li b{ color:var(--text); font-weight:600; }
+.go{ display:flex; flex-wrap:wrap; gap:18px; margin-top:20px; font-size:.85rem; font-weight:500; }
+.go a{ display:inline-flex; align-items:center; gap:6px; transition:color .2s ease; }
+.go a .ar{ transition:transform .2s ease; }
+.go a:hover{ color:#8ee6cb; }
+.go a:hover .ar{ transform:translateX(3px); }
+.caveat{
+  margin-top:16px; font-size:.81rem; color:var(--dim);
+  border-left:2px solid var(--line-2); padding-left:12px; max-width:70ch;
 }
+.more{ margin-top:28px; color:var(--body); font-size:.92rem; }
 
-.project-links a:hover{
-  color:var(--accent);
-  border-color:var(--accent);
+/* STACK */
+.grp{ margin-top:26px; }
+.grp h3{
+  font-family:"JetBrains Mono",monospace; font-size:.73rem;
+  letter-spacing:.12em; text-transform:uppercase; color:var(--dim);
+  font-weight:400; margin-bottom:10px;
 }
-
-
-/* =========================
-   OTHER WORK
-========================= */
-
-.other-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:1px;
-  background:var(--line);
-  border:1px solid var(--line);
+.chips{ display:flex; flex-wrap:wrap; gap:7px; }
+.chips span{
+  font-family:"JetBrains Mono",monospace; font-size:.78rem;
+  background:var(--panel); border:1px solid var(--line);
+  color:#cad3e0; border-radius:6px; padding:5px 10px;
+  transition:border-color .2s ease, transform .2s ease;
 }
+.chips span:hover{ border-color:var(--accent); transform:translateY(-2px); }
 
-.other{
-  background:var(--card);
-  padding:28px;
-  min-height:210px;
+/* CONTACT */
+.cta-box{
+  margin-top:30px; border:1px solid var(--line);
+  border-radius:12px; padding:40px 32px; background:var(--panel);
 }
-
-.other small{
-  color:var(--accent);
-  font-size:.68rem;
-  text-transform:uppercase;
-  letter-spacing:.09em;
-}
-
-.other h3{
-  font-size:1.1rem;
-  margin:10px 0 8px;
-}
-
-.other p{
-  color:var(--muted);
-  font-size:.85rem;
-}
-
-.other .tags{
-  margin-top:18px;
-}
-
-
-/* =========================
-   NOW
-========================= */
-
-.exploring{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-}
-
-
-/* =========================
-   CONTACT
-========================= */
-
-.contact{
-  background:var(--dark);
-  color:#eeeae2;
-  padding:70px;
-  display:grid;
-  grid-template-columns:1fr auto;
-  gap:50px;
-  align-items:end;
-}
-
-.contact h2{
-  font-size:clamp(2.4rem,5vw,4.6rem);
-  letter-spacing:-.07em;
-  line-height:.95;
-}
-
-.contact h2 em{
-  color:#d8895b;
-  font-style:normal;
-}
-
-.contact p{
-  color:#aaa69e;
-  max-width:550px;
-  margin-top:18px;
-}
-
-.contact .btn{
-  border-color:#5b5851;
-  color:#d8d3ca;
-  background:transparent;
-}
-
-.contact .btn.primary{
-  background:#e7e1d7;
-  color:#11110f;
-  border-color:#e7e1d7;
-}
-
-
-/* =========================
-   FOOTER
-========================= */
+.cta-box h2{ font-size:clamp(1.5rem,3.4vw,1.95rem); }
+.cta-box p{ color:var(--body); margin-top:12px; max-width:58ch; font-size:.96rem; }
 
 footer{
-  padding:28px 0;
-  color:var(--muted);
-  font-size:.75rem;
+  border-top:1px solid var(--line); padding:24px 0 44px;
+  font-family:"JetBrains Mono",monospace; font-size:.78rem; color:var(--dim);
 }
+footer .wrap{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; }
 
-.footer-inner{
-  display:flex;
-  justify-content:space-between;
-  gap:20px;
+/* REVEAL */
+.rv{ opacity:0; transform:translateY(16px); }
+.rv.on{ opacity:1; transform:none; transition:opacity .6s ease, transform .6s ease; }
+
+@media(max-width:720px){
+  .caps{ grid-template-columns:1fr; }
+  .proj{ padding:22px 18px; }
+  .cta-box{ padding:32px 22px; }
 }
-
-
-/* =========================
-   TABLET
-========================= */
-
-@media(max-width:800px){
-
-  .nav-links{
-    display:none;
-  }
-
-  .hero{
-    padding:75px 0 55px;
-  }
-
-  .hero-grid,
-  .section-head,
-  .project,
-  .experience-item,
-  .contact{
-    grid-template-columns:1fr;
-  }
-
-  .hero-grid{
-    gap:35px;
-  }
-
-  .stats{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .stat:nth-child(2){
-    border-right:0;
-  }
-
-  .stat:nth-child(-n+2){
-    border-bottom:1px solid var(--line);
-  }
-
-  .principles,
-  .stack{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .principle:nth-child(2){
-    border-right:0;
-  }
-
-  .principle{
-    padding-bottom:22px;
-  }
-
-  .project{
-    gap:12px;
-  }
-
-  .experience-item{
-    gap:12px;
-  }
-
-  .contact{
-    padding:45px 28px;
-  }
-
+@media(prefers-reduced-motion:reduce){
+  html{ scroll-behavior:auto; }
+  .rv{ opacity:1; transform:none; }
+  *{ animation:none !important; transition:none !important; }
 }
-
-
-/* =========================
-   MOBILE
-========================= */
-
-@media(max-width:520px){
-
-  .container{
-    width:min(var(--max),calc(100% - 28px));
-  }
-
-  h1{
-    font-size:3.25rem;
-  }
-
-  .section{
-    padding:65px 0;
-  }
-
-  .stats,
-  .principles,
-  .stack,
-  .other-grid{
-    grid-template-columns:1fr;
-  }
-
-  .stat{
-    border-right:0;
-    border-bottom:1px solid var(--line);
-  }
-
-  .stat:last-child{
-    border-bottom:0;
-  }
-
-  .principle{
-    border-right:0;
-    border-bottom:1px solid var(--line);
-    margin-right:0;
-  }
-
-  .footer-inner{
-    display:block;
-  }
-
-  .footer-inner .mono{
-    margin-top:8px;
-  }
-
-}
-
 </style>
 </head>
 
-
 <body>
 
-
-<!-- =========================
-     HEADER
-========================= -->
-
-<header>
-
-  <div class="container nav">
-
-    <a class="logo" href="#">
-      atif<span>.</span>dev
-    </a>
-
-    <nav class="nav-links">
-
-      <a href="#experience">
-        Experience
-      </a>
-
-      <a href="#work">
-        Work
-      </a>
-
-      <a href="#stack">
-        Stack
-      </a>
-
-      <a href="#other">
-        Other
-      </a>
-
-      <a href="#contact">
-        Contact
-      </a>
-
-    </nav>
-
+<nav id="nav">
+  <div class="wrap">
+    <span class="brand">mohd<span>.</span>atif</span>
+    <div class="links">
+      <a href="#work">Work</a>
+      <a href="#projects">Projects</a>
+      <a href="#stack">Stack</a>
+      <a href="#contact">Contact</a>
+    </div>
   </div>
+</nav>
 
+<header class="hero">
+  <div class="wrap">
+    <div class="tag rv"><span class="dot" aria-hidden="true"></span> Open to Data Scientist and Backend AI Engineer roles</div>
+    <h1 class="rv">Models that reach production, and the <em>backends</em> that keep them honest there.</h1>
+    <p class="sub rv">I build forecasting and machine learning systems, LLM pipelines, and the FastAPI and PostgreSQL services that serve them. Most of my work sits in the layer people skip: validation gates, uncertainty, idempotent writes, audit trails, and the checks that decide whether a prediction is safe to act on.</p>
+    <div class="facts rv">
+      <span>B.S. Data Science, IIT Madras</span>
+      <span>Lucknow, India</span>
+      <span>Open to Dubai, UAE and Europe</span>
+    </div>
+    <div class="actions rv">
+      <a class="btn solid" href="mailto:data.atif001@gmail.com">Get in touch <span class="ar">&rarr;</span></a>
+      <a class="btn" href="https://github.com/Atif0110" target="_blank" rel="noopener noreferrer">GitHub <span class="ar">&rarr;</span></a>
+      <a class="btn" href="https://www.linkedin.com/in/mohd-atif01/" target="_blank" rel="noopener noreferrer">LinkedIn <span class="ar">&rarr;</span></a>
+      <!-- VERIFY: confirm this file exists at assets/Mohd_Atif_Resume.pdf on the deployed site -->
+      <a class="btn" href="assets/Mohd_Atif_Resume.pdf" download>Resume <span class="ar">&rarr;</span></a>
+    </div>
+  </div>
 </header>
 
-
-<main>
-
-
-<!-- =========================
-     HERO
-========================= -->
-
-<section class="hero">
-
-  <div class="container">
-
-    <div class="eyebrow mono">
-      Data Scientist · Backend Engineer
-    </div>
-
-
-    <div class="hero-grid">
-
-
-      <div>
-
-        <h1>
-          Models that<br>
-          <em>actually ship.</em>
-        </h1>
-
-
-        <div class="actions">
-
-          <a
-            class="btn primary"
-            href="#work">
-            See selected work ↓
-          </a>
-
-          <a
-            class="btn"
-            href="assets/Mohd_Atif_Resume.pdf">
-            Resume ↗
-          </a>
-
-          <a
-            class="btn"
-            href="https://github.com/Atif0110"
-            target="_blank"
-            rel="noopener noreferrer">
-            GitHub ↗
-          </a>
-
-        </div>
-
+<section id="about">
+  <div class="wrap">
+    <div class="kicker rv">Focus</div>
+    <h2 class="rv">What I build</h2>
+    <div class="caps">
+      <div class="cap rv">
+        <b>01</b>
+        <h3>Forecasting and modeling</h3>
+        <p>Gradient boosting and time series work with chronological validation, a named baseline to beat, and uncertainty carried through to the decision instead of dropped at the metric.</p>
       </div>
-
-
-      <div>
-
-        <p class="intro">
-          I build forecasting models, machine learning systems,
-          production APIs and AI-powered products, with a focus
-          on turning data into systems people can actually use.
-        </p>
-
-
-        <p
-          class="intro mono"
-          style="font-size:.72rem;margin-top:18px">
-
-          IIT Madras · B.S. Data Science
-
-        </p>
-
+      <div class="cap rv">
+        <b>02</b>
+        <h3>LLM and agent pipelines</h3>
+        <p>Structured extraction against strict schemas, corrective retries on validation failure, provider fallback across Groq, OpenAI and Anthropic, and retrieval with citations.</p>
       </div>
-
-
+      <div class="cap rv">
+        <b>03</b>
+        <h3>Production backends</h3>
+        <p>FastAPI and Flask on PostgreSQL with authentication, tenant isolation, migrations, rate limiting, append only audit logs, containers and continuous integration.</p>
+      </div>
     </div>
-
   </div>
-
 </section>
 
+<section id="work">
+  <div class="wrap">
+    <div class="kicker rv">Experience</div>
+    <h2 class="rv">Where I have worked</h2>
+    <p class="intro rv">About a year of paid AI and machine learning work across contract model evaluation, open source contribution, and direct delivery for clients in the United States and the Netherlands.</p>
 
-<!-- =========================
-     STATS
-========================= -->
-
-<div class="container stats">
-
-
-  <div class="stat">
-
-    <strong>
-      95%
-    </strong>
-
-    <span>
-      Churn model test accuracy
-    </span>
-
-  </div>
-
-
-  <div class="stat">
-
-    <strong>
-      20–35%
-    </strong>
-
-    <span>
-      Forecast improvement
-    </span>
-
-  </div>
-
-
-  <div class="stat">
-
-    <strong>
-      99%
-    </strong>
-
-    <span>
-      Data availability
-    </span>
-
-  </div>
-
-
-  <div class="stat">
-
-    <strong>
-      3 min
-    </strong>
-
-    <span>
-      Pipeline refresh cycle
-    </span>
-
-  </div>
-
-
-</div>
-
-
-<!-- =========================
-     APPROACH
-========================= -->
-
-<section class="section">
-
-  <div class="container">
-
-
-    <div class="section-head">
-
-      <div class="section-num mono">
-        01 / APPROACH
+    <div class="tl">
+      <div class="row rv">
+        <div class="date">2025 to present</div>
+        <h3>Labelbox</h3>
+        <div class="what">Contract AI trainer and model evaluator</div>
+        <p>Training and evaluating a voice assistant through Labelbox's contractor platform, alongside structured labeling and model evaluation tasks. The transferable skill is evaluation discipline: writing rubrics that surface failure modes an aggregate score hides, then applying them consistently at volume.</p>
       </div>
 
-
-      <div>
-
-        <h2 class="section-title">
-          Build the model.<br>
-          Then build around it.
-        </h2>
-
-
-        <p class="section-copy">
-          My work sits between data science and backend engineering.
-          The model matters, but so do validation, data quality,
-          APIs, deployment and the path from prediction to action.
-        </p>
-
+      <div class="row rv">
+        <div class="date">2026 to present</div>
+        <h3>RoboCurve, inspect robots</h3>
+        <div class="what">Open source contributor</div>
+        <p>Contributing to inspect robots, a Y Combinator backed open source evaluation framework for physical AI that runs any policy, whether an LLM agent or a vision language action model, against any embodiment and produces auditable logs. My work sits on the evaluation and logging side of the codebase.</p>
       </div>
 
+      <div class="row rv">
+        <div class="date">2026</div>
+        <h3>Independent freelance</h3>
+        <div class="what">Netherlands and United States clients</div>
+        <p>Delivered production websites and internal automation. Recent work includes an n8n pipeline for a Rotterdam student events platform where an RSS trigger picks up partner Instagram posts, a vision capable model extracts event fields from the caption and the flyer image against a fixed JSON schema with confidence flags on missing values, a dedupe step skips processed posts, and output lands in a reviewable document rather than a live table until extraction quality clears human review.</p>
+      </div>
+
+      <div class="row rv">
+        <div class="date">Jul to Aug 2026</div>
+        <h3>Mythos</h3>
+        <div class="what">Growth and customer acquisition, short engagement</div>
+        <p>Worked directly with the founder on growth and customer acquisition experiments during an early scaling push.</p>
+      </div>
     </div>
-
-
-    <div class="principles">
-
-
-      <div class="principle">
-
-        <b>
-          Model
-        </b>
-
-        <p>
-          Machine learning, statistical modeling and forecasting.
-        </p>
-
-      </div>
-
-
-      <div class="principle">
-
-        <b>
-          Engineer
-        </b>
-
-        <p>
-          Python, FastAPI, SQL and production-oriented services.
-        </p>
-
-      </div>
-
-
-      <div class="principle">
-
-        <b>
-          Ship
-        </b>
-
-        <p>
-          Streamlit, Render, GitHub and deployable applications.
-        </p>
-
-      </div>
-
-
-      <div class="principle">
-
-        <b>
-          Validate
-        </b>
-
-        <p>
-          Testing, explainability, backtesting and business impact.
-        </p>
-
-      </div>
-
-
-    </div>
-
   </div>
-
 </section>
 
+<section id="projects">
+  <div class="wrap">
+    <div class="kicker rv">Projects</div>
+    <h2 class="rv">Five systems, built end to end</h2>
+    <p class="intro rv">Each one runs, has tests, and documents its own limits. Where something is a prototype rather than a production deployment, it says so.</p>
 
-<!-- =========================
-     EXPERIENCE
-========================= -->
-
-<section
-  class="section"
-  id="experience">
-
-  <div class="container">
-
-
-    <div class="section-head">
-
-      <div class="section-num mono">
-        02 / EXPERIENCE
+    <article class="proj rv">
+      <div class="head">
+        <h3>TrustLayer</h3>
+        <span class="type">agent infrastructure</span>
       </div>
-
-
-      <div>
-
-        <h2 class="section-title">
-          Real work.<br>
-          Real teams.
-        </h2>
-
-
-        <p class="section-copy">
-          Alongside my engineering and data projects, I've worked
-          with companies, founders, international clients and
-          open-source teams across AI, data and startups.
-        </p>
-
+      <p class="pitch">An authorization layer for AI agents. Before an agent acts, it asks TrustLayer whether it is permitted, and anything consequential can be routed to a human first.</p>
+      <div class="tech">
+        <span>FastAPI</span><span>PostgreSQL</span><span>SQLAlchemy async</span><span>Alembic</span><span>React</span><span>Docker Compose</span><span>pytest</span><span>testcontainers</span>
       </div>
-
-    </div>
-
-
-    <div class="experience-list">
-
-
-      <!-- LABELBOX -->
-
-      <article class="experience-item">
-
-        <div class="experience-meta mono">
-
-          <div class="number">
-            01
-          </div>
-
-          AI · DATA<br>
-          CONTRACT WORK
-
-        </div>
-
-
-        <div class="experience-content">
-
-          <h3>
-            Labelbox
-          </h3>
-
-          <div class="experience-role">
-            PAID CONTRACTOR
-          </div>
-
-          <p>
-            Working as a paid contractor on AI and data-focused
-            workflows, contributing to real-world data and
-            model-development tasks.
-          </p>
-
-
-          <div class="experience-tags">
-
-            <span class="tag">
-              AI
-            </span>
-
-            <span class="tag">
-              Data
-            </span>
-
-            <span class="tag">
-              ML Workflows
-            </span>
-
-            <span class="tag">
-              Contract
-            </span>
-
-          </div>
-
-        </div>
-
-      </article>
-
-
-      <!-- MYTHOS -->
-
-      <article class="experience-item">
-
-        <div class="experience-meta mono">
-
-          <div class="number">
-            02
-          </div>
-
-          STARTUP<br>
-          GROWTH
-
-        </div>
-
-
-        <div class="experience-content">
-
-          <h3>
-            Mythos
-          </h3>
-
-          <div class="experience-role">
-            GROWTH & STARTUP SUPPORT
-          </div>
-
-          <p>
-            Worked closely with founder Benjamin Chan on growth
-            initiatives, customer acquisition and efforts to help
-            scale the startup.
-          </p>
-
-
-          <div class="experience-tags">
-
-            <span class="tag">
-              Growth
-            </span>
-
-            <span class="tag">
-              Startup
-            </span>
-
-            <span class="tag">
-              Customer Acquisition
-            </span>
-
-            <span class="tag">
-              Scaling
-            </span>
-
-          </div>
-
-        </div>
-
-      </article>
-
-
-      <!-- ROBOCURVE -->
-
-      <article class="experience-item">
-
-        <div class="experience-meta mono">
-
-          <div class="number">
-            03
-          </div>
-
-          OPEN SOURCE<br>
-          YC-BACKED
-
-        </div>
-
-
-        <div class="experience-content">
-
-          <h3>
-            RoboCurve
-          </h3>
-
-          <div class="experience-role">
-            OPEN SOURCE CONTRIBUTOR
-          </div>
-
-          <p>
-            Contributing to the open-source robotics ecosystem and
-            collaborating with the contributor team on engineering
-            and evaluation work.
-          </p>
-
-
-          <div class="experience-tags">
-
-            <span class="tag">
-              Open Source
-            </span>
-
-            <span class="tag">
-              Physical AI
-            </span>
-
-            <span class="tag">
-              Robotics
-            </span>
-
-            <span class="tag">
-              Python
-            </span>
-
-          </div>
-
-        </div>
-
-      </article>
-
-
-      <!-- FREELANCE -->
-
-      <article class="experience-item">
-
-        <div class="experience-meta mono">
-
-          <div class="number">
-            04
-          </div>
-
-          INDEPENDENT<br>
-          INTERNATIONAL
-
-        </div>
-
-
-        <div class="experience-content">
-
-          <h3>
-            Independent Freelance
-          </h3>
-
-          <div class="experience-role">
-            INTERNATIONAL CLIENTS · US & NETHERLANDS
-          </div>
-
-          <p>
-            Delivered multiple freelance projects for clients in
-            the United States and Netherlands across software,
-            data, AI and web development.
-          </p>
-
-
-          <div class="experience-tags">
-
-            <span class="tag">
-              Software
-            </span>
-
-            <span class="tag">
-              Data
-            </span>
-
-            <span class="tag">
-              AI
-            </span>
-
-            <span class="tag">
-              Web Development
-            </span>
-
-          </div>
-
-        </div>
-
-      </article>
-
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================
-     STACK
-========================= -->
-
-<section
-  class="section"
-  id="stack">
-
-  <div class="container">
-
-
-    <div class="section-head">
-
-      <div class="section-num mono">
-        03 / STACK
+      <ul>
+        <li><b>It fails closed.</b> The evaluator walks policy rules in order, returns the first match, and when nothing matches it returns DENY with the reason recorded. Malformed rules are skipped rather than trusted, so a broken policy cannot widen access.</li>
+        <li><b>Policies are data, not code.</b> Conditions match on action plus context, with numeric comparison operators for thresholds, so a rule like refunds under one hundred allowed and above that requiring approval is a row in the database that an operator can change without a deploy.</li>
+        <li><b>Policy changes are versioned per organization.</b> Each update takes the next monotonic version number for that tenant, which means an audit entry can always be read against the exact policy that produced it rather than whatever is current today.</li>
+        <li><b>Human approval is a first class state.</b> Actions resolving to require approval enter a queue and stay blocked until an owner signs off. Every decision lands in an append only log, and records are tenant scoped, so a second organization asking for another tenant's approval request receives a not found rather than a leak.</li>
+        <li><b>Built to be handed to a team.</b> Continuous integration on every push runs linting, unit tests, and integration tests against a real PostgreSQL instance spun up through testcontainers, plus type checking and tests for the React dashboard. Schema changes go through Alembic migrations, and the whole stack comes up with Docker Compose and a seed script.</li>
+      </ul>
+      <div class="go">
+        <a href="https://github.com/Atif0110/TrustLayer" target="_blank" rel="noopener noreferrer">GitHub <span class="ar">&rarr;</span></a>
       </div>
-
-
-      <div>
-
-        <h2 class="section-title">
-          Tools I use<br>
-          to make things real.
-        </h2>
-
-      </div>
-
-    </div>
-
-
-    <div class="stack">
-
-
-      <div class="stack-card">
-
-        <h3>
-          Data Science & Modeling
-        </h3>
-
-        <div class="tags">
-
-          <span class="tag">Python</span>
-          <span class="tag">scikit-learn</span>
-          <span class="tag">XGBoost</span>
-          <span class="tag">ARIMA</span>
-          <span class="tag">Pandas</span>
-          <span class="tag">NumPy</span>
-          <span class="tag">SHAP</span>
-          <span class="tag">Plotly</span>
-
-        </div>
-
-      </div>
-
-
-      <div class="stack-card">
-
-        <h3>
-          Backend & Infrastructure
-        </h3>
-
-        <div class="tags">
-
-          <span class="tag">FastAPI</span>
-          <span class="tag">Flask</span>
-          <span class="tag">REST APIs</span>
-          <span class="tag">PostgreSQL</span>
-          <span class="tag">SQLite</span>
-          <span class="tag">Docker</span>
-          <span class="tag">Git</span>
-          <span class="tag">Render</span>
-
-        </div>
-
-      </div>
-
-
-      <div class="stack-card">
-
-        <h3>
-          AI & APIs
-        </h3>
-
-        <div class="tags">
-
-          <span class="tag">OpenAI</span>
-          <span class="tag">Groq</span>
-          <span class="tag">Gemini</span>
-          <span class="tag">LangChain</span>
-          <span class="tag">RAG</span>
-          <span class="tag">LLMs</span>
-          <span class="tag">Vector Search</span>
-
-        </div>
-
-      </div>
-
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================
-     SELECTED WORK
-========================= -->
-
-<section
-  class="section"
-  id="work">
-
-  <div class="container">
-
-
-    <div class="section-head">
-
-      <div class="section-num mono">
-        04 / SELECTED WORK
-      </div>
-
-
-      <div>
-
-        <h2 class="section-title">
-          Systems I've<br>
-          actually built.
-        </h2>
-
-
-        <p class="section-copy">
-          A selection of projects spanning AI agents, full-stack
-          applications, competitive intelligence and machine
-          learning decision systems.
-        </p>
-
-      </div>
-
-    </div>
-
-
-    <!-- =====================
-         PROJECT 01 — TRUSTLAYER
-    ====================== -->
-
-    <article class="project">
-
-
-      <div class="project-meta mono">
-
-        <div class="number">
-          01
-        </div>
-
-        AI AGENTS<br>
-        AUTHORIZATION
-
-      </div>
-
-
-      <div>
-
-        <h3>
-          TrustLayer
-        </h3>
-
-
-        <p class="project-desc">
-          A real authorization API for AI agents with policy-based
-          access control, approval workflows and auditable decision
-          history. The system combines a FastAPI and PostgreSQL
-          backend with a React dashboard.
-        </p>
-
-
-        <div class="metrics">
-
-          <span class="metric">
-            FastAPI
-          </span>
-
-          <span class="metric">
-            PostgreSQL
-          </span>
-
-          <span class="metric">
-            Default DENY
-          </span>
-
-          <span class="metric">
-            Approval Queue
-          </span>
-
-          <span class="metric">
-            Audit Log
-          </span>
-
-          <span class="metric">
-            React
-          </span>
-
-        </div>
-
-
-        <div class="project-links">
-
-          <a
-            href="https://github.com/Atif0110/TrustLayer"
-            target="_blank"
-            rel="noopener noreferrer">
-            GitHub ↗
-          </a>
-
-        </div>
-
-      </div>
-
     </article>
 
-
-    <!-- =====================
-         PROJECT 02 — SHRAVAN
-    ====================== -->
-
-    <article class="project">
-
-
-      <div class="project-meta mono">
-
-        <div class="number">
-          02
-        </div>
-
-        FULL STACK<br>
-        AI HEALTHCARE
-
+    <article class="proj rv">
+      <div class="head">
+        <h3>Power Price Forecasting Pipeline</h3>
+        <span class="type">applied machine learning</span>
       </div>
-
-
-      <div>
-
-        <h3>
-          Shravan — AI Health Companion
-        </h3>
-
-
-        <p class="project-desc">
-          A full-stack health companion combining medicine reminders,
-          health logging, emergency contacts, healthcare discovery
-          and AI assistance with web and Flutter mobile applications.
-          The backend uses Flask and SQLAlchemy with security-focused
-          authentication and data handling.
-        </p>
-
-
-        <div class="metrics">
-
-          <span class="metric">
-            Vue 3
-          </span>
-
-          <span class="metric">
-            Flask
-          </span>
-
-          <span class="metric">
-            SQLAlchemy
-          </span>
-
-          <span class="metric">
-            Flutter
-          </span>
-
-          <span class="metric">
-            Groq
-          </span>
-
-          <span class="metric">
-            Gemini
-          </span>
-
-        </div>
-
-
-        <div class="project-links">
-
-          <a
-            href="https://github.com/Atif0110/Shravan-Application"
-            target="_blank"
-            rel="noopener noreferrer">
-            GitHub ↗
-          </a>
-
-        </div>
-
+      <p class="pitch">Day ahead electricity price forecasting for the German market, taken past the error metric into a data quality gate, calibrated uncertainty, and a signal layer that declines to act when it is not confident.</p>
+      <div class="tech">
+        <span>Python</span><span>XGBoost</span><span>scikit learn</span><span>pandas</span><span>ENTSOE API</span><span>Plotly</span><span>Groq</span><span>pytest</span>
       </div>
-
+      <ul>
+        <li><b>Every run has to beat a named baseline.</b> The model is scored against a seasonal naive benchmark, the price twenty four hours earlier, and the pipeline reports mean absolute error for both plus the percentage improvement. Complexity has to earn its place instead of being assumed.</li>
+        <li><b>The split respects time.</b> Training and test sets are cut chronologically rather than shuffled, so no future information leaks backward into training, which is the failure mode that quietly inflates most time series results.</li>
+        <li><b>Features model the actual market.</b> Hour, weekday, month and weekend flags for seasonality, lags at one, twenty four, forty eight and one hundred sixty eight hours, a rolling daily mean and standard deviation, and a momentum term, all on top of load and renewable generation as demand and supply drivers. Feature engineering raises immediately if any missing value survives it.</li>
+        <li><b>A quality gate that understands the domain.</b> Before modeling, data is scored out of one hundred with deductions for missing hours, duplicate timestamps, extreme spikes, and violated economic relationships, since price should move with load and against wind and solar. The result is a structured report, so bad data is caught rather than silently trained on.</li>
+        <li><b>Uncertainty drives the decision.</b> A ninety five percent interval is derived from training residuals and carried forward, and the signal layer takes a position only when the spread against the reference price exceeds that interval, otherwise it returns no trade. Output is an interactive chart of forecast against actual, the signal, and a cumulative simulation.</li>
+      </ul>
+      <div class="go">
+        <a href="https://github.com/Atif0110/power-forecast-pipeline" target="_blank" rel="noopener noreferrer">GitHub <span class="ar">&rarr;</span></a>
+      </div>
+      <!--
+        INSERT YOUR NUMBERS. Run `python main.py`, then read mae_xgb, mae_baseline
+        and improvement_% from the console or outputs/logs/pipeline.log.
+        Prepend a sentence to the caveat below, for example:
+        "On a chronological holdout the model reached a mean absolute error of X.X
+        against Y.Y for the seasonal naive baseline, an improvement of Z percent."
+        If that run used the synthetic fallback rather than live ENTSOE data,
+        say so in the same sentence. A labelled modest number beats an unlabelled
+        strong one every time.
+      -->
+      <p class="caveat">Simulated performance comes from a historical backtest of the signal rules against a fixed reference price and is not a claim about live trading.</p>
     </article>
 
-
-    <!-- =====================
-         PROJECT 03 — COMPETITOR RESEARCH
-    ====================== -->
-
-    <article class="project">
-
-
-      <div class="project-meta mono">
-
-        <div class="number">
-          03
-        </div>
-
-        AI RESEARCH<br>
-        COMPETITIVE INTELLIGENCE
-
+    <article class="proj rv">
+      <div class="head">
+        <h3>AI Competitor Research Platform</h3>
+        <span class="type">LLM data pipeline</span>
       </div>
-
-
-      <div>
-
-        <h3>
-          AI Competitor Research Platform
-        </h3>
-
-
-        <p class="project-desc">
-          An AI-assisted competitive intelligence platform designed
-          to collect competitor information, structure product and
-          pricing data, analyze customer sentiment and turn research
-          into actionable insights. The system brings together
-          automated data collection, LLM analysis and research
-          workflows.
-        </p>
-
-
-        <div class="metrics">
-
-          <span class="metric">
-            Web Research
-          </span>
-
-          <span class="metric">
-            Data Extraction
-          </span>
-
-          <span class="metric">
-            LLM Analysis
-          </span>
-
-          <span class="metric">
-            Sentiment Analysis
-          </span>
-
-          <span class="metric">
-            Pricing Intelligence
-          </span>
-
-          <span class="metric">
-            RAG
-          </span>
-
-        </div>
-
-
-        <div class="project-links">
-
-          <!--
-            Replace this URL once the Competitor Research
-            repository is pushed publicly.
-          -->
-
-          <a
-            href="https://github.com/Atif0110/AI-competitor-research"
-            target="_blank"
-            rel="noopener noreferrer">
-            GitHub ↗
-          </a>
-
-        </div>
-
+      <p class="pitch">Agent driven competitive intelligence that answers what a competitor charges, in which market, and how that has moved, with every number traceable to the run that produced it.</p>
+      <div class="tech">
+        <span>Python</span><span>FastAPI</span><span>Firecrawl</span><span>Playwright</span><span>SQLite</span><span>provider fallback</span><span>RAG</span><span>Streamlit</span>
       </div>
-
+      <ul>
+        <li><b>Geography is enforced, never inferred.</b> Each URL is fetched once per execution region and the pipeline decides that region, not the model. If extraction claims a different one the mismatch is logged and the pipeline wins, and with strict verification enabled a scrape that cannot prove its exit location is refused rather than quietly returning the wrong market's prices.</li>
+        <li><b>Extraction corrects itself.</b> Output is validated against a schema and a confidence check, and failures retry with the previous error fed back to the model. The provider chain is built across every fallback hop, and telemetry separates calls, attempts and fallbacks, with counters reset at the start of each run so metrics from one job never bleed into another.</li>
+        <li><b>Storage is idempotent with real provenance.</b> An observation key hashes the canonical URL, product identity, region, competitor, seller and snapshot hour, while the run identifier stays as metadata rather than part of the key, so re running a job updates rather than duplicates and any single run remains recoverable. Raw page content and a hash are kept per URL for debugging bad extractions.</li>
+        <li><b>Reports cannot silently mix runs.</b> Every analysis method filters by run in SQL rather than in Python, so a report for one run can never blend observations from another, and reads come from a single per run metrics table that the dashboard, the PDF and the alerts all share.</li>
+        <li><b>It refuses to guess when the input is wrong.</b> Product filtering matches the URL path only, with word boundaries so a short token cannot match unrelated segments, and when nothing matches it returns zero URLs with a warning instead of broadening to scrape the entire site. Checkpoints survive corruption by restarting cleanly rather than crashing.</li>
+      </ul>
+      <div class="go">
+        <a href="https://github.com/Atif0110/AI-competitor-research" target="_blank" rel="noopener noreferrer">GitHub <span class="ar">&rarr;</span></a>
+      </div>
+      <p class="caveat">A demo mode runs the entire pipeline deterministically without credentials. The live path across the scraping providers, residential proxies and the three model providers is wired and unit tested against fakes but has not yet been exercised at scale against production targets.</p>
     </article>
 
-
-    <!-- =====================
-         PROJECT 04 — CUSTOMER CHURN
-    ====================== -->
-
-    <article class="project">
-
-
-      <div class="project-meta mono">
-
-        <div class="number">
-          04
-        </div>
-
-        MACHINE LEARNING<br>
-        DECISION INTELLIGENCE
-
+    <article class="proj rv">
+      <div class="head">
+        <h3>Shravan</h3>
+        <span class="type">full stack product</span>
       </div>
-
-
-      <div>
-
-        <h3>
-          AI Customer Churn Decision Intelligence
-        </h3>
-
-
-        <p class="project-desc">
-          An end-to-end Decision Intelligence system that combines
-          machine learning and Generative AI to predict customer
-          churn, identify risk drivers, generate personalized
-          retention strategies and simulate potential interventions.
-          It includes a Streamlit interface and a deployed FastAPI
-          backend.
-        </p>
-
-
-        <div class="metrics">
-
-          <span class="metric">
-            ~95% Test Accuracy
-          </span>
-
-          <span class="metric">
-            Logistic Regression
-          </span>
-
-          <span class="metric">
-            Risk Segmentation
-          </span>
-
-          <span class="metric">
-            Driver Detection
-          </span>
-
-          <span class="metric">
-            LLM Retention Advice
-          </span>
-
-          <span class="metric">
-            What-If Simulation
-          </span>
-
-          <span class="metric">
-            FastAPI
-          </span>
-
-          <span class="metric">
-            Streamlit
-          </span>
-
-        </div>
-
-
-        <div class="project-links">
-
-          <a
-            href="https://ai-customer-churn-intelligence.streamlit.app/"
-            target="_blank"
-            rel="noopener noreferrer">
-            Live Demo ↗
-          </a>
-
-
-          <a
-            href="https://github.com/Atif0110/ai-customer-churn-intelligence"
-            target="_blank"
-            rel="noopener noreferrer">
-            GitHub ↗
-          </a>
-
-
-          <a
-            href="https://ai-customer-churn-intelligence.onrender.com/docs"
-            target="_blank"
-            rel="noopener noreferrer">
-            API Docs ↗
-          </a>
-
-        </div>
-
+      <p class="pitch">A health companion for senior citizens and their caretakers covering medicine reminders, health logging, emergency contacts, nearby care discovery and AI assistance, across a web app and a mobile client.</p>
+      <div class="tech">
+        <span>Flask</span><span>SQLAlchemy</span><span>Vue 3</span><span>Pinia</span><span>Flutter</span><span>Groq</span><span>Gemini</span><span>Swagger</span>
       </div>
-
+      <ul>
+        <li><b>One backend, two clients.</b> A single Flask and SQLAlchemy API serves both the Vue web application and the Flutter mobile client, running on SQLite by default and moving to PostgreSQL through one connection string with no code change.</li>
+        <li><b>Security treated as a requirement.</b> Server side sessions, password hashing, cross site request forgery protection on state changing requests, login throttling, session expiry, role checks, restrictive origin policy, response security headers, request size limits, user scoped data access, and validation of user supplied external URLs. API keys stay on the backend and never reach the client.</li>
+        <li><b>It degrades instead of failing.</b> Healthcare discovery uses Google Places when a key is configured and falls back to OpenStreetMap, with geocoding falling back to Nominatim, so the core flow works at zero API cost and the product is never one billing problem away from being unusable.</li>
+        <li><b>Documented and testable.</b> Interactive API documentation is generated per endpoint and served from the running backend, with a pytest suite and single command startup scripts for both Windows and Unix.</li>
+        <li><b>Explicit safety boundary.</b> The assistant is scoped in product to general information and is stated not to be a diagnosis or a substitute for a clinician, with emergency symptoms routed to real services. Placed fifth of thirty at an IIT Madras competition.</li>
+      </ul>
+      <div class="go">
+        <a href="https://github.com/Atif0110/Shravan-Application" target="_blank" rel="noopener noreferrer">GitHub <span class="ar">&rarr;</span></a>
+      </div>
     </article>
 
+    <article class="proj rv">
+      <div class="head">
+        <h3>OpenClaw</h3>
+        <span class="type">automation agent</span>
+      </div>
+      <p class="pitch">Describe a task in plain English and it becomes a scheduled browser agent, previewed and approved by you before it is allowed to run, entirely on your own machine.</p>
+      <div class="tech">
+        <span>Node.js</span><span>Express</span><span>Playwright</span><span>node cron</span><span>SQLite</span><span>Ollama</span><span>OpenAI</span>
+      </div>
+      <ul>
+        <li><b>Local first by default.</b> A router selects a local model through Ollama when no API key is present and a hosted model when one is, so the entire system can run offline with nothing leaving the machine.</li>
+        <li><b>Nothing executes without consent.</b> Each generated agent is rendered as a preview showing its goal and schedule and requires explicit approval before deployment, with a sandboxed dry run available first.</li>
+        <li><b>Scheduled execution against a real browser.</b> Approved agents are handed to a cron scheduler that drives a Chromium instance through Playwright, with agent configuration, credentials and execution logs persisted locally in SQLite.</li>
+        <li><b>Small and legible.</b> The server, router, agent manager, scheduler, browser layer and database each live in one focused module, which makes the approval boundary easy to audit rather than buried in a framework.</li>
+      </ul>
+      <div class="go">
+        <a href="https://github.com/Atif0110/openclaw-desktop-assistant" target="_blank" rel="noopener noreferrer">GitHub <span class="ar">&rarr;</span></a>
+      </div>
+    </article>
 
+    <p class="more rv">Earlier work, competition entries and dashboards live on <a href="https://github.com/Atif0110" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
   </div>
-
 </section>
 
+<section id="stack">
+  <div class="wrap">
+    <div class="kicker rv">Stack</div>
+    <h2 class="rv">Tools I reach for</h2>
 
-<!-- =========================
-     OTHER WORK
-========================= -->
-
-<section
-  class="section"
-  id="other">
-
-  <div class="container">
-
-
-    <div class="section-head">
-
-      <div class="section-num mono">
-        05 / OTHER WORK
+    <div class="grp rv">
+      <h3>Data science and modeling</h3>
+      <div class="chips">
+        <span>Python</span><span>XGBoost</span><span>scikit learn</span><span>pandas</span><span>NumPy</span><span>ARIMA</span><span>SHAP</span><span>Plotly</span>
       </div>
-
-
-      <div>
-
-        <h2 class="section-title">
-          More experiments,<br>
-          products and systems.
-        </h2>
-
-      </div>
-
     </div>
 
-
-    <div class="other-grid">
-
-
-      <!-- METEOGRAPH -->
-
-      <article class="other">
-
-        <small>
-          Full Stack · Live
-        </small>
-
-        <h3>
-          Meteograph
-        </h3>
-
-        <p>
-          A weather and smart-city analytics dashboard combining
-          weather forecasts, air quality, traffic, alerts and
-          location-based insights through multiple APIs.
-        </p>
-
-        <div class="tags">
-
-          <span class="tag">
-            FastAPI
-          </span>
-
-          <span class="tag">
-            JavaScript
-          </span>
-
-          <span class="tag">
-            APIs
-          </span>
-
-          <span class="tag">
-            Real-time Data
-          </span>
-
-        </div>
-
-
-        <div class="project-links" style="margin-top:18px">
-
-          <a
-            href="https://meteograph.onrender.com/"
-            target="_blank"
-            rel="noopener noreferrer">
-            Live Demo ↗
-          </a>
-
-          <a
-            href="https://github.com/Atif0110/Meteograph"
-            target="_blank"
-            rel="noopener noreferrer">
-            GitHub ↗
-          </a>
-
-        </div>
-
-      </article>
-
-
-      <!-- SYSTEM THREAT FORECASTER -->
-
-      <article class="other">
-
-        <small>
-          Security · ML
-        </small>
-
-        <h3>
-          System Threat Forecaster
-        </h3>
-
-        <p>
-          Machine learning-based anomaly detection for
-          cybersecurity telemetry using feature engineering
-          and Isolation Forest.
-        </p>
-
-        <div class="tags">
-
-          <span class="tag">
-            Python
-          </span>
-
-          <span class="tag">
-            scikit-learn
-          </span>
-
-          <span class="tag">
-            Isolation Forest
-          </span>
-
-        </div>
-
-        <div class="project-links" style="margin-top:18px">
-
-          <a
-            href="https://github.com/Atif0110/System-Threat-Forecaster"
-            target="_blank"
-            rel="noopener noreferrer">
-            GitHub ↗
-          </a>
-
-        </div>
-
-      </article>
-
-
-      <!-- INFLUENCER PLATFORM -->
-
-      <article class="other">
-
-        <small>
-          Full Stack
-        </small>
-
-        <h3>
-          Influencer Engagement Platform v2
-        </h3>
-
-        <p>
-          Brand-influencer matching and sponsorship coordination
-          platform built around a Vue and Flask architecture.
-        </p>
-
-        <div class="tags">
-
-          <span class="tag">
-            Vue 3
-          </span>
-
-          <span class="tag">
-            Flask
-          </span>
-
-          <span class="tag">
-            Celery
-          </span>
-
-        </div>
-
-        <div class="project-links" style="margin-top:18px">
-
-          <a
-            href="https://github.com/Atif0110/Influencer_Engagement_Sponsorship_Coordination_Platform_Version2"
-            target="_blank"
-            rel="noopener noreferrer">
-            GitHub ↗
-          </a>
-
-        </div>
-
-      </article>
-
-
-      <!-- IPL -->
-
-      <article class="other">
-
-        <small>
-          Business Intelligence
-        </small>
-
-        <h3>
-          IPL 2024 Analytics Dashboard
-        </h3>
-
-        <p>
-          Power BI dashboard covering team performance, player
-          statistics, trends and interactive analysis.
-        </p>
-
-        <div class="tags">
-
-          <span class="tag">
-            Power BI
-          </span>
-
-          <span class="tag">
-            DAX
-          </span>
-
-          <span class="tag">
-            Data Modeling
-          </span>
-
-        </div>
-
-        <div class="project-links" style="margin-top:18px">
-
-          <a
-            href="https://github.com/Atif0110/IPL_Dashboard2024"
-            target="_blank"
-            rel="noopener noreferrer">
-            GitHub ↗
-          </a>
-
-        </div>
-
-      </article>
-
-
-      <!-- OPENCLAW -->
-
-      <article class="other">
-
-        <small>
-          Desktop Automation
-        </small>
-
-        <h3>
-          OpenClaw Desktop Assistant
-        </h3>
-
-        <p>
-          LLM-powered desktop automation assistant using Node.js
-          and Playwright with a human approval workflow.
-        </p>
-
-        <div class="tags">
-
-          <span class="tag">
-            Node.js
-          </span>
-
-          <span class="tag">
-            Playwright
-          </span>
-
-          <span class="tag">
-            LLM
-          </span>
-
-        </div>
-
-        <div class="project-links" style="margin-top:18px">
-
-          <a
-            href="https://github.com/Atif0110/openclaw-desktop-assistant"
-            target="_blank"
-            rel="noopener noreferrer">
-            GitHub ↗
-          </a>
-
-        </div>
-
-      </article>
-
-
-      <!-- RESTAURANT -->
-
-      <article class="other">
-
-        <small>
-          Analytics
-        </small>
-
-        <h3>
-          Restaurant Analytics & Business Optimization
-        </h3>
-
-        <p>
-          Python-based analysis of sales, profitability and
-          customer behavior with statistical analysis and
-          business insights.
-        </p>
-
-        <div class="tags">
-
-          <span class="tag">
-            Python
-          </span>
-
-          <span class="tag">
-            Pandas
-          </span>
-
-          <span class="tag">
-            Jupyter
-          </span>
-
-        </div>
-
-        <div class="project-links" style="margin-top:18px">
-
-          <a
-            href="https://github.com/Atif0110/Restaurant-Analytics-Business-Optimization-Project"
-            target="_blank"
-            rel="noopener noreferrer">
-            GitHub ↗
-          </a>
-
-        </div>
-
-      </article>
-
-
+    <div class="grp rv">
+      <h3>Backend and infrastructure</h3>
+      <div class="chips">
+        <span>FastAPI</span><span>Flask</span><span>PostgreSQL</span><span>SQLAlchemy</span><span>Alembic</span><span>Docker</span><span>pytest</span><span>GitHub Actions</span>
+      </div>
     </div>
 
+    <div class="grp rv">
+      <h3>AI and LLM systems</h3>
+      <div class="chips">
+        <span>Groq</span><span>OpenAI</span><span>Anthropic</span><span>Ollama</span><span>RAG</span><span>structured extraction</span><span>Playwright</span><span>n8n</span>
+      </div>
+    </div>
+
+    <div class="grp rv">
+      <h3>Frontend and mobile</h3>
+      <div class="chips">
+        <span>React</span><span>Vue 3</span><span>Streamlit</span><span>Flutter</span>
+      </div>
+    </div>
   </div>
-
 </section>
 
-
-<!-- =========================
-     OPEN SOURCE
-========================= -->
-
-<section class="section">
-
-  <div class="container">
-
-
-    <div class="section-head">
-
-      <div class="section-num mono">
-        06 / OPEN SOURCE
-      </div>
-
-
-      <div>
-
-        <h2 class="section-title">
-          Building in public.<br>
-          Contributing upstream.
-        </h2>
-
-
-        <p class="section-copy">
-          I'm also contributing to open-source physical AI
-          evaluation infrastructure through RoboCurve's
-          inspect-robots project.
-        </p>
-
-
-        <div class="project-links" style="margin-top:22px">
-
-          <a
-            href="https://github.com/Atif0110/inspect-robots"
-            target="_blank"
-            rel="noopener noreferrer">
-            My Fork ↗
-          </a>
-
-          <a
-            href="https://github.com/robocurve/inspect-robots"
-            target="_blank"
-            rel="noopener noreferrer">
-            RoboCurve Project ↗
-          </a>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================
-     NOW
-========================= -->
-
-<section class="section">
-
-  <div class="container">
-
-
-    <div class="section-head">
-
-      <div class="section-num mono">
-        07 / NOW
-      </div>
-
-
-      <div>
-
-        <h2 class="section-title">
-          Currently exploring.
-        </h2>
-
-
-        <div
-          class="exploring"
-          style="margin-top:24px">
-
-          <span class="tag">
-            Agentic AI
-          </span>
-
-          <span class="tag">
-            Multi-Agent Systems
-          </span>
-
-          <span class="tag">
-            Production RAG
-          </span>
-
-          <span class="tag">
-            LLM Observability
-          </span>
-
-          <span class="tag">
-            Model Monitoring
-          </span>
-
-          <span class="tag">
-            Vector Search
-          </span>
-
-          <span class="tag">
-            Physical AI
-          </span>
-
-          <span class="tag">
-            ML Systems
-          </span>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================
-     CONTACT
-========================= -->
-
-<section
-  class="section"
-  id="contact"
-  style="border-bottom:0">
-
-  <div class="container">
-
-
-    <div class="contact">
-
-
-      <div>
-
-        <h2>
-          Have a hard<br>
-          <em>problem?</em>
-        </h2>
-
-
-        <p>
-          I'm interested in Data Scientist, Applied ML and Backend
-          Engineering opportunities where I can build models,
-          production systems and AI-powered products.
-        </p>
-
-      </div>
-
-
+<section id="contact">
+  <div class="wrap">
+    <div class="kicker rv">Contact</div>
+    <div class="cta-box rv">
+      <h2>Have a hard problem?</h2>
+      <p>I am looking for Data Scientist and Backend AI Engineer roles where the job is getting a model into production and keeping it trustworthy once it is there.</p>
       <div class="actions">
-
-        <a
-          class="btn primary"
-          href="mailto:data.atif001@gmail.com">
-          Email me ↗
-        </a>
-
-
-        <a
-          class="btn"
-          href="https://www.linkedin.com/in/mohd-atif01/"
-          target="_blank"
-          rel="noopener noreferrer">
-          LinkedIn ↗
-        </a>
-
-
-        <a
-          class="btn"
-          href="https://github.com/Atif0110"
-          target="_blank"
-          rel="noopener noreferrer">
-          GitHub ↗
-        </a>
-
+        <a class="btn solid" href="mailto:data.atif001@gmail.com">Email me <span class="ar">&rarr;</span></a>
+        <a class="btn" href="https://www.linkedin.com/in/mohd-atif01/" target="_blank" rel="noopener noreferrer">LinkedIn <span class="ar">&rarr;</span></a>
+        <a class="btn" href="https://github.com/Atif0110" target="_blank" rel="noopener noreferrer">GitHub <span class="ar">&rarr;</span></a>
       </div>
-
-
     </div>
-
   </div>
-
 </section>
-
-
-</main>
-
-
-<!-- =========================
-     FOOTER
-========================= -->
 
 <footer>
-
-  <div class="container footer-inner">
-
-    <span>
-      © 2026 Mohd Atif
-    </span>
-
-    <span class="mono">
-      Data Science × Backend Engineering
-    </span>
-
+  <div class="wrap">
+    <span>&copy; 2026 Mohd Atif</span>
+    <span>Lucknow, India</span>
   </div>
-
 </footer>
 
+<script>
+(function(){
+  var nav = document.getElementById('nav');
+  function onScroll(){ nav.classList.toggle('scrolled', window.scrollY > 8); }
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive:true });
+
+  var items = document.querySelectorAll('.rv');
+  if (!('IntersectionObserver' in window)) {
+    items.forEach(function(el){ el.classList.add('on'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (!e.isIntersecting) return;
+      var el = e.target;
+      var sibs = Array.prototype.filter.call(el.parentNode.children, function(n){
+        return n.classList && n.classList.contains('rv');
+      });
+      el.style.transitionDelay = Math.min(sibs.indexOf(el), 5) * 60 + 'ms';
+      el.classList.add('on');
+      io.unobserve(el);
+    });
+  }, { threshold:0.1, rootMargin:'0px 0px -40px 0px' });
+  items.forEach(function(el){ io.observe(el); });
+})();
+</script>
 
 </body>
 </html>
-```
