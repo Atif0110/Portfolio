@@ -34,40 +34,16 @@
   --accent-2:#7aa2f7;
   --max:880px;
 }
-
 *{ box-sizing:border-box; margin:0; padding:0; }
 html{ scroll-behavior:smooth; scroll-padding-top:80px; }
-
-body{
-  background:var(--bg);
-  color:var(--text);
-  font-family:"Inter",system-ui,-apple-system,sans-serif;
-  font-size:16px;
-  line-height:1.65;
-  -webkit-font-smoothing:antialiased;
-}
-
+body{ background:var(--bg); color:var(--text); font-family:"Inter",system-ui,-apple-system,sans-serif; font-size:16px; line-height:1.65; -webkit-font-smoothing:antialiased; }
 .wrap{ width:min(var(--max), calc(100% - 44px)); margin:0 auto; }
-
 h1,h2,h3{ letter-spacing:-.02em; line-height:1.25; font-weight:600; }
 code,.mono{ font-family:"JetBrains Mono",ui-monospace,monospace; }
 code{ font-size:.88em; color:var(--accent); background:rgba(100,210,179,.07); padding:1px 5px; border-radius:4px; }
 a{ color:var(--accent); text-decoration:none; }
-
-a:focus-visible,.btn:focus-visible{
-  outline:2px solid var(--accent);
-  outline-offset:3px;
-  border-radius:4px;
-}
-
-/* NAV */
-nav{
-  position:sticky; top:0; z-index:50;
-  background:rgba(10,12,16,.72);
-  backdrop-filter:blur(12px);
-  border-bottom:1px solid transparent;
-  transition:border-color .3s ease;
-}
+a:focus-visible,.btn:focus-visible{ outline:2px solid var(--accent); outline-offset:3px; border-radius:4px; }
+nav{ position:sticky; top:0; z-index:50; background:rgba(10,12,16,.72); backdrop-filter:blur(12px); border-bottom:1px solid transparent; transition:border-color .3s ease; }
 nav.scrolled{ border-bottom-color:var(--line); }
 nav .wrap{ display:flex; align-items:center; justify-content:space-between; height:60px; }
 nav .brand{ font-family:"JetBrains Mono",monospace; font-size:.9rem; color:var(--text); }
@@ -76,74 +52,37 @@ nav .links{ display:flex; gap:24px; font-size:.87rem; }
 nav .links a{ color:var(--body); transition:color .2s ease; }
 nav .links a:hover{ color:var(--text); }
 @media(max-width:700px){ nav .links{ display:none; } }
-
-/* HERO */
 .hero{ padding:88px 0 72px; }
-.tag{
-  display:inline-flex; align-items:center; gap:8px;
-  font-family:"JetBrains Mono",monospace; font-size:.76rem;
-  color:var(--body); border:1px solid var(--line);
-  background:var(--panel); border-radius:99px; padding:6px 13px;
-}
+.tag{ display:inline-flex; align-items:center; gap:8px; font-family:"JetBrains Mono",monospace; font-size:.76rem; color:var(--body); border:1px solid var(--line); background:var(--panel); border-radius:99px; padding:6px 13px; }
 .tag .dot{ width:6px; height:6px; border-radius:50%; background:var(--accent); animation:blip 2.6s ease-in-out infinite; }
 @keyframes blip{ 0%,100%{opacity:1} 50%{opacity:.35} }
-
 .hero h1{ font-size:clamp(2.1rem,5.2vw,3.2rem); margin-top:26px; max-width:19ch; }
 .hero h1 em{ font-style:normal; color:var(--accent); }
 .hero .sub{ margin-top:22px; color:var(--body); font-size:1.05rem; max-width:62ch; }
-.hero .facts{
-  margin-top:26px; display:flex; flex-wrap:wrap; gap:8px 20px;
-  font-family:"JetBrains Mono",monospace; font-size:.79rem; color:var(--dim);
-}
+.hero .facts{ margin-top:26px; display:flex; flex-wrap:wrap; gap:8px 20px; font-family:"JetBrains Mono",monospace; font-size:.79rem; color:var(--dim); }
 .hero .facts span{ display:inline-flex; align-items:center; gap:8px; }
 .hero .facts span::before{ content:""; width:3px; height:3px; border-radius:50%; background:var(--accent-2); }
-
 .actions{ margin-top:34px; display:flex; flex-wrap:wrap; gap:11px; }
-.btn{
-  display:inline-flex; align-items:center; gap:8px;
-  font-size:.9rem; font-weight:500; padding:10px 18px;
-  border-radius:7px; border:1px solid var(--line-2);
-  background:var(--panel); color:var(--text);
-  transition:transform .2s ease, background .2s ease, border-color .2s ease;
-}
+.btn{ display:inline-flex; align-items:center; gap:8px; font-size:.9rem; font-weight:500; padding:10px 18px; border-radius:7px; border:1px solid var(--line-2); background:var(--panel); color:var(--text); transition:transform .2s ease, background .2s ease, border-color .2s ease; }
 .btn:hover{ transform:translateY(-2px); background:var(--panel-2); border-color:#32394a; }
 .btn.solid{ background:var(--accent); color:#062018; border-color:var(--accent); font-weight:600; }
 .btn.solid:hover{ background:#7ce0c3; border-color:#7ce0c3; }
 .btn .ar{ transition:transform .2s ease; }
 .btn:hover .ar{ transform:translateX(3px); }
-
-/* SECTIONS */
 section{ padding:68px 0; border-top:1px solid var(--line); }
-.kicker{
-  font-family:"JetBrains Mono",monospace; font-size:.73rem;
-  letter-spacing:.18em; text-transform:uppercase; color:var(--accent);
-  margin-bottom:14px;
-}
+.kicker{ font-family:"JetBrains Mono",monospace; font-size:.73rem; letter-spacing:.18em; text-transform:uppercase; color:var(--accent); margin-bottom:14px; }
 section h2{ font-size:clamp(1.5rem,3.2vw,1.9rem); }
 .intro{ color:var(--body); max-width:64ch; margin-top:14px; font-size:.97rem; }
-
-/* CAPABILITY */
 .caps{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:34px; }
-.cap{
-  background:var(--panel); border:1px solid var(--line);
-  border-radius:10px; padding:22px 20px;
-  transition:transform .25s ease, border-color .25s ease;
-}
+.cap{ background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:22px 20px; transition:transform .25s ease, border-color .25s ease; }
 .cap:hover{ transform:translateY(-3px); border-color:var(--line-2); }
 .cap b{ font-family:"JetBrains Mono",monospace; font-size:.74rem; color:var(--dim); font-weight:400; }
 .cap h3{ font-size:1rem; margin-top:10px; }
 .cap p{ color:var(--body); font-size:.88rem; margin-top:8px; }
-
-/* TIMELINE */
 .tl{ margin-top:36px; padding-left:24px; border-left:1px solid var(--line); }
 .tl .row{ position:relative; padding-bottom:32px; }
 .tl .row:last-child{ padding-bottom:0; }
-.tl .row::before{
-  content:""; position:absolute; left:-29px; top:9px;
-  width:9px; height:9px; border-radius:50%;
-  background:var(--bg); border:2px solid var(--line-2);
-  transition:border-color .25s ease;
-}
+.tl .row::before{ content:""; position:absolute; left:-29px; top:9px; width:9px; height:9px; border-radius:50%; background:var(--bg); border:2px solid var(--line-2); transition:border-color .25s ease; }
 .tl .row:hover::before{ border-color:var(--accent); }
 .tl .date{ font-family:"JetBrains Mono",monospace; font-size:.75rem; color:var(--dim); }
 .tl h3{ font-size:1.05rem; margin-top:5px; }
@@ -151,23 +90,9 @@ section h2{ font-size:clamp(1.5rem,3.2vw,1.9rem); }
 .tl p{ color:var(--body); font-size:.92rem; margin-top:9px; max-width:66ch; }
 .tl ul{ list-style:none; margin-top:11px; display:grid; gap:9px; }
 .tl li{ position:relative; padding-left:18px; font-size:.91rem; color:var(--body); max-width:70ch; }
-.tl li::before{
-  content:""; position:absolute; left:0; top:.62em;
-  width:5px; height:5px; border-radius:1px; background:var(--accent-2); opacity:.75;
-}
-
-/* PROJECTS */
-.proj{
-  background:var(--panel); border:1px solid var(--line);
-  border-radius:12px; padding:26px 24px; margin-top:18px;
-  position:relative; overflow:hidden;
-  transition:transform .28s ease, border-color .28s ease;
-}
-.proj::before{
-  content:""; position:absolute; top:0; left:0; right:0; height:1px;
-  background:linear-gradient(90deg,transparent,var(--accent),transparent);
-  opacity:0; transition:opacity .3s ease;
-}
+.tl li::before{ content:""; position:absolute; left:0; top:.62em; width:5px; height:5px; border-radius:1px; background:var(--accent-2); opacity:.75; }
+.proj{ background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:26px 24px; margin-top:18px; position:relative; overflow:hidden; transition:transform .28s ease, border-color .28s ease; }
+.proj::before{ content:""; position:absolute; top:0; left:0; right:0; height:1px; background:linear-gradient(90deg,transparent,var(--accent),transparent); opacity:0; transition:opacity .3s ease; }
 .proj:hover{ transform:translateY(-3px); border-color:var(--line-2); }
 .proj:hover::before{ opacity:.75; }
 .proj .head{ display:flex; align-items:baseline; justify-content:space-between; gap:14px; flex-wrap:wrap; }
@@ -175,89 +100,39 @@ section h2{ font-size:clamp(1.5rem,3.2vw,1.9rem); }
 .proj .type{ font-family:"JetBrains Mono",monospace; font-size:.72rem; color:var(--dim); }
 .proj .pitch{ color:var(--body); font-size:.94rem; margin-top:9px; max-width:66ch; }
 .tech{ display:flex; flex-wrap:wrap; gap:6px; margin-top:16px; }
-.tech span{
-  font-family:"JetBrains Mono",monospace; font-size:.71rem;
-  color:var(--body); background:var(--bg);
-  border:1px solid var(--line); border-radius:5px; padding:3px 8px;
-}
+.tech span{ font-family:"JetBrains Mono",monospace; font-size:.71rem; color:var(--body); background:var(--bg); border:1px solid var(--line); border-radius:5px; padding:3px 8px; }
 .proj ul{ list-style:none; margin-top:18px; display:grid; gap:10px; }
 .proj li{ position:relative; padding-left:19px; font-size:.91rem; color:#c4cddb; max-width:72ch; }
-.proj li::before{
-  content:""; position:absolute; left:0; top:.6em;
-  width:5px; height:5px; border-radius:1px; background:var(--accent); opacity:.8;
-}
+.proj li::before{ content:""; position:absolute; left:0; top:.6em; width:5px; height:5px; border-radius:1px; background:var(--accent); opacity:.8; }
 .proj li b{ color:var(--text); font-weight:600; }
 .go{ display:flex; flex-wrap:wrap; gap:18px; margin-top:20px; font-size:.85rem; font-weight:500; }
 .go a{ display:inline-flex; align-items:center; gap:6px; transition:color .2s ease; }
 .go a .ar{ transition:transform .2s ease; }
 .go a:hover{ color:#8ee6cb; }
 .go a:hover .ar{ transform:translateX(3px); }
-.caveat{
-  margin-top:16px; font-size:.81rem; color:var(--dim);
-  border-left:2px solid var(--line-2); padding-left:12px; max-width:70ch;
-}
+.caveat{ margin-top:16px; font-size:.81rem; color:var(--dim); border-left:2px solid var(--line-2); padding-left:12px; max-width:70ch; }
 .more{ margin-top:28px; color:var(--body); font-size:.92rem; }
-
-/* STACK */
 .grp{ margin-top:26px; }
-.grp h3{
-  font-family:"JetBrains Mono",monospace; font-size:.73rem;
-  letter-spacing:.12em; text-transform:uppercase; color:var(--dim);
-  font-weight:400; margin-bottom:10px;
-}
+.grp h3{ font-family:"JetBrains Mono",monospace; font-size:.73rem; letter-spacing:.12em; text-transform:uppercase; color:var(--dim); font-weight:400; margin-bottom:10px; }
 .chips{ display:flex; flex-wrap:wrap; gap:7px; }
-.chips span{
-  font-family:"JetBrains Mono",monospace; font-size:.78rem;
-  background:var(--panel); border:1px solid var(--line);
-  color:#cad3e0; border-radius:6px; padding:5px 10px;
-  transition:border-color .2s ease, transform .2s ease;
-}
+.chips span{ font-family:"JetBrains Mono",monospace; font-size:.78rem; background:var(--panel); border:1px solid var(--line); color:#cad3e0; border-radius:6px; padding:5px 10px; transition:border-color .2s ease, transform .2s ease; }
 .chips span:hover{ border-color:var(--accent); transform:translateY(-2px); }
-
-/* EDUCATION */
-.edu{
-  margin-top:30px; display:grid; grid-template-columns:repeat(2,1fr); gap:14px;
-}
-.edu div{
-  background:var(--panel); border:1px solid var(--line);
-  border-radius:10px; padding:20px;
-}
-.edu h3{ font-size:.98rem; }
+.edu{ margin-top:32px; display:grid; grid-template-columns:repeat(2,1fr); gap:14px; }
+.edu div{ background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:20px; }
+.edu h3{ font-size:.98rem; margin-top:4px; }
 .edu .date{ font-family:"JetBrains Mono",monospace; font-size:.74rem; color:var(--dim); }
-.edu p{ color:var(--body); font-size:.88rem; margin-top:6px; }
-
-/* CONTACT */
-.cta-box{
-  margin-top:30px; border:1px solid var(--line);
-  border-radius:12px; padding:40px 32px; background:var(--panel);
-}
+.edu p{ color:var(--body); font-size:.88rem; margin-top:7px; }
+.cta-box{ margin-top:30px; border:1px solid var(--line); border-radius:12px; padding:40px 32px; background:var(--panel); }
 .cta-box h2{ font-size:clamp(1.5rem,3.4vw,1.95rem); }
 .cta-box p{ color:var(--body); margin-top:12px; max-width:58ch; font-size:.96rem; }
-
-footer{
-  border-top:1px solid var(--line); padding:24px 0 44px;
-  font-family:"JetBrains Mono",monospace; font-size:.78rem; color:var(--dim);
-}
+footer{ border-top:1px solid var(--line); padding:24px 0 44px; font-family:"JetBrains Mono",monospace; font-size:.78rem; color:var(--dim); }
 footer .wrap{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; }
-
-/* REVEAL */
 .rv{ opacity:0; transform:translateY(16px); }
 .rv.on{ opacity:1; transform:none; transition:opacity .6s ease, transform .6s ease; }
-
-@media(max-width:720px){
-  .caps{ grid-template-columns:1fr; }
-  .edu{ grid-template-columns:1fr; }
-  .proj{ padding:22px 18px; }
-  .cta-box{ padding:32px 22px; }
-}
-@media(prefers-reduced-motion:reduce){
-  html{ scroll-behavior:auto; }
-  .rv{ opacity:1; transform:none; }
-  *{ animation:none !important; transition:none !important; }
-}
+@media(max-width:720px){ .caps{ grid-template-columns:1fr; } .edu{ grid-template-columns:1fr; } .proj{ padding:22px 18px; } .cta-box{ padding:32px 22px; } }
+@media(prefers-reduced-motion:reduce){ html{ scroll-behavior:auto; } .rv{ opacity:1; transform:none; } *{ animation:none !important; transition:none !important; } }
 </style>
 </head>
-
 <body>
 
 <nav id="nav">
@@ -286,7 +161,6 @@ footer .wrap{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8
       <a class="btn solid" href="mailto:data.atif001@gmail.com">Get in touch <span class="ar">&rarr;</span></a>
       <a class="btn" href="https://github.com/Atif0110" target="_blank" rel="noopener noreferrer">GitHub <span class="ar">&rarr;</span></a>
       <a class="btn" href="https://www.linkedin.com/in/mohd-atif01/" target="_blank" rel="noopener noreferrer">LinkedIn <span class="ar">&rarr;</span></a>
-      <!-- VERIFY: confirm this filename matches the PDF you upload to /assets -->
       <a class="btn" href="assets/Mohd_Atif_Resume.pdf" download>Resume <span class="ar">&rarr;</span></a>
     </div>
   </div>
@@ -297,21 +171,9 @@ footer .wrap{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8
     <div class="kicker rv">Focus</div>
     <h2 class="rv">What I build</h2>
     <div class="caps">
-      <div class="cap rv">
-        <b>01</b>
-        <h3>Forecasting and experimentation</h3>
-        <p>Gradient boosting and time series work with chronological validation and a named baseline to beat, plus controlled pricing experiments and hypothesis testing on live commercial data.</p>
-      </div>
-      <div class="cap rv">
-        <b>02</b>
-        <h3>LLM and agent pipelines</h3>
-        <p>Structured extraction against strict schemas, corrective retries on validation failure, provider fallback across Groq, OpenAI and Anthropic, and retrieval with citations.</p>
-      </div>
-      <div class="cap rv">
-        <b>03</b>
-        <h3>Production backends</h3>
-        <p>FastAPI and Flask on PostgreSQL with authentication, tenant isolation, migrations, rate limiting, append only audit logs, containers and continuous integration.</p>
-      </div>
+      <div class="cap rv"><b>01</b><h3>Forecasting and experimentation</h3><p>Gradient boosting and time series work with chronological validation and a named baseline to beat, plus controlled pricing experiments and hypothesis testing on live commercial data.</p></div>
+      <div class="cap rv"><b>02</b><h3>LLM and agent pipelines</h3><p>Structured extraction against strict schemas, corrective retries on validation failure, provider fallback across Groq, OpenAI and Anthropic, and retrieval over collected evidence.</p></div>
+      <div class="cap rv"><b>03</b><h3>Production backends</h3><p>FastAPI and Flask on PostgreSQL with authentication, tenant isolation, rate limiting, append only audit logs, containers and continuous integration against a real database.</p></div>
     </div>
   </div>
 </section>
@@ -321,36 +183,31 @@ footer .wrap{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8
     <div class="kicker rv">Experience</div>
     <h2 class="rv">Where I have worked</h2>
     <p class="intro rv">A year of commercial data science on live operational data, followed by contract model evaluation, open source contribution, and direct delivery for clients in the United States and the Netherlands.</p>
-
     <div class="tl">
       <div class="row rv">
-        <div class="date">2026 to present</div>
+        <div class="date">2025 to present</div>
         <h3>Labelbox</h3>
         <div class="what">Contract AI trainer and model evaluator</div>
         <p>Training and evaluating a voice assistant through Labelbox's contractor platform, alongside structured labeling and model evaluation tasks. The transferable skill is evaluation discipline: writing rubrics that surface failure modes an aggregate score hides, then applying them consistently at volume.</p>
       </div>
-
       <div class="row rv">
         <div class="date">2026 to present</div>
         <h3>RoboCurve, inspect robots</h3>
         <div class="what">Open source contributor</div>
-        <p>Contributing to inspect robots, a Y Combinator backed open source evaluation framework for physical AI that runs any policy, whether an LLM agent or a vision language action model, against any embodiment and produces auditable logs. My work sits on the evaluation and logging side of the codebase.</p>
+        <p>Contributing to inspect robots, a Y Combinator backed open source evaluation framework for physical AI that runs any policy, whether an LLM agent or a vision language action model, against any embodiment and produces auditable logs. My pull requests target the command line surface and contributor tooling: a hand rolled bash and zsh completion subcommand written against the project's standard library only rule, and an environment diagnostics block added to the <code>doctor</code> command that reports interpreter, platform, package version and optional extras. Both shipped with unit tests and a changelog entry, and are open for review upstream.</p>
       </div>
-
       <div class="row rv">
         <div class="date">2026</div>
         <h3>Independent freelance</h3>
         <div class="what">Netherlands and United States clients</div>
         <p>Delivered production websites and internal automation. Recent work includes an n8n pipeline for a Rotterdam student events platform where an RSS trigger picks up partner Instagram posts, a vision capable model extracts event fields from the caption and the flyer image against a fixed JSON schema with confidence flags on missing values, a dedupe step skips processed posts, and output lands in a reviewable document rather than a live table until extraction quality clears human review.</p>
       </div>
-
       <div class="row rv">
         <div class="date">Jul to Aug 2026</div>
         <h3>Mythos</h3>
         <div class="what">Growth and customer acquisition, short engagement</div>
         <p>Worked directly with the founder on growth and customer acquisition experiments during an early scaling push.</p>
       </div>
-
       <div class="row rv">
         <div class="date">Jun 2024 to May 2025</div>
         <h3>Arabania Indo Arabic Restaurant</h3>
@@ -374,117 +231,75 @@ footer .wrap{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8
     <p class="intro rv">Each one runs, has tests, and documents its own limits. Where something is a prototype rather than a production deployment, it says so.</p>
 
     <article class="proj rv">
-      <div class="head">
-        <h3>TrustLayer</h3>
-        <span class="type">agent infrastructure</span>
-      </div>
+      <div class="head"><h3>TrustLayer</h3><span class="type">agent infrastructure</span></div>
       <p class="pitch">An authorization layer for AI agents. Before an agent acts, it asks TrustLayer whether it is permitted, and anything consequential can be routed to a human first.</p>
-      <div class="tech">
-        <span>FastAPI</span><span>PostgreSQL</span><span>SQLAlchemy async</span><span>Alembic</span><span>React</span><span>Docker Compose</span><span>pytest</span><span>testcontainers</span>
-      </div>
+      <div class="tech"><span>FastAPI</span><span>PostgreSQL</span><span>SQLAlchemy async</span><span>Alembic</span><span>React</span><span>Docker Compose</span><span>pytest</span><span>testcontainers</span><span>GitHub Actions</span></div>
       <ul>
-        <li><b>It fails closed.</b> The evaluator walks policy rules in order, returns the first match, and when nothing matches it returns DENY with the reason recorded. Malformed rules are skipped rather than trusted, so a broken policy cannot widen access.</li>
-        <li><b>Policies are data, not code.</b> Conditions match on action plus context, with numeric comparison operators for thresholds, so a rule like refunds under one hundred allowed and above that requiring approval is a row in the database that an operator can change without a deploy.</li>
-        <li><b>Policy changes are versioned per organization.</b> Each update takes the next monotonic version number for that tenant, which means an audit entry can always be read against the exact policy that produced it rather than whatever is current today.</li>
-        <li><b>Human approval is a first class state.</b> Actions resolving to require approval enter a queue and stay blocked until an owner signs off. Every decision lands in an append only log, and records are tenant scoped, so a second organization asking for another tenant's approval request receives a not found rather than a leak.</li>
-        <li><b>Built to be handed to a team.</b> Continuous integration on every push runs linting, unit tests, and integration tests against a real PostgreSQL instance spun up through testcontainers, plus type checking and tests for the React dashboard. Schema changes go through Alembic migrations, and the whole stack comes up with Docker Compose and a seed script.</li>
+        <li><b>It fails closed.</b> The evaluator walks policy rules in order and returns the first match, and when nothing matches it returns DENY with the reason recorded rather than falling through. Rules that are malformed or carry an unrecognised decision are skipped instead of trusted, so a broken policy can never widen access.</li>
+        <li><b>Policies are data, not code.</b> A condition matches on the action plus arbitrary context keys, with numeric comparison suffixes for thresholds, so a rule such as refunds at or under one hundred allowed and anything above requiring approval is a row an operator can change without a deployment.</li>
+        <li><b>Policy changes are versioned per organization.</b> Each update takes the next monotonic version number scoped to that tenant, which means an audit record can be read against the exact policy that produced it rather than whatever happens to be current today.</li>
+        <li><b>Human approval is a first class state.</b> Actions resolving to require approval enter a queue and stay blocked until an owner signs off, every decision lands in an append only log, and records are tenant scoped, so a second organization requesting another tenant's approval receives a not found rather than a leak.</li>
+        <li><b>Verified the way a team would verify it.</b> Continuous integration runs on every push: linting and unit tests on the API, integration tests against a real PostgreSQL instance started through testcontainers rather than a mock, plus tests and type checking on the React dashboard. Rate limiting sits on signup and login, and the full stack comes up through Docker Compose with seed and demo agent scripts.</li>
       </ul>
-      <div class="go">
-        <a href="https://github.com/Atif0110/TrustLayer" target="_blank" rel="noopener noreferrer">GitHub <span class="ar">&rarr;</span></a>
-      </div>
+      <div class="go"><a href="https://github.com/Atif0110/TrustLayer" target="_blank" rel="noopener noreferrer">GitHub <span class="ar">&rarr;</span></a></div>
     </article>
 
     <article class="proj rv">
-      <div class="head">
-        <h3>Power Price Forecasting Pipeline</h3>
-        <span class="type">applied machine learning</span>
-      </div>
-      <p class="pitch">Day ahead electricity price forecasting for the German market, taken past the error metric into a data quality gate, calibrated uncertainty, and a signal layer that declines to act when it is not confident.</p>
-      <div class="tech">
-        <span>Python</span><span>XGBoost</span><span>scikit learn</span><span>pandas</span><span>ENTSOE API</span><span>Plotly</span><span>Groq</span><span>pytest</span>
-      </div>
+      <div class="head"><h3>Power Price Forecasting Pipeline</h3><span class="type">applied machine learning</span></div>
+      <p class="pitch">Day ahead electricity price forecasting for the German and Luxembourg bidding zone, taken past the error metric into a data quality gate, calibrated uncertainty, and a signal layer that declines to act when it is not confident.</p>
+      <div class="tech"><span>Python</span><span>XGBoost</span><span>scikit learn</span><span>pandas</span><span>ENTSOE API</span><span>Plotly</span><span>Groq</span><span>joblib</span><span>pytest</span></div>
       <ul>
-        <li><b>Every run has to beat a named baseline.</b> The model is scored against a seasonal naive benchmark, the price twenty four hours earlier, and the pipeline reports mean absolute error for both plus the percentage improvement. Complexity has to earn its place instead of being assumed.</li>
+        <li><b>Every run has to beat a named baseline.</b> The model is scored against a seasonal naive benchmark, the price twenty four hours earlier, aligned to the same test window, and the pipeline reports mean absolute error for both plus the percentage improvement. Complexity has to earn its place rather than being assumed.</li>
         <li><b>The split respects time.</b> Training and test sets are cut chronologically rather than shuffled, so no future information leaks backward into training, which is the failure mode that quietly inflates most time series results.</li>
-        <li><b>Features model the actual market.</b> Hour, weekday, month and weekend flags for seasonality, lags at one, twenty four, forty eight and one hundred sixty eight hours, a rolling daily mean and standard deviation, and a momentum term, all on top of load and renewable generation as demand and supply drivers. Feature engineering raises immediately if any missing value survives it.</li>
-        <li><b>A quality gate that understands the domain.</b> Before modeling, data is scored out of one hundred with deductions for missing hours, duplicate timestamps, extreme spikes, and violated economic relationships, since price should move with load and against wind and solar. The result is a structured report, so bad data is caught rather than silently trained on.</li>
-        <li><b>Uncertainty drives the decision.</b> A ninety five percent interval is derived from training residuals and carried forward, and the signal layer takes a position only when the spread against the reference price exceeds that interval, otherwise it returns no trade. An LLM layer turns the run into a written trader brief, and the output is an interactive chart of forecast against actual with the signal and a cumulative simulation.</li>
+        <li><b>Features model the actual market.</b> Hour, weekday, month and weekend flags for seasonality, lags at one, twenty four, forty eight and one hundred sixty eight hours, a rolling daily mean and standard deviation, and a day over day momentum term, all on top of load and renewable generation as demand and supply drivers.</li>
+        <li><b>A quality gate that understands the domain.</b> Before modeling, the data is scored out of one hundred with deductions for missing hours, duplicate timestamps, non monotonic ordering, extreme spikes, and violated economic relationships, since price should move with load and against wind and solar. The result is a structured report, so bad data is caught rather than trained on.</li>
+        <li><b>Uncertainty drives the decision.</b> A ninety five percent interval derived from training residuals is carried forward, and the signal layer takes a position only when the spread against the reference price exceeds that interval, otherwise it returns no trade. An LLM step generates a four part trader brief covering driver, trade, risk and invalidation, with every prompt and response logged to disk and a deterministic fallback when no key is configured or the model errors.</li>
       </ul>
-      <div class="go">
-        <a href="https://github.com/Atif0110/power-forecast-pipeline" target="_blank" rel="noopener noreferrer">GitHub <span class="ar">&rarr;</span></a>
-      </div>
-      <!--
-        INSERT YOUR NUMBERS. Run `python main.py`, then read mae_xgb, mae_baseline
-        and improvement_% from the console or outputs/logs/pipeline.log.
-        Prepend a sentence to the caveat below, for example:
-        "On a chronological holdout the model reached a mean absolute error of X.X
-        against Y.Y for the seasonal naive baseline, an improvement of Z percent."
-        State whether that run used live ENTSOE data or the synthetic fallback.
-      -->
-      <p class="caveat">Simulated performance comes from a historical backtest of the signal rules against a fixed reference price and is not a claim about live trading.</p>
+      <div class="go"><a href="https://github.com/Atif0110/power-forecast-pipeline" target="_blank" rel="noopener noreferrer">GitHub <span class="ar">&rarr;</span></a></div>
+      <!-- INSERT YOUR NUMBERS: run python main.py, read mae_xgb, mae_baseline, improvement_% from outputs/logs/pipeline.log, and prepend them here along with whether the run used live ENTSOE data or the synthetic fallback. -->
+      <p class="caveat">Day ahead prices come from the ENTSO-E transparency platform when an API key is configured, with the demand and generation drivers currently modeled rather than fetched, and a fully synthetic dataset when no key is present. Simulated performance is a historical backtest of the signal rules against a fixed reference price and is not a claim about live trading.</p>
     </article>
 
     <article class="proj rv">
-      <div class="head">
-        <h3>AI Competitor Research Platform</h3>
-        <span class="type">LLM data pipeline</span>
-      </div>
+      <div class="head"><h3>AI Competitor Research Platform</h3><span class="type">LLM data pipeline</span></div>
       <p class="pitch">Agent driven competitive intelligence that answers what a competitor charges, in which market, and how that has moved, with every number traceable to the run that produced it.</p>
-      <div class="tech">
-        <span>Python</span><span>FastAPI</span><span>Firecrawl</span><span>Playwright</span><span>SQLite</span><span>provider fallback</span><span>RAG</span><span>Streamlit</span>
-      </div>
+      <div class="tech"><span>Python</span><span>FastAPI</span><span>Firecrawl</span><span>Playwright</span><span>SQLite</span><span>provider fallback</span><span>RAG</span><span>Streamlit</span></div>
       <ul>
-        <li><b>Geography is enforced, never inferred.</b> Each URL is fetched once per execution region and the pipeline decides that region, not the model. If extraction claims a different one the mismatch is logged and the pipeline wins, and with strict verification enabled a scrape that cannot prove its exit location is refused rather than quietly returning the wrong market's prices.</li>
-        <li><b>Extraction corrects itself.</b> Output is validated against a schema and a confidence check, and failures retry with the previous error fed back to the model. The provider chain is built across every fallback hop, and telemetry separates calls, attempts and fallbacks, with counters reset at the start of each run so metrics from one job never bleed into another.</li>
-        <li><b>Storage is idempotent with real provenance.</b> An observation key hashes the canonical URL, product identity, region, competitor, seller and snapshot hour, while the run identifier stays as metadata rather than part of the key, so re running a job updates rather than duplicates and any single run remains recoverable. Raw page content and a hash are kept per URL for debugging bad extractions.</li>
-        <li><b>Reports cannot silently mix runs.</b> Every analysis method filters by run in SQL rather than in Python, so a report for one run can never blend observations from another, and reads come from a single per run metrics table that the dashboard, the PDF and the alerts all share.</li>
-        <li><b>It refuses to guess when the input is wrong.</b> Product filtering matches the URL path only, with word boundaries so a short token cannot match unrelated segments, and when nothing matches it returns zero URLs with a warning instead of broadening to scrape the entire site. Checkpoints survive corruption by restarting cleanly rather than crashing.</li>
+        <li><b>Geography is enforced, never inferred.</b> Each URL is fetched once per execution region and the pipeline decides that region, not the model. If extraction claims a different one the mismatch is logged and the execution region wins, and with proxy verification enabled a scrape that cannot prove its exit location fails rather than quietly returning the wrong market's prices.</li>
+        <li><b>Extraction corrects itself.</b> Output is validated against a schema and a semantic confidence check, and failures retry with the previous error fed back into the prompt. Telemetry separates model calls, provider attempts and fallbacks, with counters isolated per run so one job's metrics never contaminate another.</li>
+        <li><b>Storage is idempotent with real provenance.</b> An observation key hashes the canonical URL, product identity, region, competitor, seller and snapshot hour, while the run identifier stays as metadata rather than part of the key, so re running a job updates in place instead of duplicating. Raw page markdown with a content hash and timestamp is retained per URL for debugging bad extractions.</li>
+        <li><b>Reports cannot silently mix runs.</b> Every analysis method filters by run identifier in SQL rather than in Python, so a report for one run can never blend observations from another, and the six tab Streamlit dashboard, the PDF report and the alerts all read from one per run metrics table, with a RAG question box that renders source citations.</li>
+        <li><b>It refuses to guess when the input is wrong.</b> Product filtering matches the URL path only, with word boundaries so a short token cannot match an unrelated segment, and when nothing matches it returns zero URLs with a warning instead of broadening to scrape the entire site. Prices are normalised to USD with the rate and timestamp stored.</li>
       </ul>
-      <div class="go">
-        <a href="https://github.com/Atif0110/AI-competitor-research" target="_blank" rel="noopener noreferrer">GitHub <span class="ar">&rarr;</span></a>
-      </div>
+      <div class="go"><a href="https://github.com/Atif0110/AI-competitor-research" target="_blank" rel="noopener noreferrer">GitHub <span class="ar">&rarr;</span></a></div>
       <p class="caveat">A demo mode runs the entire pipeline deterministically without credentials. The live path across the scraping providers, residential proxies and the three model providers is wired and unit tested against fakes but has not yet been exercised at scale against production targets.</p>
     </article>
 
     <article class="proj rv">
-      <div class="head">
-        <h3>Shravan</h3>
-        <span class="type">full stack product</span>
-      </div>
+      <div class="head"><h3>Shravan</h3><span class="type">full stack product</span></div>
       <p class="pitch">A health companion for senior citizens and their caretakers covering medicine reminders, health logging, emergency contacts, nearby care discovery and AI assistance, across a web app and a mobile client.</p>
-      <div class="tech">
-        <span>Flask</span><span>SQLAlchemy</span><span>Vue 3</span><span>Pinia</span><span>Flutter</span><span>Groq</span><span>Gemini</span><span>Swagger</span>
-      </div>
+      <div class="tech"><span>Flask</span><span>SQLAlchemy</span><span>Vue 3</span><span>Pinia</span><span>Flutter</span><span>Groq</span><span>Gemini</span><span>Swagger</span></div>
       <ul>
         <li><b>One backend, two clients.</b> A single Flask and SQLAlchemy API serves both the Vue web application and the Flutter mobile client, running on SQLite by default and moving to PostgreSQL through one connection string with no code change.</li>
         <li><b>Security treated as a requirement.</b> Server side sessions, password hashing, cross site request forgery protection on state changing requests, login throttling, session expiry, role checks, restrictive origin policy, response security headers, request size limits, user scoped data access, and validation of user supplied external URLs. API keys stay on the backend and never reach the client.</li>
-        <li><b>It degrades instead of failing.</b> Healthcare discovery uses Google Places when a key is configured and falls back to OpenStreetMap, with geocoding falling back to Nominatim, so the core flow works at zero API cost and the product is never one billing problem away from being unusable.</li>
+        <li><b>It degrades instead of failing.</b> Healthcare discovery uses Google Places when a key is configured and falls back to OpenStreetMap, with geocoding falling back to Nominatim, so the core location flow works at zero API cost.</li>
         <li><b>Documented and testable.</b> Interactive API documentation is generated per endpoint and served from the running backend, with a pytest suite and single command startup scripts for both Windows and Unix.</li>
-        <li><b>Explicit safety boundary.</b> The assistant is scoped in product to general information and is stated not to be a diagnosis or a substitute for a clinician, with emergency symptoms routed to real services. Placed fifth of thirty at an IIT Madras competition.</li>
+        <li><b>An explicit safety boundary.</b> The assistant is scoped in product to general information and stated not to be a diagnosis or a substitute for a licensed clinician, with emergency symptoms routed to real services. Placed fifth of thirty at an IIT Madras competition.</li>
       </ul>
-      <div class="go">
-        <a href="https://github.com/Atif0110/Shravan-Application" target="_blank" rel="noopener noreferrer">GitHub <span class="ar">&rarr;</span></a>
-      </div>
+      <div class="go"><a href="https://github.com/Atif0110/Shravan-Application" target="_blank" rel="noopener noreferrer">GitHub <span class="ar">&rarr;</span></a></div>
     </article>
 
     <article class="proj rv">
-      <div class="head">
-        <h3>OpenClaw</h3>
-        <span class="type">automation agent</span>
-      </div>
+      <div class="head"><h3>OpenClaw</h3><span class="type">automation agent</span></div>
       <p class="pitch">Describe a task in plain English and it becomes a scheduled browser agent, previewed and approved by you before it is allowed to run, entirely on your own machine.</p>
-      <div class="tech">
-        <span>Node.js</span><span>Express</span><span>Playwright</span><span>node cron</span><span>SQLite</span><span>Ollama</span><span>OpenAI</span>
-      </div>
+      <div class="tech"><span>Node.js</span><span>Express</span><span>Playwright</span><span>node cron</span><span>better-sqlite3</span><span>Ollama</span><span>OpenAI</span></div>
       <ul>
         <li><b>Local first by default.</b> A router selects a local model through Ollama when no API key is present and a hosted model when one is, so the entire system can run offline with nothing leaving the machine.</li>
         <li><b>Nothing executes without consent.</b> Each generated agent is rendered as a preview showing its goal and schedule and requires explicit approval before deployment, with a sandboxed dry run available first.</li>
-        <li><b>Scheduled execution against a real browser.</b> Approved agents are handed to a cron scheduler that drives a Chromium instance through Playwright, with agent configuration, credentials and execution logs persisted locally in SQLite.</li>
-        <li><b>Small and legible.</b> The server, router, agent manager, scheduler, browser layer and database each live in one focused module, which makes the approval boundary easy to audit rather than buried in a framework.</li>
+        <li><b>Scheduled execution against a real browser.</b> Approved agents are handed to a cron scheduler that drives a Chromium instance through Playwright, with agent configuration, credentials and execution logs persisted locally.</li>
+        <li><b>Small and legible.</b> The server, model router, agent manager, scheduler, browser layer and database each live in one focused module, which keeps the approval boundary easy to audit rather than buried inside a framework.</li>
       </ul>
-      <div class="go">
-        <a href="https://github.com/Atif0110/openclaw-desktop-assistant" target="_blank" rel="noopener noreferrer">GitHub <span class="ar">&rarr;</span></a>
-      </div>
+      <div class="go"><a href="https://github.com/Atif0110/openclaw-desktop-assistant" target="_blank" rel="noopener noreferrer">GitHub <span class="ar">&rarr;</span></a></div>
     </article>
 
     <p class="more rv">Earlier work, competition entries and dashboards live on <a href="https://github.com/Atif0110" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
@@ -495,53 +310,14 @@ footer .wrap{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8
   <div class="wrap">
     <div class="kicker rv">Stack</div>
     <h2 class="rv">Tools I reach for</h2>
-
-    <div class="grp rv">
-      <h3>Machine learning and statistics</h3>
-      <div class="chips">
-        <span>Python</span><span>XGBoost</span><span>scikit learn</span><span>statsmodels</span><span>time series forecasting</span><span>A/B testing</span><span>hypothesis testing</span><span>anomaly detection</span><span>SHAP</span>
-      </div>
-    </div>
-
-    <div class="grp rv">
-      <h3>Data and analytics</h3>
-      <div class="chips">
-        <span>SQL</span><span>CTEs and window functions</span><span>pandas</span><span>NumPy</span><span>R</span><span>Power BI</span><span>Tableau</span><span>Matplotlib</span><span>Plotly</span>
-      </div>
-    </div>
-
-    <div class="grp rv">
-      <h3>Backend and infrastructure</h3>
-      <div class="chips">
-        <span>FastAPI</span><span>Flask</span><span>PostgreSQL</span><span>SQLAlchemy</span><span>Alembic</span><span>Docker</span><span>pytest</span><span>GitHub Actions</span><span>Git</span>
-      </div>
-    </div>
-
-    <div class="grp rv">
-      <h3>AI and LLM systems</h3>
-      <div class="chips">
-        <span>Groq</span><span>OpenAI</span><span>Anthropic</span><span>Ollama</span><span>LangChain</span><span>RAG</span><span>structured extraction</span><span>Playwright</span><span>n8n</span>
-      </div>
-    </div>
-
-    <div class="grp rv">
-      <h3>Frontend and mobile</h3>
-      <div class="chips">
-        <span>React</span><span>Vue 3</span><span>Streamlit</span><span>Flutter</span>
-      </div>
-    </div>
-
+    <div class="grp rv"><h3>Machine learning and statistics</h3><div class="chips"><span>Python</span><span>XGBoost</span><span>scikit learn</span><span>statsmodels</span><span>time series forecasting</span><span>A/B testing</span><span>hypothesis testing</span><span>anomaly detection</span><span>backtesting</span></div></div>
+    <div class="grp rv"><h3>Data and analytics</h3><div class="chips"><span>SQL</span><span>CTEs and window functions</span><span>pandas</span><span>NumPy</span><span>R</span><span>Power BI</span><span>Tableau</span><span>Matplotlib</span><span>Plotly</span></div></div>
+    <div class="grp rv"><h3>Backend and infrastructure</h3><div class="chips"><span>FastAPI</span><span>Flask</span><span>PostgreSQL</span><span>SQLAlchemy</span><span>Alembic</span><span>SQLite</span><span>Docker</span><span>pytest</span><span>testcontainers</span><span>GitHub Actions</span><span>Git</span></div></div>
+    <div class="grp rv"><h3>AI and LLM systems</h3><div class="chips"><span>OpenAI</span><span>Anthropic</span><span>Groq</span><span>Gemini</span><span>Ollama</span><span>RAG</span><span>structured extraction</span><span>provider fallback</span><span>Playwright</span><span>n8n</span></div></div>
+    <div class="grp rv"><h3>Frontend and mobile</h3><div class="chips"><span>React</span><span>Vue 3</span><span>Streamlit</span><span>Flutter</span></div></div>
     <div class="edu">
-      <div class="rv">
-        <div class="date">2022 to 2025</div>
-        <h3>Indian Institute of Technology, Madras</h3>
-        <p>B.S. in Data Science and Applications.</p>
-      </div>
-      <div class="rv">
-        <div class="date">Certification</div>
-        <h3>Google Data Analytics Professional Certificate</h3>
-        <p>Foundations, data exploration, and data driven decision making.</p>
-      </div>
+      <div class="rv"><div class="date">2022 to 2025</div><h3>Indian Institute of Technology, Madras</h3><p>B.S. in Data Science and Applications, covering machine learning, statistical modeling and data mining.</p></div>
+      <div class="rv"><div class="date">Recognition</div><h3>IIT Madras project competition</h3><p>Placed fifth of thirty teams with Shravan, a full stack health companion for senior citizens and caretakers.</p></div>
     </div>
   </div>
 </section>
@@ -561,12 +337,7 @@ footer .wrap{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8
   </div>
 </section>
 
-<footer>
-  <div class="wrap">
-    <span>&copy; 2026 Mohd Atif</span>
-    <span>Lucknow, India</span>
-  </div>
-</footer>
+<footer><div class="wrap"><span>&copy; 2026 Mohd Atif</span><span>Lucknow, India</span></div></footer>
 
 <script>
 (function(){
@@ -574,19 +345,13 @@ footer .wrap{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8
   function onScroll(){ nav.classList.toggle('scrolled', window.scrollY > 8); }
   onScroll();
   window.addEventListener('scroll', onScroll, { passive:true });
-
   var items = document.querySelectorAll('.rv');
-  if (!('IntersectionObserver' in window)) {
-    items.forEach(function(el){ el.classList.add('on'); });
-    return;
-  }
+  if (!('IntersectionObserver' in window)) { items.forEach(function(el){ el.classList.add('on'); }); return; }
   var io = new IntersectionObserver(function(entries){
     entries.forEach(function(e){
       if (!e.isIntersecting) return;
       var el = e.target;
-      var sibs = Array.prototype.filter.call(el.parentNode.children, function(n){
-        return n.classList && n.classList.contains('rv');
-      });
+      var sibs = Array.prototype.filter.call(el.parentNode.children, function(n){ return n.classList && n.classList.contains('rv'); });
       el.style.transitionDelay = Math.min(sibs.indexOf(el), 5) * 60 + 'ms';
       el.classList.add('on');
       io.unobserve(el);
@@ -595,6 +360,5 @@ footer .wrap{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8
   items.forEach(function(el){ io.observe(el); });
 })();
 </script>
-
 </body>
 </html>
