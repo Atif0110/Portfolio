@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Mohd Atif | Data Scientist and Backend AI Engineer</title>
+<title>Mohd Atif | Data Scientist & Backend AI Engineer</title>
 <meta name="description" content="Mohd Atif, Data Scientist and Backend AI Engineer. Forecasting models, experimentation, LLM pipelines and the production backends that serve them.">
 
 <meta property="og:type" content="website">
@@ -227,8 +227,27 @@ footer .wrap{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8
 <section id="projects">
   <div class="wrap">
     <div class="kicker rv">Projects</div>
-    <h2 class="rv">Five systems, built end to end</h2>
+    <h2 class="rv">Six systems, built end to end</h2>
     <p class="intro rv">Each one runs, has tests, and documents its own limits. Where something is a prototype rather than a production deployment, it says so.</p>
+
+
+    <article class="proj rv">
+      <div class="head"><h3>RouteForge</h3><span class="type">AI infrastructure & model routing</span></div>
+      <p class="pitch">A provider-independent model routing layer that scores candidate LLMs against prompt characteristics and routing policy, with a production-style API, web console, and browser integration for ChatGPT and Claude.</p>
+      <div class="tech"><span>Python</span><span>FastAPI</span><span>LightGBM</span><span>NumPy</span><span>Pydantic</span><span>REST API</span><span>Chrome Extension</span><span>JavaScript</span><span>Docker</span><span>GitHub Actions</span><span>Render</span><span>pytest</span></div>
+      <ul>
+        <li><b>Routing is the product boundary.</b> The backend accepts a prompt, evaluates the existing calibrated classifier and routing policy, and returns a selected model with candidate scores and selection metadata. It intentionally separates model selection from model inference.</li>
+        <li><b>Policy is explicit and inspectable.</b> The router exposes scored versus random selection, cost-sensitivity controls, candidate utilities and compatibility information instead of hiding the decision behind a black-box UI.</li>
+        <li><b>Built as an actual developer-facing service.</b> FastAPI endpoints, validation, health checks, CORS controls, structured errors, request metadata, tests, Docker packaging and CI make the project runnable as a standalone service rather than a notebook demo.</li>
+        <li><b>Browser integration explores the real product edge.</b> A Manifest V3 extension adds a Route action to ChatGPT and Claude, calls the local/public router, and uses conservative provider/model mappings. When a provider cannot safely map the selected legacy candidate to a visible consumer model, the extension reports the routing decision instead of pretending the switch succeeded.</li>
+        <li><b>Public deployment is demo-ready.</b> RouteForge is deployed on Render with a browser-accessible frontend and API documentation, while the public mode adds prompt-size and request-rate guards. No provider API keys, cookies or session credentials are stored by the extension.</li>
+      </ul>
+      <div class="go">
+        <a href="https://routeforge-pzh7.onrender.com/" target="_blank" rel="noopener noreferrer">Live demo <span class="ar">&rarr;</span></a>
+        <a href="https://github.com/Atif0110/routeforge" target="_blank" rel="noopener noreferrer">GitHub <span class="ar">&rarr;</span></a>
+      </div>
+      <p class="caveat">RouteForge selects a model; it does not proxy provider inference or provide LLM usage. Consumer-browser model switching depends on the provider's current UI and available model controls, so unsupported mappings are surfaced rather than fabricated.</p>
+    </article>
 
     <article class="proj rv">
       <div class="head"><h3>TrustLayer</h3><span class="type">agent infrastructure</span></div>
@@ -243,7 +262,6 @@ footer .wrap{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8
       </ul>
       <div class="go"><a href="https://github.com/Atif0110/TrustLayer" target="_blank" rel="noopener noreferrer">GitHub <span class="ar">&rarr;</span></a></div>
     </article>
-
     <article class="proj rv">
       <div class="head"><h3>Power Price Forecasting Pipeline</h3><span class="type">applied machine learning</span></div>
       <p class="pitch">Day ahead electricity price forecasting for the German and Luxembourg bidding zone, taken past the error metric into a data quality gate, calibrated uncertainty, and a signal layer that declines to act when it is not confident.</p>
@@ -259,7 +277,6 @@ footer .wrap{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8
       <!-- INSERT YOUR NUMBERS: run python main.py, read mae_xgb, mae_baseline, improvement_% from outputs/logs/pipeline.log, and prepend them here along with whether the run used live ENTSOE data or the synthetic fallback. -->
       <p class="caveat">Day ahead prices come from the ENTSO-E transparency platform when an API key is configured, with the demand and generation drivers currently modeled rather than fetched, and a fully synthetic dataset when no key is present. Simulated performance is a historical backtest of the signal rules against a fixed reference price and is not a claim about live trading.</p>
     </article>
-
     <article class="proj rv">
       <div class="head"><h3>AI Competitor Research Platform</h3><span class="type">LLM data pipeline</span></div>
       <p class="pitch">Agent driven competitive intelligence that answers what a competitor charges, in which market, and how that has moved, with every number traceable to the run that produced it.</p>
@@ -274,7 +291,6 @@ footer .wrap{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8
       <div class="go"><a href="https://github.com/Atif0110/AI-competitor-research" target="_blank" rel="noopener noreferrer">GitHub <span class="ar">&rarr;</span></a></div>
       <p class="caveat">A demo mode runs the entire pipeline deterministically without credentials. The live path across the scraping providers, residential proxies and the three model providers is wired and unit tested against fakes but has not yet been exercised at scale against production targets.</p>
     </article>
-
     <article class="proj rv">
       <div class="head"><h3>Shravan</h3><span class="type">full stack product</span></div>
       <p class="pitch">A health companion for senior citizens and their caretakers covering medicine reminders, health logging, emergency contacts, nearby care discovery and AI assistance, across a web app and a mobile client.</p>
@@ -288,7 +304,6 @@ footer .wrap{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8
       </ul>
       <div class="go"><a href="https://github.com/Atif0110/Shravan-Application" target="_blank" rel="noopener noreferrer">GitHub <span class="ar">&rarr;</span></a></div>
     </article>
-
     <article class="proj rv">
       <div class="head"><h3>OpenClaw</h3><span class="type">automation agent</span></div>
       <p class="pitch">Describe a task in plain English and it becomes a scheduled browser agent, previewed and approved by you before it is allowed to run, entirely on your own machine.</p>
@@ -312,8 +327,8 @@ footer .wrap{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8
     <h2 class="rv">Tools I reach for</h2>
     <div class="grp rv"><h3>Machine learning and statistics</h3><div class="chips"><span>Python</span><span>XGBoost</span><span>scikit learn</span><span>statsmodels</span><span>time series forecasting</span><span>A/B testing</span><span>hypothesis testing</span><span>anomaly detection</span><span>backtesting</span></div></div>
     <div class="grp rv"><h3>Data and analytics</h3><div class="chips"><span>SQL</span><span>CTEs and window functions</span><span>pandas</span><span>NumPy</span><span>R</span><span>Power BI</span><span>Tableau</span><span>Matplotlib</span><span>Plotly</span></div></div>
-    <div class="grp rv"><h3>Backend and infrastructure</h3><div class="chips"><span>FastAPI</span><span>Flask</span><span>PostgreSQL</span><span>SQLAlchemy</span><span>Alembic</span><span>SQLite</span><span>Docker</span><span>pytest</span><span>testcontainers</span><span>GitHub Actions</span><span>Git</span></div></div>
-    <div class="grp rv"><h3>AI and LLM systems</h3><div class="chips"><span>OpenAI</span><span>Anthropic</span><span>Groq</span><span>Gemini</span><span>Ollama</span><span>RAG</span><span>structured extraction</span><span>provider fallback</span><span>Playwright</span><span>n8n</span></div></div>
+    <div class="grp rv"><h3>Backend and infrastructure</h3><div class="chips"><span>FastAPI</span><span>Flask</span><span>PostgreSQL</span><span>SQLAlchemy</span><span>Alembic</span><span>SQLite</span><span>Docker</span><span>pytest</span><span>testcontainers</span><span>GitHub Actions</span><span>Git</span><span>REST APIs</span><span>API validation</span></div></div>
+    <div class="grp rv"><h3>AI and LLM systems</h3><div class="chips"><span>OpenAI</span><span>Anthropic</span><span>Groq</span><span>Gemini</span><span>Ollama</span><span>RAG</span><span>structured extraction</span><span>provider fallback</span><span>LightGBM</span><span>Playwright</span><span>Chrome Extensions</span><span>n8n</span></div></div>
     <div class="grp rv"><h3>Frontend and mobile</h3><div class="chips"><span>React</span><span>Vue 3</span><span>Streamlit</span><span>Flutter</span></div></div>
     <div class="edu">
       <div class="rv"><div class="date">2022 to 2025</div><h3>Indian Institute of Technology, Madras</h3><p>B.S. in Data Science and Applications, covering machine learning, statistical modeling and data mining.</p></div>
