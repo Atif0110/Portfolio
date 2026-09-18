@@ -280,7 +280,7 @@ footer .wrap{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8
     <article class="proj rv">
       <div class="head"><h3>AI Competitor Research Platform</h3><span class="type">LLM data pipeline</span></div>
       <p class="pitch">Agent driven competitive intelligence that answers what a competitor charges, in which market, and how that has moved, with every number traceable to the run that produced it.</p>
-      <div class="tech"><span>Python</span><span>FastAPI</span><span>Firecrawl</span><span>Playwright</span><span>SQLite</span><span>provider fallback</span><span>RAG</span><span>Streamlit</span></div>
+      <div class="tech"><span>Python</span><span>FastAPI</span><span>React</span><span>Firecrawl</span><span>Playwright</span><span>SQLite</span><span>ChromaDB</span><span>RAG</span><span>Groq</span><span>OpenAI</span><span>Anthropic</span><span>Docker</span><span>Render</span><span>pytest</span></div>
       <ul>
         <li><b>Geography is enforced, never inferred.</b> Each URL is fetched once per execution region and the pipeline decides that region, not the model. If extraction claims a different one the mismatch is logged and the execution region wins, and with proxy verification enabled a scrape that cannot prove its exit location fails rather than quietly returning the wrong market's prices.</li>
         <li><b>Extraction corrects itself.</b> Output is validated against a schema and a semantic confidence check, and failures retry with the previous error fed back into the prompt. Telemetry separates model calls, provider attempts and fallbacks, with counters isolated per run so one job's metrics never contaminate another.</li>
@@ -288,7 +288,7 @@ footer .wrap{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8
         <li><b>Reports cannot silently mix runs.</b> Every analysis method filters by run identifier in SQL rather than in Python, so a report for one run can never blend observations from another, and the six tab Streamlit dashboard, the PDF report and the alerts all read from one per run metrics table, with a RAG question box that renders source citations.</li>
         <li><b>It refuses to guess when the input is wrong.</b> Product filtering matches the URL path only, with word boundaries so a short token cannot match an unrelated segment, and when nothing matches it returns zero URLs with a warning instead of broadening to scrape the entire site. Prices are normalised to USD with the rate and timestamp stored.</li>
       </ul>
-      <div class="go"><a href="https://github.com/Atif0110/AI-competitor-research" target="_blank" rel="noopener noreferrer">GitHub <span class="ar">&rarr;</span></a></div>
+      <div class="go"><a href="https://ai-competitor-research.onrender.com" target="_blank" rel="noopener noreferrer">Live demo <span class="ar">&rarr;</span></a><a href="https://ai-competitor-research-api.onrender.com/docs" target="_blank" rel="noopener noreferrer">API docs <span class="ar">&rarr;</span></a><a href="https://github.com/Atif0110/AI-competitor-research" target="_blank" rel="noopener noreferrer">GitHub <span class="ar">&rarr;</span></a></div>
       <p class="caveat">A demo mode runs the entire pipeline deterministically without credentials. The live path across the scraping providers, residential proxies and the three model providers is wired and unit tested against fakes but has not yet been exercised at scale against production targets.</p>
     </article>
     <article class="proj rv">
