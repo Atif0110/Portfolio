@@ -229,95 +229,94 @@ footer .wrap{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8
     <div class="kicker rv">Projects</div>
     <h2 class="rv">Six systems, built end to end</h2>
     <p class="intro rv">Each one has an implementation, tests, and documented limits. Where something is a prototype or demo rather than a production deployment, the portfolio says so.</p>
+
+
+    
     <article class="proj rv">
       <div class="head"><h3>AI Competitor Research Platform</h3><span class="type">LLM data pipeline</span></div>
-      <p class="pitch">Agent driven competitive intelligence that answers what a competitor charges, in which market, and how that has moved, with every number traceable to the run that produced it.</p>
-      <div class="tech"><span>Python</span><span>FastAPI</span><span>React</span><span>Firecrawl</span><span>Playwright</span><span>SQLite</span><span>ChromaDB</span><span>RAG</span><span>Groq</span><span>OpenAI</span><span>Anthropic</span><span>Docker</span><span>Render</span><span>pytest</span></div>
+      <p class="pitch">A competitive-intelligence research pipeline that collects competitor information, validates structured observations, stores evidence with provenance, and produces run-scoped analysis and reports.</p>
+      <div class="tech"><span>Python</span><span>FastAPI</span><span>React</span><span>Firecrawl</span><span>Playwright</span><span>SQLite</span><span>PostgreSQL</span><span>ChromaDB</span><span>RAG</span><span>Groq</span><span>OpenAI</span><span>Anthropic</span><span>Docker</span><span>Render</span><span>pytest</span></div>
       <ul>
-        <li><b>Geography is enforced, never inferred.</b> Each URL is fetched once per execution region and the pipeline decides that region, not the model. If extraction claims a different one the mismatch is logged and the execution region wins, and with proxy verification enabled a scrape that cannot prove its exit location fails rather than quietly returning the wrong market's prices.</li>
-        <li><b>Extraction corrects itself.</b> Output is validated against a schema and a semantic confidence check, and failures retry with the previous error fed back into the prompt. Telemetry separates model calls, provider attempts and fallbacks, with counters isolated per run so one job's metrics never contaminate another.</li>
-        <li><b>Storage is idempotent with real provenance.</b> An observation key hashes the canonical URL, product identity, region, competitor, seller and snapshot hour, while the run identifier stays as metadata rather than part of the key, so re running a job updates in place instead of duplicating. Raw page markdown with a content hash and timestamp is retained per URL for debugging bad extractions.</li>
-        <li><b>Reports cannot silently mix runs.</b> Every analysis method filters by run identifier in SQL rather than in Python, so a report for one run can never blend observations from another, and the six tab Streamlit dashboard, the PDF report and the alerts all read from one per run metrics table, with a RAG question box that renders source citations.</li>
-        <li><b>It refuses to guess when the input is wrong.</b> Product filtering matches the URL path only, with word boundaries so a short token cannot match an unrelated segment, and when nothing matches it returns zero URLs with a warning instead of broadening to scrape the entire site. Prices are normalised to USD with the rate and timestamp stored.</li>
+        <li><b>Region-aware research.</b> Research runs carry an explicit execution region, and the extraction pipeline records region information with the collected observations rather than asking the model to infer the market after the fact.</li>
+        <li><b>Layered web collection.</b> The scraper orchestrator supports Firecrawl, Playwright, and an HTTP fallback, with retry and rate-limit handling around the provider calls.</li>
+        <li><b>Validated extraction.</b> Extracted results are checked against structured schemas and semantic validation, with corrective extraction when validation fails. Provider attempts and fallbacks are tracked in run-level telemetry.</li>
+        <li><b>Evidence and provenance.</b> Research observations are stored with identifiers and source information, while raw page content can be retained with a content hash and timestamp for later inspection.</li>
+        <li><b>Run-scoped analysis.</b> Analysis queries filter by the research run, and the dashboard, reports, alerts, and RAG workflow use the stored research data rather than mixing observations from unrelated runs.</li>
+        <li><b>Demo and live paths.</b> The repository includes a deterministic demo mode that can run without external credentials. The live path integrates external scraping and model providers, but the repository documents that production-scale live verification remains a separate operational step.</li>
       </ul>
       <div class="go"><a href="https://ai-competitor-research.onrender.com" target="_blank" rel="noopener noreferrer">Live demo <span class="ar">&rarr;</span></a><a href="https://ai-competitor-research-api.onrender.com/docs" target="_blank" rel="noopener noreferrer">API docs <span class="ar">&rarr;</span></a><a href="https://github.com/Atif0110/AI-competitor-research" target="_blank" rel="noopener noreferrer">GitHub <span class="ar">&rarr;</span></a></div>
-      <p class="caveat">A demo mode runs the entire pipeline deterministically without credentials. The live path across the scraping providers, residential proxies and the three model providers is wired and unit tested against fakes but has not yet been exercised at scale against production targets.</p>
+      <p class="caveat">The repository includes deterministic demo execution. External scraping providers, proxies, and LLM providers require their configured credentials and live environments; the portfolio does not claim production-scale validation of those external paths.</p>
     </article>
-
-
 
     <article class="proj rv">
       <div class="head"><h3>RouteForge</h3><span class="type">AI infrastructure & model routing</span></div>
-      <p class="pitch">A provider-independent model routing layer that scores candidate LLMs against prompt characteristics and routing policy, with a production-style API, web console, and browser integration for ChatGPT and Claude.</p>
+      <p class="pitch">A provider-independent model-routing service built around the core S2 Sweep implementation, with a FastAPI API, browser console, and a conservative Chromium extension prototype for ChatGPT and Claude.</p>
       <div class="tech"><span>Python</span><span>FastAPI</span><span>LightGBM</span><span>NumPy</span><span>Pydantic</span><span>REST API</span><span>Chrome Extension</span><span>JavaScript</span><span>Docker</span><span>GitHub Actions</span><span>Render</span><span>pytest</span></div>
       <ul>
-        <li><b>Routing is the product boundary.</b> The backend accepts a prompt, evaluates the existing calibrated classifier and routing policy, and returns a selected model with candidate scores and selection metadata. It intentionally separates model selection from model inference.</li>
-        <li><b>Policy is explicit and inspectable.</b> The router exposes scored versus random selection, cost-sensitivity controls, candidate utilities and compatibility information instead of hiding the decision behind a black-box UI.</li>
-        <li><b>Built as an actual developer-facing service.</b> FastAPI endpoints, validation, health checks, CORS controls, structured errors, request metadata, tests, Docker packaging and CI make the project runnable as a standalone service rather than a notebook demo.</li>
-        <li><b>Browser integration explores the real product edge.</b> A Manifest V3 extension adds a Route action to ChatGPT and Claude, calls the local/public router, and uses conservative provider/model mappings. When a provider cannot safely map the selected legacy candidate to a visible consumer model, the extension reports the routing decision instead of pretending the switch succeeded.</li>
-        <li><b>Public deployment is demo-ready.</b> RouteForge is deployed on Render with a browser-accessible frontend and API documentation, while the public mode adds prompt-size and request-rate guards. No provider API keys, cookies or session credentials are stored by the extension.</li>
+        <li><b>Routing is the backend boundary.</b> The service validates a prompt, runs the bundled S2 classifier and routing policy, and returns a selected model with candidate scores and routing metadata. It does not perform provider inference.</li>
+        <li><b>Controlled exploration.</b> The configured serving policy uses the S2 quality-cost winner 70% of the time and uniformly selects an eligible model 30% of the time. The response exposes the selection mode and exploration probability.</li>
+        <li><b>Developer-facing API and CLI.</b> The project exposes <code>/v1/route</code>, health and model endpoints, FastAPI documentation, and CLI commands for serving and routing prompts.</li>
+        <li><b>Browser integration is conservative.</b> The Manifest V3 extension targets ChatGPT and Claude, calls the local router at <code>127.0.0.1:8000</code>, and uses provider-specific mappings before attempting a visible model selection. Unsupported mappings are reported instead of being fabricated.</li>
+        <li><b>Safe handoff.</b> Optional auto-submit is disabled by default, and the extension checks that the prompt and send control remain safe to use before submitting.</li>
       </ul>
-      <div class="go">
-        <a href="https://routeforge-pzh7.onrender.com/" target="_blank" rel="noopener noreferrer">Live demo <span class="ar">&rarr;</span></a>
-        <a href="https://github.com/Atif0110/routeforge" target="_blank" rel="noopener noreferrer">GitHub <span class="ar">&rarr;</span></a>
-      </div>
-      <p class="caveat">RouteForge selects a model; it does not proxy provider inference or provide LLM usage. Consumer-browser model switching depends on the provider's current UI and available model controls, so unsupported mappings are surfaced rather than fabricated.</p>
+      <div class="go"><a href="https://routeforge-pzh7.onrender.com/" target="_blank" rel="noopener noreferrer">Live demo <span class="ar">&rarr;</span></a><a href="https://github.com/Atif0110/routeforge" target="_blank" rel="noopener noreferrer">GitHub <span class="ar">&rarr;</span></a></div>
+      <p class="caveat">RouteForge selects a model; it does not proxy provider inference or provide LLM usage. The browser extension is a prototype tied to provider website controls and currently targets the local RouteForge endpoint.</p>
     </article>
-
 
     <article class="proj rv">
       <div class="head"><h3>TrustLayer</h3><span class="type">agent infrastructure</span></div>
-      <p class="pitch">An authorization layer for AI agents. Before an agent acts, it asks TrustLayer whether it is permitted, and anything consequential can be routed to a human first.</p>
+      <p class="pitch">An authorization layer for AI agents that evaluates actions against organization-scoped policies and can require human approval before a consequential action proceeds.</p>
       <div class="tech"><span>FastAPI</span><span>PostgreSQL</span><span>SQLAlchemy async</span><span>Alembic</span><span>React</span><span>Docker Compose</span><span>pytest</span><span>testcontainers</span><span>GitHub Actions</span></div>
       <ul>
-        <li><b>It fails closed.</b> The evaluator walks policy rules in order and returns the first match, and when nothing matches it returns DENY with the reason recorded rather than falling through. Rules that are malformed or carry an unrecognised decision are skipped instead of trusted, so a broken policy can never widen access.</li>
-        <li><b>Policies are data, not code.</b> A condition matches on the action plus arbitrary context keys, with numeric comparison suffixes for thresholds, so a rule such as refunds at or under one hundred allowed and anything above requiring approval is a row an operator can change without a deployment.</li>
-        <li><b>Policy changes are versioned per organization.</b> Each update takes the next monotonic version number scoped to that tenant, which means an audit record can be read against the exact policy that produced it rather than whatever happens to be current today.</li>
-        <li><b>Human approval is a first class state.</b> Actions resolving to require approval enter a queue and stay blocked until an owner signs off, every decision lands in an append only log, and records are tenant scoped, so a second organization requesting another tenant's approval receives a not found rather than a leak.</li>
-        <li><b>Verified the way a team would verify it.</b> Continuous integration runs on every push: linting and unit tests on the API, integration tests against a real PostgreSQL instance started through testcontainers rather than a mock, plus tests and type checking on the React dashboard. Rate limiting sits on signup and login, and the full stack comes up through Docker Compose with seed and demo agent scripts.</li>
+        <li><b>Default-deny authorization.</b> Policy rules are evaluated in order and the first matching decision is returned. When no rule matches, the evaluator returns <code>DENY</code> rather than allowing the action implicitly.</li>
+        <li><b>Policies are stored as data.</b> Rules can match an action and context values, including numeric comparison operators, so policy behavior can be changed without embedding the rule directly in application code.</li>
+        <li><b>Organization-scoped policy versions.</b> Policy updates receive monotonically increasing versions within an organization, allowing decisions and audit records to be associated with a specific policy version.</li>
+        <li><b>Human approval workflow.</b> Actions resolving to <code>REQUIRE_APPROVAL</code> enter an approval queue. Approval and rejection are explicit states, with expiry handling and organization-scoped access.</li>
+        <li><b>Append-only audit protection.</b> Audit records are stored in PostgreSQL and protected by a database trigger that rejects updates and deletes.</li>
+        <li><b>Tested full stack.</b> The repository includes API tests, PostgreSQL integration tests using Testcontainers, frontend tests and type checking, Docker Compose startup, seed/demo tooling, and CI configuration.</li>
       </ul>
       <div class="go"><a href="https://github.com/Atif0110/TrustLayer" target="_blank" rel="noopener noreferrer">GitHub <span class="ar">&rarr;</span></a></div>
+      <p class="caveat">TrustLayer is an authorization and approval layer. It does not itself execute the external action on behalf of an AI agent.</p>
     </article>
 
     <article class="proj rv">
       <div class="head"><h3>Power Price Forecasting Pipeline</h3><span class="type">applied machine learning</span></div>
-      <p class="pitch">Day ahead electricity price forecasting for the German and Luxembourg bidding zone, taken past the error metric into a data quality gate, calibrated uncertainty, and a signal layer that declines to act when it is not confident.</p>
-      <div class="tech"><span>Python</span><span>XGBoost</span><span>scikit learn</span><span>pandas</span><span>ENTSOE API</span><span>Plotly</span><span>Groq</span><span>joblib</span><span>pytest</span></div>
+      <p class="pitch">Day-ahead electricity price forecasting for the German and Luxembourg bidding zone, with chronological evaluation, data-quality checks, uncertainty estimates, and a signal layer.</p>
+      <div class="tech"><span>Python</span><span>XGBoost</span><span>scikit learn</span><span>pandas</span><span>ENTSO-E API</span><span>Plotly</span><span>Groq</span><span>joblib</span><span>pytest</span></div>
       <ul>
-        <li><b>Every run has to beat a named baseline.</b> The model is scored against a seasonal naive benchmark, the price twenty four hours earlier, aligned to the same test window, and the pipeline reports mean absolute error for both plus the percentage improvement. Complexity has to earn its place rather than being assumed.</li>
-        <li><b>The split respects time.</b> Training and test sets are cut chronologically rather than shuffled, so no future information leaks backward into training, which is the failure mode that quietly inflates most time series results.</li>
-        <li><b>Features model the actual market.</b> Hour, weekday, month and weekend flags for seasonality, lags at one, twenty four, forty eight and one hundred sixty eight hours, a rolling daily mean and standard deviation, and a day over day momentum term, all on top of load and renewable generation as demand and supply drivers.</li>
-        <li><b>A quality gate that understands the domain.</b> Before modeling, the data is scored out of one hundred with deductions for missing hours, duplicate timestamps, non monotonic ordering, extreme spikes, and violated economic relationships, since price should move with load and against wind and solar. The result is a structured report, so bad data is caught rather than trained on.</li>
-        <li><b>Uncertainty drives the decision.</b> A ninety five percent interval derived from training residuals is carried forward, and the signal layer takes a position only when the spread against the reference price exceeds that interval, otherwise it returns no trade. An LLM step generates a four part trader brief covering driver, trade, risk and invalidation, with every prompt and response logged to disk and a deterministic fallback when no key is configured or the model errors.</li>
+        <li><b>Time-aware evaluation.</b> Training and test data are split chronologically, and the model is evaluated against a seasonal-naive reference based on the previous day's price.</li>
+        <li><b>Market features.</b> The pipeline creates calendar features, price lags, rolling statistics and momentum features, together with load and renewable-generation inputs where available.</li>
+        <li><b>Data-quality gate.</b> The pipeline checks missing hours, duplicate timestamps, ordering, extreme values and configured economic relationships before modeling.</li>
+        <li><b>Uncertainty-aware signal.</b> The forecast carries a residual-based interval into the signal layer, which can return no trade when the forecast spread does not exceed the configured uncertainty threshold.</li>
+        <li><b>LLM trader brief.</b> An optional LLM step produces a structured trading brief, with a deterministic fallback when a provider key is unavailable or the model call fails.</li>
       </ul>
       <div class="go"><a href="https://github.com/Atif0110/power-forecast-pipeline" target="_blank" rel="noopener noreferrer">GitHub <span class="ar">&rarr;</span></a></div>
-      <!-- INSERT YOUR NUMBERS: run python main.py, read mae_xgb, mae_baseline, improvement_% from outputs/logs/pipeline.log, and prepend them here along with whether the run used live ENTSOE data or the synthetic fallback. -->
-      <p class="caveat">Day ahead prices come from the ENTSO-E transparency platform when an API key is configured, with the demand and generation drivers currently modeled rather than fetched, and a fully synthetic dataset when no key is present. Simulated performance is a historical backtest of the signal rules against a fixed reference price and is not a claim about live trading.</p>
+      <p class="caveat">The pipeline supports ENTSO-E data when configured and a synthetic fallback otherwise. Forecast and signal results are historical or simulated pipeline outputs, not claims of live trading performance.</p>
     </article>
 
     <article class="proj rv">
       <div class="head"><h3>OpenClaw</h3><span class="type">automation agent</span></div>
-      <p class="pitch">Describe a task in plain English and it becomes a scheduled browser agent, previewed and approved by you before it is allowed to run, entirely on your own machine.</p>
-      <div class="tech"><span>Node.js</span><span>Express</span><span>Playwright</span><span>node cron</span><span>better-sqlite3</span><span>Ollama</span><span>OpenAI</span></div>
+      <p class="pitch">A local-first automation assistant that turns a natural-language task into a scheduled browser agent with a preview and explicit approval step before execution.</p>
+      <div class="tech"><span>Node.js</span><span>Express</span><span>Playwright</span><span>node-cron</span><span>better-sqlite3</span><span>Ollama</span><span>OpenAI</span></div>
       <ul>
-        <li><b>Local first by default.</b> A router selects a local model through Ollama when no API key is present and a hosted model when one is, so the entire system can run offline with nothing leaving the machine.</li>
-        <li><b>Nothing executes without consent.</b> Each generated agent is rendered as a preview showing its goal and schedule and requires explicit approval before deployment, with a sandboxed dry run available first.</li>
-        <li><b>Scheduled execution against a real browser.</b> Approved agents are handed to a cron scheduler that drives a Chromium instance through Playwright, with agent configuration, credentials and execution logs persisted locally.</li>
-        <li><b>Small and legible.</b> The server, model router, agent manager, scheduler, browser layer and database each live in one focused module, which keeps the approval boundary easy to audit rather than buried inside a framework.</li>
+        <li><b>Local-first model routing.</b> The application can use a local Ollama model when no hosted API key is configured and a hosted model when one is available.</li>
+        <li><b>Approval before deployment.</b> Generated agents are shown as a preview and require explicit approval before being scheduled.</li>
+        <li><b>Browser execution.</b> Approved agents are scheduled and executed through Playwright against a Chromium browser, with local configuration and execution records.</li>
+        <li><b>Modular implementation.</b> The server, model routing, agent management, scheduler, browser layer and database are separated into focused modules.</li>
       </ul>
       <div class="go"><a href="https://github.com/Atif0110/openclaw-desktop-assistant" target="_blank" rel="noopener noreferrer">GitHub <span class="ar">&rarr;</span></a></div>
     </article>
 
     <article class="proj rv">
       <div class="head"><h3>Shravan</h3><span class="type">full stack product</span></div>
-      <p class="pitch">A health companion for senior citizens and their caretakers covering medicine reminders, health logging, emergency contacts, nearby care discovery and AI assistance, across a web app and a mobile client.</p>
+      <p class="pitch">A health companion for senior citizens and caretakers covering reminders, health logging, emergency contacts, nearby-care discovery, and AI assistance across web and mobile clients.</p>
       <div class="tech"><span>Flask</span><span>SQLAlchemy</span><span>Vue 3</span><span>Pinia</span><span>Flutter</span><span>Groq</span><span>Gemini</span><span>Swagger</span></div>
       <ul>
-        <li><b>One backend, two clients.</b> A single Flask and SQLAlchemy API serves both the Vue web application and the Flutter mobile client, running on SQLite by default and moving to PostgreSQL through one connection string with no code change.</li>
-        <li><b>Security treated as a requirement.</b> Server side sessions, password hashing, cross site request forgery protection on state changing requests, login throttling, session expiry, role checks, restrictive origin policy, response security headers, request size limits, user scoped data access, and validation of user supplied external URLs. API keys stay on the backend and never reach the client.</li>
-        <li><b>It degrades instead of failing.</b> Healthcare discovery uses Google Places when a key is configured and falls back to OpenStreetMap, with geocoding falling back to Nominatim, so the core location flow works at zero API cost.</li>
-        <li><b>Documented and testable.</b> Interactive API documentation is generated per endpoint and served from the running backend, with a pytest suite and single command startup scripts for both Windows and Unix.</li>
-        <li><b>An explicit safety boundary.</b> The assistant is scoped in product to general information and stated not to be a diagnosis or a substitute for a licensed clinician, with emergency symptoms routed to real services. Placed fifth of thirty at an IIT Madras competition.</li>
+        <li><b>One backend, two clients.</b> A Flask and SQLAlchemy API serves the Vue web application and Flutter mobile client, with SQLite by default and PostgreSQL support through configuration.</li>
+        <li><b>Backend security controls.</b> The application includes server-side sessions, password hashing, CSRF protection for state-changing requests, login throttling, session expiry, role checks, restrictive origin policy, security headers, request-size limits, and user-scoped data access.</li>
+        <li><b>Location-service fallback.</b> Healthcare discovery can use Google Places when configured and OpenStreetMap/Nominatim fallbacks when it is not.</li>
+        <li><b>Documented API.</b> The backend exposes interactive API documentation and includes a pytest suite and startup scripts.</li>
+        <li><b>Safety boundary.</b> The assistant is positioned as general information rather than diagnosis or a substitute for a clinician, with emergency situations directed toward real services.</li>
       </ul>
       <div class="go"><a href="https://github.com/Atif0110/Shravan-Application" target="_blank" rel="noopener noreferrer">GitHub <span class="ar">&rarr;</span></a></div>
     </article>
