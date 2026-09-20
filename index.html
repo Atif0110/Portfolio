@@ -228,7 +228,22 @@ footer .wrap{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8
   <div class="wrap">
     <div class="kicker rv">Projects</div>
     <h2 class="rv">Six systems, built end to end</h2>
-    <p class="intro rv">Each one runs, has tests, and documents its own limits. Where something is a prototype rather than a production deployment, it says so.</p>
+    <p class="intro rv">Each one has an implementation, tests, and documented limits. Where something is a prototype or demo rather than a production deployment, the portfolio says so.</p>
+    <article class="proj rv">
+      <div class="head"><h3>AI Competitor Research Platform</h3><span class="type">LLM data pipeline</span></div>
+      <p class="pitch">Agent driven competitive intelligence that answers what a competitor charges, in which market, and how that has moved, with every number traceable to the run that produced it.</p>
+      <div class="tech"><span>Python</span><span>FastAPI</span><span>React</span><span>Firecrawl</span><span>Playwright</span><span>SQLite</span><span>ChromaDB</span><span>RAG</span><span>Groq</span><span>OpenAI</span><span>Anthropic</span><span>Docker</span><span>Render</span><span>pytest</span></div>
+      <ul>
+        <li><b>Geography is enforced, never inferred.</b> Each URL is fetched once per execution region and the pipeline decides that region, not the model. If extraction claims a different one the mismatch is logged and the execution region wins, and with proxy verification enabled a scrape that cannot prove its exit location fails rather than quietly returning the wrong market's prices.</li>
+        <li><b>Extraction corrects itself.</b> Output is validated against a schema and a semantic confidence check, and failures retry with the previous error fed back into the prompt. Telemetry separates model calls, provider attempts and fallbacks, with counters isolated per run so one job's metrics never contaminate another.</li>
+        <li><b>Storage is idempotent with real provenance.</b> An observation key hashes the canonical URL, product identity, region, competitor, seller and snapshot hour, while the run identifier stays as metadata rather than part of the key, so re running a job updates in place instead of duplicating. Raw page markdown with a content hash and timestamp is retained per URL for debugging bad extractions.</li>
+        <li><b>Reports cannot silently mix runs.</b> Every analysis method filters by run identifier in SQL rather than in Python, so a report for one run can never blend observations from another, and the six tab Streamlit dashboard, the PDF report and the alerts all read from one per run metrics table, with a RAG question box that renders source citations.</li>
+        <li><b>It refuses to guess when the input is wrong.</b> Product filtering matches the URL path only, with word boundaries so a short token cannot match an unrelated segment, and when nothing matches it returns zero URLs with a warning instead of broadening to scrape the entire site. Prices are normalised to USD with the rate and timestamp stored.</li>
+      </ul>
+      <div class="go"><a href="https://ai-competitor-research.onrender.com" target="_blank" rel="noopener noreferrer">Live demo <span class="ar">&rarr;</span></a><a href="https://ai-competitor-research-api.onrender.com/docs" target="_blank" rel="noopener noreferrer">API docs <span class="ar">&rarr;</span></a><a href="https://github.com/Atif0110/AI-competitor-research" target="_blank" rel="noopener noreferrer">GitHub <span class="ar">&rarr;</span></a></div>
+      <p class="caveat">A demo mode runs the entire pipeline deterministically without credentials. The live path across the scraping providers, residential proxies and the three model providers is wired and unit tested against fakes but has not yet been exercised at scale against production targets.</p>
+    </article>
+
 
 
     <article class="proj rv">
@@ -249,6 +264,7 @@ footer .wrap{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8
       <p class="caveat">RouteForge selects a model; it does not proxy provider inference or provide LLM usage. Consumer-browser model switching depends on the provider's current UI and available model controls, so unsupported mappings are surfaced rather than fabricated.</p>
     </article>
 
+
     <article class="proj rv">
       <div class="head"><h3>TrustLayer</h3><span class="type">agent infrastructure</span></div>
       <p class="pitch">An authorization layer for AI agents. Before an agent acts, it asks TrustLayer whether it is permitted, and anything consequential can be routed to a human first.</p>
@@ -262,6 +278,7 @@ footer .wrap{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8
       </ul>
       <div class="go"><a href="https://github.com/Atif0110/TrustLayer" target="_blank" rel="noopener noreferrer">GitHub <span class="ar">&rarr;</span></a></div>
     </article>
+
     <article class="proj rv">
       <div class="head"><h3>Power Price Forecasting Pipeline</h3><span class="type">applied machine learning</span></div>
       <p class="pitch">Day ahead electricity price forecasting for the German and Luxembourg bidding zone, taken past the error metric into a data quality gate, calibrated uncertainty, and a signal layer that declines to act when it is not confident.</p>
@@ -277,20 +294,20 @@ footer .wrap{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8
       <!-- INSERT YOUR NUMBERS: run python main.py, read mae_xgb, mae_baseline, improvement_% from outputs/logs/pipeline.log, and prepend them here along with whether the run used live ENTSOE data or the synthetic fallback. -->
       <p class="caveat">Day ahead prices come from the ENTSO-E transparency platform when an API key is configured, with the demand and generation drivers currently modeled rather than fetched, and a fully synthetic dataset when no key is present. Simulated performance is a historical backtest of the signal rules against a fixed reference price and is not a claim about live trading.</p>
     </article>
+
     <article class="proj rv">
-      <div class="head"><h3>AI Competitor Research Platform</h3><span class="type">LLM data pipeline</span></div>
-      <p class="pitch">Agent driven competitive intelligence that answers what a competitor charges, in which market, and how that has moved, with every number traceable to the run that produced it.</p>
-      <div class="tech"><span>Python</span><span>FastAPI</span><span>React</span><span>Firecrawl</span><span>Playwright</span><span>SQLite</span><span>ChromaDB</span><span>RAG</span><span>Groq</span><span>OpenAI</span><span>Anthropic</span><span>Docker</span><span>Render</span><span>pytest</span></div>
+      <div class="head"><h3>OpenClaw</h3><span class="type">automation agent</span></div>
+      <p class="pitch">Describe a task in plain English and it becomes a scheduled browser agent, previewed and approved by you before it is allowed to run, entirely on your own machine.</p>
+      <div class="tech"><span>Node.js</span><span>Express</span><span>Playwright</span><span>node cron</span><span>better-sqlite3</span><span>Ollama</span><span>OpenAI</span></div>
       <ul>
-        <li><b>Geography is enforced, never inferred.</b> Each URL is fetched once per execution region and the pipeline decides that region, not the model. If extraction claims a different one the mismatch is logged and the execution region wins, and with proxy verification enabled a scrape that cannot prove its exit location fails rather than quietly returning the wrong market's prices.</li>
-        <li><b>Extraction corrects itself.</b> Output is validated against a schema and a semantic confidence check, and failures retry with the previous error fed back into the prompt. Telemetry separates model calls, provider attempts and fallbacks, with counters isolated per run so one job's metrics never contaminate another.</li>
-        <li><b>Storage is idempotent with real provenance.</b> An observation key hashes the canonical URL, product identity, region, competitor, seller and snapshot hour, while the run identifier stays as metadata rather than part of the key, so re running a job updates in place instead of duplicating. Raw page markdown with a content hash and timestamp is retained per URL for debugging bad extractions.</li>
-        <li><b>Reports cannot silently mix runs.</b> Every analysis method filters by run identifier in SQL rather than in Python, so a report for one run can never blend observations from another, and the six tab Streamlit dashboard, the PDF report and the alerts all read from one per run metrics table, with a RAG question box that renders source citations.</li>
-        <li><b>It refuses to guess when the input is wrong.</b> Product filtering matches the URL path only, with word boundaries so a short token cannot match an unrelated segment, and when nothing matches it returns zero URLs with a warning instead of broadening to scrape the entire site. Prices are normalised to USD with the rate and timestamp stored.</li>
+        <li><b>Local first by default.</b> A router selects a local model through Ollama when no API key is present and a hosted model when one is, so the entire system can run offline with nothing leaving the machine.</li>
+        <li><b>Nothing executes without consent.</b> Each generated agent is rendered as a preview showing its goal and schedule and requires explicit approval before deployment, with a sandboxed dry run available first.</li>
+        <li><b>Scheduled execution against a real browser.</b> Approved agents are handed to a cron scheduler that drives a Chromium instance through Playwright, with agent configuration, credentials and execution logs persisted locally.</li>
+        <li><b>Small and legible.</b> The server, model router, agent manager, scheduler, browser layer and database each live in one focused module, which keeps the approval boundary easy to audit rather than buried inside a framework.</li>
       </ul>
-      <div class="go"><a href="https://ai-competitor-research.onrender.com" target="_blank" rel="noopener noreferrer">Live demo <span class="ar">&rarr;</span></a><a href="https://ai-competitor-research-api.onrender.com/docs" target="_blank" rel="noopener noreferrer">API docs <span class="ar">&rarr;</span></a><a href="https://github.com/Atif0110/AI-competitor-research" target="_blank" rel="noopener noreferrer">GitHub <span class="ar">&rarr;</span></a></div>
-      <p class="caveat">A demo mode runs the entire pipeline deterministically without credentials. The live path across the scraping providers, residential proxies and the three model providers is wired and unit tested against fakes but has not yet been exercised at scale against production targets.</p>
+      <div class="go"><a href="https://github.com/Atif0110/openclaw-desktop-assistant" target="_blank" rel="noopener noreferrer">GitHub <span class="ar">&rarr;</span></a></div>
     </article>
+
     <article class="proj rv">
       <div class="head"><h3>Shravan</h3><span class="type">full stack product</span></div>
       <p class="pitch">A health companion for senior citizens and their caretakers covering medicine reminders, health logging, emergency contacts, nearby care discovery and AI assistance, across a web app and a mobile client.</p>
@@ -303,18 +320,6 @@ footer .wrap{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8
         <li><b>An explicit safety boundary.</b> The assistant is scoped in product to general information and stated not to be a diagnosis or a substitute for a licensed clinician, with emergency symptoms routed to real services. Placed fifth of thirty at an IIT Madras competition.</li>
       </ul>
       <div class="go"><a href="https://github.com/Atif0110/Shravan-Application" target="_blank" rel="noopener noreferrer">GitHub <span class="ar">&rarr;</span></a></div>
-    </article>
-    <article class="proj rv">
-      <div class="head"><h3>OpenClaw</h3><span class="type">automation agent</span></div>
-      <p class="pitch">Describe a task in plain English and it becomes a scheduled browser agent, previewed and approved by you before it is allowed to run, entirely on your own machine.</p>
-      <div class="tech"><span>Node.js</span><span>Express</span><span>Playwright</span><span>node cron</span><span>better-sqlite3</span><span>Ollama</span><span>OpenAI</span></div>
-      <ul>
-        <li><b>Local first by default.</b> A router selects a local model through Ollama when no API key is present and a hosted model when one is, so the entire system can run offline with nothing leaving the machine.</li>
-        <li><b>Nothing executes without consent.</b> Each generated agent is rendered as a preview showing its goal and schedule and requires explicit approval before deployment, with a sandboxed dry run available first.</li>
-        <li><b>Scheduled execution against a real browser.</b> Approved agents are handed to a cron scheduler that drives a Chromium instance through Playwright, with agent configuration, credentials and execution logs persisted locally.</li>
-        <li><b>Small and legible.</b> The server, model router, agent manager, scheduler, browser layer and database each live in one focused module, which keeps the approval boundary easy to audit rather than buried inside a framework.</li>
-      </ul>
-      <div class="go"><a href="https://github.com/Atif0110/openclaw-desktop-assistant" target="_blank" rel="noopener noreferrer">GitHub <span class="ar">&rarr;</span></a></div>
     </article>
 
     <p class="more rv">Earlier work, competition entries and dashboards live on <a href="https://github.com/Atif0110" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
