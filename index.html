@@ -34,110 +34,711 @@
   --accent-2:#7aa2f7;
   --max:880px;
 }
-*{ box-sizing:border-box; margin:0; padding:0; }
-html{ scroll-behavior:smooth; scroll-padding-top:80px; }
-body{ background:var(--bg); color:var(--text); font-family:"Inter",system-ui,-apple-system,sans-serif; font-size:16px; line-height:1.65; -webkit-font-smoothing:antialiased; }
-.wrap{ width:min(var(--max), calc(100% - 44px)); margin:0 auto; }
-h1,h2,h3{ letter-spacing:-.02em; line-height:1.25; font-weight:600; }
-code,.mono{ font-family:"JetBrains Mono",ui-monospace,monospace; }
-code{ font-size:.88em; color:var(--accent); background:rgba(100,210,179,.07); padding:1px 5px; border-radius:4px; }
-a{ color:var(--accent); text-decoration:none; }
-a:focus-visible,.btn:focus-visible{ outline:2px solid var(--accent); outline-offset:3px; border-radius:4px; }
-nav{ position:sticky; top:0; z-index:50; background:rgba(10,12,16,.72); backdrop-filter:blur(12px); border-bottom:1px solid transparent; transition:border-color .3s ease; }
-nav.scrolled{ border-bottom-color:var(--line); }
-nav .wrap{ display:flex; align-items:center; justify-content:space-between; height:60px; }
-nav .brand{ font-family:"JetBrains Mono",monospace; font-size:.9rem; color:var(--text); }
-nav .brand span{ color:var(--accent); }
-nav .links{ display:flex; gap:24px; font-size:.87rem; }
-nav .links a{ color:var(--body); transition:color .2s ease; }
-nav .links a:hover{ color:var(--text); }
-@media(max-width:700px){ nav .links{ display:none; } }
-.hero{ padding:88px 0 72px; }
-.tag{ display:inline-flex; align-items:center; gap:8px; font-family:"JetBrains Mono",monospace; font-size:.76rem; color:var(--body); border:1px solid var(--line); background:var(--panel); border-radius:99px; padding:6px 13px; }
-.tag .dot{ width:6px; height:6px; border-radius:50%; background:var(--accent); animation:blip 2.6s ease-in-out infinite; }
-@keyframes blip{ 0%,100%{opacity:1} 50%{opacity:.35} }
-.hero h1{ font-size:clamp(2.1rem,5.2vw,3.2rem); margin-top:26px; max-width:19ch; }
-.hero h1 em{ font-style:normal; color:var(--accent); }
-.hero .sub{ margin-top:22px; color:var(--body); font-size:1.05rem; max-width:62ch; }
-.hero .facts{ margin-top:26px; display:flex; flex-wrap:wrap; gap:8px 20px; font-family:"JetBrains Mono",monospace; font-size:.79rem; color:var(--dim); }
-.hero .facts span{ display:inline-flex; align-items:center; gap:8px; }
-.hero .facts span::before{ content:""; width:3px; height:3px; border-radius:50%; background:var(--accent-2); }
-.actions{ margin-top:34px; display:flex; flex-wrap:wrap; gap:11px; }
-.btn{ display:inline-flex; align-items:center; gap:8px; font-size:.9rem; font-weight:500; padding:10px 18px; border-radius:7px; border:1px solid var(--line-2); background:var(--panel); color:var(--text); transition:transform .2s ease, background .2s ease, border-color .2s ease; }
-.btn:hover{ transform:translateY(-2px); background:var(--panel-2); border-color:#32394a; }
-.btn.solid{ background:var(--accent); color:#062018; border-color:var(--accent); font-weight:600; }
-.btn.solid:hover{ background:#7ce0c3; border-color:#7ce0c3; }
-.btn .ar{ transition:transform .2s ease; }
-.btn:hover .ar{ transform:translateX(3px); }
-section{ padding:68px 0; border-top:1px solid var(--line); }
-.kicker{ font-family:"JetBrains Mono",monospace; font-size:.73rem; letter-spacing:.18em; text-transform:uppercase; color:var(--accent); margin-bottom:14px; }
-section h2{ font-size:clamp(1.5rem,3.2vw,1.9rem); }
-.intro{ color:var(--body); max-width:64ch; margin-top:14px; font-size:.97rem; }
-.caps{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:34px; }
-.cap{ background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:22px 20px; transition:transform .25s ease, border-color .25s ease; }
-.cap:hover{ transform:translateY(-3px); border-color:var(--line-2); }
-.cap b{ font-family:"JetBrains Mono",monospace; font-size:.74rem; color:var(--dim); font-weight:400; }
-.cap h3{ font-size:1rem; margin-top:10px; }
-.cap p{ color:var(--body); font-size:.88rem; margin-top:8px; }
-.tl{ margin-top:36px; padding-left:24px; border-left:1px solid var(--line); }
-.tl .row{ position:relative; padding-bottom:32px; }
-.tl .row:last-child{ padding-bottom:0; }
-.tl .row::before{ content:""; position:absolute; left:-29px; top:9px; width:9px; height:9px; border-radius:50%; background:var(--bg); border:2px solid var(--line-2); transition:border-color .25s ease; }
-.tl .row:hover::before{ border-color:var(--accent); }
-.tl .date{ font-family:"JetBrains Mono",monospace; font-size:.75rem; color:var(--dim); }
-.tl h3{ font-size:1.05rem; margin-top:5px; }
-.tl .what{ font-size:.83rem; color:var(--accent-2); margin-top:2px; }
-.tl p{ color:var(--body); font-size:.92rem; margin-top:9px; max-width:66ch; }
-.tl ul{ list-style:none; margin-top:11px; display:grid; gap:9px; }
-.tl li{ position:relative; padding-left:18px; font-size:.91rem; color:var(--body); max-width:70ch; }
-.tl li::before{ content:""; position:absolute; left:0; top:.62em; width:5px; height:5px; border-radius:1px; background:var(--accent-2); opacity:.75; }
-.proj{ background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:26px 24px; margin-top:18px; position:relative; overflow:hidden; transition:transform .28s ease, border-color .28s ease; }
-.proj::before{ content:""; position:absolute; top:0; left:0; right:0; height:1px; background:linear-gradient(90deg,transparent,var(--accent),transparent); opacity:0; transition:opacity .3s ease; }
-.proj:hover{ transform:translateY(-3px); border-color:var(--line-2); }
-.proj:hover::before{ opacity:.75; }
-.proj .head{ display:flex; align-items:baseline; justify-content:space-between; gap:14px; flex-wrap:wrap; }
-.proj h3{ font-size:1.22rem; }
-.proj .type{ font-family:"JetBrains Mono",monospace; font-size:.72rem; color:var(--dim); }
-.proj .pitch{ color:var(--body); font-size:.94rem; margin-top:9px; max-width:66ch; }
-.tech{ display:flex; flex-wrap:wrap; gap:6px; margin-top:16px; }
-.tech span{ font-family:"JetBrains Mono",monospace; font-size:.71rem; color:var(--body); background:var(--bg); border:1px solid var(--line); border-radius:5px; padding:3px 8px; }
-.proj ul{ list-style:none; margin-top:18px; display:grid; gap:10px; }
-.proj li{ position:relative; padding-left:19px; font-size:.91rem; color:#c4cddb; max-width:72ch; }
-.proj li::before{ content:""; position:absolute; left:0; top:.6em; width:5px; height:5px; border-radius:1px; background:var(--accent); opacity:.8; }
-.proj li b{ color:var(--text); font-weight:600; }
-.go{ display:flex; flex-wrap:wrap; gap:18px; margin-top:20px; font-size:.85rem; font-weight:500; }
-.go a{ display:inline-flex; align-items:center; gap:6px; transition:color .2s ease; }
-.go a .ar{ transition:transform .2s ease; }
-.go a:hover{ color:#8ee6cb; }
-.go a:hover .ar{ transform:translateX(3px); }
-.caveat{ margin-top:16px; font-size:.81rem; color:var(--dim); border-left:2px solid var(--line-2); padding-left:12px; max-width:70ch; }
-.more{ margin-top:28px; color:var(--body); font-size:.92rem; }
-.grp{ margin-top:26px; }
-.grp h3{ font-family:"JetBrains Mono",monospace; font-size:.73rem; letter-spacing:.12em; text-transform:uppercase; color:var(--dim); font-weight:400; margin-bottom:10px; }
-.chips{ display:flex; flex-wrap:wrap; gap:7px; }
-.chips span{ font-family:"JetBrains Mono",monospace; font-size:.78rem; background:var(--panel); border:1px solid var(--line); color:#cad3e0; border-radius:6px; padding:5px 10px; transition:border-color .2s ease, transform .2s ease; }
-.chips span:hover{ border-color:var(--accent); transform:translateY(-2px); }
-.edu{ margin-top:32px; display:grid; grid-template-columns:repeat(2,1fr); gap:14px; }
-.edu div{ background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:20px; }
-.edu h3{ font-size:.98rem; margin-top:4px; }
-.edu .date{ font-family:"JetBrains Mono",monospace; font-size:.74rem; color:var(--dim); }
-.edu p{ color:var(--body); font-size:.88rem; margin-top:7px; }
-.cta-box{ margin-top:30px; border:1px solid var(--line); border-radius:12px; padding:40px 32px; background:var(--panel); }
-.cta-box h2{ font-size:clamp(1.5rem,3.4vw,1.95rem); }
-.cta-box p{ color:var(--body); margin-top:12px; max-width:58ch; font-size:.96rem; }
-footer{ border-top:1px solid var(--line); padding:24px 0 44px; font-family:"JetBrains Mono",monospace; font-size:.78rem; color:var(--dim); }
-footer .wrap{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; }
-.rv{ opacity:0; transform:translateY(16px); }
-.rv.on{ opacity:1; transform:none; transition:opacity .6s ease, transform .6s ease; }
-@media(max-width:720px){ .caps{ grid-template-columns:1fr; } .edu{ grid-template-columns:1fr; } .proj{ padding:22px 18px; } .cta-box{ padding:32px 22px; } }
-@media(prefers-reduced-motion:reduce){ html{ scroll-behavior:auto; } .rv{ opacity:1; transform:none; } *{ animation:none !important; transition:none !important; } }
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+  scroll-padding-top:80px;
+}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:"Inter",system-ui,-apple-system,sans-serif;
+  font-size:16px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+
+.wrap{
+  width:min(var(--max), calc(100% - 44px));
+  margin:0 auto;
+}
+
+h1,h2,h3{
+  letter-spacing:-.02em;
+  line-height:1.25;
+  font-weight:600;
+}
+
+code,.mono{
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+}
+
+code{
+  font-size:.88em;
+  color:var(--accent);
+  background:rgba(100,210,179,.07);
+  padding:1px 5px;
+  border-radius:4px;
+}
+
+a{
+  color:var(--accent);
+  text-decoration:none;
+}
+
+a:focus-visible,
+.btn:focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:3px;
+  border-radius:4px;
+}
+
+/* Navigation */
+nav{
+  position:sticky;
+  top:0;
+  z-index:50;
+  background:rgba(10,12,16,.72);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid transparent;
+  transition:border-color .3s ease;
+}
+
+nav.scrolled{
+  border-bottom-color:var(--line);
+}
+
+nav .wrap{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  height:60px;
+}
+
+nav .brand{
+  font-family:"JetBrains Mono",monospace;
+  font-size:.9rem;
+  color:var(--text);
+}
+
+nav .brand span{
+  color:var(--accent);
+}
+
+nav .links{
+  display:flex;
+  gap:24px;
+  font-size:.87rem;
+}
+
+nav .links a{
+  color:var(--body);
+  transition:color .2s ease;
+}
+
+nav .links a:hover{
+  color:var(--text);
+}
+
+@media(max-width:700px){
+  nav .links{
+    display:none;
+  }
+}
+
+/* Hero */
+.hero{
+  padding:88px 0 72px;
+}
+
+.tag{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-family:"JetBrains Mono",monospace;
+  font-size:.76rem;
+  color:var(--body);
+  border:1px solid var(--line);
+  background:var(--panel);
+  border-radius:99px;
+  padding:6px 13px;
+}
+
+.tag .dot{
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:var(--accent);
+  animation:blip 2.6s ease-in-out infinite;
+}
+
+@keyframes blip{
+  0%,100%{opacity:1}
+  50%{opacity:.35}
+}
+
+.hero h1{
+  font-size:clamp(2.1rem,5.2vw,3.2rem);
+  margin-top:26px;
+  max-width:19ch;
+}
+
+.hero h1 em{
+  font-style:normal;
+  color:var(--accent);
+}
+
+.hero .sub{
+  margin-top:22px;
+  color:var(--body);
+  font-size:1.05rem;
+  max-width:62ch;
+}
+
+.hero .facts{
+  margin-top:26px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px 20px;
+  font-family:"JetBrains Mono",monospace;
+  font-size:.79rem;
+  color:var(--dim);
+}
+
+.hero .facts span{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+}
+
+.hero .facts span::before{
+  content:"";
+  width:3px;
+  height:3px;
+  border-radius:50%;
+  background:var(--accent-2);
+}
+
+.actions{
+  margin-top:34px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:11px;
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-size:.9rem;
+  font-weight:500;
+  padding:10px 18px;
+  border-radius:7px;
+  border:1px solid var(--line-2);
+  background:var(--panel);
+  color:var(--text);
+  transition:
+    transform .2s ease,
+    background .2s ease,
+    border-color .2s ease;
+}
+
+.btn:hover{
+  transform:translateY(-2px);
+  background:var(--panel-2);
+  border-color:#32394a;
+}
+
+.btn.solid{
+  background:var(--accent);
+  color:#062018;
+  border-color:var(--accent);
+  font-weight:600;
+}
+
+.btn.solid:hover{
+  background:#7ce0c3;
+  border-color:#7ce0c3;
+}
+
+.btn .ar{
+  transition:transform .2s ease;
+}
+
+.btn:hover .ar{
+  transform:translateX(3px);
+}
+
+/* Sections */
+section{
+  padding:68px 0;
+  border-top:1px solid var(--line);
+}
+
+.kicker{
+  font-family:"JetBrains Mono",monospace;
+  font-size:.73rem;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:14px;
+}
+
+section h2{
+  font-size:clamp(1.5rem,3.2vw,1.9rem);
+}
+
+.intro{
+  color:var(--body);
+  max-width:64ch;
+  margin-top:14px;
+  font-size:.97rem;
+}
+
+/* Capabilities */
+.caps{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+  margin-top:34px;
+}
+
+.cap{
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:22px 20px;
+  transition:
+    transform .25s ease,
+    border-color .25s ease;
+}
+
+.cap:hover{
+  transform:translateY(-3px);
+  border-color:var(--line-2);
+}
+
+.cap b{
+  font-family:"JetBrains Mono",monospace;
+  font-size:.74rem;
+  color:var(--dim);
+  font-weight:400;
+}
+
+.cap h3{
+  font-size:1rem;
+  margin-top:10px;
+}
+
+.cap p{
+  color:var(--body);
+  font-size:.88rem;
+  margin-top:8px;
+}
+
+/* Timeline */
+.tl{
+  margin-top:36px;
+  padding-left:24px;
+  border-left:1px solid var(--line);
+}
+
+.tl .row{
+  position:relative;
+  padding-bottom:32px;
+}
+
+.tl .row:last-child{
+  padding-bottom:0;
+}
+
+.tl .row::before{
+  content:"";
+  position:absolute;
+  left:-29px;
+  top:9px;
+  width:9px;
+  height:9px;
+  border-radius:50%;
+  background:var(--bg);
+  border:2px solid var(--line-2);
+  transition:border-color .25s ease;
+}
+
+.tl .row:hover::before{
+  border-color:var(--accent);
+}
+
+.tl .date{
+  font-family:"JetBrains Mono",monospace;
+  font-size:.75rem;
+  color:var(--dim);
+}
+
+.tl h3{
+  font-size:1.05rem;
+  margin-top:5px;
+}
+
+.tl .what{
+  font-size:.83rem;
+  color:var(--accent-2);
+  margin-top:2px;
+}
+
+.tl p{
+  color:var(--body);
+  font-size:.92rem;
+  margin-top:9px;
+  max-width:66ch;
+}
+
+.tl ul{
+  list-style:none;
+  margin-top:11px;
+  display:grid;
+  gap:9px;
+}
+
+.tl li{
+  position:relative;
+  padding-left:18px;
+  font-size:.91rem;
+  color:var(--body);
+  max-width:70ch;
+}
+
+.tl li::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:.62em;
+  width:5px;
+  height:5px;
+  border-radius:1px;
+  background:var(--accent-2);
+  opacity:.75;
+}
+
+/* Projects */
+.proj{
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:26px 24px;
+  margin-top:18px;
+  position:relative;
+  overflow:hidden;
+  transition:
+    transform .28s ease,
+    border-color .28s ease;
+}
+
+.proj::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:1px;
+  background:linear-gradient(
+    90deg,
+    transparent,
+    var(--accent),
+    transparent
+  );
+  opacity:0;
+  transition:opacity .3s ease;
+}
+
+.proj:hover{
+  transform:translateY(-3px);
+  border-color:var(--line-2);
+}
+
+.proj:hover::before{
+  opacity:.75;
+}
+
+.proj .head{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:14px;
+  flex-wrap:wrap;
+}
+
+.proj h3{
+  font-size:1.22rem;
+}
+
+.proj .type{
+  font-family:"JetBrains Mono",monospace;
+  font-size:.72rem;
+  color:var(--dim);
+}
+
+.proj .pitch{
+  color:var(--body);
+  font-size:.94rem;
+  margin-top:9px;
+  max-width:66ch;
+}
+
+.tech{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  margin-top:16px;
+}
+
+.tech span{
+  font-family:"JetBrains Mono",monospace;
+  font-size:.71rem;
+  color:var(--body);
+  background:var(--bg);
+  border:1px solid var(--line);
+  border-radius:5px;
+  padding:3px 8px;
+}
+
+.proj ul{
+  list-style:none;
+  margin-top:18px;
+  display:grid;
+  gap:10px;
+}
+
+.proj li{
+  position:relative;
+  padding-left:19px;
+  font-size:.91rem;
+  color:#c4cddb;
+  max-width:72ch;
+}
+
+.proj li::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:.6em;
+  width:5px;
+  height:5px;
+  border-radius:1px;
+  background:var(--accent);
+  opacity:.8;
+}
+
+.proj li b{
+  color:var(--text);
+  font-weight:600;
+}
+
+.go{
+  display:flex;
+  flex-wrap:wrap;
+  gap:18px;
+  margin-top:20px;
+  font-size:.85rem;
+  font-weight:500;
+}
+
+.go a{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  transition:color .2s ease;
+}
+
+.go a .ar{
+  transition:transform .2s ease;
+}
+
+.go a:hover{
+  color:#8ee6cb;
+}
+
+.go a:hover .ar{
+  transform:translateX(3px);
+}
+
+.caveat{
+  margin-top:16px;
+  font-size:.81rem;
+  color:var(--dim);
+  border-left:2px solid var(--line-2);
+  padding-left:12px;
+  max-width:70ch;
+}
+
+.more{
+  margin-top:28px;
+  color:var(--body);
+  font-size:.92rem;
+}
+
+/* Stack */
+.grp{
+  margin-top:26px;
+}
+
+.grp h3{
+  font-family:"JetBrains Mono",monospace;
+  font-size:.73rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--dim);
+  font-weight:400;
+  margin-bottom:10px;
+}
+
+.chips{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+}
+
+.chips span{
+  font-family:"JetBrains Mono",monospace;
+  font-size:.78rem;
+  background:var(--panel);
+  border:1px solid var(--line);
+  color:#cad3e0;
+  border-radius:6px;
+  padding:5px 10px;
+  transition:
+    border-color .2s ease,
+    transform .2s ease;
+}
+
+.chips span:hover{
+  border-color:var(--accent);
+  transform:translateY(-2px);
+}
+
+/* Education */
+.edu{
+  margin-top:32px;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:14px;
+}
+
+.edu div{
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:20px;
+}
+
+.edu h3{
+  font-size:.98rem;
+  margin-top:4px;
+}
+
+.edu .date{
+  font-family:"JetBrains Mono",monospace;
+  font-size:.74rem;
+  color:var(--dim);
+}
+
+.edu p{
+  color:var(--body);
+  font-size:.88rem;
+  margin-top:7px;
+}
+
+/* CTA */
+.cta-box{
+  margin-top:30px;
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:40px 32px;
+  background:var(--panel);
+}
+
+.cta-box h2{
+  font-size:clamp(1.5rem,3.4vw,1.95rem);
+}
+
+.cta-box p{
+  color:var(--body);
+  margin-top:12px;
+  max-width:58ch;
+  font-size:.96rem;
+}
+
+/* Footer */
+footer{
+  border-top:1px solid var(--line);
+  padding:24px 0 44px;
+  font-family:"JetBrains Mono",monospace;
+  font-size:.78rem;
+  color:var(--dim);
+}
+
+footer .wrap{
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:8px;
+}
+
+/* Scroll animations */
+.rv{
+  opacity:0;
+  transform:translateY(16px);
+}
+
+.rv.on{
+  opacity:1;
+  transform:none;
+  transition:
+    opacity .6s ease,
+    transform .6s ease;
+}
+
+/* Responsive */
+@media(max-width:720px){
+  .caps{
+    grid-template-columns:1fr;
+  }
+
+  .edu{
+    grid-template-columns:1fr;
+  }
+
+  .proj{
+    padding:22px 18px;
+  }
+
+  .cta-box{
+    padding:32px 22px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  html{
+    scroll-behavior:auto;
+  }
+
+  .rv{
+    opacity:1;
+    transform:none;
+  }
+
+  *{
+    animation:none !important;
+    transition:none !important;
+  }
+}
 </style>
 </head>
+
 <body>
 
+<!-- Navigation -->
 <nav id="nav">
   <div class="wrap">
     <span class="brand">mohd<span>.</span>atif</span>
+
     <div class="links">
       <a href="#work">Work</a>
       <a href="#projects">Projects</a>
@@ -147,237 +748,1155 @@ footer .wrap{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8
   </div>
 </nav>
 
+
+<!-- Hero -->
 <header class="hero">
   <div class="wrap">
-    <div class="tag rv"><span class="dot" aria-hidden="true"></span> Open to Data Scientist and Backend AI Engineer roles</div>
-    <h1 class="rv">Models that reach production, and the <em>backends</em> that keep them honest there.</h1>
-    <p class="sub rv">I build forecasting and machine learning systems, LLM pipelines, and the FastAPI and PostgreSQL services that serve them. Most of my work sits in the layer people skip: validation gates, uncertainty, idempotent writes, audit trails, and the checks that decide whether a prediction is safe to act on.</p>
+
+    <div class="tag rv">
+      <span class="dot" aria-hidden="true"></span>
+      Open to Data Scientist and Backend AI Engineer roles
+    </div>
+
+    <h1 class="rv">
+      Models that reach production, and the
+      <em>backends</em>
+      that keep them honest there.
+    </h1>
+
+    <p class="sub rv">
+      I build forecasting and machine learning systems, LLM pipelines,
+      and the FastAPI and PostgreSQL services that serve them. Most of my
+      work sits in the layer people skip: validation gates, uncertainty,
+      idempotent writes, audit trails, and the checks that decide whether
+      a prediction is safe to act on.
+    </p>
+
     <div class="facts rv">
       <span>B.S. Data Science, IIT Madras</span>
       <span>One year commercial data science experience</span>
       <span>Open to the United States, Europe, India and remote worldwide</span>
     </div>
+
     <div class="actions rv">
-      <a class="btn solid" href="mailto:data.atif001@gmail.com">Get in touch <span class="ar">&rarr;</span></a>
-      <a class="btn" href="https://github.com/Atif0110" target="_blank" rel="noopener noreferrer">GitHub <span class="ar">&rarr;</span></a>
-      <a class="btn" href="https://www.linkedin.com/in/mohd-atif01/" target="_blank" rel="noopener noreferrer">LinkedIn <span class="ar">&rarr;</span></a>
-      <a class="btn" href="assets/Mohd_Atif_Resume.pdf" download>Resume <span class="ar">&rarr;</span></a>
+
+      <a class="btn solid" href="mailto:data.atif001@gmail.com">
+        Get in touch
+        <span class="ar">&rarr;</span>
+      </a>
+
+      <a
+        class="btn"
+        href="https://github.com/Atif0110"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        GitHub
+        <span class="ar">&rarr;</span>
+      </a>
+
+      <a
+        class="btn"
+        href="https://www.linkedin.com/in/mohd-atif01/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        LinkedIn
+        <span class="ar">&rarr;</span>
+      </a>
+
+      <!-- FIXED RESUME BUTTON -->
+      <a
+        class="btn"
+        href="assets/Mohd_Atif_Resume.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Resume
+        <span class="ar">&rarr;</span>
+      </a>
+
     </div>
   </div>
 </header>
 
+
+<!-- About -->
 <section id="about">
   <div class="wrap">
+
     <div class="kicker rv">Focus</div>
+
     <h2 class="rv">What I build</h2>
+
     <div class="caps">
-      <div class="cap rv"><b>01</b><h3>Forecasting and experimentation</h3><p>Gradient boosting and time series work with chronological validation and a named baseline to beat, plus controlled pricing experiments and hypothesis testing on live commercial data.</p></div>
-      <div class="cap rv"><b>02</b><h3>LLM and agent pipelines</h3><p>Structured extraction against strict schemas, corrective retries on validation failure, provider fallback across Groq, OpenAI and Anthropic, and retrieval over collected evidence.</p></div>
-      <div class="cap rv"><b>03</b><h3>Production backends</h3><p>FastAPI and Flask on PostgreSQL with authentication, tenant isolation, rate limiting, append only audit logs, containers and continuous integration against a real database.</p></div>
+
+      <div class="cap rv">
+        <b>01</b>
+        <h3>Forecasting and experimentation</h3>
+        <p>
+          Gradient boosting and time series work with chronological
+          validation and a named baseline to beat, plus controlled pricing
+          experiments and hypothesis testing on live commercial data.
+        </p>
+      </div>
+
+      <div class="cap rv">
+        <b>02</b>
+        <h3>LLM and agent pipelines</h3>
+        <p>
+          Structured extraction against strict schemas, corrective retries
+          on validation failure, provider fallback across Groq, OpenAI and
+          Anthropic, and retrieval over collected evidence.
+        </p>
+      </div>
+
+      <div class="cap rv">
+        <b>03</b>
+        <h3>Production backends</h3>
+        <p>
+          FastAPI and Flask on PostgreSQL with authentication, tenant
+          isolation, rate limiting, append only audit logs, containers
+          and continuous integration against a real database.
+        </p>
+      </div>
+
     </div>
   </div>
 </section>
 
+
+<!-- Experience -->
 <section id="work">
   <div class="wrap">
+
     <div class="kicker rv">Experience</div>
+
     <h2 class="rv">Where I have worked</h2>
-    <p class="intro rv">A year of commercial data science on live operational data, followed by contract model evaluation, open source contribution, and direct delivery for clients in the United States and the Netherlands.</p>
+
+    <p class="intro rv">
+      A year of commercial data science on live operational data, followed
+      by contract model evaluation, open source contribution, and direct
+      delivery for clients in the United States and the Netherlands.
+    </p>
+
     <div class="tl">
+
       <div class="row rv">
+
         <div class="date">2025 to present</div>
+
         <h3>Labelbox</h3>
-        <div class="what">Contract AI trainer and model evaluator</div>
-        <p>Training and evaluating a voice assistant through Labelbox's contractor platform, alongside structured labeling and model evaluation tasks. The transferable skill is evaluation discipline: writing rubrics that surface failure modes an aggregate score hides, then applying them consistently at volume.</p>
+
+        <div class="what">
+          Contract AI trainer and model evaluator
+        </div>
+
+        <p>
+          Training and evaluating a voice assistant through Labelbox's
+          contractor platform, alongside structured labeling and model
+          evaluation tasks. The transferable skill is evaluation discipline:
+          writing rubrics that surface failure modes an aggregate score hides,
+          then applying them consistently at volume.
+        </p>
+
       </div>
+
+
       <div class="row rv">
+
         <div class="date">2026 to present</div>
+
         <h3>RoboCurve, inspect robots</h3>
-        <div class="what">Open source contributor</div>
-        <p>Contributing to inspect robots, a Y Combinator backed open source evaluation framework for physical AI that runs any policy, whether an LLM agent or a vision language action model, against any embodiment and produces auditable logs. My pull requests target the command line surface and contributor tooling: a hand rolled bash and zsh completion subcommand written against the project's standard library only rule, and an environment diagnostics block added to the <code>doctor</code> command that reports interpreter, platform, package version and optional extras. Both shipped with unit tests and a changelog entry, and are open for review upstream.</p>
+
+        <div class="what">
+          Open source contributor
+        </div>
+
+        <p>
+          Contributing to inspect robots, a Y Combinator backed open source
+          evaluation framework for physical AI that runs any policy, whether
+          an LLM agent or a vision language action model, against any
+          embodiment and produces auditable logs. My pull requests target
+          the command line surface and contributor tooling: a hand rolled
+          bash and zsh completion subcommand written against the project's
+          standard library only rule, and an environment diagnostics block
+          added to the <code>doctor</code> command that reports interpreter,
+          platform, package version and optional extras. Both shipped with
+          unit tests and a changelog entry, and are open for review upstream.
+        </p>
+
       </div>
+
+
       <div class="row rv">
+
         <div class="date">2026</div>
+
         <h3>Independent freelance</h3>
-        <div class="what">Netherlands and United States clients</div>
-        <p>Delivered production websites and internal automation. Recent work includes an n8n pipeline for a Rotterdam student events platform where an RSS trigger picks up partner Instagram posts, a vision capable model extracts event fields from the caption and the flyer image against a fixed JSON schema with confidence flags on missing values, a dedupe step skips processed posts, and output lands in a reviewable document rather than a live table until extraction quality clears human review.</p>
+
+        <div class="what">
+          Netherlands and United States clients
+        </div>
+
+        <p>
+          Delivered production websites and internal automation. Recent work
+          includes an n8n pipeline for a Rotterdam student events platform
+          where an RSS trigger picks up partner Instagram posts, a vision
+          capable model extracts event fields from the caption and the flyer
+          image against a fixed JSON schema with confidence flags on missing
+          values, a dedupe step skips processed posts, and output lands in a
+          reviewable document rather than a live table until extraction quality
+          clears human review.
+        </p>
+
       </div>
+
+
       <div class="row rv">
+
         <div class="date">Jul to Aug 2026</div>
+
         <h3>Mythos</h3>
-        <div class="what">Growth and customer acquisition, short engagement</div>
-        <p>Worked directly with the founder on growth and customer acquisition experiments during an early scaling push.</p>
+
+        <div class="what">
+          Growth and customer acquisition, short engagement
+        </div>
+
+        <p>
+          Worked directly with the founder on growth and customer acquisition
+          experiments during an early scaling push.
+        </p>
+
       </div>
+
+
       <div class="row rv">
+
         <div class="date">Jun 2024 to May 2025</div>
+
         <h3>Arabania Indo Arabic Restaurant</h3>
-        <div class="what">Data Scientist, hybrid, Lucknow</div>
-        <p>My first commercial data role, owning forecasting and analytics for a single site operation where the output was a daily purchasing decision rather than a dashboard.</p>
+
+        <div class="what">
+          Data Scientist, hybrid, Lucknow
+        </div>
+
+        <p>
+          My first commercial data role, owning forecasting and analytics
+          for a single site operation where the output was a daily purchasing
+          decision rather than a dashboard.
+        </p>
+
         <ul>
-          <li>Built demand forecasting models in Python with statsmodels and scikit learn across more than one hundred thousand inventory records, used for daily inventory planning. Over the engagement food waste fell by roughly twenty percent and procurement costs by twelve percent.</li>
-          <li>Ran end to end pricing experiments using hypothesis testing and statistical inference, identifying a pricing change associated with a fifteen percent gross margin improvement within two months, alongside SKU level performance models used to prioritise the menu.</li>
-          <li>Automated the recurring reporting pipeline in SQL using common table expressions and window functions to surface demand and seasonality patterns, cutting manual reporting effort by around forty percent.</li>
-          <li>The lasting lesson was that a forecast is only worth what the person acting on it trusts, which is why every model I have built since ships with a baseline comparison and an explicit statement of uncertainty.</li>
+
+          <li>
+            <b>Demand forecasting.</b>
+            Built demand forecasting models in Python with statsmodels and
+            scikit learn across more than one hundred thousand inventory
+            records, used for daily inventory planning. Over the engagement
+            food waste fell by roughly twenty percent and procurement costs
+            by twelve percent.
+          </li>
+
+          <li>
+            <b>Pricing experiments.</b>
+            Ran end to end pricing experiments using hypothesis testing and
+            statistical inference, identifying a pricing change associated
+            with a fifteen percent gross margin improvement within two months,
+            alongside SKU level performance models used to prioritise the menu.
+          </li>
+
+          <li>
+            <b>Reporting automation.</b>
+            Automated the recurring reporting pipeline in SQL using common
+            table expressions and window functions to surface demand and
+            seasonality patterns, cutting manual reporting effort by around
+            forty percent.
+          </li>
+
+          <li>
+            The lasting lesson was that a forecast is only worth what the
+            person acting on it trusts, which is why every model I have built
+            since ships with a baseline comparison and an explicit statement
+            of uncertainty.
+          </li>
+
         </ul>
+
       </div>
+
     </div>
   </div>
 </section>
 
+
+<!-- Projects -->
 <section id="projects">
+
   <div class="wrap">
+
     <div class="kicker rv">Projects</div>
+
     <h2 class="rv">Six systems, built end to end</h2>
-    <p class="intro rv">Each one has an implementation, tests, and documented limits. Where something is a prototype or demo rather than a production deployment, the portfolio says so.</p>
+
+    <p class="intro rv">
+      Each one has an implementation, tests, and documented limits.
+      Where something is a prototype or demo rather than a production
+      deployment, the portfolio says so.
+    </p>
 
 
-    
+    <!-- AI Competitor Research -->
     <article class="proj rv">
-      <div class="head"><h3>AI Competitor Research Platform</h3><span class="type">LLM data pipeline</span></div>
-      <p class="pitch">A competitive-intelligence research pipeline that collects competitor information, validates structured observations, stores evidence with provenance, and produces run-scoped analysis and reports.</p>
-      <div class="tech"><span>Python</span><span>FastAPI</span><span>React</span><span>Firecrawl</span><span>Playwright</span><span>SQLite</span><span>PostgreSQL</span><span>ChromaDB</span><span>RAG</span><span>Groq</span><span>OpenAI</span><span>Anthropic</span><span>Docker</span><span>Render</span><span>pytest</span></div>
-      <ul>
-        <li><b>Region-aware research.</b> Research runs carry an explicit execution region, and the extraction pipeline records region information with the collected observations rather than asking the model to infer the market after the fact.</li>
-        <li><b>Layered web collection.</b> The scraper orchestrator supports Firecrawl, Playwright, and an HTTP fallback, with retry and rate-limit handling around the provider calls.</li>
-        <li><b>Validated extraction.</b> Extracted results are checked against structured schemas and semantic validation, with corrective extraction when validation fails. Provider attempts and fallbacks are tracked in run-level telemetry.</li>
-        <li><b>Evidence and provenance.</b> Research observations are stored with identifiers and source information, while raw page content can be retained with a content hash and timestamp for later inspection.</li>
-        <li><b>Run-scoped analysis.</b> Analysis queries filter by the research run, and the dashboard, reports, alerts, and RAG workflow use the stored research data rather than mixing observations from unrelated runs.</li>
-        <li><b>Demo and live paths.</b> The repository includes a deterministic demo mode that can run without external credentials. The live path integrates external scraping and model providers, but the repository documents that production-scale live verification remains a separate operational step.</li>
-      </ul>
-      <div class="go"><a href="https://ai-competitor-research.onrender.com" target="_blank" rel="noopener noreferrer">Live demo <span class="ar">&rarr;</span></a><a href="https://ai-competitor-research-api.onrender.com/docs" target="_blank" rel="noopener noreferrer">API docs <span class="ar">&rarr;</span></a><a href="https://github.com/Atif0110/AI-competitor-research" target="_blank" rel="noopener noreferrer">GitHub <span class="ar">&rarr;</span></a></div>
-      <p class="caveat">The repository includes deterministic demo execution. External scraping providers, proxies, and LLM providers require their configured credentials and live environments; the portfolio does not claim production-scale validation of those external paths.</p>
-    </article>
 
-    <article class="proj rv">
-      <div class="head"><h3>RouteForge</h3><span class="type">AI infrastructure & model routing</span></div>
-      <p class="pitch">A provider-independent model-routing service built around the core S2 Sweep implementation, with a FastAPI API, browser console, and a conservative Chromium extension prototype for ChatGPT and Claude.</p>
-      <div class="tech"><span>Python</span><span>FastAPI</span><span>LightGBM</span><span>NumPy</span><span>Pydantic</span><span>REST API</span><span>Chrome Extension</span><span>JavaScript</span><span>Docker</span><span>GitHub Actions</span><span>Render</span><span>pytest</span></div>
-      <ul>
-        <li><b>Routing is the backend boundary.</b> The service validates a prompt, runs the bundled S2 classifier and routing policy, and returns a selected model with candidate scores and routing metadata. It does not perform provider inference.</li>
-        <li><b>Controlled exploration.</b> The configured serving policy uses the S2 quality-cost winner 70% of the time and uniformly selects an eligible model 30% of the time. The response exposes the selection mode and exploration probability.</li>
-        <li><b>Developer-facing API and CLI.</b> The project exposes <code>/v1/route</code>, health and model endpoints, FastAPI documentation, and CLI commands for serving and routing prompts.</li>
-        <li><b>Browser integration is conservative.</b> The Manifest V3 extension targets ChatGPT and Claude, calls the local router at <code>127.0.0.1:8000</code>, and uses provider-specific mappings before attempting a visible model selection. Unsupported mappings are reported instead of being fabricated.</li>
-        <li><b>Safe handoff.</b> Optional auto-submit is disabled by default, and the extension checks that the prompt and send control remain safe to use before submitting.</li>
-      </ul>
-      <div class="go"><a href="https://routeforge-pzh7.onrender.com/" target="_blank" rel="noopener noreferrer">Live demo <span class="ar">&rarr;</span></a><a href="https://github.com/Atif0110/routeforge" target="_blank" rel="noopener noreferrer">GitHub <span class="ar">&rarr;</span></a></div>
-      <p class="caveat">RouteForge selects a model; it does not proxy provider inference or provide LLM usage. The browser extension is a prototype tied to provider website controls and currently targets the local RouteForge endpoint.</p>
-    </article>
-
-    <article class="proj rv">
-      <div class="head"><h3>TrustLayer</h3><span class="type">agent infrastructure</span></div>
-      <p class="pitch">An authorization layer for AI agents that evaluates actions against organization-scoped policies and can require human approval before a consequential action proceeds.</p>
-      <div class="tech"><span>FastAPI</span><span>PostgreSQL</span><span>SQLAlchemy async</span><span>Alembic</span><span>React</span><span>Docker Compose</span><span>pytest</span><span>testcontainers</span><span>GitHub Actions</span></div>
-      <ul>
-        <li><b>Default-deny authorization.</b> Policy rules are evaluated in order and the first matching decision is returned. When no rule matches, the evaluator returns <code>DENY</code> rather than allowing the action implicitly.</li>
-        <li><b>Policies are stored as data.</b> Rules can match an action and context values, including numeric comparison operators, so policy behavior can be changed without embedding the rule directly in application code.</li>
-        <li><b>Organization-scoped policy versions.</b> Policy updates receive monotonically increasing versions within an organization, allowing decisions and audit records to be associated with a specific policy version.</li>
-        <li><b>Human approval workflow.</b> Actions resolving to <code>REQUIRE_APPROVAL</code> enter an approval queue. Approval and rejection are explicit states, with expiry handling and organization-scoped access.</li>
-        <li><b>Append-only audit protection.</b> Audit records are stored in PostgreSQL and protected by a database trigger that rejects updates and deletes.</li>
-        <li><b>Tested full stack.</b> The repository includes API tests, PostgreSQL integration tests using Testcontainers, frontend tests and type checking, Docker Compose startup, seed/demo tooling, and CI configuration.</li>
-      </ul>
-      <div class="go"><a href="https://github.com/Atif0110/TrustLayer" target="_blank" rel="noopener noreferrer">GitHub <span class="ar">&rarr;</span></a></div>
-      <p class="caveat">TrustLayer is an authorization and approval layer. It does not itself execute the external action on behalf of an AI agent.</p>
-    </article>
-
-    <article class="proj rv">
-      <div class="head"><h3>Power Price Forecasting Pipeline</h3><span class="type">applied machine learning</span></div>
-      <p class="pitch">Day-ahead electricity price forecasting for the German and Luxembourg bidding zone, with chronological evaluation, data-quality checks, uncertainty estimates, and a signal layer.</p>
-      <div class="tech"><span>Python</span><span>XGBoost</span><span>scikit learn</span><span>pandas</span><span>ENTSO-E API</span><span>Plotly</span><span>Groq</span><span>joblib</span><span>pytest</span></div>
-      <ul>
-        <li><b>Time-aware evaluation.</b> Training and test data are split chronologically, and the model is evaluated against a seasonal-naive reference based on the previous day's price.</li>
-        <li><b>Market features.</b> The pipeline creates calendar features, price lags, rolling statistics and momentum features, together with load and renewable-generation inputs where available.</li>
-        <li><b>Data-quality gate.</b> The pipeline checks missing hours, duplicate timestamps, ordering, extreme values and configured economic relationships before modeling.</li>
-        <li><b>Uncertainty-aware signal.</b> The forecast carries a residual-based interval into the signal layer, which can return no trade when the forecast spread does not exceed the configured uncertainty threshold.</li>
-        <li><b>LLM trader brief.</b> An optional LLM step produces a structured trading brief, with a deterministic fallback when a provider key is unavailable or the model call fails.</li>
-      </ul>
-      <div class="go"><a href="https://github.com/Atif0110/power-forecast-pipeline" target="_blank" rel="noopener noreferrer">GitHub <span class="ar">&rarr;</span></a></div>
-      <p class="caveat">The pipeline supports ENTSO-E data when configured and a synthetic fallback otherwise. Forecast and signal results are historical or simulated pipeline outputs, not claims of live trading performance.</p>
-    </article>
-
-    <article class="proj rv">
-      <div class="head"><h3>OpenClaw</h3><span class="type">automation agent</span></div>
-      <p class="pitch">A local-first automation assistant that turns a natural-language task into a scheduled browser agent with a preview and explicit approval step before execution.</p>
-      <div class="tech"><span>Node.js</span><span>Express</span><span>Playwright</span><span>node-cron</span><span>better-sqlite3</span><span>Ollama</span><span>OpenAI</span></div>
-      <ul>
-        <li><b>Local-first model routing.</b> The application can use a local Ollama model when no hosted API key is configured and a hosted model when one is available.</li>
-        <li><b>Approval before deployment.</b> Generated agents are shown as a preview and require explicit approval before being scheduled.</li>
-        <li><b>Browser execution.</b> Approved agents are scheduled and executed through Playwright against a Chromium browser, with local configuration and execution records.</li>
-        <li><b>Modular implementation.</b> The server, model routing, agent management, scheduler, browser layer and database are separated into focused modules.</li>
-      </ul>
-      <div class="go"><a href="https://github.com/Atif0110/openclaw-desktop-assistant" target="_blank" rel="noopener noreferrer">GitHub <span class="ar">&rarr;</span></a></div>
-    </article>
-
-    <article class="proj rv">
-      <div class="head"><h3>Shravan</h3><span class="type">full stack product</span></div>
-      <p class="pitch">A health companion for senior citizens and caretakers covering reminders, health logging, emergency contacts, nearby-care discovery, and AI assistance across web and mobile clients.</p>
-      <div class="tech"><span>Flask</span><span>SQLAlchemy</span><span>Vue 3</span><span>Pinia</span><span>Flutter</span><span>Groq</span><span>Gemini</span><span>Swagger</span></div>
-      <ul>
-        <li><b>One backend, two clients.</b> A Flask and SQLAlchemy API serves the Vue web application and Flutter mobile client, with SQLite by default and PostgreSQL support through configuration.</li>
-        <li><b>Backend security controls.</b> The application includes server-side sessions, password hashing, CSRF protection for state-changing requests, login throttling, session expiry, role checks, restrictive origin policy, security headers, request-size limits, and user-scoped data access.</li>
-        <li><b>Location-service fallback.</b> Healthcare discovery can use Google Places when configured and OpenStreetMap/Nominatim fallbacks when it is not.</li>
-        <li><b>Documented API.</b> The backend exposes interactive API documentation and includes a pytest suite and startup scripts.</li>
-        <li><b>Safety boundary.</b> The assistant is positioned as general information rather than diagnosis or a substitute for a clinician, with emergency situations directed toward real services.</li>
-      </ul>
-      <div class="go"><a href="https://github.com/Atif0110/Shravan-Application" target="_blank" rel="noopener noreferrer">GitHub <span class="ar">&rarr;</span></a></div>
-    </article>
-
-    <p class="more rv">Earlier work, competition entries and dashboards live on <a href="https://github.com/Atif0110" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
-  </div>
-</section>
-
-<section id="stack">
-  <div class="wrap">
-    <div class="kicker rv">Stack</div>
-    <h2 class="rv">Tools I reach for</h2>
-    <div class="grp rv"><h3>Machine learning and statistics</h3><div class="chips"><span>Python</span><span>XGBoost</span><span>scikit learn</span><span>statsmodels</span><span>time series forecasting</span><span>A/B testing</span><span>hypothesis testing</span><span>anomaly detection</span><span>backtesting</span></div></div>
-    <div class="grp rv"><h3>Data and analytics</h3><div class="chips"><span>SQL</span><span>CTEs and window functions</span><span>pandas</span><span>NumPy</span><span>R</span><span>Power BI</span><span>Tableau</span><span>Matplotlib</span><span>Plotly</span></div></div>
-    <div class="grp rv"><h3>Backend and infrastructure</h3><div class="chips"><span>FastAPI</span><span>Flask</span><span>PostgreSQL</span><span>SQLAlchemy</span><span>Alembic</span><span>SQLite</span><span>Docker</span><span>pytest</span><span>testcontainers</span><span>GitHub Actions</span><span>Git</span><span>REST APIs</span><span>API validation</span></div></div>
-    <div class="grp rv"><h3>AI and LLM systems</h3><div class="chips"><span>OpenAI</span><span>Anthropic</span><span>Groq</span><span>Gemini</span><span>Ollama</span><span>RAG</span><span>structured extraction</span><span>provider fallback</span><span>LightGBM</span><span>Playwright</span><span>Chrome Extensions</span><span>n8n</span></div></div>
-    <div class="grp rv"><h3>Frontend and mobile</h3><div class="chips"><span>React</span><span>Vue 3</span><span>Streamlit</span><span>Flutter</span></div></div>
-    <div class="edu">
-      <div class="rv"><div class="date">2022 to 2025</div><h3>Indian Institute of Technology, Madras</h3><p>B.S. in Data Science and Applications, covering machine learning, statistical modeling and data mining.</p></div>
-      <div class="rv"><div class="date">Recognition</div><h3>IIT Madras project competition</h3><p>Placed fifth of thirty teams with Shravan, a full stack health companion for senior citizens and caretakers.</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="contact">
-  <div class="wrap">
-    <div class="kicker rv">Contact</div>
-    <div class="cta-box rv">
-      <h2>Have a hard problem?</h2>
-      <p>I am looking for Data Scientist and Backend AI Engineer roles where the job is getting a model into production and keeping it trustworthy once it is there. Open to the United States, Europe, India and fully remote teams anywhere.</p>
-      <div class="actions">
-        <a class="btn solid" href="mailto:data.atif001@gmail.com">Email me <span class="ar">&rarr;</span></a>
-        <a class="btn" href="https://www.linkedin.com/in/mohd-atif01/" target="_blank" rel="noopener noreferrer">LinkedIn <span class="ar">&rarr;</span></a>
-        <a class="btn" href="https://github.com/Atif0110" target="_blank" rel="noopener noreferrer">GitHub <span class="ar">&rarr;</span></a>
+      <div class="head">
+        <h3>AI Competitor Research Platform</h3>
+        <span class="type">LLM data pipeline</span>
       </div>
-    </div>
+
+      <p class="pitch">
+        A competitive-intelligence research pipeline that collects competitor
+        information, validates structured observations, stores evidence with
+        provenance, and produces run-scoped analysis and reports.
+      </p>
+
+      <div class="tech">
+        <span>Python</span>
+        <span>FastAPI</span>
+        <span>React</span>
+        <span>Firecrawl</span>
+        <span>Playwright</span>
+        <span>SQLite</span>
+        <span>PostgreSQL</span>
+        <span>ChromaDB</span>
+        <span>RAG</span>
+        <span>Groq</span>
+        <span>OpenAI</span>
+        <span>Anthropic</span>
+        <span>Docker</span>
+        <span>Render</span>
+        <span>pytest</span>
+      </div>
+
+      <ul>
+
+        <li>
+          <b>Region-aware research.</b>
+          Research runs carry an explicit execution region, and the
+          extraction pipeline records region information with the collected
+          observations rather than asking the model to infer the market
+          after the fact.
+        </li>
+
+        <li>
+          <b>Layered web collection.</b>
+          The scraper orchestrator supports Firecrawl, Playwright,
+          and an HTTP fallback, with retry and rate-limit handling
+          around the provider calls.
+        </li>
+
+        <li>
+          <b>Validated extraction.</b>
+          Extracted results are checked against structured schemas and
+          semantic validation, with corrective extraction when validation
+          fails. Provider attempts and fallbacks are tracked in run-level
+          telemetry.
+        </li>
+
+        <li>
+          <b>Evidence and provenance.</b>
+          Research observations are stored with identifiers and source
+          information, while raw page content can be retained with a
+          content hash and timestamp for later inspection.
+        </li>
+
+        <li>
+          <b>Run-scoped analysis.</b>
+          Analysis queries filter by the research run, and the dashboard,
+          reports, alerts, and RAG workflow use the stored research data
+          rather than mixing observations from unrelated runs.
+        </li>
+
+        <li>
+          <b>Demo and live paths.</b>
+          The repository includes a deterministic demo mode that can run
+          without external credentials. The live path integrates external
+          scraping and model providers, but the repository documents that
+          production-scale live verification remains a separate operational step.
+        </li>
+
+      </ul>
+
+      <div class="go">
+
+        <a
+          href="https://ai-competitor-research.onrender.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Live demo <span class="ar">&rarr;</span>
+        </a>
+
+        <a
+          href="https://ai-competitor-research-api.onrender.com/docs"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          API docs <span class="ar">&rarr;</span>
+        </a>
+
+        <a
+          href="https://github.com/Atif0110/AI-competitor-research"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          GitHub <span class="ar">&rarr;</span>
+        </a>
+
+      </div>
+
+      <p class="caveat">
+        The repository includes deterministic demo execution. External
+        scraping providers, proxies, and LLM providers require their
+        configured credentials and live environments; the portfolio does
+        not claim production-scale validation of those external paths.
+      </p>
+
+    </article>
+
+
+    <!-- RouteForge -->
+    <article class="proj rv">
+
+      <div class="head">
+        <h3>RouteForge</h3>
+        <span class="type">AI infrastructure & model routing</span>
+      </div>
+
+      <p class="pitch">
+        A provider-independent model-routing service built around the core
+        S2 Sweep implementation, with a FastAPI API, browser console, and
+        a conservative Chromium extension prototype for ChatGPT and Claude.
+      </p>
+
+      <div class="tech">
+        <span>Python</span>
+        <span>FastAPI</span>
+        <span>LightGBM</span>
+        <span>NumPy</span>
+        <span>Pydantic</span>
+        <span>REST API</span>
+        <span>Chrome Extension</span>
+        <span>JavaScript</span>
+        <span>Docker</span>
+        <span>GitHub Actions</span>
+        <span>Render</span>
+        <span>pytest</span>
+      </div>
+
+      <ul>
+
+        <li>
+          <b>Routing is the backend boundary.</b>
+          The service validates a prompt, runs the bundled S2 classifier
+          and routing policy, and returns a selected model with candidate
+          scores and routing metadata. It does not perform provider inference.
+        </li>
+
+        <li>
+          <b>Controlled exploration.</b>
+          The configured serving policy uses the S2 quality-cost winner
+          70% of the time and uniformly selects an eligible model 30% of
+          the time. The response exposes the selection mode and exploration probability.
+        </li>
+
+        <li>
+          <b>Developer-facing API and CLI.</b>
+          The project exposes <code>/v1/route</code>, health and model
+          endpoints, FastAPI documentation, and CLI commands for serving
+          and routing prompts.
+        </li>
+
+        <li>
+          <b>Browser integration is conservative.</b>
+          The Manifest V3 extension targets ChatGPT and Claude, calls the
+          local router at <code>127.0.0.1:8000</code>, and uses
+          provider-specific mappings before attempting a visible model
+          selection. Unsupported mappings are reported instead of being fabricated.
+        </li>
+
+        <li>
+          <b>Safe handoff.</b>
+          Optional auto-submit is disabled by default, and the extension
+          checks that the prompt and send control remain safe to use before submitting.
+        </li>
+
+      </ul>
+
+      <div class="go">
+
+        <a
+          href="https://routeforge-pzh7.onrender.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Live demo <span class="ar">&rarr;</span>
+        </a>
+
+        <a
+          href="https://github.com/Atif0110/routeforge"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          GitHub <span class="ar">&rarr;</span>
+        </a>
+
+      </div>
+
+      <p class="caveat">
+        RouteForge selects a model; it does not proxy provider inference
+        or provide LLM usage. The browser extension is a prototype tied
+        to provider website controls and currently targets the local
+        RouteForge endpoint.
+      </p>
+
+    </article>
+
+
+    <!-- TrustLayer -->
+    <article class="proj rv">
+
+      <div class="head">
+        <h3>TrustLayer</h3>
+        <span class="type">agent infrastructure</span>
+      </div>
+
+      <p class="pitch">
+        An authorization layer for AI agents that evaluates actions
+        against organization-scoped policies and can require human
+        approval before a consequential action proceeds.
+      </p>
+
+      <div class="tech">
+        <span>FastAPI</span>
+        <span>PostgreSQL</span>
+        <span>SQLAlchemy async</span>
+        <span>Alembic</span>
+        <span>React</span>
+        <span>Docker Compose</span>
+        <span>pytest</span>
+        <span>testcontainers</span>
+        <span>GitHub Actions</span>
+      </div>
+
+      <ul>
+
+        <li>
+          <b>Default-deny authorization.</b>
+          Policy rules are evaluated in order and the first matching
+          decision is returned. When no rule matches, the evaluator
+          returns <code>DENY</code> rather than allowing the action implicitly.
+        </li>
+
+        <li>
+          <b>Policies are stored as data.</b>
+          Rules can match an action and context values, including numeric
+          comparison operators, so policy behavior can be changed without
+          embedding the rule directly in application code.
+        </li>
+
+        <li>
+          <b>Organization-scoped policy versions.</b>
+          Policy updates receive monotonically increasing versions within
+          an organization, allowing decisions and audit records to be
+          associated with a specific policy version.
+        </li>
+
+        <li>
+          <b>Human approval workflow.</b>
+          Actions resolving to <code>REQUIRE_APPROVAL</code> enter an
+          approval queue. Approval and rejection are explicit states,
+          with expiry handling and organization-scoped access.
+        </li>
+
+        <li>
+          <b>Append-only audit protection.</b>
+          Audit records are stored in PostgreSQL and protected by a
+          database trigger that rejects updates and deletes.
+        </li>
+
+        <li>
+          <b>Tested full stack.</b>
+          The repository includes API tests, PostgreSQL integration tests
+          using Testcontainers, frontend tests and type checking,
+          Docker Compose startup, seed/demo tooling, and CI configuration.
+        </li>
+
+      </ul>
+
+      <div class="go">
+
+        <a
+          href="https://github.com/Atif0110/TrustLayer"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          GitHub <span class="ar">&rarr;</span>
+        </a>
+
+      </div>
+
+      <p class="caveat">
+        TrustLayer is an authorization and approval layer. It does not
+        itself execute the external action on behalf of an AI agent.
+      </p>
+
+    </article>
+
+
+    <!-- Power Price Forecasting -->
+    <article class="proj rv">
+
+      <div class="head">
+        <h3>Power Price Forecasting Pipeline</h3>
+        <span class="type">applied machine learning</span>
+      </div>
+
+      <p class="pitch">
+        Day-ahead electricity price forecasting for the German and
+        Luxembourg bidding zone, with chronological evaluation,
+        data-quality checks, uncertainty estimates, and a signal layer.
+      </p>
+
+      <div class="tech">
+        <span>Python</span>
+        <span>XGBoost</span>
+        <span>scikit learn</span>
+        <span>pandas</span>
+        <span>ENTSO-E API</span>
+        <span>Plotly</span>
+        <span>Groq</span>
+        <span>joblib</span>
+        <span>pytest</span>
+      </div>
+
+      <ul>
+
+        <li>
+          <b>Time-aware evaluation.</b>
+          Training and test data are split chronologically, and the
+          model is evaluated against a seasonal-naive reference based
+          on the previous day's price.
+        </li>
+
+        <li>
+          <b>Market features.</b>
+          The pipeline creates calendar features, price lags, rolling
+          statistics and momentum features, together with load and
+          renewable-generation inputs where available.
+        </li>
+
+        <li>
+          <b>Data-quality gate.</b>
+          The pipeline checks missing hours, duplicate timestamps,
+          ordering, extreme values and configured economic relationships
+          before modeling.
+        </li>
+
+        <li>
+          <b>Uncertainty-aware signal.</b>
+          The forecast carries a residual-based interval into the signal
+          layer, which can return no trade when the forecast spread does
+          not exceed the configured uncertainty threshold.
+        </li>
+
+        <li>
+          <b>LLM trader brief.</b>
+          An optional LLM step produces a structured trading brief,
+          with a deterministic fallback when a provider key is unavailable
+          or the model call fails.
+        </li>
+
+      </ul>
+
+      <div class="go">
+
+        <a
+          href="https://github.com/Atif0110/power-forecast-pipeline"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          GitHub <span class="ar">&rarr;</span>
+        </a>
+
+      </div>
+
+      <p class="caveat">
+        The pipeline supports ENTSO-E data when configured and a synthetic
+        fallback otherwise. Forecast and signal results are historical or
+        simulated pipeline outputs, not claims of live trading performance.
+      </p>
+
+    </article>
+
+
+    <!-- OpenClaw -->
+    <article class="proj rv">
+
+      <div class="head">
+        <h3>OpenClaw</h3>
+        <span class="type">automation agent</span>
+      </div>
+
+      <p class="pitch">
+        A local-first automation assistant that turns a natural-language
+        task into a scheduled browser agent with a preview and explicit
+        approval step before execution.
+      </p>
+
+      <div class="tech">
+        <span>Node.js</span>
+        <span>Express</span>
+        <span>Playwright</span>
+        <span>node-cron</span>
+        <span>better-sqlite3</span>
+        <span>Ollama</span>
+        <span>OpenAI</span>
+      </div>
+
+      <ul>
+
+        <li>
+          <b>Local-first model routing.</b>
+          The application can use a local Ollama model when no hosted
+          API key is configured and a hosted model when one is available.
+        </li>
+
+        <li>
+          <b>Approval before deployment.</b>
+          Generated agents are shown as a preview and require explicit
+          approval before being scheduled.
+        </li>
+
+        <li>
+          <b>Browser execution.</b>
+          Approved agents are scheduled and executed through Playwright
+          against a Chromium browser, with local configuration and execution records.
+        </li>
+
+        <li>
+          <b>Modular implementation.</b>
+          The server, model routing, agent management, scheduler,
+          browser layer and database are separated into focused modules.
+        </li>
+
+      </ul>
+
+      <div class="go">
+
+        <a
+          href="https://github.com/Atif0110/openclaw-desktop-assistant"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          GitHub <span class="ar">&rarr;</span>
+        </a>
+
+      </div>
+
+    </article>
+
+
+    <!-- Shravan -->
+    <article class="proj rv">
+
+      <div class="head">
+        <h3>Shravan</h3>
+        <span class="type">full stack product</span>
+      </div>
+
+      <p class="pitch">
+        A health companion for senior citizens and caretakers covering
+        reminders, health logging, emergency contacts, nearby-care
+        discovery, and AI assistance across web and mobile clients.
+      </p>
+
+      <div class="tech">
+        <span>Flask</span>
+        <span>SQLAlchemy</span>
+        <span>Vue 3</span>
+        <span>Pinia</span>
+        <span>Flutter</span>
+        <span>Groq</span>
+        <span>Gemini</span>
+        <span>Swagger</span>
+      </div>
+
+      <ul>
+
+        <li>
+          <b>One backend, two clients.</b>
+          A Flask and SQLAlchemy API serves the Vue web application and
+          Flutter mobile client, with SQLite by default and PostgreSQL
+          support through configuration.
+        </li>
+
+        <li>
+          <b>Backend security controls.</b>
+          The application includes server-side sessions, password hashing,
+          CSRF protection for state-changing requests, login throttling,
+          session expiry, role checks, restrictive origin policy,
+          security headers, request-size limits, and user-scoped data access.
+        </li>
+
+        <li>
+          <b>Location-service fallback.</b>
+          Healthcare discovery can use Google Places when configured and
+          OpenStreetMap/Nominatim fallbacks when it is not.
+        </li>
+
+        <li>
+          <b>Documented API.</b>
+          The backend exposes interactive API documentation and includes
+          a pytest suite and startup scripts.
+        </li>
+
+        <li>
+          <b>Safety boundary.</b>
+          The assistant is positioned as general information rather than
+          diagnosis or a substitute for a clinician, with emergency
+          situations directed toward real services.
+        </li>
+
+      </ul>
+
+      <div class="go">
+
+        <a
+          href="https://github.com/Atif0110/Shravan-Application"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          GitHub <span class="ar">&rarr;</span>
+        </a>
+
+      </div>
+
+    </article>
+
+
+    <p class="more rv">
+      Earlier work, competition entries and dashboards live on
+      <a
+        href="https://github.com/Atif0110"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        GitHub
+      </a>.
+    </p>
+
   </div>
 </section>
 
-<footer><div class="wrap"><span>&copy; 2026 Mohd Atif</span><span>Lucknow, India</span></div></footer>
+
+<!-- Stack -->
+<section id="stack">
+
+  <div class="wrap">
+
+    <div class="kicker rv">Stack</div>
+
+    <h2 class="rv">Tools I reach for</h2>
+
+
+    <div class="grp rv">
+
+      <h3>Machine learning and statistics</h3>
+
+      <div class="chips">
+        <span>Python</span>
+        <span>XGBoost</span>
+        <span>scikit learn</span>
+        <span>statsmodels</span>
+        <span>time series forecasting</span>
+        <span>A/B testing</span>
+        <span>hypothesis testing</span>
+        <span>anomaly detection</span>
+        <span>backtesting</span>
+      </div>
+
+    </div>
+
+
+    <div class="grp rv">
+
+      <h3>Data and analytics</h3>
+
+      <div class="chips">
+        <span>SQL</span>
+        <span>CTEs and window functions</span>
+        <span>pandas</span>
+        <span>NumPy</span>
+        <span>R</span>
+        <span>Power BI</span>
+        <span>Tableau</span>
+        <span>Matplotlib</span>
+        <span>Plotly</span>
+      </div>
+
+    </div>
+
+
+    <div class="grp rv">
+
+      <h3>Backend and infrastructure</h3>
+
+      <div class="chips">
+        <span>FastAPI</span>
+        <span>Flask</span>
+        <span>PostgreSQL</span>
+        <span>SQLAlchemy</span>
+        <span>Alembic</span>
+        <span>SQLite</span>
+        <span>Docker</span>
+        <span>pytest</span>
+        <span>testcontainers</span>
+        <span>GitHub Actions</span>
+        <span>Git</span>
+        <span>REST APIs</span>
+        <span>API validation</span>
+      </div>
+
+    </div>
+
+
+    <div class="grp rv">
+
+      <h3>AI and LLM systems</h3>
+
+      <div class="chips">
+        <span>OpenAI</span>
+        <span>Anthropic</span>
+        <span>Groq</span>
+        <span>Gemini</span>
+        <span>Ollama</span>
+        <span>RAG</span>
+        <span>structured extraction</span>
+        <span>provider fallback</span>
+        <span>LightGBM</span>
+        <span>Playwright</span>
+        <span>Chrome Extensions</span>
+        <span>n8n</span>
+      </div>
+
+    </div>
+
+
+    <div class="grp rv">
+
+      <h3>Frontend and mobile</h3>
+
+      <div class="chips">
+        <span>React</span>
+        <span>Vue 3</span>
+        <span>Streamlit</span>
+        <span>Flutter</span>
+      </div>
+
+    </div>
+
+
+    <!-- Education -->
+    <div class="edu">
+
+      <div class="rv">
+
+        <div class="date">2022 to 2025</div>
+
+        <h3>
+          Indian Institute of Technology, Madras
+        </h3>
+
+        <p>
+          B.S. in Data Science and Applications, covering machine learning,
+          statistical modeling and data mining.
+        </p>
+
+      </div>
+
+
+      <div class="rv">
+
+        <div class="date">Recognition</div>
+
+        <h3>
+          IIT Madras project competition
+        </h3>
+
+        <p>
+          Placed fifth of thirty teams with Shravan, a full stack health
+          companion for senior citizens and caretakers.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- Contact -->
+<section id="contact">
+
+  <div class="wrap">
+
+    <div class="kicker rv">Contact</div>
+
+    <div class="cta-box rv">
+
+      <h2>Have a hard problem?</h2>
+
+      <p>
+        I am looking for Data Scientist and Backend AI Engineer roles where
+        the job is getting a model into production and keeping it trustworthy
+        once it is there. Open to the United States, Europe, India and fully
+        remote teams anywhere.
+      </p>
+
+      <div class="actions">
+
+        <a class="btn solid" href="mailto:data.atif001@gmail.com">
+          Email me
+          <span class="ar">&rarr;</span>
+        </a>
+
+        <a
+          class="btn"
+          href="https://www.linkedin.com/in/mohd-atif01/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          LinkedIn
+          <span class="ar">&rarr;</span>
+        </a>
+
+        <a
+          class="btn"
+          href="https://github.com/Atif0110"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          GitHub
+          <span class="ar">&rarr;</span>
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- Footer -->
+<footer>
+
+  <div class="wrap">
+
+    <span>
+      &copy; 2026 Mohd Atif
+    </span>
+
+    <span>
+      Lucknow, India
+    </span>
+
+  </div>
+
+</footer>
+
 
 <script>
+
 (function(){
+
   var nav = document.getElementById('nav');
-  function onScroll(){ nav.classList.toggle('scrolled', window.scrollY > 8); }
+
+  function onScroll(){
+    nav.classList.toggle(
+      'scrolled',
+      window.scrollY > 8
+    );
+  }
+
   onScroll();
-  window.addEventListener('scroll', onScroll, { passive:true });
+
+  window.addEventListener(
+    'scroll',
+    onScroll,
+    { passive:true }
+  );
+
+
   var items = document.querySelectorAll('.rv');
-  if (!('IntersectionObserver' in window)) { items.forEach(function(el){ el.classList.add('on'); }); return; }
-  var io = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if (!e.isIntersecting) return;
-      var el = e.target;
-      var sibs = Array.prototype.filter.call(el.parentNode.children, function(n){ return n.classList && n.classList.contains('rv'); });
-      el.style.transitionDelay = Math.min(sibs.indexOf(el), 5) * 60 + 'ms';
+
+  if (!('IntersectionObserver' in window)) {
+
+    items.forEach(function(el){
       el.classList.add('on');
-      io.unobserve(el);
     });
-  }, { threshold:0.1, rootMargin:'0px 0px -40px 0px' });
-  items.forEach(function(el){ io.observe(el); });
+
+    return;
+  }
+
+
+  var io = new IntersectionObserver(
+
+    function(entries){
+
+      entries.forEach(function(e){
+
+        if (!e.isIntersecting) return;
+
+        var el = e.target;
+
+        var sibs = Array.prototype.filter.call(
+          el.parentNode.children,
+          function(n){
+            return n.classList &&
+                   n.classList.contains('rv');
+          }
+        );
+
+        el.style.transitionDelay =
+          Math.min(sibs.indexOf(el), 5) * 60 + 'ms';
+
+        el.classList.add('on');
+
+        io.unobserve(el);
+
+      });
+
+    },
+
+    {
+      threshold:0.1,
+      rootMargin:'0px 0px -40px 0px'
+    }
+
+  );
+
+
+  items.forEach(function(el){
+    io.observe(el);
+  });
+
 })();
+
 </script>
+
 </body>
 </html>
