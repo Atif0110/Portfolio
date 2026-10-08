@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mohd Atif — Data Scientist / Founder's Office</title>
+<meta name="description" content="Mohd Atif builds data products, forecasting systems, AI workflows and research tools, and works comfortably from ambiguous question to shipped result.">
+<meta property="og:title" content="Mohd Atif — Data Scientist / Founder's Office">
+<meta property="og:description" content="Data, research, AI systems and execution.">
+<meta property="og:url" content="https://atif0110.github.io/Portfolio/">
+<meta name="theme-color" content="#08090b">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#08090b; --surface:#0d1014; --surface2:#11151b; --surface3:#151a21;
+  --line:#202630; --line2:#303846; --text:#f0f2f5; --muted:#9ca5b3; --dim:#687281;
+  --green:#9bf2c4; --blue:#91b7ff; --amber:#f4ca74; --pink:#e7a5ff;
+  --max:1180px; --radius:20px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{
+  background:var(--bg); color:var(--text); font-family:"Manrope",system-ui,sans-serif;
+  line-height:1.65; overflow-x:hidden; -webkit-font-smoothing:antialiased;
+}
+body:before{
+  content:""; position:fixed; inset:0; pointer-events:none; z-index:-2;
+  background:
+    radial-gradient(800px 500px at 85% -5%,rgba(145,183,255,.10),transparent 70%),
+    radial-gradient(700px 500px at 0% 18%,rgba(155,242,196,.07),transparent 68%);
+}
+body:after{
+  content:""; position:fixed; inset:0; pointer-events:none; z-index:-1; opacity:.20;
+  background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:64px 64px;
+  mask-image:linear-gradient(to bottom,black,transparent 80%);
+}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(var(--max),calc(100% - 44px));margin:auto}
+.mono{font-family:"DM Mono",monospace}
+.muted{color:var(--muted)}
+.eyebrow{font:500 .72rem/1 "DM Mono",monospace;letter-spacing:.15em;text-transform:uppercase;color:var(--green)}
+nav{
+  position:sticky;top:0;z-index:50;height:68px;
+  background:rgba(8,9,11,.72);backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(255,255,255,.06)
+}
+nav .wrap{height:100%;display:flex;align-items:center;justify-content:space-between}
+.brand{font:500 .9rem "DM Mono",monospace;color:var(--text)}
+.brand b{color:var(--green);font-weight:500}
+.navlinks{display:flex;gap:28px;font-size:.82rem;color:var(--muted)}
+.navlinks a:hover{color:var(--text)}
+@media(max-width:720px){.navlinks{display:none}}
+
+.hero{min-height:calc(100vh - 68px);display:flex;align-items:center;padding:92px 0 80px;position:relative}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(280px,.55fr);gap:60px;align-items:end}
+.status{
+  display:inline-flex;align-items:center;gap:9px;padding:8px 12px;border:1px solid var(--line);
+  background:rgba(13,16,20,.78);border-radius:999px;font:500 .72rem "DM Mono",monospace;color:var(--muted)
+}
+.status i{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 14px var(--green)}
+h1{font-size:clamp(3.2rem,7.3vw,7.5rem);line-height:.93;letter-spacing:-.065em;font-weight:800;margin:28px 0 30px;max-width:9.5ch}
+h1 .accent{color:var(--green)}
+h1 .soft{color:#8f98a6}
+.hero-copy{max-width:690px;font-size:1.08rem;color:#c0c7d1}
+.hero-copy strong{color:var(--text);font-weight:600}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:30px}
+.btn{
+  display:inline-flex;align-items:center;gap:9px;border:1px solid var(--line2);background:var(--surface);
+  padding:11px 16px;border-radius:10px;font-size:.83rem;font-weight:600;transition:.22s ease
+}
+.btn:hover{transform:translateY(-2px);border-color:#465161;background:var(--surface2)}
+.btn.primary{background:var(--green);border-color:var(--green);color:#07130d}
+.btn.primary:hover{background:#b5f8d2}
+.hero-side{border-left:1px solid var(--line);padding-left:28px}
+.hero-side .label{font:500 .68rem "DM Mono",monospace;text-transform:uppercase;letter-spacing:.12em;color:var(--dim)}
+.signal{margin-top:20px;display:grid;gap:14px}
+.signal-row{display:flex;justify-content:space-between;gap:15px;padding-bottom:12px;border-bottom:1px solid var(--line);font-size:.82rem}
+.signal-row span:last-child{color:var(--muted);text-align:right}
+.sticker{
+  position:absolute;z-index:2;display:flex;align-items:center;gap:9px;padding:9px 12px;
+  border:1px solid var(--line2);background:rgba(17,21,27,.86);backdrop-filter:blur(14px);
+  border-radius:12px;box-shadow:0 18px 45px rgba(0,0,0,.3);font:500 .7rem "DM Mono",monospace;
+  color:#cbd2dc; transform:rotate(var(--rot)); animation:float 7s ease-in-out infinite;
+}
+.sticker b{color:var(--green);font-weight:500}
+.sticker.s1{top:18%;right:6%;--rot:4deg}
+.sticker.s2{top:43%;right:1%;--rot:-4deg;animation-delay:-2s}
+.sticker.s3{bottom:17%;right:19%;--rot:3deg;animation-delay:-4s}
+.sticker.s4{top:25%;left:2%;--rot:-3deg;animation-delay:-1s}
+@keyframes float{50%{translate:0 -9px}}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr}.hero-side{display:none}.sticker{display:none}}
+@media(max-width:600px){.hero{padding-top:60px}h1{font-size:clamp(3rem,16vw,5rem)}}
+
+section{padding:100px 0;border-top:1px solid var(--line)}
+.section-head{display:grid;grid-template-columns:.5fr 1.5fr;gap:30px;margin-bottom:42px}
+.section-head h2{font-size:clamp(2rem,4vw,3.5rem);line-height:1.02;letter-spacing:-.05em}
+.section-head p{color:var(--muted);max-width:650px;margin-top:13px}
+@media(max-width:760px){.section-head{grid-template-columns:1fr}}
+
+.roles{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.role-card{
+  min-height:300px;padding:28px;background:linear-gradient(145deg,var(--surface),#0b0e12);
+  border:1px solid var(--line);border-radius:var(--radius);position:relative;overflow:hidden;
+  transition:.25s ease
+}
+.role-card:hover{transform:translateY(-4px);border-color:var(--line2)}
+.role-card:after{content:"";position:absolute;width:220px;height:220px;border-radius:50%;filter:blur(70px);opacity:.10;right:-90px;bottom:-90px;background:var(--green)}
+.role-card.fo:after{background:var(--blue)}
+.role-top{display:flex;justify-content:space-between;align-items:center}
+.role-num{font:500 .7rem "DM Mono",monospace;color:var(--dim)}
+.role-card h3{font-size:1.5rem;letter-spacing:-.035em;margin:55px 0 13px}
+.role-card p{color:var(--muted);font-size:.91rem;max-width:48ch}
+.role-list{list-style:none;margin-top:24px;display:grid;gap:10px}
+.role-list li{font-size:.82rem;color:#c5ccd6;padding-left:17px;position:relative}
+.role-list li:before{content:"";width:5px;height:5px;background:var(--green);position:absolute;left:0;top:.62em;border-radius:1px}
+.fo .role-list li:before{background:var(--blue)}
+
+.proof{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px}
+.proof-card{padding:22px;background:var(--surface);border:1px solid var(--line);border-radius:15px}
+.proof-card strong{display:block;font-size:2rem;letter-spacing:-.05em;color:var(--green)}
+.proof-card span{display:block;color:var(--muted);font-size:.76rem;margin-top:3px}
+@media(max-width:800px){.roles{grid-template-columns:1fr}.proof{grid-template-columns:1fr 1fr}}
+@media(max-width:430px){.proof{grid-template-columns:1fr}}
+
+.project-filter{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:25px}
+.filter{
+  border:1px solid var(--line);background:var(--surface);color:var(--muted);border-radius:999px;
+  padding:7px 12px;font:500 .7rem "DM Mono",monospace;cursor:pointer
+}
+.filter.active,.filter:hover{color:#07130d;background:var(--green);border-color:var(--green)}
+.project-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.project{
+  min-height:330px;padding:26px;background:var(--surface);border:1px solid var(--line);border-radius:18px;
+  position:relative;display:flex;flex-direction:column;transition:.25s ease;overflow:hidden
+}
+.project:hover{border-color:var(--line2);transform:translateY(-3px)}
+.project.large{grid-column:span 2;min-height:290px;background:linear-gradient(135deg,#0d1116,#10151b)}
+.project-index{font:500 .68rem "DM Mono",monospace;color:var(--dim)}
+.project h3{font-size:1.35rem;letter-spacing:-.035em;margin-top:26px}
+.project .kind{font:500 .68rem "DM Mono",monospace;color:var(--green);margin-top:5px}
+.project p{color:var(--muted);font-size:.84rem;max-width:67ch;margin-top:12px}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:17px}
+.tags span{font:500 .64rem "DM Mono",monospace;color:#aeb7c5;border:1px solid var(--line);padding:4px 7px;border-radius:6px}
+.project ul{list-style:none;margin-top:17px;display:grid;gap:8px}
+.project li{color:#c3cad4;font-size:.78rem;padding-left:15px;position:relative}
+.project li:before{content:"";position:absolute;left:0;top:.6em;width:4px;height:4px;background:var(--green);border-radius:1px}
+.project-links{margin-top:auto;padding-top:22px;display:flex;gap:18px;font:500 .73rem "DM Mono",monospace}
+.project-links a{color:var(--green)}
+.project-links a:hover{text-decoration:underline}
+.project.fo .kind{color:var(--blue)}
+.project.fo li:before{background:var(--blue)}
+.project.hidden{display:none}
+@media(max-width:760px){.project-grid{grid-template-columns:1fr}.project.large{grid-column:auto}}
+
+.timeline{display:grid;gap:0;border-top:1px solid var(--line)}
+.job{display:grid;grid-template-columns:180px 1fr;gap:35px;padding:28px 0;border-bottom:1px solid var(--line)}
+.job-date{font:500 .68rem "DM Mono",monospace;color:var(--dim);padding-top:5px}
+.job h3{font-size:1.05rem}.job .role{color:var(--green);font:500 .7rem "DM Mono",monospace;margin-top:3px}
+.job p{color:var(--muted);font-size:.84rem;max-width:760px;margin-top:10px}
+@media(max-width:650px){.job{grid-template-columns:1fr;gap:6px}}
+
+.cap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.cap{padding:23px;background:var(--surface);border:1px solid var(--line);border-radius:16px}
+.cap .icon{font:500 .72rem "DM Mono",monospace;color:var(--green)}
+.cap h3{font-size:1rem;margin-top:26px}.cap p{font-size:.79rem;color:var(--muted);margin-top:8px}
+@media(max-width:800px){.cap-grid{grid-template-columns:1fr}}
+
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px}
+.about-grid p{color:var(--muted);font-size:.92rem}.about-grid p+p{margin-top:15px}
+.stack{display:flex;flex-wrap:wrap;gap:7px;margin-top:23px}
+.stack span{font:500 .67rem "DM Mono",monospace;padding:7px 9px;border:1px solid var(--line);background:var(--surface);border-radius:7px;color:#b9c1cd}
+@media(max-width:760px){.about-grid{grid-template-columns:1fr}}
+
+.contact{
+  border:1px solid var(--line);border-radius:24px;padding:60px;
+  background:radial-gradient(500px 250px at 90% 20%,rgba(155,242,196,.09),transparent 70%),var(--surface)
+}
+.contact h2{font-size:clamp(2.2rem,5vw,4.8rem);line-height:.98;letter-spacing:-.055em;max-width:10ch}
+.contact p{color:var(--muted);max-width:620px;margin-top:17px}
+footer{padding:30px 0 45px;color:var(--dim);font:500 .67rem "DM Mono",monospace}
+footer .wrap{display:flex;justify-content:space-between;gap:20px}
+@media(max-width:650px){.contact{padding:32px}.contact h2{max-width:none}footer .wrap{flex-direction:column}}
+
+.reveal{opacity:0;transform:translateY(18px)}.reveal.in{opacity:1;transform:none;transition:opacity .65s ease,transform .65s ease}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none}.sticker{animation:none}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#">mohd<span style="color:var(--green)">.</span>atif</a>
+    <div class="navlinks">
+      <a href="#fit">Fit</a><a href="#work">Work</a><a href="#projects">Projects</a><a href="#capabilities">Capabilities</a><a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <span class="sticker s1"><b>↗</b> from question → result</span>
+  <span class="sticker s2"><b>01</b> research → test → ship</span>
+  <span class="sticker s3"><b>σ</b> evidence over guesswork</span>
+  <span class="sticker s4"><b>AI</b> useful systems, not demos</span>
+  <div class="wrap hero-grid">
+    <div>
+      <div class="status"><i></i> open to Data Science &amp; Founder's Office roles</div>
+      <h1>I work where <span class="accent">data</span> meets <span class="soft">decisions.</span></h1>
+      <p class="hero-copy">
+        I’m <strong>Mohd Atif</strong>, a data science graduate from IIT Madras who likes owning problems end to end.
+        I build forecasting and AI systems, investigate markets and competitors, automate repetitive work, and turn ambiguous questions into something a team can actually use.
+      </p>
+      <div class="hero-actions">
+        <a class="btn primary" href="mailto:data.atif001@gmail.com">Start a conversation ↗</a>
+        <a class="btn" href="assets/Mohd_Atif_Resume.pdf" target="_blank">Resume ↗</a>
+        <a class="btn" href="https://github.com/Atif0110" target="_blank">GitHub ↗</a>
+        <a class="btn" href="https://www.linkedin.com/in/mohd-atif01/" target="_blank">LinkedIn ↗</a>
+      </div>
+    </div>
+    <aside class="hero-side">
+      <div class="label">working style</div>
+      <div class="signal">
+        <div class="signal-row"><span>Question</span><span>frame the real problem</span></div>
+        <div class="signal-row"><span>Evidence</span><span>data · research · tests</span></div>
+        <div class="signal-row"><span>Build</span><span>model · pipeline · tool</span></div>
+        <div class="signal-row"><span>Ship</span><span>clear output, useful next step</span></div>
+      </div>
+    </aside>
+  </div>
+</header>
+
+<section id="fit">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">01 / fit</div>
+      <div>
+        <h2>Two job titles.<br>One operating style.</h2>
+        <p>The common thread is not a title. It is how I work: understand the problem, find the evidence, build what is needed, and stay close to the outcome.</p>
+      </div>
+    </div>
+    <div class="roles">
+      <article class="role-card reveal">
+        <div class="role-top"><span class="eyebrow">data science</span><span class="role-num">01</span></div>
+        <h3>Make decisions measurable.</h3>
+        <p>Forecasting, statistical testing, data pipelines and applied ML where the output has to be useful beyond a notebook.</p>
+        <ul class="role-list">
+          <li>Time-series forecasting and chronological evaluation</li>
+          <li>Hypothesis testing, pricing experiments and inference</li>
+          <li>Data quality checks, uncertainty and reproducible pipelines</li>
+          <li>LLM systems with structured extraction and fallbacks</li>
+        </ul>
+      </article>
+      <article class="role-card fo reveal">
+        <div class="role-top"><span class="eyebrow" style="color:var(--blue)">founder's office</span><span class="role-num">02</span></div>
+        <h3>Turn ambiguity into movement.</h3>
+        <p>Research, growth experiments, automation and direct delivery when the job is less about a fixed process and more about figuring it out.</p>
+        <ul class="role-list">
+          <li>Competitive and market research with evidence trails</li>
+          <li>Growth and customer-acquisition experiments</li>
+          <li>Automation that removes repeat operational work</li>
+          <li>Client delivery across product, web and internal tools</li>
+        </ul>
+      </article>
+    </div>
+    <div class="proof">
+      <div class="proof-card reveal"><strong>100K+</strong><span>records worked with</span></div>
+      <div class="proof-card reveal"><strong>~20%</strong><span>food waste reduction</span></div>
+      <div class="proof-card reveal"><strong>12%</strong><span>lower procurement cost</span></div>
+      <div class="proof-card reveal"><strong>15%</strong><span>gross margin improvement</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">02 / work</div>
+      <div>
+        <h2>Evidence, not a list of buzzwords.</h2>
+        <p>My experience has moved between commercial analytics, founder-facing work, client delivery, AI evaluation and open-source contribution.</p>
+      </div>
+    </div>
+    <div class="timeline">
+      <article class="job reveal"><div class="job-date">JUL–AUG 2026</div><div><h3>Mythos</h3><div class="role">Growth &amp; customer acquisition</div><p>Worked directly with the founder on growth and customer-acquisition experiments during an early scaling push.</p></div></article>
+      <article class="job reveal"><div class="job-date">2026</div><div><h3>Independent freelance</h3><div class="role">Netherlands &amp; United States clients</div><p>Delivered production websites and internal automation. One engagement included an n8n workflow that extracted event data from partner Instagram posts against a fixed schema, flagged uncertain fields and routed output through review before use.</p></div></article>
+      <article class="job reveal"><div class="job-date">2026–PRESENT</div><div><h3>RoboCurve · inspect robots</h3><div class="role">Open-source contributor</div><p>Contributing to an open-source evaluation framework for physical AI. Added shell completion and environment diagnostics, with tests and changelog entries prepared for upstream review.</p></div></article>
+      <article class="job reveal"><div class="job-date">2025–PRESENT</div><div><h3>Labelbox</h3><div class="role">Contract AI trainer &amp; model evaluator</div><p>Training and evaluating a voice assistant at volume, with emphasis on rubrics and failure modes that aggregate scores can hide.</p></div></article>
+      <article class="job reveal"><div class="job-date">JUN 2024–MAY 2025</div><div><h3>Arabania Indo Arabic Restaurant</h3><div class="role">Data Analyst Intern · Lucknow</div><p>Owned forecasting and analytics for live operations where the output was a purchasing and pricing decision, not simply a dashboard. Worked across 100K+ inventory records, pricing tests and SQL reporting automation.</p></div></article>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">03 / selected work</div>
+      <div>
+        <h2>Projects built to answer real questions.</h2>
+        <p>I’d rather show the system and the decision it supports than list every technology used to build it.</p>
+      </div>
+    </div>
+    <div class="project-filter">
+      <button class="filter active" data-filter="all">ALL</button>
+      <button class="filter" data-filter="ds">DATA SCIENCE</button>
+      <button class="filter" data-filter="fo">FOUNDER'S OFFICE</button>
+    </div>
+    <div class="project-grid">
+
+      <article class="project large reveal" data-role="ds fo">
+        <div class="project-index">01 / INTELLIGENCE</div>
+        <h3>AI Competitor Research Platform</h3>
+        <div class="kind">competitive intelligence · research automation</div>
+        <p>A research pipeline that collects competitor information, validates structured observations, preserves evidence and turns the run into an analysis/report. This is the project that best bridges my two target roles.</p>
+        <div class="tags"><span>Python</span><span>FastAPI</span><span>Firecrawl</span><span>RAG</span><span>PostgreSQL</span><span>LLM fallback</span></div>
+        <ul>
+          <li>Layered collection with retry and rate-limit handling.</li>
+          <li>Schema and semantic checks with corrective retries.</li>
+          <li>Source identifiers, timestamps and content hashes preserve provenance.</li>
+          <li>Deterministic demo mode separates reproducible demo behaviour from live provider paths.</li>
+        </ul>
+        <div class="project-links"><a href="https://ai-competitor-research-web.onrender.com/" target="_blank">Live demo ↗</a><a href="https://github.com/Atif0110/AI-competitor-research" target="_blank">GitHub ↗</a></div>
+      </article>
+
+      <article class="project reveal" data-role="ds">
+        <div class="project-index">02 / FORECASTING</div>
+        <h3>Power Price Forecasting Pipeline</h3>
+        <div class="kind">applied machine learning</div>
+        <p>Day-ahead electricity price forecasting for the German and Luxembourg bidding zone, designed around chronological evaluation and data quality rather than a single model score.</p>
+        <div class="tags"><span>Python</span><span>XGBoost</span><span>scikit-learn</span><span>ENTSO-E</span><span>pytest</span></div>
+        <ul><li>Seasonal-naive baseline and chronological splits.</li><li>Quality gates for timestamps, gaps and extreme values.</li><li>Residual-based uncertainty used by the signal layer.</li></ul>
+        <div class="project-links"><a href="https://github.com/Atif0110/power-forecast-pipeline" target="_blank">GitHub ↗</a></div>
+      </article>
+
+      <article class="project fo reveal" data-role="fo">
+        <div class="project-index">03 / AUTOMATION</div>
+        <h3>OpenClaw</h3>
+        <div class="kind">automation agent</div>
+        <p>A local-first assistant that turns plain-language tasks into scheduled browser agents, with a preview and explicit approval step before execution.</p>
+        <div class="tags"><span>Node.js</span><span>Playwright</span><span>SQLite</span><span>Ollama</span><span>OpenAI</span></div>
+        <ul><li>Local model fallback when no hosted key is set.</li><li>Human approval before an agent is scheduled.</li><li>Browser execution with local run records.</li></ul>
+        <div class="project-links"><a href="https://github.com/Atif0110/openclaw-desktop-assistant" target="_blank">GitHub ↗</a></div>
+      </article>
+
+      <article class="project ds reveal" data-role="ds">
+        <div class="project-index">04 / AI INFRA</div>
+        <h3>TrustLayer</h3>
+        <div class="kind">agent authorization infrastructure</div>
+        <p>An authorization layer for AI agents that evaluates actions against organisation-scoped policies and can require human approval before consequential actions proceed.</p>
+        <div class="tags"><span>FastAPI</span><span>PostgreSQL</span><span>React</span><span>Docker</span><span>pytest</span></div>
+        <ul><li>Default-deny policy engine.</li><li>Explicit approval queue with expiry handling.</li><li>Append-only audit records.</li></ul>
+        <div class="project-links"><a href="https://github.com/Atif0110/TrustLayer" target="_blank">GitHub ↗</a></div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="capabilities">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">04 / capabilities</div>
+      <div><h2>Useful across the whole problem.</h2><p>Not every problem needs a model. Not every business problem needs code. I’m comfortable deciding which one it actually needs.</p></div>
+    </div>
+    <div class="cap-grid">
+      <article class="cap reveal"><div class="icon">01 / DATA</div><h3>Model &amp; measure</h3><p>Python, SQL, pandas, statistics, forecasting, experiments, backtesting and data-quality checks.</p></article>
+      <article class="cap reveal"><div class="icon">02 / RESEARCH</div><h3>Find the signal</h3><p>Competitor research, market investigation, evidence trails and structured extraction from messy sources.</p></article>
+      <article class="cap reveal"><div class="icon">03 / BUILD</div><h3>Ship the system</h3><p>FastAPI, Flask, PostgreSQL, React/Vue, Docker, automation workflows and tested AI backends.</p></article>
+      <article class="cap reveal"><div class="icon">04 / AI</div><h3>Use LLMs carefully</h3><p>RAG, structured extraction, provider fallback, evaluation and explicit boundaries around uncertain outputs.</p></article>
+      <article class="cap reveal"><div class="icon">05 / OPERATE</div><h3>Remove repeat work</h3><p>n8n, Playwright, scheduled agents and reporting automation that turn recurring manual work into a process.</p></article>
+      <article class="cap reveal"><div class="icon">06 / COMMUNICATE</div><h3>Make it actionable</h3><p>Translate analysis and technical work into a clear recommendation, next step or tool someone can actually use.</p></article>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">05 / about</div>
+      <div><h2>Technical enough to build.<br>Curious enough to ask why.</h2></div>
+    </div>
+    <div class="about-grid">
+      <div class="reveal">
+        <p>I studied Data Science and Applications at IIT Madras. My work has gradually moved toward the overlap between analysis, AI systems, research and execution.</p>
+        <p>I enjoy the early part of a problem where the answer is not obvious yet: figuring out what matters, getting the evidence, building a first version and tightening it until it is useful.</p>
+      </div>
+      <div class="reveal">
+        <div class="eyebrow">toolbox</div>
+        <div class="stack">
+          <span>Python</span><span>SQL</span><span>pandas</span><span>NumPy</span><span>XGBoost</span><span>scikit-learn</span><span>statsmodels</span><span>FastAPI</span><span>Flask</span><span>PostgreSQL</span><span>Docker</span><span>React</span><span>Vue</span><span>n8n</span><span>Playwright</span><span>RAG</span><span>OpenAI</span><span>Anthropic</span><span>Groq</span><span>Gemini</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="contact reveal">
+      <div class="eyebrow">06 / contact</div>
+      <h2>Have a messy problem?</h2>
+      <p>I’m looking for roles where I can combine analytical depth with ownership. Data science, founder’s office, strategy &amp; operations, or an early-stage team where the work crosses functions.</p>
+      <div class="hero-actions">
+        <a class="btn primary" href="mailto:data.atif001@gmail.com">data.atif001@gmail.com ↗</a>
+        <a class="btn" href="assets/Mohd_Atif_Resume.pdf" target="_blank">Resume ↗</a>
+        <a class="btn" href="https://www.linkedin.com/in/mohd-atif01/" target="_blank">LinkedIn ↗</a>
+        <a class="btn" href="https://github.com/Atif0110" target="_blank">GitHub ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap"><span>© 2026 Mohd Atif</span><span>Built around evidence, not noise.</span></div></footer>
+
+<script>
+(() => {
+  const reveal = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      e.target.classList.add('in');
+      observer.unobserve(e.target);
+    });
+  }, {threshold:.08, rootMargin:'0px 0px -35px 0px'});
+  reveal.forEach(el => observer.observe(el));
+
+  const filters = document.querySelectorAll('.filter');
+  const cards = document.querySelectorAll('.project');
+  filters.forEach(button => button.addEventListener('click', () => {
+    filters.forEach(b => b.classList.remove('active'));
+    button.classList.add('active');
+    const mode = button.dataset.filter;
+    cards.forEach(card => {
+      card.classList.toggle('hidden', mode !== 'all' && !card.dataset.role.split(' ').includes(mode));
+    });
+  }));
+
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.addEventListener('pointermove', e => {
+      document.querySelectorAll('.sticker').forEach((el, i) => {
+        const strength = 5 + i * 1.7;
+        const x = (e.clientX / innerWidth - .5) * strength;
+        const y = (e.clientY / innerHeight - .5) * strength;
+        el.style.marginLeft = x.toFixed(1) + 'px';
+        el.style.marginTop = y.toFixed(1) + 'px';
+      });
+    }, {passive:true});
+  }
+})();
+</script>
+</body>
+</html>
